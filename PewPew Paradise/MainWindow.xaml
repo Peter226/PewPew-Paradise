@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}">
 
+<<<<<<< Updated upstream
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged">
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" >
             <Button x:Name="bt_singleplay" Content="Single Play" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
@@ -18,5 +19,16 @@
             <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="Red"/>
         </Grid>
     </Grid>
+=======
+    <Border x:Name="GameWindow" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512">
+        <Grid Margin="-1,-1,9,31">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="192,260,0,0" VerticalAlignment="Top" Width="138" Height="50"/>
+        </Grid>
+    </Border>
+>>>>>>> Stashed changes
 
 </Window>
