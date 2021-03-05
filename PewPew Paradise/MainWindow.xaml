@@ -9,6 +9,7 @@
         Title="MainWindow" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}">
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged">
+        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" >
         <Button x:Name="bt_singleplay" Content="Single Play" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
         <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
         <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
@@ -16,5 +17,6 @@
         <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
         <TextBox x:Name="tb_title" HorizontalAlignment="Center"  Height="63" Margin="48,10,47,0" TextWrapping="Wrap" Text="PewPew Paradise" VerticalAlignment="Top" Width="417" FontSize="50" FontFamily="Comic Sans MS" FontWeight="Bold" CharacterCasing="Upper"/>
     </Grid>
+        </Grid>
 
 </Window>
