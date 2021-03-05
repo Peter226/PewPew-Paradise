@@ -56,7 +56,7 @@ namespace PewPew_Paradise
 
 
 
-            LinearGradientBrush gb = new LinearGradientBrush();
+           /* LinearGradientBrush gb = new LinearGradientBrush();
 
             GradientStop red = new GradientStop();
             red.Color = Colors.Red;
@@ -82,7 +82,7 @@ namespace PewPew_Paradise
             purple.Color = Colors.Purple;
             gb.GradientStops.Add(purple);
 
-            this.Resources["BackgroundBrush"] = gb;
+            this.Resources["BackgroundBrush"] = gb;*/
 
             if (this.SizeToContent != SizeToContent.Manual)
             {

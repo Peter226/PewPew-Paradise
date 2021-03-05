@@ -9,14 +9,12 @@
         Title="MainWindow" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}">
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="218,128,0,0" VerticalAlignment="Top" Width="75"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,91,0,0"/>
-        <Grid HorizontalAlignment="Left" Height="186" VerticalAlignment="Top" Width="252" Margin="125,183,0,0">
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164" Height="74"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="110,116,0,0" Height="60"/>
-            <RadioButton Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,88,0,0"/>
-        </Grid>
-        <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="273" Margin="140,50,0,0"/>
+        <Button x:Name="bt_singleplay" Content="Single Play" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
+        <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
+        <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
+        <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
+        <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
+        <TextBox x:Name="tb_title" HorizontalAlignment="Center"  Height="63" Margin="48,10,47,0" TextWrapping="Wrap" Text="PewPew Paradise" VerticalAlignment="Top" Width="417" FontSize="50" FontFamily="Comic Sans MS" FontWeight="Bold"/>
     </Grid>
 
 </Window>
