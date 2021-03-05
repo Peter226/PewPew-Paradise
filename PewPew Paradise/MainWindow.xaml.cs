@@ -153,10 +153,5 @@ namespace PewPew_Paradise
                 }
             }
         }
-
-        private void tb_title_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
