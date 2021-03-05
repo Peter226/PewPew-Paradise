@@ -1,14 +1,22 @@
-﻿<Window x:Class="PewPew_Paradise.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PewPew_Paradise"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PewPew_Paradise.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}">
 
-    <Border x:Name="GameWindow" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512">
-        <Label x:Name="UwU" Content="UwU" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="80"/>
-    </Border>
+    <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="218,128,0,0" VerticalAlignment="Top" Width="75"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,91,0,0"/>
+        <Grid HorizontalAlignment="Left" Height="186" VerticalAlignment="Top" Width="252" Margin="125,183,0,0">
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164" Height="74"/>
+            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="110,116,0,0" Height="60"/>
+            <RadioButton Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,88,0,0"/>
+        </Grid>
+        <Slider HorizontalAlignment="Left" VerticalAlignment="Top" Width="273" Margin="140,50,0,0"/>
+    </Grid>
 
 </Window>

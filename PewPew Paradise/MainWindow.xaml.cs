@@ -24,14 +24,17 @@ namespace PewPew_Paradise
         double windowDifferenceX;
         double windowDifferenceY;
 
+        double previousWidth;
+        double previousHeight;
+
         public MainWindow()
         {
             InitializeComponent();
             this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
-
-            DrawingBrush dw = new DrawingBrush();
+            previousHeight = GameWindow.Height;
+            previousWidth = GameWindow.Width;
         }
 
 
@@ -88,7 +91,6 @@ namespace PewPew_Paradise
             }
 
             double minSize = Math.Min(RealWidth, RealHeight);
-            UwU.FontSize = minSize * 0.2f;
 
             double spaceX = RealWidth - minSize;
             double spaceY = RealHeight - minSize;
@@ -106,6 +108,52 @@ namespace PewPew_Paradise
         {
             get { return this.ActualHeight - windowDifferenceY; }
         }
+
+        private void GameWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+            double ratioW = GameWindow.Width / previousWidth;
+            double ratioH = GameWindow.Height / previousHeight;
+
+
+            foreach (UIElement uIElement in GameWindow.Children)
+            {
+                ResizeObjectsCascade(uIElement, ratioW, ratioH);
+            }
+            previousHeight = GameWindow.Height;
+            previousWidth = GameWindow.Width;
+        }
+
+        private void ResizeObjectsCascade(UIElement child, double width, double height)
+        {
+            if (typeof(FrameworkElement).IsAssignableFrom(child.GetType()))
+            {
+                FrameworkElement frameworkElement = (FrameworkElement)child;
+                frameworkElement.Width *= width;
+                frameworkElement.Height *= height;
+                Thickness margin = frameworkElement.Margin;
+                margin.Left *= width;
+                margin.Right *= width;
+                margin.Top *= height;
+                margin.Bottom *= height;
+
+                if (typeof(Control).IsAssignableFrom(child.GetType()))
+                {
+                    Control control = (Control)child;
+                    control.FontSize *= width;
+                }
+                frameworkElement.Margin = margin;
+            }
+            if (typeof(Panel).IsAssignableFrom(child.GetType()))
+            {
+                Panel panel = (Panel)child;
+                foreach (UIElement uIElement in panel.Children)
+                {
+                    ResizeObjectsCascade(uIElement, width, height);
+                }
+            }
+        }
+
 
 
     }
