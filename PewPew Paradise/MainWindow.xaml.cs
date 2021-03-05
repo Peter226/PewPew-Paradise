@@ -33,14 +33,8 @@ namespace PewPew_Paradise
             this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
-<<<<<<< Updated upstream
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
-=======
-           
-
-            DrawingBrush dw = new DrawingBrush();
->>>>>>> Stashed changes
         }
 
 
@@ -97,10 +91,6 @@ namespace PewPew_Paradise
             }
 
             double minSize = Math.Min(RealWidth, RealHeight);
-<<<<<<< Updated upstream
-=======
-            //UwU.FontSize = minSize * 0.2f;
->>>>>>> Stashed changes
 
             double spaceX = RealWidth - minSize;
             double spaceY = RealHeight - minSize;
@@ -108,8 +98,8 @@ namespace PewPew_Paradise
             GameWindow.Height = minSize;
             Thickness thickness = new Thickness(spaceX * 0.5, spaceY * 0.5, 0, 0);
             GameWindow.Margin = thickness;
-
         }
+
         public double RealWidth
         {
             get { return this.ActualWidth - windowDifferenceX; }
