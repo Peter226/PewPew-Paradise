@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
+using PewPew_Paradise.GameLogic;
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -20,6 +21,8 @@ namespace PewPew_Paradise
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static MainWindow instance;
+        public GameManager gameManager { get; }
 
         double windowDifferenceX;
         double windowDifferenceY;
@@ -27,16 +30,32 @@ namespace PewPew_Paradise
         double previousWidth;
         double previousHeight;
 
+        public static MainWindow Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+
         public MainWindow()
         {
+            instance = this;
             InitializeComponent();
             this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
+            gameManager = new GameManager(10);
+            gameManager.Begin();
         }
 
+        public void Test()
+        {
+            bt_exit.Width = 10;
+        }
 
 
         private void KeyPress(object sender, KeyEventArgs e)
@@ -152,6 +171,11 @@ namespace PewPew_Paradise
                     ResizeObjectsCascade(uIElement, width, height);
                 }
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            gameManager.Stop();
         }
     }
 }
