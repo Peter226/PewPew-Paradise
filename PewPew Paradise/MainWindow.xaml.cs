@@ -30,6 +30,9 @@ namespace PewPew_Paradise
         double previousWidth;
         double previousHeight;
 
+        float Timer = 0;
+
+
         public static MainWindow Instance
         {
             get
@@ -48,13 +51,24 @@ namespace PewPew_Paradise
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
-            gameManager = new GameManager(10);
+            gameManager = new GameManager(60);
             gameManager.Begin();
         }
 
         public void Test()
         {
-            bt_exit.Width = 10;
+            Timer -= 0.1f;
+
+            LinearGradientBrush gb = new LinearGradientBrush();
+
+
+            Thickness margin = bt_singleplay.Margin;
+            margin.Top += Math.Sin(Timer) * 0.3f;
+            margin.Left += Math.Sin(Timer) * 1.6f;
+
+            bt_singleplay.Margin = margin;
+            
+
         }
 
 

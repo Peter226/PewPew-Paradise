@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-
+using System.Runtime.Remoting.Contexts;
 namespace PewPew_Paradise.GameLogic
 {
     public class GameManager
@@ -13,7 +13,6 @@ namespace PewPew_Paradise.GameLogic
         private Action<object> _updateAction;
 
         Thread UpdateThread;
-        
 
         int FrameRate
         {
@@ -30,7 +29,7 @@ namespace PewPew_Paradise.GameLogic
         private void UpdateCall()
         {
             if (_minimumDelta < 1)_minimumDelta = 1;
-            //_updateAction.DynamicInvoke("NEMMŰKÖDIK");
+            MainWindow.Instance.Dispatcher.Invoke(_updateAction,TimeSpan.Zero,new object[] { 0 });
             Thread.Sleep(_minimumDelta);
             UpdateCall();
         }
@@ -38,6 +37,10 @@ namespace PewPew_Paradise.GameLogic
         protected void Update()
         {
             MainWindow.Instance.Test();
+
+            
+
+
         }
 
         public GameManager(int frameRate)
