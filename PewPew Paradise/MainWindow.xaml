@@ -22,25 +22,31 @@
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_options_MouseEnter" MouseLeave="bt_options_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_help_MouseEnter" MouseLeave="bt_help_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_exit_MouseEnter" MouseLeave="bt_exit_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
             <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="Red"/>
+            <Image x:Name="img_left_arrow" HorizontalAlignment="Left" Height="64" Margin="72,87,0,0" VerticalAlignment="Top" Width="64" Source="arrow_left.png" Visibility="Collapsed">
+              
+            </Image>
+            <Image x:Name="img_right_arrow" HorizontalAlignment="Left" Height="64" Margin="378,87,0,0" VerticalAlignment="Top" Width="64" Source="Images/arrow_right.png" Visibility="Collapsed">
+
+            </Image>
         </Grid>
         <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" >
             <Label x:Name="lb_help" Content="Help" HorizontalAlignment="Left" Margin="16,16,0,0" FontSize="60" FontFamily="Comic Sans MS" Foreground="Red"></Label>
