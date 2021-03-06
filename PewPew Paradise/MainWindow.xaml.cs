@@ -32,7 +32,7 @@ namespace PewPew_Paradise
 
         float Timer = 0;
 
-
+        
         public static MainWindow Instance
         {
             get
@@ -57,13 +57,18 @@ namespace PewPew_Paradise
 
         public void Test()
         {
-            Timer -= 0.1f;
+            Timer -= 0.03f;
+            Sprite mrph = GameManager.Instance.MrPlaceHolder;
+            mrph.Position = new Maths.Vector2(8 + Math.Sin(Timer) * 8.0f, 8 + Math.Sin(Timer) * 8.0f);
+            mrph.Size = new Maths.Vector2(Math.Sin(Timer * 0.3f) * 8.0f,Math.Cos(Timer * 0.3f) * 8.0f);
+
+           
         }
 
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-
+            SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(3,3));
         }
 
         private void KeyLift(object sender, KeyEventArgs e)
