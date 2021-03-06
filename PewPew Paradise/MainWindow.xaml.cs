@@ -191,5 +191,30 @@ namespace PewPew_Paradise
         {
             gameManager.Stop();
         }
+
+        private void bt_exit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void bt_help_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            Help.Visibility = Visibility.Visible;
+
+        }
+
+        private void bt_back_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Visible;
+            Help.Visibility = Visibility.Collapsed;
+            Options.Visibility = Visibility.Collapsed;
+        }
+
+        private void bt_options_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            Options.Visibility = Visibility.Visible;
+        }
     }
 }
