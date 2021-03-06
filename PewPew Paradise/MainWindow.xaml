@@ -16,25 +16,25 @@
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}">
+            <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}">
+            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}">
+            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}">
+            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
@@ -79,21 +79,21 @@
                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="red"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="red"/>
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
-                    <Setter Property="Foreground" Value="#FF838383"/>
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
