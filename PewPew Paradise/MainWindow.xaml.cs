@@ -183,7 +183,24 @@ namespace PewPew_Paradise
                 }
             }
         }
-
+        private void Arrow_placing(Thickness button)
+        {   
+            Thickness current_button = button;
+            current_button.Left -= img_left_arrow.Width;
+            Thickness left_arrow = current_button;
+            Double Left_arrow_place = bt_options.Width + img_right_arrow.Width;
+            current_button.Left += Left_arrow_place;
+            img_left_arrow.Margin = left_arrow;
+            Thickness right_arrow = current_button;
+            img_right_arrow.Margin = right_arrow;
+            img_left_arrow.Visibility = Visibility.Visible;
+            img_right_arrow.Visibility = Visibility.Visible;
+        }
+        private void Arrow_clear()
+        {
+            img_left_arrow.Visibility = Visibility.Collapsed;
+            img_right_arrow.Visibility = Visibility.Collapsed;
+        }
         private void Window_Closed(object sender, EventArgs e)
         {
             gameManager.Stop();
@@ -216,61 +233,29 @@ namespace PewPew_Paradise
 
         private void bt_options_MouseEnter(object sender, MouseEventArgs e)
         {
-            Thickness current_button = bt_options.Margin;
-            current_button.Left -= img_left_arrow.Width;
-            Thickness left_arrow = current_button;
-            Double Left_arrow_place = bt_options.Width + img_right_arrow.Width;
-            current_button.Left += Left_arrow_place;
-            img_left_arrow.Margin = left_arrow;
-            Thickness right_arrow = current_button;
-            img_right_arrow.Margin = right_arrow;
-            img_left_arrow.Visibility = Visibility.Visible;
-            img_right_arrow.Visibility = Visibility.Visible;
-
+            Arrow_placing(bt_options.Margin);
         }
 
         private void bt_options_MouseLeave(object sender, MouseEventArgs e)
         {
-            img_left_arrow.Visibility = Visibility.Collapsed;
-            img_right_arrow.Visibility = Visibility.Collapsed;
+            Arrow_clear();
         }
         private void bt_help_MouseEnter(object sender, MouseEventArgs e)
         {
-            Thickness current_button = bt_help.Margin;
-            current_button.Left -= img_left_arrow.Width;
-            Thickness left_arrow = current_button;
-            Double Left_arrow_place = bt_help.Width + img_right_arrow.Width;
-            current_button.Left += Left_arrow_place;
-            img_left_arrow.Margin = left_arrow;
-            Thickness right_arrow = current_button;
-            img_right_arrow.Margin = right_arrow;
-            img_left_arrow.Visibility = Visibility.Visible;
-            img_right_arrow.Visibility = Visibility.Visible;
-
+            Arrow_placing(bt_help.Margin);
         }
         private void bt_help_MouseLeave(object sender, MouseEventArgs e)
         {
-            img_left_arrow.Visibility = Visibility.Collapsed;
-            img_right_arrow.Visibility = Visibility.Collapsed;
+            Arrow_clear();
         }
         private void bt_exit_MouseEnter(object sender, MouseEventArgs e)
         {
-            Thickness current_button = bt_exit.Margin;
-            current_button.Left -= img_left_arrow.Width;
-            Thickness left_arrow = current_button;
-            Double Left_arrow_place = bt_exit.Width + img_right_arrow.Width;
-            current_button.Left += Left_arrow_place;
-            img_left_arrow.Margin = left_arrow;
-            Thickness right_arrow = current_button;
-            img_right_arrow.Margin = right_arrow;
-            img_left_arrow.Visibility = Visibility.Visible;
-            img_right_arrow.Visibility = Visibility.Visible;
-
+            Arrow_placing(bt_exit.Margin);
         }
         private void bt_exit_MouseLeave(object sender, MouseEventArgs e)
         {
-            img_left_arrow.Visibility = Visibility.Collapsed;
-            img_right_arrow.Visibility = Visibility.Collapsed;
+            Arrow_clear();
         }
+
     }
 }
