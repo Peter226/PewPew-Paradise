@@ -257,5 +257,24 @@ namespace PewPew_Paradise
             Arrow_clear();
         }
 
+        private void bt_multiplay_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Arrow_placing(bt_multiplay.Margin);
+        }
+
+        private void bt_multiplay_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Arrow_clear();
+        }
+
+        private void bt_singleplay_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Arrow_placing(bt_singleplay.Margin);
+        }
+
+        private void bt_singleplay_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Arrow_clear();
+        }
     }
 }
