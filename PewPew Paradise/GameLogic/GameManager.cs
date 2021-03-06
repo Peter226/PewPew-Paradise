@@ -11,8 +11,19 @@ namespace PewPew_Paradise.GameLogic
     {
         private int _minimumDelta;
         private Action<object> _updateAction;
-
         Thread UpdateThread;
+        public SpriteManager spriteManager;
+
+
+        public GameManager(int frameRate)
+        {
+            _updateAction = new Action<object>(delegate (object param) { Update(); });
+            this.FrameRate = frameRate;
+            spriteManager = new SpriteManager();
+           // spriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png","MrPlaceHolder");
+        }
+
+
 
         int FrameRate
         {
@@ -39,15 +50,11 @@ namespace PewPew_Paradise.GameLogic
             MainWindow.Instance.Test();
 
             
-
+            
 
         }
 
-        public GameManager(int frameRate)
-        {
-            _updateAction = new Action<object>(delegate(object param) { Update(); });
-            this.FrameRate = frameRate;
-        }
+        
 
         public void Begin()
         {
