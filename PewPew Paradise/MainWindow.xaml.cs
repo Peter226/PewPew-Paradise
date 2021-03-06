@@ -231,15 +231,18 @@ namespace PewPew_Paradise
         }
         private void bt_help_MouseEnter(object sender, MouseEventArgs e)
         {
-            Thickness left_arrow = new Thickness(72, 330, 0, 0);
-            Thickness right_arrow = new Thickness(378, 330, 0, 0);
+            Thickness current_button = bt_help.Margin;
+            current_button.Left -= img_left_arrow.Width;
+            Thickness left_arrow = current_button;
+            Double Left_arrow_place = bt_help.Width + img_right_arrow.Width;
+            current_button.Left += Left_arrow_place;
             img_left_arrow.Margin = left_arrow;
+            Thickness right_arrow = current_button;
             img_right_arrow.Margin = right_arrow;
             img_left_arrow.Visibility = Visibility.Visible;
             img_right_arrow.Visibility = Visibility.Visible;
 
         }
-
         private void bt_help_MouseLeave(object sender, MouseEventArgs e)
         {
             img_left_arrow.Visibility = Visibility.Collapsed;
@@ -247,20 +250,22 @@ namespace PewPew_Paradise
         }
         private void bt_exit_MouseEnter(object sender, MouseEventArgs e)
         {
-            Thickness left_arrow = new Thickness(72, 411, 0, 0);
-            Thickness right_arrow = new Thickness(378, 411, 0, 0);
+            Thickness current_button = bt_exit.Margin;
+            current_button.Left -= img_left_arrow.Width;
+            Thickness left_arrow = current_button;
+            Double Left_arrow_place = bt_exit.Width + img_right_arrow.Width;
+            current_button.Left += Left_arrow_place;
             img_left_arrow.Margin = left_arrow;
+            Thickness right_arrow = current_button;
             img_right_arrow.Margin = right_arrow;
             img_left_arrow.Visibility = Visibility.Visible;
             img_right_arrow.Visibility = Visibility.Visible;
 
         }
-
         private void bt_exit_MouseLeave(object sender, MouseEventArgs e)
         {
             img_left_arrow.Visibility = Visibility.Collapsed;
             img_right_arrow.Visibility = Visibility.Collapsed;
         }
-
     }
 }
