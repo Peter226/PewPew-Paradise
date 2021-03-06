@@ -95,7 +95,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Multiplayer.png" />
+    <Resource Include="Images\Singleplayer.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\button.png" />
   </ItemGroup>

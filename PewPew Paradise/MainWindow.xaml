@@ -10,17 +10,17 @@
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
-            <Button x:Name="bt_singleplay" Content="Single Play" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}">
+            <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}">
                 <Button.Background>
-                    <ImageBrush ImageSource="Images/button.png" />
-                    
+                    <ImageBrush ImageSource="Images/button.png"/>
+
                 </Button.Background>
             </Button>
             <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="Images/button.png" />
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png" />
 
-            </Button.Background>
+                </Button.Background>
             </Button>
             <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}">
                 <Button.Background>
