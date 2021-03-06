@@ -58,17 +58,6 @@ namespace PewPew_Paradise
         public void Test()
         {
             Timer -= 0.1f;
-
-            LinearGradientBrush gb = new LinearGradientBrush();
-
-
-            Thickness margin = bt_singleplay.Margin;
-            margin.Top += Math.Sin(Timer) * 0.3f;
-            margin.Left += Math.Sin(Timer) * 1.6f;
-
-            bt_singleplay.Margin = margin;
-            
-
         }
 
 

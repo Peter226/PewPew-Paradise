@@ -8,18 +8,38 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
 
-    <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged">
-        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" UseLayoutRounding="True">
-            <Button x:Name="bt_singleplay" Content="Single Play" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
+        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
+            <Button x:Name="bt_singleplay" Content="Single Play" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
                     
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS"/>
-            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click"/>
-            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click"/>
-            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="230" Height="65" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click"/>
+            <Button x:Name="bt_multiplay" Content="Multiplayer" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/button.png" />
+
+            </Button.Background>
+            </Button>
+            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png" />
+
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png" />
+
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png" />
+
+                </Button.Background>
+            </Button>
             <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="Red"/>
         </Grid>
         <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" >
