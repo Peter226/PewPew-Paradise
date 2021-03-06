@@ -19,8 +19,6 @@ namespace PewPew_Paradise.GameLogic
         Thread UpdateThread;
         public SpriteManager spriteManager;
 
-        public Sprite MrPlaceHolder;
-
 
 
         public GameManager(int frameRate)
@@ -30,7 +28,6 @@ namespace PewPew_Paradise.GameLogic
             this.FrameRate = frameRate;
             spriteManager = new SpriteManager();
             spriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png","MrPlaceHolder");
-            MrPlaceHolder = spriteManager.CreateSprite("MrPlaceHolder",new Vector2(8,8),new Vector2(-4,-4));
         }
 
 

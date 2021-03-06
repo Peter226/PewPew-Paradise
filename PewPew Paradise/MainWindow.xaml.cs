@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
 using PewPew_Paradise.GameLogic;
+using PewPew_Paradise.Maths;
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -32,7 +33,10 @@ namespace PewPew_Paradise
 
         float Timer = 0;
 
-        
+        List<Sprite> MrPlaceHolders = new List<Sprite>();
+
+
+
         public static MainWindow Instance
         {
             get
@@ -61,9 +65,13 @@ namespace PewPew_Paradise
         public void Test()
         {
             Timer -= 0.03f;
-            Sprite mrph = GameManager.Instance.MrPlaceHolder;
-            mrph.Position = new Maths.Vector2(8 + Math.Sin(Timer) * 8.0f, 8 + Math.Sin(Timer) * 8.0f);
-            mrph.Size = new Maths.Vector2(Math.Sin(Timer * 0.3f) * 8.0f,Math.Cos(Timer * 0.3f) * 8.0f);
+            foreach (Sprite sprite in MrPlaceHolders)
+            {
+                Vector2 newpos = sprite.Position;
+                newpos.x += Math.Sin(Timer) * 0.1f;
+                newpos.y += Math.Sin(Timer * 0.2f) * 0.1f;
+                sprite.Position = newpos;
+            }
 
            
         }
@@ -71,7 +79,10 @@ namespace PewPew_Paradise
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(3,3));
+            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(3,3));
+            MrPlaceHolders.Add(mrph);
+
+
         }
 
         private void KeyLift(object sender, KeyEventArgs e)
