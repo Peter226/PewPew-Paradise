@@ -35,8 +35,8 @@ namespace PewPew_Paradise
         float Timer = 0;
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
-
         
+
 
         public static MainWindow Instance
         {
@@ -58,7 +58,7 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
             gameManager = new GameManager(60);
             gameManager.Begin();
-            
+
 
             
 
@@ -75,19 +75,8 @@ namespace PewPew_Paradise
                 newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x)) * 0.3f;
                 sprite.Position = newpos;
             }
-            // Moving arrows by sin timer
-            MatrixTransform mt_left= new MatrixTransform();
-            Matrix matrix_left = mt_left.Matrix;
-            matrix_left.Translate(10 * Math.Sin(Timer * 10), 0);
-            mt_left.Matrix = matrix_left;
-            img_left_arrow.RenderTransform = mt_left;
 
-            MatrixTransform mt_right = new MatrixTransform();
-            Matrix matrix_right = mt_right.Matrix;
-            matrix_right.Translate(-10 * Math.Sin(Timer * 10), 0);
-            mt_right.Matrix = matrix_right;
-            img_right_arrow.RenderTransform = mt_right;
-
+           
         }
 
 
@@ -188,23 +177,19 @@ namespace PewPew_Paradise
         /// Replacing selection arrows with window size changing
         /// </summary>
         /// <param name="button"></param>
-        private void  Arrow_placing(Thickness button)
+        private void Arrow_placing(Thickness button)
         {   
             Thickness current_button = button;
             current_button.Left -= img_left_arrow.Width;
             Thickness left_arrow = current_button;
-            double Left_arrow_place = bt_options.Width + img_right_arrow.Width;
+            Double Left_arrow_place = bt_options.Width + img_right_arrow.Width;
             current_button.Left += Left_arrow_place;
             img_left_arrow.Margin = left_arrow;
             Thickness right_arrow = current_button;
             img_right_arrow.Margin = right_arrow;
             img_left_arrow.Visibility = Visibility.Visible;
             img_right_arrow.Visibility = Visibility.Visible;
-            
-            
-
         }
-
         /// <summary>
         /// Main Menu button events
         /// </summary>
@@ -212,7 +197,6 @@ namespace PewPew_Paradise
         {
             img_left_arrow.Visibility = Visibility.Collapsed;
             img_right_arrow.Visibility = Visibility.Collapsed;
-      
         }
         private void Window_Closed(object sender, EventArgs e)
         {
@@ -255,7 +239,7 @@ namespace PewPew_Paradise
 
         private void bt_options_MouseLeave(object sender, MouseEventArgs e)
         {
-            Arrow_clear();   
+            Arrow_clear();
         }
         private void bt_help_MouseEnter(object sender, MouseEventArgs e)
         {
