@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PewPew_Paradise"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PewPew_Paradise.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
+        Title="PewPew Paradise" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
@@ -40,7 +40,7 @@
 
                 </Button.Background>
             </Button>
-            <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="Red"/>
+            <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="#7C0476"/>
             <Image x:Name="img_left_arrow" HorizontalAlignment="Left" Height="64" Margin="72,87,0,0" VerticalAlignment="Top" Width="64" Source="arrow_left.png" Visibility="Collapsed">
               
             </Image>
@@ -48,28 +48,30 @@
 
             </Image>
         </Grid>
-        <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" >
-            <Label x:Name="lb_help" Content="Help" HorizontalAlignment="Left" Margin="16,16,0,0" FontSize="60" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_rules" Content="Rules" HorizontalAlignment="Left" Margin="39,87,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_ruletext" Content="Még nem tudni" HorizontalAlignment="Left" Margin="71,132,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_keys" Content="Keys" HorizontalAlignment="Left" Margin="39,249,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_player1" Content="Player1" HorizontalAlignment="Left" Margin="43,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_player2" Content="Player2" HorizontalAlignment="Left" Margin="271,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_p2keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="279,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="Red"></Label>
+        <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026" >
+            <Label x:Name="lb_help" Content="Help" HorizontalAlignment="Left" Margin="10,6,0,0" FontSize="60" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_rules" Content="Rules" HorizontalAlignment="Left" Margin="39,87,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_ruletext" Content="Még nem tudni" HorizontalAlignment="Left" Margin="71,132,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_keys" Content="Keys" HorizontalAlignment="Left" Margin="39,249,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_player1" Content="Player1" HorizontalAlignment="Left" Margin="43,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_player2" Content="Player2" HorizontalAlignment="Left" Margin="271,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_p2keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="279,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Button x:Name="bt_back_help" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
         </Grid>
-        <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" >
-            <Label x:Name="lb_options" Content="Options" HorizontalAlignment="Left" Margin="10,6,0,10" FontSize="60" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_audio" Content="Audio" HorizontalAlignment="Left" Margin="70,88,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_music" Content="Music Volume" HorizontalAlignment="Left" Margin="80,134,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_effect" Content="Effect Volume" HorizontalAlignment="Left" Margin="80,193,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_chars" Content="Characters" HorizontalAlignment="Left" Margin="70,257,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_p1" Content="Player1:" HorizontalAlignment="Left" Margin="80,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
-            <Label x:Name="lb_p2" Content="Player2:" HorizontalAlignment="Left" Margin="278,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="Red"></Label>
+        <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
+            <Label x:Name="lb_options" Content="Options" HorizontalAlignment="Left" Margin="10,6,0,10" FontSize="60" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_audio" Content="Audio" HorizontalAlignment="Left" Margin="70,88,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_music" Content="Music Volume" HorizontalAlignment="Left" Margin="80,134,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_effect" Content="Effect Volume" HorizontalAlignment="Left" Margin="80,193,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_chars" Content="Characters" HorizontalAlignment="Left" Margin="70,257,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_p1" Content="Player1:" HorizontalAlignment="Left" Margin="80,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+            <Label x:Name="lb_p2" Content="Player2:" HorizontalAlignment="Left" Margin="278,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Button x:Name="bt_back_op" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
             <Slider x:Name="sl_music" Margin="80,178,211,319" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10"/>
-            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10"/>
+            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10">
+               
+            </Slider>
         </Grid>
     </Grid>
 
