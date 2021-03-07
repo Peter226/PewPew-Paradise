@@ -133,5 +133,14 @@
   <ItemGroup>
     <Resource Include="Images\PewPewParadiseIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Audio.png" />
+    <Resource Include="Images\Characters.png" />
+    <Resource Include="Images\EffectVolume.png" />
+    <Resource Include="Images\MusicVolume.png" />
+    <Resource Include="Images\OptionsBIG.png" />
+    <Resource Include="Images\Player1.png" />
+    <Resource Include="Images\Player2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

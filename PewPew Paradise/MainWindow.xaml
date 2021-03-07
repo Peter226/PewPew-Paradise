@@ -7,8 +7,8 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PewPew_Paradise.MainWindow"
         mc:Ignorable="d"
         Title="PewPew Paradise" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
-        
-    
+
+
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
             <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave">
@@ -63,7 +63,7 @@
             <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_player2" Content="Player2" HorizontalAlignment="Left" Margin="271,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="279,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Button x:Name="bt_back_help" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="48" Height="36" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Button x:Name="bt_back_help" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
@@ -71,20 +71,17 @@
             </Button>
         </Grid>
         <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
-            <Label x:Name="lb_options" Content="Options" HorizontalAlignment="Left" Margin="10,6,0,10" FontSize="60" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_audio" Content="Audio" HorizontalAlignment="Left" Margin="70,88,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_music" Content="Music Volume" HorizontalAlignment="Left" Margin="80,134,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_effect" Content="Effect Volume" HorizontalAlignment="Left" Margin="80,193,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_chars" Content="Characters" HorizontalAlignment="Left" Margin="70,257,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_p1" Content="Player1:" HorizontalAlignment="Left" Margin="80,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_p2" Content="Player2:" HorizontalAlignment="Left" Margin="278,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Button x:Name="bt_back_op" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="48" Height="36" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="bt_back_op" Content="" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
                 </Button.Background>
             </Button>
-            <Slider x:Name="sl_music" Margin="80,178,211,319" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}">
+            <Slider x:Name="sl_music" Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1">
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
                     <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#CB00A4"/>
@@ -341,7 +338,7 @@
                 </Slider.Resources>
             </Slider>
 
-            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle2}" >
+            <Slider x:Name="sl_effect" Margin="90,232,161,260" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle2}" Grid.Column="1" >
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
                     <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#CB00A4"/>
@@ -598,6 +595,13 @@
                 </Slider.Resources>
 
             </Slider>
+            <Image HorizontalAlignment="Left" Height="78" Margin="6,10,0,0" VerticalAlignment="Top" Width="218" Source="Images/OptionsBIG.png" Grid.Column="1"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="51,88,0,0" VerticalAlignment="Top" Width="100" Source="Images/Audio.png" Grid.Column="1"/>
+            <Image HorizontalAlignment="Left" Height="33" Margin="90,134,0,0" VerticalAlignment="Top" Width="127" Source="Images/MusicVolume.png" Grid.Column="1"/>
+            <Image HorizontalAlignment="Left" Height="32" Margin="94,200,0,0" VerticalAlignment="Top" Width="123" Source="Images/EffectVolume.png" Grid.Column="1"/>
+            <Image HorizontalAlignment="Left" Height="121" Margin="51,278,0,0" VerticalAlignment="Top" Width="169" Source="Images/Characters.png" Grid.Column="1"/>
+            <Image HorizontalAlignment="Left" Height="31" Margin="60,328,0,0" VerticalAlignment="Top" Width="91" Source="Images/Player1.png" Grid.Column="1"/>
+            <Image Grid.Column="1" HorizontalAlignment="Left" Height="76" Margin="225,328,0,0" VerticalAlignment="Top" Width="98" Source="Images/Player2.png"/>
         </Grid>
     </Grid>
 
