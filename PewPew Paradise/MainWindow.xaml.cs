@@ -66,8 +66,8 @@ namespace PewPew_Paradise
             foreach (Sprite sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
-                newpos.x += Math.Sin(Timer) * 0.1f;
-                newpos.y += Math.Sin(Timer * 0.2f) * 0.1f;
+                newpos.x += Math.Sin(Timer * 0.2 + Math.Cos(newpos.y)) * 0.1f;
+                newpos.y += Math.Sin(Timer * 0.3 + Math.Cos(newpos.x)) * 0.1f;
                 sprite.Position = newpos;
             }
 
