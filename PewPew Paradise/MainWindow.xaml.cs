@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
+
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -79,7 +80,7 @@ namespace PewPew_Paradise
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(3,3));
+            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
             MrPlaceHolders.Add(mrph);
 
 
@@ -134,11 +135,11 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
         }
 
-        private void ResizeObjectsCascade(UIElement child, double width, double height)
+        private void ResizeObjectsCascade(UIElement parent, double width, double height)
         {
-            if (typeof(FrameworkElement).IsAssignableFrom(child.GetType()))
+            if (typeof(FrameworkElement).IsAssignableFrom(parent.GetType()))
             {
-                FrameworkElement frameworkElement = (FrameworkElement)child;
+                FrameworkElement frameworkElement = (FrameworkElement)parent;
                 frameworkElement.Width *= width;
                 frameworkElement.Height *= height;
                 Thickness margin = frameworkElement.Margin;
@@ -147,19 +148,22 @@ namespace PewPew_Paradise
                 margin.Top *= height;
                 margin.Bottom *= height;
 
-                if (typeof(Control).IsAssignableFrom(child.GetType()))
+                if (typeof(Control).IsAssignableFrom(parent.GetType()))
                 {
-                    Control control = (Control)child;
+                    Control control = (Control)parent;
                     control.FontSize *= width;
                 }
                 frameworkElement.Margin = margin;
-            }
-            if (typeof(Panel).IsAssignableFrom(child.GetType()))
-            {
-                Panel panel = (Panel)child;
-                foreach (UIElement uIElement in panel.Children)
+
+
+                int childcount = VisualTreeHelper.GetChildrenCount(parent);
+                for (int c = 0;c < childcount;c++)
                 {
-                    ResizeObjectsCascade(uIElement, width, height);
+                    DependencyObject child = VisualTreeHelper.GetChild(parent,c);
+                    if (typeof(UIElement).IsAssignableFrom(child.GetType()))
+                    {
+                        ResizeObjectsCascade((UIElement)child, width, height);
+                    }
                 }
             }
         }
