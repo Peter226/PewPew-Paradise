@@ -52,18 +52,16 @@ namespace PewPew_Paradise
             instance = this;
             InitializeComponent();
             this.KeyDown += KeyPress;
-            Thickness thickness = new Thickness();
-            Thickness left_arrow = new Thickness();
-            Thickness right_arrow = new Thickness();
-            Thickness current_button = new Thickness();
-            GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
             gameManager = new GameManager(60);
             gameManager.Begin();
+            gameManager.OnUpdate += Update;
         }
 
-        public void Test()
+
+
+        public void Update()
         {
             Timer -= 0.03f;
             foreach (Sprite sprite in MrPlaceHolders)
@@ -73,14 +71,11 @@ namespace PewPew_Paradise
                 newpos.y += Math.Sin(Timer * 0.2f) * 0.1f;
                 sprite.Position = newpos;
             }
-
-           
         }
-
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
+            Sprite mrph = SpriteManager.instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
             MrPlaceHolders.Add(mrph);
 
 
@@ -92,39 +87,13 @@ namespace PewPew_Paradise
         }
 
 
+        /// <summary>
+        /// Called by the Window's event when it's size changes. Used for resizing the canvas
+        /// </summary>
+        /// <param name="sizeInfo"></param>
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
-
-
-
-
-           /* LinearGradientBrush gb = new LinearGradientBrush();
-
-            GradientStop red = new GradientStop();
-            red.Color = Colors.Red;
-            gb.GradientStops.Add(red);
-
-            GradientStop yellow = new GradientStop();
-            yellow.Offset = 0.25;
-            yellow.Color = Colors.Yellow;
-            gb.GradientStops.Add(yellow);
-
-            GradientStop green = new GradientStop();
-            green.Offset = 0.5;
-            green.Color = Colors.Green;
-            gb.GradientStops.Add(green);
-
-            GradientStop blue = new GradientStop();
-            blue.Offset = 0.75;
-            blue.Color = Colors.Blue;
-            gb.GradientStops.Add(blue);
-
-            GradientStop purple = new GradientStop();
-            purple.Offset = 1.0;
-            purple.Color = Colors.Purple;
-            gb.GradientStops.Add(purple);
-
-            this.Resources["BackgroundBrush"] = gb;*/
+          
 
             if (this.SizeToContent != SizeToContent.Manual)
             {
@@ -151,6 +120,11 @@ namespace PewPew_Paradise
             get { return this.ActualHeight - windowDifferenceY; }
         }
 
+        /// <summary>
+        /// Called when the canvas changes it's size, resizes all child objects
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
@@ -166,6 +140,12 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
         }
 
+        /// <summary>
+        /// Function that resizes the parent and calls itself with the children
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="width">width difference ratio</param>
+        /// <param name="height">heigth difference ratio</param>
         private void ResizeObjectsCascade(UIElement parent, double width, double height)
         {
             if (typeof(FrameworkElement).IsAssignableFrom(parent.GetType()))
@@ -291,5 +271,7 @@ namespace PewPew_Paradise
         {
             Arrow_clear();
         }
+
+
     }
 }

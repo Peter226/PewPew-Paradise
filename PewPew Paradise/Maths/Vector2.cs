@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.Maths
 {
+    /// <summary>
+    /// A 2 dimensional vector
+    /// </summary>
     public struct Vector2
     {
         public double x;
@@ -30,8 +33,14 @@ namespace PewPew_Paradise.Maths
         {
             return new Vector2(Math.Round(this.x),Math.Round(this.y));
         }
-
-
+        public Vector2 Floor()
+        {
+            return new Vector2(Math.Floor(this.x), Math.Floor(this.y));
+        }
+        public Vector2 Ceil()
+        {
+            return new Vector2(Math.Ceiling(this.x), Math.Ceiling(this.y));
+        }
 
 
         public double Length

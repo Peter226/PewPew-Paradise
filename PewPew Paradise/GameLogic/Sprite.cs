@@ -17,12 +17,20 @@ using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Basic sprite object that has it's transform defined in game units. Has a static image
+    /// </summary>
     public class Sprite
     {
         private Image _image;
         private Vector2 _position;
         private Vector2 _size;
 
+
+        /// <summary>
+        /// Used by the SpriteManager, do not use this if not necessary
+        /// </summary>
+        /// <param name="image"></param>
         public Sprite(BitmapImage image)
         {
             _image = new Image();
@@ -31,14 +39,21 @@ namespace PewPew_Paradise.GameLogic
             _image.VerticalAlignment = VerticalAlignment.Top;
             _image.Source = image;
             _image.RenderTransformOrigin = new Point(0.5,0.5);
-            SpriteManager.Instance.canvas.Children.Add(_image);
+            SpriteManager.instance.canvas.Children.Add(_image);
         }
+
+        /// <summary>
+        /// Get the current image of the sprite
+        /// </summary>
         public Image Image
         {
             get { return _image; }
         }
 
 
+        /// <summary>
+        /// Get or set the position of the sprite in game units
+        /// </summary>
         public Vector2 Position
         {
             get
@@ -47,15 +62,19 @@ namespace PewPew_Paradise.GameLogic
             }
             set
             {
+                //We need to update the UIelement position in screen units aswell
                 _position = value;
                 Thickness margin = _image.Margin;
-                Vector2 canvasPosition = SpriteManager.Instance.vectorToCanvas(_position - _size * 0.5);
+                Vector2 canvasPosition = SpriteManager.instance.VectorToCanvas(_position - _size * 0.5);
                 margin.Left = canvasPosition.x;
                 margin.Top = canvasPosition.y;
                 _image.Margin = margin;
             }
         }
 
+        /// <summary>
+        /// Get or set the size of the sprite in game units
+        /// </summary>
         public Vector2 Size
         {
             get
@@ -64,6 +83,7 @@ namespace PewPew_Paradise.GameLogic
             }
             set
             {
+                //We need to update the UIelement size in screen units aswell
                 Vector2 scale = Vector2.One;
                 _size = value;
                 if (_size.x < 0)
@@ -77,7 +97,7 @@ namespace PewPew_Paradise.GameLogic
                 }
                 ScaleTransform scaleTransform = new ScaleTransform(scale.x,scale.y);
                 _image.RenderTransform = scaleTransform;
-                Vector2 canvasSize = SpriteManager.Instance.vectorToCanvas(_size);
+                Vector2 canvasSize = SpriteManager.instance.VectorToCanvas(_size);
                 _image.Width = canvasSize.x;
                 _image.Height = canvasSize.y;
                 Position = _position;
