@@ -53,9 +53,6 @@ namespace PewPew_Paradise
             InitializeComponent();
             this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
-            //Thickness left_arrow = new Thickness();
-            Thickness right_arrow = new Thickness();
-            Thickness current_button = new Thickness();
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
