@@ -20,6 +20,9 @@ namespace PewPew_Paradise.GameLogic
         public SpriteManager spriteManager;
 
 
+        public delegate void UpdateDelegate();
+        public event UpdateDelegate OnUpdate;
+
 
         public GameManager(int frameRate)
         {
@@ -54,11 +57,7 @@ namespace PewPew_Paradise.GameLogic
 
         protected void Update()
         {
-            MainWindow.Instance.Test();
-
-            
-            
-
+            OnUpdate.Invoke();
         }
 
         

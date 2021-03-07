@@ -33,6 +33,23 @@ namespace PewPew_Paradise.GameLogic
             _image.RenderTransformOrigin = new Point(0.5,0.5);
             SpriteManager.Instance.canvas.Children.Add(_image);
         }
+
+        public Sprite(string image, Vector2 position, Vector2 size)
+        {
+            _image = new Image();
+            _image.Stretch = Stretch.Fill;
+            _image.HorizontalAlignment = HorizontalAlignment.Left;
+            _image.VerticalAlignment = VerticalAlignment.Top;
+            _image.Source = SpriteManager.Instance.GetImage(image);
+            _image.RenderTransformOrigin = new Point(0.5, 0.5);
+            SpriteManager.Instance.canvas.Children.Add(_image);
+            Position = position;
+            Size = size;
+            SpriteManager.Instance.Sprites.Add(this);
+        }
+
+
+
         public Image Image
         {
             get { return _image; }

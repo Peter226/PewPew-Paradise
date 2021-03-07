@@ -19,7 +19,7 @@ namespace PewPew_Paradise.GameLogic
 {
     public class SpriteManager
     {
-        private List<Sprite> _sprites = new List<Sprite>();
+        public List<Sprite> Sprites = new List<Sprite>();
         private Dictionary<string, BitmapImage> _images = new Dictionary<string, BitmapImage>();
         public Grid canvas { get; } = (Grid)MainWindow.Instance.Content;
 
@@ -55,6 +55,19 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
+        public BitmapImage GetImage(string image)
+        {
+            if (_images.ContainsKey(image))
+            {
+                return _images[image];
+            }
+            else
+            {
+                throw new Exception($"Image not found: {image}");
+            }
+        }
+
+
         public Sprite CreateSprite(string image, Vector2 position, Vector2 size)
         {
             if (_images.ContainsKey(image))
@@ -62,7 +75,7 @@ namespace PewPew_Paradise.GameLogic
                 Sprite sprite = new Sprite(_images[image]);
                 sprite.Position = position;
                 sprite.Size = size;
-                _sprites.Add(sprite);
+                Sprites.Add(sprite);
                 return sprite;
             }
             else

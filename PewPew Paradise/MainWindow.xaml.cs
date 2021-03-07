@@ -58,14 +58,14 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
             gameManager = new GameManager(60);
             gameManager.Begin();
-            
 
+            GameManager.Instance.OnUpdate += Update;
             
 
 
         }
 
-        public void Test()
+        public void Update()
         {
             Timer -= 0.03f;
             foreach (Sprite sprite in MrPlaceHolders)
@@ -93,7 +93,7 @@ namespace PewPew_Paradise
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
+            Sprite mrph = new Sprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
             MrPlaceHolders.Add(mrph);
 
 
