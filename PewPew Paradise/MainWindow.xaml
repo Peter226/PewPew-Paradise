@@ -9,6 +9,8 @@
         Title="PewPew Paradise" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
+
+
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
             <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave">
                 <Button.Background>
@@ -62,7 +64,12 @@
             <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_player2" Content="Player2" HorizontalAlignment="Left" Margin="271,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="279,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Button x:Name="bt_back_help" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
+            <Button x:Name="bt_back_help" HorizontalAlignment="Left" Margin="340,404,0,0" VerticalAlignment="Top" Width="128" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png"/>
+                </Button.Background>
+                <Image Height="54" Width="118" Source="Images/Back.png"/>
+            </Button>
         </Grid>
         <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
             <Label x:Name="lb_options" Content="Options" HorizontalAlignment="Left" Margin="10,6,0,10" FontSize="60" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
@@ -72,17 +79,31 @@
             <Label x:Name="lb_chars" Content="Characters" HorizontalAlignment="Left" Margin="70,257,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p1" Content="Player1:" HorizontalAlignment="Left" Margin="80,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2" Content="Player2:" HorizontalAlignment="Left" Margin="278,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Button x:Name="bt_back_op" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
+            <Button x:Name="bt_back_op" HorizontalAlignment="Left" Margin="340,404,0,0" VerticalAlignment="Top" Width="128" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png"/>
+                </Button.Background>
+                <Image Height="54" Width="118" Source="Images/Back.png"/>
+            </Button>
             <Slider x:Name="sl_music" Margin="80,178,211,319" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10"/>
-            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10">
-               
-            </Slider>
+            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10"/>
         </Grid>
     </Grid>
 
 
 
     <Window.Resources>
+        <SolidColorBrush x:Key="SliderSelectionBackground" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderSelectionBorder" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBackground" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBackgroundDisabled" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBackgroundDragging" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBackgroundHover" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBorder" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBorderDisabled" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBorderDragging" Color="#7C0476" />
+        <SolidColorBrush x:Key="SliderThumbBorderHover" Color="#7C0476" />
+
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
