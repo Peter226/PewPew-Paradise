@@ -15,32 +15,35 @@
                     <ImageBrush ImageSource="Images/button.png"/>
 
                 </Button.Background>
-                <Image Height="64" Width="232" Source="Images/Singleplayer.png"/>
+                <Image Height="54" Width="222" Source="Images/Singleplayer.png"/>
             </Button>
             <Button x:Name="bt_multiplay" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_multiplay_MouseEnter" MouseLeave="bt_multiplay_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
-                <Image Height="64" Width="232" Source="Images/Multiplayer.png"/>
+                <Image Height="54" Width="222" Source="Images/Multiplayer.png"/>
             </Button>
-            <Button x:Name="bt_options" Content="Options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_options_MouseEnter" MouseLeave="bt_options_MouseLeave">
+            <Button x:Name="bt_options" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_options_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_options_MouseEnter" MouseLeave="bt_options_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/Options.png"/>
             </Button>
-            <Button x:Name="bt_help" Content="Help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_help_MouseEnter" MouseLeave="bt_help_MouseLeave">
+            <Button x:Name="bt_help" HorizontalAlignment="Left" Margin="141,330,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_help_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_help_MouseEnter" MouseLeave="bt_help_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/Help.png"/>
             </Button>
-            <Button x:Name="bt_exit" Content="Exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_exit_MouseEnter" MouseLeave="bt_exit_MouseLeave">
+            <Button x:Name="bt_exit" HorizontalAlignment="Left" Margin="141,411,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" Click="bt_exit_Click" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_exit_MouseEnter" MouseLeave="bt_exit_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/Exit.png"/>
             </Button>
             <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="Red"/>
             <Image x:Name="img_left_arrow" HorizontalAlignment="Left" Height="64" Margin="72,87,0,0" VerticalAlignment="Top" Width="64" Source="arrow_left.png" Visibility="Collapsed">
