@@ -71,13 +71,8 @@ namespace PewPew_Paradise
             foreach (Sprite sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
-<<<<<<< HEAD
                 newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y)) * 0.3f;
                 newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x)) * 0.3f;
-=======
-                newpos.x += Math.Sin(Timer) * 0.1f;
-                newpos.y += Math.Sin(Timer * 0.2f) * 0.1f;
->>>>>>> parent of d8f9d5b (Back buttons)
                 sprite.Position = newpos;
             }
 
