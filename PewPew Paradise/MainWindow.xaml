@@ -73,9 +73,16 @@
             <Label x:Name="lb_p1" Content="Player1:" HorizontalAlignment="Left" Margin="80,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2" Content="Player2:" HorizontalAlignment="Left" Margin="278,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Button x:Name="bt_back_op" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
-            <Slider x:Name="sl_music" Margin="80,178,211,319" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10"/>
-            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10">
-               
+            <Slider x:Name="sl_music" Margin="80,178,211,319" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}"/>
+            <Grid Style="{StaticResource ContentRoot}">
+                <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" >
+                <Slider.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="Dictionary1.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Slider.Resources>
             </Slider>
         </Grid>
     </Grid>
