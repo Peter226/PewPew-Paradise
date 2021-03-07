@@ -52,7 +52,7 @@ namespace PewPew_Paradise
             InitializeComponent();
             this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
-            Thickness left_arrow = new Thickness();
+            //Thickness left_arrow = new Thickness();
             Thickness right_arrow = new Thickness();
             Thickness current_button = new Thickness();
             GameWindow.Margin = thickness;
@@ -93,37 +93,6 @@ namespace PewPew_Paradise
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
-
-
-
-
-           /* LinearGradientBrush gb = new LinearGradientBrush();
-
-            GradientStop red = new GradientStop();
-            red.Color = Colors.Red;
-            gb.GradientStops.Add(red);
-
-            GradientStop yellow = new GradientStop();
-            yellow.Offset = 0.25;
-            yellow.Color = Colors.Yellow;
-            gb.GradientStops.Add(yellow);
-
-            GradientStop green = new GradientStop();
-            green.Offset = 0.5;
-            green.Color = Colors.Green;
-            gb.GradientStops.Add(green);
-
-            GradientStop blue = new GradientStop();
-            blue.Offset = 0.75;
-            blue.Color = Colors.Blue;
-            gb.GradientStops.Add(blue);
-
-            GradientStop purple = new GradientStop();
-            purple.Offset = 1.0;
-            purple.Color = Colors.Purple;
-            gb.GradientStops.Add(purple);
-
-            this.Resources["BackgroundBrush"] = gb;*/
 
             if (this.SizeToContent != SizeToContent.Manual)
             {
@@ -194,6 +163,10 @@ namespace PewPew_Paradise
                 }
             }
         }
+        /// <summary>
+        /// Replacing selection arrows with window size changing
+        /// </summary>
+        /// <param name="button"></param>
         private void Arrow_placing(Thickness button)
         {   
             Thickness current_button = button;
@@ -207,6 +180,9 @@ namespace PewPew_Paradise
             img_left_arrow.Visibility = Visibility.Visible;
             img_right_arrow.Visibility = Visibility.Visible;
         }
+        /// <summary>
+        /// Main Menu button events
+        /// </summary>
         private void Arrow_clear()
         {
             img_left_arrow.Visibility = Visibility.Collapsed;
@@ -241,7 +217,11 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Selection arrow moving events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt_options_MouseEnter(object sender, MouseEventArgs e)
         {
             Arrow_placing(bt_options.Margin);
