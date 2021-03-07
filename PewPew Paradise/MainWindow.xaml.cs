@@ -79,7 +79,7 @@ namespace PewPew_Paradise
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(3,3));
+            Sprite mrph = SpriteManager.Instance.CreateSprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
             MrPlaceHolders.Add(mrph);
 
 

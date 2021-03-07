@@ -23,7 +23,6 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _position;
         private Vector2 _size;
 
-
         public Sprite(BitmapImage image)
         {
             _image = new Image();

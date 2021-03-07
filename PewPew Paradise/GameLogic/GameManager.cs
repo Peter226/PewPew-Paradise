@@ -12,7 +12,7 @@ namespace PewPew_Paradise.GameLogic
     {
         public static GameManager Instance;
         public const double GameUnitSize = 16.0;
-
+        public const double GameResolution = 256.0;
 
         private int _minimumDelta;
         private Action<object> _updateAction;

@@ -26,6 +26,14 @@ namespace PewPew_Paradise.Maths
             get { return new Vector2(); }
         }
 
+        public Vector2 Round()
+        {
+            return new Vector2(Math.Round(this.x),Math.Round(this.y));
+        }
+
+
+
+
         public double Length
         {
             get { return Math.Sqrt(x * x + y * y); }
