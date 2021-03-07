@@ -124,11 +124,5 @@
     <Resource Include="Images\Help.png" />
     <Resource Include="Images\Options.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\button_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Back.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

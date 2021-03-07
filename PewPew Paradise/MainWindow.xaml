@@ -62,12 +62,16 @@
             <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_player2" Content="Player2" HorizontalAlignment="Left" Margin="271,297,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="279,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+<<<<<<< HEAD
             <Button x:Name="bt_back_help" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="48" Height="36" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
                 </Button.Background>
             </Button>
+=======
+            <Button x:Name="bt_back_help" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
+>>>>>>> parent of d8f9d5b (Back buttons)
         </Grid>
         <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
             <Label x:Name="lb_options" Content="Options" HorizontalAlignment="Left" Margin="10,6,0,10" FontSize="60" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
@@ -77,6 +81,7 @@
             <Label x:Name="lb_chars" Content="Characters" HorizontalAlignment="Left" Margin="70,257,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p1" Content="Player1:" HorizontalAlignment="Left" Margin="80,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2" Content="Player2:" HorizontalAlignment="Left" Margin="278,295,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
+<<<<<<< HEAD
             <Button x:Name="bt_back_op" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="48" Height="36" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
@@ -596,6 +601,12 @@
                     </Style>
                 </Slider.Resources>
 
+=======
+            <Button x:Name="bt_back_op" Content="Back" HorizontalAlignment="Left" Margin="438,436,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click"></Button>
+            <Slider x:Name="sl_music" Margin="80,178,211,319" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10"/>
+            <Slider x:Name="sl_effect" Margin="80,232,211,260" Width="221" Height="20" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10">
+               
+>>>>>>> parent of d8f9d5b (Back buttons)
             </Slider>
         </Grid>
     </Grid>
