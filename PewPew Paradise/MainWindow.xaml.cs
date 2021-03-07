@@ -53,11 +53,7 @@ namespace PewPew_Paradise
             InitializeComponent();
             this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
-<<<<<<< HEAD
             //Thickness left_arrow = new Thickness();
-=======
-            Thickness left_arrow = new Thickness();
->>>>>>> parent of 5ad8736 (Commented code)
             Thickness right_arrow = new Thickness();
             Thickness current_button = new Thickness();
             GameWindow.Margin = thickness;
@@ -65,7 +61,6 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
             gameManager = new GameManager(60);
             gameManager.Begin();
-<<<<<<< HEAD
 
 
             
@@ -73,10 +68,6 @@ namespace PewPew_Paradise
 
         }
 
-=======
-        }
-
->>>>>>> parent of 5ad8736 (Commented code)
         public void Test()
         {
             Timer -= 0.03f;
@@ -112,40 +103,6 @@ namespace PewPew_Paradise
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
-<<<<<<< HEAD
-=======
-
-
-
-
-           /* LinearGradientBrush gb = new LinearGradientBrush();
-
-            GradientStop red = new GradientStop();
-            red.Color = Colors.Red;
-            gb.GradientStops.Add(red);
-
-            GradientStop yellow = new GradientStop();
-            yellow.Offset = 0.25;
-            yellow.Color = Colors.Yellow;
-            gb.GradientStops.Add(yellow);
-
-            GradientStop green = new GradientStop();
-            green.Offset = 0.5;
-            green.Color = Colors.Green;
-            gb.GradientStops.Add(green);
-
-            GradientStop blue = new GradientStop();
-            blue.Offset = 0.75;
-            blue.Color = Colors.Blue;
-            gb.GradientStops.Add(blue);
-
-            GradientStop purple = new GradientStop();
-            purple.Offset = 1.0;
-            purple.Color = Colors.Purple;
-            gb.GradientStops.Add(purple);
-
-            this.Resources["BackgroundBrush"] = gb;*/
->>>>>>> parent of 5ad8736 (Commented code)
 
             if (this.SizeToContent != SizeToContent.Manual)
             {
