@@ -35,7 +35,7 @@ namespace PewPew_Paradise
         float Timer = 0;
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
-
+        
 
 
         public static MainWindow Instance
@@ -58,6 +58,11 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
             gameManager = new GameManager(60);
             gameManager.Begin();
+
+
+            
+
+
         }
 
         public void Test()
@@ -66,8 +71,8 @@ namespace PewPew_Paradise
             foreach (Sprite sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
-                newpos.x += Math.Sin(Timer * 0.2 + Math.Cos(newpos.y)) * 0.1f;
-                newpos.y += Math.Sin(Timer * 0.3 + Math.Cos(newpos.x)) * 0.1f;
+                newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y)) * 0.3f;
+                newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x)) * 0.3f;
                 sprite.Position = newpos;
             }
 
@@ -85,7 +90,11 @@ namespace PewPew_Paradise
 
         private void KeyLift(object sender, KeyEventArgs e)
         {
+            var vals = LogicalTreeHelper.GetChildren(sl_music);
+            foreach (DependencyObject dep in vals) {
 
+                Console.WriteLine(dep);
+            }
         }
 
 
