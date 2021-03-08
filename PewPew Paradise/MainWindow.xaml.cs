@@ -93,8 +93,9 @@ namespace PewPew_Paradise
         {
             Console.WriteLine("Opened Media");
             mp.Play();
-            mp.Volume = 1;
-           
+            double k = (double)sl_music.Value;
+            mp.Volume = k / 100;
+
         }
 
 

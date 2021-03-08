@@ -81,7 +81,7 @@
 
                 </Button.Background>
             </Button>
-            <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="100" ValueChanged="sl_music_ValueChanged" >
+            <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="20" ValueChanged="sl_music_ValueChanged" >
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
                     <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#CB00A4"/>
