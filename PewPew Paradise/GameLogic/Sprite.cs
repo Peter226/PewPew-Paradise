@@ -25,6 +25,26 @@ namespace PewPew_Paradise.GameLogic
         private Image _image;
         private Vector2 _position;
         private Vector2 _size;
+        private bool _active;
+
+        /// <summary>
+        /// Enable or disable the sprite and it's visibility
+        /// </summary>
+        public bool IsActive
+        {
+            get
+            {
+                return _active;
+            }
+            set
+            {
+                _active = value;
+                _image.IsEnabled = _active;
+                _image.Visibility = (Visibility)_active.CompareTo(true);
+            }
+        }
+
+
 
 
         /// <summary>
