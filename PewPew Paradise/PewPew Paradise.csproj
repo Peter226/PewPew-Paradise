@@ -155,5 +155,15 @@
     <Resource Include="Images\Sprites\Characters\OrkW1.png" />
     <Resource Include="Images\Sprites\Characters\OrkW2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Help2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Keys.png" />
+    <Resource Include="Images\Rules.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
