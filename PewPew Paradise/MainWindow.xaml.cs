@@ -74,10 +74,10 @@ namespace PewPew_Paradise
             mp.Open(new Uri(p));
             mp.MediaOpened += new EventHandler(PlayMedia);
 
-           SpriteManager.Instance.LoadImage("Images/Sprites/forest_map.png", "forest_map");
-           SpriteManager.Instance.LoadImage("Images/Sprites/sky2.png", "sky_map");
+            SpriteManager.Instance.LoadImage("Images/Sprites/forest_map.png", "forest_map");
+            SpriteManager.Instance.LoadImage("Images/Sprites/sky2.png", "sky_map");
 
-            SpriteAnimation animation = new SpriteAnimation(200,true);
+            SpriteAnimation animation = new SpriteAnimation(150,true);
             AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4);
             playerAnimations.animations.Add(animation);
             animation.keyFrames.Add(new Vector2(0, 0));
