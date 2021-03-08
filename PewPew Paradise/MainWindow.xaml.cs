@@ -86,14 +86,6 @@ namespace PewPew_Paradise
                 newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y)) * 0.3f;
                 newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x)) * 0.3f;
                 sprite.Position = newpos;
-                if (Math.Sin(Timer * 5.0) < 0.5)
-                {
-                    sprite.IsActive = false;
-                }
-                else
-                {
-                    sprite.IsActive = true;
-                }
             }
             // Moving arrows by sin timer
             MatrixTransform mt_left= new MatrixTransform();
