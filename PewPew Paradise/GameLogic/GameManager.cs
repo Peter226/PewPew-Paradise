@@ -16,18 +16,30 @@ namespace PewPew_Paradise.GameLogic
     public class GameManager
     {
         public static GameManager Instance;
+
+        //Current SpriteManager
+        public SpriteManager spriteManager;
+
+        /// <summary>
+        /// Screen in game units
+        /// </summary>
         public const double GameUnitSize = 16.0;
+
+        /// <summary>
+        /// Resolution of screen art (map) in pixels
+        /// </summary>
         public const double GameResolution = 256.0;
 
+        //Update Thread
         private int _minimumDelta;
         private Action<object> _updateAction;
         Thread UpdateThread;
-        public SpriteManager spriteManager;
 
-
+        //Update Event
         public delegate void UpdateDelegate();
         public event UpdateDelegate OnUpdate;
 
+        //variables used to calculate DeltaTime
         private static double _lastTime;
         private static double _deltaTime;
         private static Stopwatch _stopWatch = new Stopwatch();

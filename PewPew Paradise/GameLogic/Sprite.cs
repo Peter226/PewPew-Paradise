@@ -85,7 +85,7 @@ namespace PewPew_Paradise.GameLogic
             {
                 _position = value;
                 Thickness margin = _image.Margin;
-                Vector2 canvasPosition = SpriteManager.Instance.vectorToCanvas(_position - _size * 0.5);
+                Vector2 canvasPosition = SpriteManager.Instance.VectorToCanvas(_position - _size * 0.5);
                 margin.Left = canvasPosition.x;
                 margin.Top = canvasPosition.y;
                 _image.Margin = margin;
@@ -116,7 +116,7 @@ namespace PewPew_Paradise.GameLogic
                 }
                 ScaleTransform scaleTransform = new ScaleTransform(scale.x,scale.y);
                 _image.RenderTransform = scaleTransform;
-                Vector2 canvasSize = SpriteManager.Instance.vectorToCanvas(_size);
+                Vector2 canvasSize = SpriteManager.Instance.VectorToCanvas(_size);
                 _image.Width = canvasSize.x;
                 _image.Height = canvasSize.y;
                 Position = _position;
