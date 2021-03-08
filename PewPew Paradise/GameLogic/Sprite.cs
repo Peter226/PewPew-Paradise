@@ -17,9 +17,6 @@ using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 namespace PewPew_Paradise.GameLogic
 {
-    /// <summary>
-    /// Basic Sprite with an image
-    /// </summary>
     public class Sprite
     {
         private Image _image;
@@ -27,22 +24,18 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _size;
         private bool _active;
 
-        /// <summary>
-        /// Called when sprite is created
-        /// </summary>
+
         public virtual void Start()
         {
 
         }
 
-        /// <summary>
-        /// Called every frame
-        /// </summary>
         public virtual void Update()
         {
 
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Activate or deactivate sprite
         /// </summary>
@@ -64,6 +57,9 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="image">Name reference defined with SpriteManager.Instance.LoadImage</param>
         /// <param name="position">Position in game units</param>
         /// <param name="size">Size in game units</param>
+=======
+
+>>>>>>> parent of cd6f310 (Music)
         public Sprite(string image, Vector2 position, Vector2 size)
         {
             _image = new Image();
@@ -75,21 +71,16 @@ namespace PewPew_Paradise.GameLogic
             Position = position;
             Size = size;
             SpriteManager.Instance.AddSprite(this);
-            GameManager.Instance.OnUpdate += Update;
         }
 
 
-        /// <summary>
-        /// The UIElement of the Sprite
-        /// </summary>
+
         public Image ImageElement
         {
             get { return _image; }
         }
 
-        /// <summary>
-        /// Get or set the position of the sprite (in game units)
-        /// </summary>
+
         public Vector2 Position
         {
             get
@@ -100,16 +91,13 @@ namespace PewPew_Paradise.GameLogic
             {
                 _position = value;
                 Thickness margin = _image.Margin;
-                Vector2 canvasPosition = SpriteManager.Instance.VectorToCanvas(_position - _size * 0.5);
+                Vector2 canvasPosition = SpriteManager.Instance.vectorToCanvas(_position - _size * 0.5);
                 margin.Left = canvasPosition.x;
                 margin.Top = canvasPosition.y;
                 _image.Margin = margin;
             }
         }
 
-        /// <summary>
-        /// Get or set the size of the sprite (in game units)
-        /// </summary>
         public Vector2 Size
         {
             get
@@ -131,7 +119,7 @@ namespace PewPew_Paradise.GameLogic
                 }
                 ScaleTransform scaleTransform = new ScaleTransform(scale.x,scale.y);
                 _image.RenderTransform = scaleTransform;
-                Vector2 canvasSize = SpriteManager.Instance.VectorToCanvas(_size);
+                Vector2 canvasSize = SpriteManager.Instance.vectorToCanvas(_size);
                 _image.Width = canvasSize.x;
                 _image.Height = canvasSize.y;
                 Position = _position;
