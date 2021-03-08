@@ -605,7 +605,7 @@
             <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="60,373,0,0" VerticalAlignment="Top" Width="100" Source="Images/Sprites/Characters/OrkA.gif"/>
             <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="108,420,0,-8" VerticalAlignment="Top" Width="100"/>
         </Grid>
-        <Grid x:Name="SinglePlayer" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
+        <Grid x:Name="SinglePlayer" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#00AAEB" Visibility="Collapsed" >
         </Grid>
     </Grid>
 
