@@ -147,8 +147,6 @@ namespace PewPew_Paradise
             get { return this.ActualHeight - windowDifferenceY; }
         }
 
-        public Timeline MainMenu_1 { get; }
-
         private void GameWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
