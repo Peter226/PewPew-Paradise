@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
+using System.ComponentModel;
 
 namespace PewPew_Paradise
 {
@@ -39,7 +40,8 @@ namespace PewPew_Paradise
 
 
         MediaPlayer mp = new MediaPlayer();
-        
+
+
 
 
         public static MainWindow Instance
@@ -81,6 +83,8 @@ namespace PewPew_Paradise
         {
             Console.WriteLine("Opened Media");
             mp.Play();
+            mp.Volume = 1;
+           
         }
 
 
@@ -330,6 +334,12 @@ namespace PewPew_Paradise
             Vector2 map_position = new Vector2(8,8);
             Vector2 map_size = new Vector2(16, 16);
             Sprite forest_map = new Sprite("forest_map",  map_position, map_size, true);
+        }
+
+        private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            double k = (double)sl_music.Value;
+            mp.Volume = k/100;
         }
     }
 }
