@@ -17,6 +17,9 @@ using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Basic Sprite with an image
+    /// </summary>
     public class Sprite
     {
         private Image _image;
@@ -24,18 +27,28 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _size;
 
 
-
+        /// <summary>
+        /// Called when sprite is created
+        /// </summary>
         public virtual void Start()
         {
 
         }
 
+        /// <summary>
+        /// Called every frame
+        /// </summary>
         public virtual void Update()
         {
 
         }
 
-
+        /// <summary>
+        /// Create a new sprite and add it to the screen
+        /// </summary>
+        /// <param name="image">Name reference defined with SpriteManager.Instance.LoadImage</param>
+        /// <param name="position">Position in game units</param>
+        /// <param name="size">Size in game units</param>
         public Sprite(string image, Vector2 position, Vector2 size)
         {
             _image = new Image();
@@ -51,13 +64,17 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
-
+        /// <summary>
+        /// The UIElement of the Sprite
+        /// </summary>
         public Image ImageElement
         {
             get { return _image; }
         }
 
-
+        /// <summary>
+        /// Get or set the position of the sprite (in game units)
+        /// </summary>
         public Vector2 Position
         {
             get
@@ -75,6 +92,9 @@ namespace PewPew_Paradise.GameLogic
             }
         }
 
+        /// <summary>
+        /// Get or set the size of the sprite (in game units)
+        /// </summary>
         public Vector2 Size
         {
             get

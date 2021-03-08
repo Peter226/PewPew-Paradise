@@ -9,6 +9,10 @@ using PewPew_Paradise.Maths;
 using System.Diagnostics;
 namespace PewPew_Paradise.GameLogic
 {
+
+    /// <summary>
+    /// class that implements the core game functions
+    /// </summary>
     public class GameManager
     {
         public static GameManager Instance;
@@ -28,7 +32,9 @@ namespace PewPew_Paradise.GameLogic
         private static double _deltaTime;
         private static Stopwatch _stopWatch = new Stopwatch();
 
-
+        /// <summary>
+        /// Get the elapsed time in milliseconds between two Update() calls
+        /// </summary>
         public static double DeltaTime
         {
             get
@@ -37,7 +43,10 @@ namespace PewPew_Paradise.GameLogic
             }
         }
 
-
+        /// <summary>
+        /// Create a new game instance
+        /// </summary>
+        /// <param name="frameRate"></param>
         public GameManager(int frameRate)
         {
             Instance = this;
@@ -48,7 +57,9 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
-
+        /// <summary>
+        /// Get or set the frame rate of the game
+        /// </summary>
         int FrameRate
         {
             get
@@ -61,6 +72,9 @@ namespace PewPew_Paradise.GameLogic
             }
         }
 
+        /// <summary>
+        /// Update function thread call that invokes a callback in the main thread [Do not call]
+        /// </summary>
         private void UpdateCall()
         {
             if (_minimumDelta < 1)_minimumDelta = 1;
@@ -69,6 +83,9 @@ namespace PewPew_Paradise.GameLogic
             UpdateCall();
         }
 
+        /// <summary>
+        /// Function that calls the OnUpdate event [Do not call]
+        /// </summary>
         protected void Update()
         {
             _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
@@ -77,7 +94,9 @@ namespace PewPew_Paradise.GameLogic
         }
 
         
-
+        /// <summary>
+        /// Start the game Update loop
+        /// </summary>
         public void Begin()
         {
             _stopWatch.Start();
@@ -86,6 +105,9 @@ namespace PewPew_Paradise.GameLogic
             UpdateThread.Start();
         }
 
+        /// <summary>
+        /// Stop the game Update loop
+        /// </summary>
         public void Stop()
         {
             _stopWatch.Stop();

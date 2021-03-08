@@ -70,7 +70,7 @@
             <Image HorizontalAlignment="Left" Height="42" Margin="55,296,0,0" VerticalAlignment="Top" Width="100" Source="Images/Player1.png"/>
             <Image HorizontalAlignment="Left" Height="42" Margin="296,296,0,0" VerticalAlignment="Top" Width="100" Source="Images/Player2.png"/>
         </Grid>
-        <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Visible" Background="#FF260026">
+        <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition/>
