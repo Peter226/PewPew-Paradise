@@ -23,16 +23,18 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _position;
         private Vector2 _size;
 
-        public Sprite(BitmapImage image)
+
+
+        public virtual void Start()
         {
-            _image = new Image();
-            _image.Stretch = Stretch.Fill;
-            _image.HorizontalAlignment = HorizontalAlignment.Left;
-            _image.VerticalAlignment = VerticalAlignment.Top;
-            _image.Source = image;
-            _image.RenderTransformOrigin = new Point(0.5,0.5);
-            SpriteManager.Instance.canvas.Children.Add(_image);
+
         }
+
+        public virtual void Update()
+        {
+
+        }
+
 
         public Sprite(string image, Vector2 position, Vector2 size)
         {
@@ -42,15 +44,14 @@ namespace PewPew_Paradise.GameLogic
             _image.VerticalAlignment = VerticalAlignment.Top;
             _image.Source = SpriteManager.Instance.GetImage(image);
             _image.RenderTransformOrigin = new Point(0.5, 0.5);
-            SpriteManager.Instance.canvas.Children.Add(_image);
             Position = position;
             Size = size;
-            SpriteManager.Instance.Sprites.Add(this);
+            SpriteManager.Instance.AddSprite(this);
         }
 
 
 
-        public Image Image
+        public Image ImageElement
         {
             get { return _image; }
         }

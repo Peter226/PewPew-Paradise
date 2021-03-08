@@ -68,20 +68,11 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
-        public Sprite CreateSprite(string image, Vector2 position, Vector2 size)
+        public void AddSprite(Sprite sprite)
         {
-            if (_images.ContainsKey(image))
-            {
-                Sprite sprite = new Sprite(_images[image]);
-                sprite.Position = position;
-                sprite.Size = size;
-                Sprites.Add(sprite);
-                return sprite;
-            }
-            else
-            {
-                throw new Exception($"SpriteManager could not create sprite\nImage not found: {image}");
-            }
+            canvas.Children.Add(sprite.ImageElement);
+            Sprites.Add(sprite);
+            sprite.Start();
         }
     }
 }

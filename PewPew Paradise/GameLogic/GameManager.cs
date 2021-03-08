@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.Remoting.Contexts;
 using PewPew_Paradise.Maths;
+using System.Diagnostics;
 namespace PewPew_Paradise.GameLogic
 {
     public class GameManager
@@ -22,6 +23,19 @@ namespace PewPew_Paradise.GameLogic
 
         public delegate void UpdateDelegate();
         public event UpdateDelegate OnUpdate;
+
+        private static double _lastTime;
+        private static double _deltaTime;
+        private static Stopwatch _stopWatch = new Stopwatch();
+
+
+        public static double DeltaTime
+        {
+            get
+            {
+                return _deltaTime;
+            }
+        }
 
 
         public GameManager(int frameRate)
@@ -57,19 +71,23 @@ namespace PewPew_Paradise.GameLogic
 
         protected void Update()
         {
+            _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
             OnUpdate.Invoke();
+            _lastTime = _stopWatch.ElapsedMilliseconds;
         }
 
         
 
         public void Begin()
         {
+            _stopWatch.Start();
             UpdateThread = new Thread(UpdateCall);
             UpdateThread.Start();
         }
 
         public void Stop()
         {
+            _stopWatch.Stop();
             if (UpdateThread != null)
             {
                 UpdateThread.Abort();

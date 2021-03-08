@@ -67,7 +67,7 @@ namespace PewPew_Paradise
 
         public void Update()
         {
-            Timer -= 0.03f;
+            Timer -= (float)(GameManager.DeltaTime * 0.00075);
             foreach (Sprite sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
