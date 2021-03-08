@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
+using System.Windows.Resources;
+
 namespace PewPew_Paradise.GameLogic
 {
     public class SpriteManager
@@ -43,8 +45,16 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="name">Reference name</param>
         public void LoadImage(string path, string name)
         {
-            _images.Add(name,new BitmapImage(new Uri(path, UriKind.Relative)));
+            Uri uri = new Uri(path, UriKind.Relative);
+            StreamResourceInfo info = Application.GetResourceStream(uri);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = info.Stream;
+            image.CacheOption = BitmapCacheOption.OnDemand;
+            image.EndInit();
+            _images.Add(name, image);
         }
+
 
         /// <summary>
         /// Create a new SpriteManager
@@ -102,7 +112,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="sprite"></param>
         public void AddSprite(Sprite sprite)
         {
-            canvas.Children.Add(sprite.ImageElement);
+            canvas.Children.Add(sprite.RectangleElement);
             Sprites.Add(sprite);
             sprite.Start();
         }

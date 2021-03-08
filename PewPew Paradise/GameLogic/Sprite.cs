@@ -22,7 +22,8 @@ namespace PewPew_Paradise.GameLogic
     /// </summary>
     public class Sprite
     {
-        private Image _image;
+        protected Rectangle _image { get; }
+        protected ImageBrush _brush { get; }
         private Vector2 _position;
         private Vector2 _size;
         private bool _active;
@@ -71,11 +72,15 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="size">Size in game units</param>
         public Sprite(string image, Vector2 position, Vector2 size, bool active = true)
         {
-            _image = new Image();
+            _image = new Rectangle();
             _image.Stretch = Stretch.Fill;
             _image.HorizontalAlignment = HorizontalAlignment.Left;
             _image.VerticalAlignment = VerticalAlignment.Top;
-            _image.Source = SpriteManager.Instance.GetImage(image);
+
+            ImageBrush brush = new ImageBrush();
+            brush.ImageSource = SpriteManager.Instance.GetImage(image);
+            _image.Fill = brush;
+            _brush = brush;
             _image.RenderTransformOrigin = new Point(0.5, 0.5);
             Position = position;
             Size = size;
@@ -88,7 +93,7 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// The UIElement of the Sprite
         /// </summary>
-        public Image ImageElement
+        public Rectangle RectangleElement
         {
             get { return _image; }
         }

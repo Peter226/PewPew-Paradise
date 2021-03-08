@@ -64,14 +64,16 @@ namespace PewPew_Paradise
             gameManager.Begin();
 
             GameManager.Instance.OnUpdate += Update;
-
+            
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
             p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
             Console.WriteLine(p);
             mp.Open(new Uri(p));
             mp.MediaOpened += new EventHandler(PlayMedia);
+
             
+
 
         }
 

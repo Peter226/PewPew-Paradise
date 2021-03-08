@@ -16,7 +16,7 @@ namespace PewPew_Paradise.GameLogic
     public class GameManager
     {
         public static GameManager Instance;
-
+        public static string GameAssetPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "PewPew_Paradise_Assets");
         //Current SpriteManager
         public SpriteManager spriteManager;
 
@@ -67,7 +67,7 @@ namespace PewPew_Paradise.GameLogic
             spriteManager = new SpriteManager();
             spriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png","MrPlaceHolder");
         }
-
+        
 
         /// <summary>
         /// Get or set the frame rate of the game
