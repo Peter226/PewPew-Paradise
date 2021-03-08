@@ -156,9 +156,6 @@
     <Resource Include="Images\Sprites\Characters\OrkW2.png" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Content Include="Sounds\Music\MainMenu_1.mp3" />
-=======
     <Resource Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +164,6 @@
   <ItemGroup>
     <Resource Include="Images\Keys.png" />
     <Resource Include="Images\Rules.png" />
->>>>>>> b512ef2507b7e5664e3e5b2ffbf7b4cf89590618
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

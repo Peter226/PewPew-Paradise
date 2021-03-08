@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
-using Microsoft.Win32;
-using System.IO;
-using System.Windows.Media.Animation;
 
 namespace PewPew_Paradise
 {
@@ -39,6 +36,7 @@ namespace PewPew_Paradise
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
 
+        
 
         public static MainWindow Instance
         {
@@ -63,19 +61,9 @@ namespace PewPew_Paradise
 
             GameManager.Instance.OnUpdate += Update;
             
-            
-            
-            //Storyboard storyboard = new Storyboard();
-            //storyboard.Children.Add(MainMenu_1);
-            //BeginStoryboard beginStoryboard = new BeginStoryboard();
-            //beginStoryboard.Storyboard = storyboard;
-            //EventTrigger mainmenu_loaded = new EventTrigger();
-            //mainmenu_loaded.RoutedEvent.AddOwner(typeof(BeginStoryboard));
-            //mainmenu_loaded.Actions.Add(beginStoryboard);
-            //MainMenu.Triggers.Add(mainmenu_loaded);
+
 
         }
-
 
         public void Update()
         {
@@ -148,8 +136,6 @@ namespace PewPew_Paradise
         {
             get { return this.ActualHeight - windowDifferenceY; }
         }
-
-        public Timeline MainMenu_1 { get; }
 
         private void GameWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -306,13 +292,6 @@ namespace PewPew_Paradise
         private void bt_singleplay_MouseLeave(object sender, MouseEventArgs e)
         {
             Arrow_clear();
-        }
-
-
-
-        private void MainMenu_Loaded(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Miert vagy kuki");
         }
     }
 }

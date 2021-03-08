@@ -49,7 +49,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="image">Name reference defined with SpriteManager.Instance.LoadImage</param>
         /// <param name="position">Position in game units</param>
         /// <param name="size">Size in game units</param>
-        public Sprite(string image, Vector2 position, Vector2 size, bool active = true)
+        public Sprite(string image, Vector2 position, Vector2 size)
         {
             _image = new Image();
             _image.Stretch = Stretch.Fill;
@@ -59,7 +59,6 @@ namespace PewPew_Paradise.GameLogic
             _image.RenderTransformOrigin = new Point(0.5, 0.5);
             Position = position;
             Size = size;
-            IsActive = active;
             SpriteManager.Instance.AddSprite(this);
             GameManager.Instance.OnUpdate += Update;
         }

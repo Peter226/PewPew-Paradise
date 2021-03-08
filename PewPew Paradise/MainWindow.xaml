@@ -10,7 +10,7 @@
 
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
-        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Loaded="MainMenu_Loaded">
+        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
             <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
@@ -46,19 +46,16 @@
                 </Button.Background>
                 <Image Height="54" Width="222" Source="Images/Exit.png"/>
             </Button>
-            <Label x:Name="lb_title" Content="PewPew Paradise" HorizontalAlignment="Center" Margin="45,0,47,440" FontSize="50" FontFamily="Comic Sans MS" Width="420" FontWeight="Bold" Foreground="#7C0476"/>
             <Image x:Name="img_left_arrow" HorizontalAlignment="Left" Height="64" Margin="72,87,0,0" VerticalAlignment="Top" Width="64" Source="arrow_left.png" Visibility="Collapsed">
 
             </Image>
             <Image x:Name="img_right_arrow" HorizontalAlignment="Left" Height="64" Margin="378,87,0,0" VerticalAlignment="Top" Width="64" Source="Images/arrow_right.png" Visibility="Collapsed">
 
             </Image>
+            <Image HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="502" Source="Images/Logo.png" Margin="6,10,0,0"/>
         </Grid>
         <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026" >
-            <Label x:Name="lb_help" Content="Help" HorizontalAlignment="Left" Margin="10,6,0,0" FontSize="60" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_rules" Content="Rules" HorizontalAlignment="Left" Margin="39,87,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_ruletext" Content="Még nem tudni" HorizontalAlignment="Left" Margin="71,132,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
-            <Label x:Name="lb_keys" Content="Keys" HorizontalAlignment="Left" Margin="39,249,0,0" FontSize="30" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p2keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="296,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Button x:Name="bt_back_help" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
@@ -69,8 +66,11 @@
             </Button>
             <Image HorizontalAlignment="Left" Height="42" Margin="55,296,0,0" VerticalAlignment="Top" Width="100" Source="Images/Player1.png"/>
             <Image HorizontalAlignment="Left" Height="42" Margin="296,296,0,0" VerticalAlignment="Top" Width="100" Source="Images/Player2.png"/>
+            <Image HorizontalAlignment="Left" Height="60" Margin="10,10,0,0" VerticalAlignment="Top" Width="115" Source="Images/Help2.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="39,88,0,0" VerticalAlignment="Top" Width="100" Source="Images/Rules.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="39,238,0,0" VerticalAlignment="Top" Width="100" Source="Images/Keys.png"/>
         </Grid>
-        <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Visible" Background="#FF260026">
+        <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition/>
@@ -636,9 +636,6 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        <Storyboard x:Key="Music">
-            <MediaTimeline Storyboard.TargetName="MainMenu_1" Source="MainMenu_1.mp3" />
-        </Storyboard>
     </Window.Resources>
 
 

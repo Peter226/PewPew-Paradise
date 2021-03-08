@@ -19,34 +19,60 @@ namespace PewPew_Paradise.GameLogic
 {
     public class SpriteManager
     {
+        /// <summary>
+        /// All existing sprites
+        /// </summary>
         public List<Sprite> Sprites = new List<Sprite>();
-        private Dictionary<string, BitmapImage> _images = new Dictionary<string, BitmapImage>();
+        /// <summary>
+        /// Canvas UIElement
+        /// </summary>
         public Grid canvas { get; } = (Grid)MainWindow.Instance.Content;
+        /// <summary>
+        /// Current active SpriteManager instance
+        /// </summary>
+        public static SpriteManager Instance;
+        /// <summary>
+        /// Loaded images
+        /// </summary>
+        private Dictionary<string, BitmapImage> _images = new Dictionary<string, BitmapImage>();
 
-        
-
-
+        /// <summary>
+        /// Load an image and assign a reference name to it
+        /// </summary>
+        /// <param name="path">Image path (local)</param>
+        /// <param name="name">Reference name</param>
         public void LoadImage(string path, string name)
         {
             _images.Add(name,new BitmapImage(new Uri(path, UriKind.Relative)));
         }
 
-        public static SpriteManager Instance;
-
+        
+        /// <summary>
+        /// Create a new SpriteManager
+        /// </summary>
         public SpriteManager()
         {
             Instance = this;
         }
 
-
-        public Vector2 vectorToCanvas(Vector2 vector)
+        /// <summary>
+        /// Convert Vector2 from game units to screen units
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        public Vector2 VectorToCanvas(Vector2 vector)
         {
             Vector2 canvas = vector;
             canvas.x *= this.canvas.Width / GameManager.GameUnitSize;
             canvas.y *= this.canvas.Height / GameManager.GameUnitSize;
             return canvas;
         }
-        public Vector2 canvasToVector(Vector2 canvas)
+        /// <summary>
+        /// Convert Vector2 from screen units to game units
+        /// </summary>
+        /// <param name="canvas"></param>
+        /// <returns></returns>
+        public Vector2 CanvasToVector(Vector2 canvas)
         {
             Vector2 vector = canvas;
             vector.x *= GameManager.GameUnitSize / this.canvas.Width;
@@ -54,7 +80,11 @@ namespace PewPew_Paradise.GameLogic
             return vector;
         }
 
-
+        /// <summary>
+        /// Get an already loaded Image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
         public BitmapImage GetImage(string image)
         {
             if (_images.ContainsKey(image))
@@ -67,7 +97,10 @@ namespace PewPew_Paradise.GameLogic
             }
         }
 
-
+        /// <summary>
+        /// Add an existing sprite to the sprite collection [Do not use unless necessary]
+        /// </summary>
+        /// <param name="sprite"></param>
         public void AddSprite(Sprite sprite)
         {
             canvas.Children.Add(sprite.ImageElement);
