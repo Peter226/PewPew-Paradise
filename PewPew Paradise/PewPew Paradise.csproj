@@ -156,6 +156,7 @@
     <Resource Include="Images\Sprites\Characters\OrkW2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Logo.png" />
     <Content Include="Sounds\Music\MainMenu_1.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -63,16 +63,6 @@ namespace PewPew_Paradise
 
             GameManager.Instance.OnUpdate += Update;
             
-            
-            
-            //Storyboard storyboard = new Storyboard();
-            //storyboard.Children.Add(MainMenu_1);
-            //BeginStoryboard beginStoryboard = new BeginStoryboard();
-            //beginStoryboard.Storyboard = storyboard;
-            //EventTrigger mainmenu_loaded = new EventTrigger();
-            //mainmenu_loaded.RoutedEvent.AddOwner(typeof(BeginStoryboard));
-            //mainmenu_loaded.Actions.Add(beginStoryboard);
-            //MainMenu.Triggers.Add(mainmenu_loaded);
 
         }
 
