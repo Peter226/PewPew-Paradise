@@ -47,6 +47,7 @@ namespace PewPew_Paradise.GameLogic
             Position = position;
             Size = size;
             SpriteManager.Instance.AddSprite(this);
+            GameManager.Instance.OnUpdate += Update;
         }
 
 

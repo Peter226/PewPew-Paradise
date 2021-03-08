@@ -53,19 +53,19 @@ namespace PewPew_Paradise.GameLogic
         {
             get
             {
-                return 1000 / _minimumDelta;
+                return 1000 / (_minimumDelta + 1);
             }
             set
             {
-                _minimumDelta = 1000 / value;
+                _minimumDelta = 1000 / value - 1;
             }
         }
 
         private void UpdateCall()
         {
             if (_minimumDelta < 1)_minimumDelta = 1;
-            MainWindow.Instance.Dispatcher.Invoke(_updateAction,TimeSpan.Zero,new object[] { 0 });
-            Thread.Sleep(_minimumDelta);
+            MainWindow.Instance.Dispatcher.Invoke(_updateAction,new object[] { 0 });
+            Thread.Sleep((int)Math.Max(0,_minimumDelta - (_stopWatch.ElapsedMilliseconds - _lastTime)));
             UpdateCall();
         }
 
@@ -82,6 +82,7 @@ namespace PewPew_Paradise.GameLogic
         {
             _stopWatch.Start();
             UpdateThread = new Thread(UpdateCall);
+            UpdateThread.Priority = ThreadPriority.Lowest;
             UpdateThread.Start();
         }
 
