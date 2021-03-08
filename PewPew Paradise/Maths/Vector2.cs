@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 namespace PewPew_Paradise.Maths
 {
     /// <summary>
@@ -79,6 +79,12 @@ namespace PewPew_Paradise.Maths
             return Math.Sqrt(d.x * d.x + d.y * d.y);
         }
 
+        //Cast to point and back
+        public static implicit operator Point(Vector2 vec) => new Point(vec.x,vec.y);
+        public static implicit operator Vector2(Point point) => new Vector2(point.X, point.Y);
+        //Cast to vector and back
+        public static implicit operator Vector(Vector2 vec) => new Vector(vec.x, vec.y);
+        public static implicit operator Vector2(Vector vec) => new Vector2(vec.X, vec.Y);
 
         //Operators for doing Math
         public static Vector2 operator +(Vector2 a, Vector2 b)

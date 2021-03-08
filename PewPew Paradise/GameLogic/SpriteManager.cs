@@ -39,6 +39,11 @@ namespace PewPew_Paradise.GameLogic
         private Dictionary<string, BitmapImage> _images = new Dictionary<string, BitmapImage>();
 
         /// <summary>
+        /// Added animation collections
+        /// </summary>
+        private Dictionary<string, AnimationCollection> _animations = new Dictionary<string, AnimationCollection>();
+
+        /// <summary>
         /// Load an image and assign a reference name to it
         /// </summary>
         /// <param name="path">Image path (local)</param>
@@ -55,6 +60,15 @@ namespace PewPew_Paradise.GameLogic
             _images.Add(name, image);
         }
 
+        /// <summary>
+        /// Add an AnimationCollection to the usable animation collections and assign a reference
+        /// </summary>
+        /// <param name="animationCollection">An AnimationCollection (created manually, not loaded)</param>
+        /// <param name="name">Reference name</param>
+        public void AddAnimationCollection(AnimationCollection animationCollection, string name)
+        {
+            _animations.Add(name,animationCollection);
+        }
 
         /// <summary>
         /// Create a new SpriteManager
@@ -105,6 +119,24 @@ namespace PewPew_Paradise.GameLogic
                 throw new Exception($"Image not found: {image}");
             }
         }
+
+        /// <summary>
+        /// Get an added AnimationCollection
+        /// </summary>
+        /// <param name="animationCollection"></param>
+        /// <returns></returns>
+        public AnimationCollection GetAnimationCollection(string animationCollection)
+        {
+            if (_animations.ContainsKey(animationCollection))
+            {
+                return _animations[animationCollection];
+            }
+            else
+            {
+                throw new Exception($"Animation collection not found: {animationCollection}");
+            }
+        }
+
 
         /// <summary>
         /// Add an existing sprite to the sprite collection [Do not use unless necessary]

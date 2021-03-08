@@ -77,6 +77,16 @@ namespace PewPew_Paradise
            SpriteManager.Instance.LoadImage("Images/Sprites/forest_map.png", "forest_map");
            SpriteManager.Instance.LoadImage("Images/Sprites/sky2.png", "sky_map");
 
+            SpriteAnimation animation = new SpriteAnimation(200,true);
+            AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4);
+            playerAnimations.animations.Add(animation);
+            animation.keyFrames.Add(new Vector2(0, 0));
+            animation.keyFrames.Add(new Vector2(1, 0));
+            animation.keyFrames.Add(new Vector2(2, 0));
+            animation.keyFrames.Add(new Vector2(3, 0));
+            SpriteManager.Instance.AddAnimationCollection(playerAnimations,"Player");
+
+
         }
 
         public void PlayMedia(object sender, EventArgs a)
@@ -95,18 +105,18 @@ namespace PewPew_Paradise
             foreach (Sprite sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
-                newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y)) * 0.3f;
-                newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x)) * 0.3f;
+                newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y) * 0.1f) * 0.1f;
+                newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x) * 0.1f) * 0.1f;
                 sprite.Position = newpos;
 
-                if (Math.Sin(Timer * 10.0f + newpos.x) < -0.8)
+               /* if (Math.Sin(Timer * 10.0f + newpos.x) < -0.8)
                 {
                     sprite.IsActive = false;
                 }
                 else
                 {
                     sprite.IsActive = true;
-                }
+                }*/
             }
             // Moving arrows by sin timer
             MatrixTransform mt_left= new MatrixTransform();
@@ -126,7 +136,7 @@ namespace PewPew_Paradise
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder","Player",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
+            SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder","Player",new Maths.Vector2(8,8), new Maths.Vector2(4,4));
             MrPlaceHolders.Add(mrph);
 
             

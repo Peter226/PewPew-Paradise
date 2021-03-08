@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 using PewPew_Paradise.Maths;
 namespace PewPew_Paradise.GameLogic
 {
-    class SpriteAnimation
+    public class SpriteAnimation
     {
         public double frameTime { get; }
-        List<Vector2> keyFrames { get; } = new List<Vector2>();
-        public SpriteAnimation(double frameTime)
+        public List<Vector2> keyFrames { get; } = new List<Vector2>();
+        public bool loop;
+
+        public SpriteAnimation(double frameTime, bool looping)
         {
             this.frameTime = frameTime;
+            loop = looping;
         }
 
     }
