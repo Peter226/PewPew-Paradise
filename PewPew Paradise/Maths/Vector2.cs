@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.Maths
 {
-    /// <summary>
-    /// Vector2 point coordinate used for sprite positions, scaling, etc...
-    /// </summary>
     public struct Vector2
     {
         public double x;
@@ -29,50 +26,25 @@ namespace PewPew_Paradise.Maths
             get { return new Vector2(); }
         }
 
-        /// <summary>
-        /// Rounded vector
-        /// </summary>
-        /// <returns></returns>
         public Vector2 Round()
         {
             return new Vector2(Math.Round(this.x),Math.Round(this.y));
         }
 
-        /// <summary>
-        /// Normal of the vector
-        /// </summary>
-        /// <returns></returns>
-        public Vector2 Normalize()
+
+
+
+        public double Length
         {
-            return this / Length();
+            get { return Math.Sqrt(x * x + y * y); }
         }
 
-        /// <summary>
-        /// Length of the Vector
-        /// </summary>
-        /// <returns></returns>
-        public double Length()
-        {
-            return Math.Sqrt(x * x + y * y);
-        }
-
-        /// <summary>
-        /// Distance to other Vector point
-        /// </summary>
-        /// <param name="vector"></param>
-        /// <returns></returns>
         public double DistanceTo(Vector2 vector)
         {
             Vector2 d = vector - this;
             return Math.Sqrt(d.x * d.x + d.y * d.y);
         }
 
-        /// <summary>
-        /// Distance of two Vector points
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
         public static double Distance(Vector2 a, Vector2 b)
         {
             Vector2 d = a - b;
@@ -80,7 +52,7 @@ namespace PewPew_Paradise.Maths
         }
 
 
-        //Operators for doing Math
+
         public static Vector2 operator +(Vector2 a, Vector2 b)
         {
             return new Vector2(a.x + b.x,a.y + b.y);
@@ -97,6 +69,8 @@ namespace PewPew_Paradise.Maths
         {
             return new Vector2(a.x / b.x, a.y / b.y);
         }
+
+
         public static Vector2 operator +(Vector2 a, double b)
         {
             return new Vector2(a.x + b, a.y + b);
@@ -113,6 +87,8 @@ namespace PewPew_Paradise.Maths
         {
             return new Vector2(a.x / b, a.y / b);
         }
+
+
         public static Vector2 operator +(double a, Vector2 b)
         {
             return new Vector2(a + b.x, a + b.y);
