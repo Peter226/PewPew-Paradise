@@ -168,5 +168,8 @@
     <Resource Include="Images\Keys.png" />
     <Resource Include="Images\Rules.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\forest_map.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

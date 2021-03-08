@@ -11,7 +11,7 @@
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
-            <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave">
+            <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave" Click="bt_singleplay_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
 
@@ -604,6 +604,8 @@
             <Image Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="225,328,0,0" VerticalAlignment="Top" Width="95" Source="Images/Player2.png"/>
             <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="60,373,0,0" VerticalAlignment="Top" Width="100" Source="Images/Sprites/Characters/OrkA.gif"/>
             <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="108,420,0,-8" VerticalAlignment="Top" Width="100"/>
+        </Grid>
+        <Grid x:Name="SinglePlayer" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
         </Grid>
     </Grid>
 
