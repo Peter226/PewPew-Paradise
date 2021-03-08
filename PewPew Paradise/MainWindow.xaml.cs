@@ -75,7 +75,7 @@ namespace PewPew_Paradise
             mp.MediaOpened += new EventHandler(PlayMedia);
 
            SpriteManager.Instance.LoadImage("Images/Sprites/forest_map.png", "forest_map");
-
+           SpriteManager.Instance.LoadImage("Images/Sprites/sky2.png", "sky_map");
 
         }
 
@@ -333,7 +333,7 @@ namespace PewPew_Paradise
             SinglePlayer.Visibility = Visibility.Visible;
             Vector2 map_position = new Vector2(8,8);
             Vector2 map_size = new Vector2(16, 16);
-            Sprite forest_map = new Sprite("forest_map",  map_position, map_size, true);
+            Sprite forest_map = new Sprite("sky_map",  map_position, map_size, true);
         }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
