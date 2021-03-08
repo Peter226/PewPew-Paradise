@@ -39,7 +39,6 @@ namespace PewPew_Paradise
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
 
-        
 
         public static MainWindow Instance
         {
@@ -66,21 +65,17 @@ namespace PewPew_Paradise
             
             
             
-            Storyboard storyboard = new Storyboard();
-            storyboard.Children.Add(MainMenu_1);
-            BeginStoryboard beginStoryboard = new BeginStoryboard();
-            beginStoryboard.Storyboard = storyboard;
-            EventTrigger mainmenu_loaded = new EventTrigger();
-            mainmenu_loaded.RoutedEvent = GetMainMenu_Loaded();
-            mainmenu_loaded.Actions.Add(beginStoryboard);
-            MainMenu.Triggers.Add(mainmenu_loaded);
+            //Storyboard storyboard = new Storyboard();
+            //storyboard.Children.Add(MainMenu_1);
+            //BeginStoryboard beginStoryboard = new BeginStoryboard();
+            //beginStoryboard.Storyboard = storyboard;
+            //EventTrigger mainmenu_loaded = new EventTrigger();
+            //mainmenu_loaded.RoutedEvent.AddOwner(typeof(BeginStoryboard));
+            //mainmenu_loaded.Actions.Add(beginStoryboard);
+            //MainMenu.Triggers.Add(mainmenu_loaded);
 
         }
 
-        private RoutedEvent GetMainMenu_Loaded()
-        {
-            return MainMenu_1_music;
-        }
 
         public void Update()
         {
