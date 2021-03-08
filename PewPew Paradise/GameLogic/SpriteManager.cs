@@ -46,7 +46,6 @@ namespace PewPew_Paradise.GameLogic
             _images.Add(name,new BitmapImage(new Uri(path, UriKind.Relative)));
         }
 
-        
         /// <summary>
         /// Create a new SpriteManager
         /// </summary>

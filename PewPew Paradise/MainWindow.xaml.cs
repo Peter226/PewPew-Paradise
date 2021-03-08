@@ -36,7 +36,11 @@ namespace PewPew_Paradise
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
 
+
+
+        MediaPlayer mp = new MediaPlayer();
         
+
 
         public static MainWindow Instance
         {
@@ -60,10 +64,24 @@ namespace PewPew_Paradise
             gameManager.Begin();
 
             GameManager.Instance.OnUpdate += Update;
+
+            string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string p = System.IO.Path.GetDirectoryName(l);
+            p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
+            Console.WriteLine(p);
+            mp.Open(new Uri(p));
+            mp.MediaOpened += new EventHandler(PlayMedia);
             
 
-
         }
+
+        public void PlayMedia(object sender, EventArgs a)
+        {
+            Console.WriteLine("Opened Media");
+            mp.Play();
+        }
+
+
 
         public void Update()
         {
@@ -102,10 +120,10 @@ namespace PewPew_Paradise
 
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            Sprite mrph = new Sprite("MrPlaceHolder",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
+            SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder","Player",new Maths.Vector2(8,8), new Maths.Vector2(1,1));
             MrPlaceHolders.Add(mrph);
 
-
+            
         }
 
         private void KeyLift(object sender, KeyEventArgs e)

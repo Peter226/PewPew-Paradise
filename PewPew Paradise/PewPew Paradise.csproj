@@ -67,8 +67,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GameLogic\AnimationCollection.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
     <Compile Include="GameLogic\Sprite.cs" />
+    <Compile Include="GameLogic\SpriteAnimated.cs" />
+    <Compile Include="GameLogic\SpriteAnimation.cs" />
     <Compile Include="GameLogic\SpriteManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
