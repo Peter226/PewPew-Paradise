@@ -33,7 +33,6 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
-
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -161,7 +160,7 @@ DocProject/Help/*.hhk
 DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
-
+PewPew Paradise.exe
 # Click-Once directory
 publish/
 
