@@ -17,6 +17,7 @@ using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 using System.ComponentModel;
 
+
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -342,9 +343,8 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             SinglePlayer.Visibility = Visibility.Visible;
-            Vector2 map_position = new Vector2(8,8);
-            Vector2 map_size = new Vector2(16, 16);
-            Sprite forest_map = new Sprite("sky_map",  map_position, map_size, true);
+            MapLoad load = new MapLoad("sky_map");
+            lb_floor_counter.Content = load.Floornumbers();
         }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
