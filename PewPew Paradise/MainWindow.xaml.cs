@@ -69,13 +69,8 @@ namespace PewPew_Paradise
             GameManager.Begin();
             CollisionEditor.Init(collisionEditor);
 
-
-
-            string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string p = System.IO.Path.GetDirectoryName(l);
-            p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
-            Console.WriteLine(p);
-            mp.Open(new Uri(p));
+            string musicPath = System.IO.Path.Combine(GameManager.GameAssetPath, "/Music/MainMenu.mp3");
+            mp.Open(new Uri(musicPath));
             mp.MediaOpened += new EventHandler(PlayMedia);
 
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
