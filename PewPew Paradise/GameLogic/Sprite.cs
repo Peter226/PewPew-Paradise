@@ -78,15 +78,15 @@ namespace PewPew_Paradise.GameLogic
             _image.VerticalAlignment = VerticalAlignment.Top;
 
             ImageBrush brush = new ImageBrush();
-            brush.ImageSource = SpriteManager.Instance.GetImage(image);
+            brush.ImageSource = SpriteManager.GetImage(image);
             _image.Fill = brush;
             _brush = brush;
             _image.RenderTransformOrigin = new Point(0.5, 0.5);
             Position = position;
             Size = size;
             IsActive = active;
-            SpriteManager.Instance.AddSprite(this);
-            GameManager.Instance.OnUpdate += Update;
+            SpriteManager.AddSprite(this);
+            GameManager.OnUpdate += Update;
         }
 
 
@@ -111,12 +111,25 @@ namespace PewPew_Paradise.GameLogic
             {
                 _position = value;
                 Thickness margin = _image.Margin;
-                Vector2 canvasPosition = SpriteManager.Instance.VectorToCanvas(_position - _size * 0.5);
+                Vector2 canvasPosition = SpriteManager.VectorToCanvas(_position - _size * 0.5);
                 margin.Left = canvasPosition.x;
                 margin.Top = canvasPosition.y;
                 _image.Margin = margin;
             }
         }
+
+
+        public void StretchToBounds(Vector2 a, Vector2 b)
+        {
+            Position = ((a + b) / 2.0);
+            Size = (b - a);
+        }
+        public void StretchToAbsoluteBounds(Vector2 a, Vector2 b)
+        {
+            Position = ((a + b) / 2.0);
+            Size = (b - a).Abs();
+        }
+
 
         /// <summary>
         /// Get or set the size of the sprite (in game units)
@@ -142,7 +155,7 @@ namespace PewPew_Paradise.GameLogic
                 }
                 ScaleTransform scaleTransform = new ScaleTransform(scale.x,scale.y);
                 _image.RenderTransform = scaleTransform;
-                Vector2 canvasSize = SpriteManager.Instance.VectorToCanvas(_size);
+                Vector2 canvasSize = SpriteManager.VectorToCanvas(_size);
                 _image.Width = canvasSize.x;
                 _image.Height = canvasSize.y;
                 Position = _position;

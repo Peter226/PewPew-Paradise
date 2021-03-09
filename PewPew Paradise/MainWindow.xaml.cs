@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -16,8 +14,7 @@ using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 using System.ComponentModel;
-
-
+using PewPew_Paradise.Editor;
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -26,7 +23,6 @@ namespace PewPew_Paradise
     public partial class MainWindow : Window
     {
         private static MainWindow instance;
-        public GameManager gameManager { get; }
 
         double windowDifferenceX;
         double windowDifferenceY;
@@ -43,8 +39,10 @@ namespace PewPew_Paradise
         MediaPlayer mp = new MediaPlayer();
 
 
-
-
+        
+        /// <summary>
+        /// Get instance
+        /// </summary>
         public static MainWindow Instance
         {
             get
@@ -53,7 +51,9 @@ namespace PewPew_Paradise
             }
         }
 
-
+        /// <summary>
+        /// Initialize
+        /// </summary>
         public MainWindow()
         {
             instance = this;
@@ -63,11 +63,14 @@ namespace PewPew_Paradise
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
-            gameManager = new GameManager(60);
-            gameManager.Begin();
-
-            GameManager.Instance.OnUpdate += Update;
             
+            GameManager.Init(60);
+            GameManager.OnUpdate += Update;
+            GameManager.Begin();
+            CollisionEditor.Init(collisionEditor);
+
+
+
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
             p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
@@ -75,8 +78,8 @@ namespace PewPew_Paradise
             mp.Open(new Uri(p));
             mp.MediaOpened += new EventHandler(PlayMedia);
 
-            SpriteManager.Instance.LoadImage("Images/Sprites/forest_map.png", "forest_map");
-            SpriteManager.Instance.LoadImage("Images/Sprites/sky2.png", "sky_map");
+            SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
+            SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
 
             SpriteAnimation animation = new SpriteAnimation(150,true);
             AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4);
@@ -85,11 +88,16 @@ namespace PewPew_Paradise
             animation.keyFrames.Add(new Vector2(1, 0));
             animation.keyFrames.Add(new Vector2(2, 0));
             animation.keyFrames.Add(new Vector2(3, 0));
-            SpriteManager.Instance.AddAnimationCollection(playerAnimations,"Player");
+            SpriteManager.AddAnimationCollection(playerAnimations,"Player");
 
 
         }
 
+        /// <summary>
+        /// Music
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="a"></param>
         public void PlayMedia(object sender, EventArgs a)
         {
             Console.WriteLine("Opened Media");
@@ -100,7 +108,9 @@ namespace PewPew_Paradise
         }
 
 
-
+        /// <summary>
+        /// Animation loop
+        /// </summary>
         public void Update()
         {
             Timer -= (float)(GameManager.DeltaTime * 0.00075);
@@ -135,25 +145,33 @@ namespace PewPew_Paradise
 
         }
 
-
+        /// <summary>
+        /// Detect key press
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder","Player",new Maths.Vector2(8,8), new Maths.Vector2(4,4));
-            MrPlaceHolders.Add(mrph);
-
-            
-        }
-
-        private void KeyLift(object sender, KeyEventArgs e)
-        {
-            var vals = LogicalTreeHelper.GetChildren(sl_music);
-            foreach (DependencyObject dep in vals) {
-
-                Console.WriteLine(dep);
+            if (e.Key == Key.P) {
+                SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
+                MrPlaceHolders.Add(mrph);
             }
         }
 
+        /// <summary>
+        /// Detect Key lift
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void KeyLift(object sender, KeyEventArgs e)
+        {
 
+        }
+
+        /// <summary>
+        /// Resize GameWindow when MainWindow changes it's size
+        /// </summary>
+        /// <param name="sizeInfo"></param>
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
 
@@ -182,6 +200,11 @@ namespace PewPew_Paradise
             get { return this.ActualHeight - windowDifferenceY; }
         }
 
+        /// <summary>
+        /// Resize every UIElement in window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
@@ -197,6 +220,12 @@ namespace PewPew_Paradise
             previousWidth = GameWindow.Width;
         }
 
+        /// <summary>
+        /// Resize every child of every element
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         private void ResizeObjectsCascade(UIElement parent, double width, double height)
         {
             if (typeof(FrameworkElement).IsAssignableFrom(parent.GetType()))
@@ -261,7 +290,7 @@ namespace PewPew_Paradise
         }
         private void Window_Closed(object sender, EventArgs e)
         {
-            gameManager.Stop();
+            GameManager.Stop();
         }
 
         private void bt_exit_Click(object sender, RoutedEventArgs e)
@@ -351,6 +380,21 @@ namespace PewPew_Paradise
         {
             double k = (double)sl_music.Value;
             mp.Volume = k/100;
+        }
+
+
+        //Mouse events
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            CollisionEditor.StartDrawing(sender,e);
+        }
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CollisionEditor.StopDrawing(sender, e);
+        }
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            CollisionEditor.Draw(sender, e);
         }
     }
 }

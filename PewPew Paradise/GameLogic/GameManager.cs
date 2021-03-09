@@ -15,10 +15,7 @@ namespace PewPew_Paradise.GameLogic
     /// </summary>
     public class GameManager
     {
-        public static GameManager Instance;
         public static string GameAssetPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "PewPew_Paradise_Assets");
-        //Current SpriteManager
-        public SpriteManager spriteManager;
 
         /// <summary>
         /// Screen in game units
@@ -31,13 +28,13 @@ namespace PewPew_Paradise.GameLogic
         public const double GameResolution = 256.0;
 
         //Update Thread
-        private int _minimumDelta;
-        private Action<object> _updateAction;
-        Thread UpdateThread;
+        private static int _minimumDelta;
+        private static Action<object> _updateAction;
+        static Thread UpdateThread;
 
         //Update Event
         public delegate void UpdateDelegate();
-        public event UpdateDelegate OnUpdate;
+        public static event UpdateDelegate OnUpdate;
 
         //variables used to calculate DeltaTime
         private static double _lastTime;
@@ -59,20 +56,22 @@ namespace PewPew_Paradise.GameLogic
         /// Create a new game instance
         /// </summary>
         /// <param name="frameRate"></param>
-        public GameManager(int frameRate)
+        /// 
+
+
+        public static void Init(int frameRate)
         {
-            Instance = this;
             _updateAction = new Action<object>(delegate (object param) { Update(); });
-            this.FrameRate = frameRate;
-            spriteManager = new SpriteManager();
-            spriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png","MrPlaceHolder");
+            FrameRate = frameRate;
+            SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png", "MrPlaceHolder");
         }
+
         
 
         /// <summary>
         /// Get or set the frame rate of the game
         /// </summary>
-        int FrameRate
+        public static int FrameRate
         {
             get
             {
@@ -87,7 +86,7 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// Update function thread call that invokes a callback in the main thread [Do not call]
         /// </summary>
-        private void UpdateCall()
+        private static void UpdateCall()
         {
             if (_minimumDelta < 1)_minimumDelta = 1;
             MainWindow.Instance.Dispatcher.Invoke(_updateAction,new object[] { 0 });
@@ -98,18 +97,18 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// Function that calls the OnUpdate event [Do not call]
         /// </summary>
-        protected void Update()
+        protected static void Update()
         {
             _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
             OnUpdate.Invoke();
             _lastTime = _stopWatch.ElapsedMilliseconds;
         }
 
-        
+
         /// <summary>
         /// Start the game Update loop
         /// </summary>
-        public void Begin()
+        public static void Begin()
         {
             _stopWatch.Start();
             UpdateThread = new Thread(UpdateCall);
@@ -120,7 +119,7 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// Stop the game Update loop
         /// </summary>
-        public void Stop()
+        public static void Stop()
         {
             _stopWatch.Stop();
             if (UpdateThread != null)

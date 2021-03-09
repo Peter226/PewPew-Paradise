@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using PewPew_Paradise.GameLogic;
 namespace PewPew_Paradise.Maths
 {
     /// <summary>
@@ -39,6 +40,15 @@ namespace PewPew_Paradise.Maths
         }
 
         /// <summary>
+        /// Rounded vector to the game's pixel art resolution
+        /// </summary>
+        public Vector2 RoundToPixels()
+        {
+            return ((this * GameManager.GameResolution / GameManager.GameUnitSize).Round() * GameManager.GameUnitSize / GameManager.GameResolution);
+        }
+
+
+        /// <summary>
         /// Normal of the vector
         /// </summary>
         /// <returns></returns>
@@ -55,6 +65,16 @@ namespace PewPew_Paradise.Maths
         {
             return Math.Sqrt(x * x + y * y);
         }
+        
+        /// <summary>
+        /// Absolute
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 Abs()
+        {
+            return new Vector2(Math.Abs(this.x),Math.Abs(this.y));
+        }
+
 
         /// <summary>
         /// Distance to other Vector point

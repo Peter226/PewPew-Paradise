@@ -24,31 +24,27 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// All existing sprites
         /// </summary>
-        public List<Sprite> Sprites = new List<Sprite>();
+        public static List<Sprite> Sprites = new List<Sprite>();
         /// <summary>
         /// Canvas UIElement
         /// </summary>
-        public Grid canvas { get; } = (Grid)MainWindow.Instance.Content;
-        /// <summary>
-        /// Current active SpriteManager instance
-        /// </summary>
-        public static SpriteManager Instance;
+        public static Grid canvas { get; } = (Grid)MainWindow.Instance.Content;
         /// <summary>
         /// Loaded images
         /// </summary>
-        private Dictionary<string, BitmapImage> _images = new Dictionary<string, BitmapImage>();
+        private static Dictionary<string, BitmapImage> _images = new Dictionary<string, BitmapImage>();
 
         /// <summary>
         /// Added animation collections
         /// </summary>
-        private Dictionary<string, AnimationCollection> _animations = new Dictionary<string, AnimationCollection>();
+        private static Dictionary<string, AnimationCollection> _animations = new Dictionary<string, AnimationCollection>();
 
         /// <summary>
         /// Load an image and assign a reference name to it
         /// </summary>
         /// <param name="path">Image path (local)</param>
         /// <param name="name">Reference name</param>
-        public void LoadImage(string path, string name)
+        public static void LoadImage(string path, string name)
         {
             Uri uri = new Uri(path, UriKind.Relative);
             StreamResourceInfo info = Application.GetResourceStream(uri);
@@ -65,41 +61,34 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         /// <param name="animationCollection">An AnimationCollection (created manually, not loaded)</param>
         /// <param name="name">Reference name</param>
-        public void AddAnimationCollection(AnimationCollection animationCollection, string name)
+        public static void AddAnimationCollection(AnimationCollection animationCollection, string name)
         {
             _animations.Add(name,animationCollection);
         }
 
-        /// <summary>
-        /// Create a new SpriteManager
-        /// </summary>
-        public SpriteManager()
-        {
-            Instance = this;
-        }
 
         /// <summary>
         /// Convert Vector2 from game units to screen units
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
-        public Vector2 VectorToCanvas(Vector2 vector)
+        public static Vector2 VectorToCanvas(Vector2 vector)
         {
-            Vector2 canvas = vector;
-            canvas.x *= this.canvas.Width / GameManager.GameUnitSize;
-            canvas.y *= this.canvas.Height / GameManager.GameUnitSize;
-            return canvas;
+            Vector2 canvasV = vector;
+            canvasV.x *= canvas.Width / GameManager.GameUnitSize;
+            canvasV.y *= canvas.Height / GameManager.GameUnitSize;
+            return canvasV;
         }
         /// <summary>
         /// Convert Vector2 from screen units to game units
         /// </summary>
         /// <param name="canvas"></param>
         /// <returns></returns>
-        public Vector2 CanvasToVector(Vector2 canvas)
+        public static Vector2 CanvasToVector(Vector2 canvasV)
         {
-            Vector2 vector = canvas;
-            vector.x *= GameManager.GameUnitSize / this.canvas.Width;
-            vector.y *= GameManager.GameUnitSize / this.canvas.Height;
+            Vector2 vector = canvasV;
+            vector.x *= GameManager.GameUnitSize / canvas.Width;
+            vector.y *= GameManager.GameUnitSize / canvas.Height;
             return vector;
         }
 
@@ -108,7 +97,7 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
-        public BitmapImage GetImage(string image)
+        public static BitmapImage GetImage(string image)
         {
             if (_images.ContainsKey(image))
             {
@@ -125,7 +114,7 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         /// <param name="animationCollection"></param>
         /// <returns></returns>
-        public AnimationCollection GetAnimationCollection(string animationCollection)
+        public static AnimationCollection GetAnimationCollection(string animationCollection)
         {
             if (_animations.ContainsKey(animationCollection))
             {
@@ -142,7 +131,7 @@ namespace PewPew_Paradise.GameLogic
         /// Add an existing sprite to the sprite collection [Do not use unless necessary]
         /// </summary>
         /// <param name="sprite"></param>
-        public void AddSprite(Sprite sprite)
+        public static void AddSprite(Sprite sprite)
         {
             canvas.Children.Add(sprite.RectangleElement);
             Sprites.Add(sprite);

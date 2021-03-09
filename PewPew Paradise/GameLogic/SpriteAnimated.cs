@@ -22,7 +22,7 @@ namespace PewPew_Paradise.GameLogic
         public SpriteAnimated(string image, string animationCollection, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             _brush.Viewport = new Rect(new Vector2(0.0, 0.0),(Point)new Vector2(4.0,4.0));
-            _animationCollection = SpriteManager.Instance.GetAnimationCollection(animationCollection);
+            _animationCollection = SpriteManager.GetAnimationCollection(animationCollection);
         }
         
         public void PlayAnimation(int animation)
