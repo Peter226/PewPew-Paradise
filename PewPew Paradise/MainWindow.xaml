@@ -53,6 +53,12 @@
 
             </Image>
             <Image HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="502" Source="Images/Logo.png" Margin="6,10,0,0"/>
+            <Button x:Name="bt_leaderboard"  HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/leaderboard.png" />
+
+                </Button.Background>
+            </Button>
         </Grid>
         <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026" >
             <Label x:Name="lb_ruletext" Content="Még nem tudni" HorizontalAlignment="Left" Margin="71,132,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>

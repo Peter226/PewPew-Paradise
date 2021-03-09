@@ -180,5 +180,8 @@
   <ItemGroup>
     <Resource Include="Images\Sprites\Utility\collision_preview.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\leaderboard.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
