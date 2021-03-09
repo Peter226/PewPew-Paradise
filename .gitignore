@@ -344,4 +344,3 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 PewPew Paradise/bin/Debug/PewPew Paradise.exe
-*.exe
