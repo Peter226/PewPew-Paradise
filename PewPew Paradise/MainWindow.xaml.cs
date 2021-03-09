@@ -381,7 +381,11 @@ namespace PewPew_Paradise
             double k = (double)sl_music.Value;
             mp.Volume = k/100;
         }
-
+        private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Visible;
+            EndGame.Visibility = Visibility.Collapsed;
+        }
 
         //Mouse events
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -396,5 +400,7 @@ namespace PewPew_Paradise
         {
             CollisionEditor.Draw(sender, e);
         }
+
+
     }
 }

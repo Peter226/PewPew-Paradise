@@ -619,6 +619,21 @@
 
             </Label>
         </Grid>
+        <Grid x:Name="EndGame" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
+            
+            <Button x:Name="bt_mainmenu" HorizontalAlignment="Left" Margin="20,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_mainmenu_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png" />
+
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_exit_end" HorizontalAlignment="Left" Margin="369,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_exit_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png" />
+
+                </Button.Background>
+            </Button>
+        </Grid>
         <Grid x:Name="collisionEditor" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
     </Grid>
 
