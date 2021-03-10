@@ -24,7 +24,7 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// All existing sprites
         /// </summary>
-        public static List<Sprite> Sprites = new List<Sprite>();
+        public static Dictionary<int,Sprite> Sprites = new Dictionary<int,Sprite>();
         /// <summary>
         /// Canvas UIElement
         /// </summary>
@@ -134,8 +134,32 @@ namespace PewPew_Paradise.GameLogic
         public static void AddSprite(Sprite sprite)
         {
             canvas.Children.Add(sprite.RectangleElement);
-            Sprites.Add(sprite);
+            Sprites.Add(sprite.ID,sprite);
             sprite.Start();
         }
+
+        public static void RemoveSprite(Sprite sprite)
+        {
+            ((Panel)sprite.RectangleElement.Parent).Children.Remove(sprite.RectangleElement);
+            Sprites.Remove(sprite.ID);
+        }
+
+
+        /// <summary>
+        /// Get a unique sprite ID for a new Sprite [Do not use unless necessary]
+        /// </summary>
+        /// <param name="sprite"></param>
+        public static int CreateSpriteID()
+        {
+            for (int i = 0;i < int.MaxValue;i++)
+            {
+                if (!Sprites.ContainsKey(i))
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
     }
 }

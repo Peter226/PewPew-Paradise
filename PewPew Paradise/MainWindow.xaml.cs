@@ -162,6 +162,14 @@ namespace PewPew_Paradise
                     spriteAnimated.PlayAnimation(0);
                 }
             }
+            if (e.Key == Key.Delete)
+            {
+                for (int i = MrPlaceHolders.Count - 1; i >= 0;i--)
+                {
+                    MrPlaceHolders[i].Destroy();
+                    MrPlaceHolders.RemoveAt(i);
+                }
+            }
         }
 
         /// <summary>

@@ -27,6 +27,13 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _position;
         private Vector2 _size;
         private bool _active;
+        private int _id;
+
+
+        public int ID
+        {
+            get { return _id; }
+        }
 
         /// <summary>
         /// Enable or disable the sprite and it's visibility
@@ -61,7 +68,16 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Update()
         {
+            
+        }
 
+        /// <summary>
+        /// Destroy sprite
+        /// </summary>
+        public virtual void Destroy()
+        {
+            GameManager.OnUpdate -= Update;
+            SpriteManager.RemoveSprite(this);
         }
 
         /// <summary>
@@ -72,6 +88,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="size">Size in game units</param>
         public Sprite(string image, Vector2 position, Vector2 size, bool active = true)
         {
+            _id = SpriteManager.CreateSpriteID();
             _image = new Rectangle();
             _image.Stretch = Stretch.Fill;
             _image.HorizontalAlignment = HorizontalAlignment.Left;
@@ -88,7 +105,6 @@ namespace PewPew_Paradise.GameLogic
             SpriteManager.AddSprite(this);
             GameManager.OnUpdate += Update;
         }
-
 
         /// <summary>
         /// The UIElement of the Sprite
@@ -161,7 +177,5 @@ namespace PewPew_Paradise.GameLogic
                 Position = _position;
             }
         }
-
-
     }
 }
