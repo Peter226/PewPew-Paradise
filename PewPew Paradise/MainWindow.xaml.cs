@@ -128,15 +128,6 @@ namespace PewPew_Paradise
                 newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y) * 0.1f) * 0.1f;
                 newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x) * 0.1f) * 0.1f;
                 sprite.Position = newpos;
-
-               if (Math.Sin(Timer * 0.1f + newpos.x) < 0.0)
-                {
-                    sprite.PlayAnimation(0);
-                }
-                else
-                {
-                    sprite.PlayAnimation(1);
-                }
             }
             // Moving arrows by sin timer
             MatrixTransform mt_left= new MatrixTransform();
@@ -163,6 +154,13 @@ namespace PewPew_Paradise
             if (e.Key == Key.P) {
                 SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(4, 4));
                 MrPlaceHolders.Add(mrph);
+            }
+            if (e.Key == Key.Space)
+            {
+                foreach (SpriteAnimated spriteAnimated in MrPlaceHolders)
+                {
+                    spriteAnimated.PlayAnimation(0);
+                }
             }
         }
 
