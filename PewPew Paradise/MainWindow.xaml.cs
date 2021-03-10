@@ -34,12 +34,11 @@ namespace PewPew_Paradise
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
 
-
-
         MediaPlayer mp = new MediaPlayer();
 
+        public MapLoad load;
 
-        
+
         /// <summary>
         /// Get instance
         /// </summary>
@@ -58,7 +57,6 @@ namespace PewPew_Paradise
         {
             instance = this;
             InitializeComponent();
-            this.KeyDown += KeyPress;
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
@@ -71,6 +69,9 @@ namespace PewPew_Paradise
 
 
 
+            load = new MapLoad();
+
+
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
             p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
@@ -78,10 +79,9 @@ namespace PewPew_Paradise
             mp.Open(new Uri(p));
             mp.MediaOpened += new EventHandler(PlayMedia);
 
-            SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
-            SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
 
             
+
             AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4,1);
             SpriteAnimation jumpAnimation = new SpriteAnimation(150, false, 2);
             playerAnimations.animations.Add(jumpAnimation);
@@ -151,6 +151,7 @@ namespace PewPew_Paradise
         /// <param name="e"></param>
         private void KeyPress(object sender, KeyEventArgs e)
         {
+            
             if (e.Key == Key.P) {
                 SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(4, 4));
                 MrPlaceHolders.Add(mrph);
@@ -169,6 +170,18 @@ namespace PewPew_Paradise
                     MrPlaceHolders[i].Destroy();
                     MrPlaceHolders.RemoveAt(i);
                 }
+            }
+            if(e.Key == Key.M)
+            {
+                load.UnLoadMap();
+                
+            }
+            if (e.Key == Key.N)
+            {
+                load.NextMap();
+                Console.WriteLine("mittomén");
+                //2x hivta meg
+                
             }
         }
 
@@ -272,6 +285,7 @@ namespace PewPew_Paradise
                 }
             }
         }
+        
         /// <summary>
         /// Replacing selection arrows with window size changing
         /// </summary>
@@ -386,8 +400,7 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             SinglePlayer.Visibility = Visibility.Visible;
-            MapLoad load = new MapLoad("sky_map");
-            lb_floor_counter.Content = load.Floornumbers();
+            load.LoadMap();
         }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
