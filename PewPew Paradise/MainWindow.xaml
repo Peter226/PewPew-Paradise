@@ -18,7 +18,7 @@
                 </Button.Background>
                 <Image Height="54" Width="222" Source="Images/Singleplayer.png"/>
             </Button>
-            <Button x:Name="bt_multiplay" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_multiplay_MouseEnter" MouseLeave="bt_multiplay_MouseLeave">
+            <Button x:Name="bt_multiplay" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_multiplay_MouseEnter" MouseLeave="bt_multiplay_MouseLeave" Click="bt_multiplay_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 

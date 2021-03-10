@@ -182,7 +182,7 @@ namespace PewPew_Paradise
             if (e.Key == Key.N)
             {
                 load.NextMap();
-                Console.WriteLine("mittomén");
+                //Console.WriteLine("mittomén");
                 //2x hivta meg
                 
             }
@@ -409,6 +409,12 @@ namespace PewPew_Paradise
             SinglePlayer.Visibility = Visibility.Visible;
             load.LoadMap();
         }
+        private void bt_multiplay_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            SinglePlayer.Visibility = Visibility.Visible;
+            load.LoadMap();
+        }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -420,21 +426,6 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Visible;
             EndGame.Visibility = Visibility.Collapsed;
         }
-
-        //Mouse events
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            CollisionEditor.StartDrawing(sender,e);
-        }
-        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            CollisionEditor.StopDrawing(sender, e);
-        }
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-            CollisionEditor.Draw(sender, e);
-        }
-
         private void bt_charsselect1_r_Click(object sender, RoutedEventArgs e)
         {
             chars.NextChar(1);
@@ -454,5 +445,20 @@ namespace PewPew_Paradise
         {
             chars.PreChar(2);
         }
+        //Mouse events
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            CollisionEditor.StartDrawing(sender,e);
+        }
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CollisionEditor.StopDrawing(sender, e);
+        }
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            CollisionEditor.Draw(sender, e);
+        }
+
+
     }
 }
