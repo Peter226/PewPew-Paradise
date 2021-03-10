@@ -39,6 +39,20 @@ namespace PewPew_Paradise
             chars[chars_number].IsActive = true;
 
         }
+        public void PreChar()
+        {
+            UnLoadChar();
+            if (chars_number == 0)
+            {
+                chars_number = chars.Count-1;
+                chars[chars_number].IsActive = true;
+            }
+            else
+            {
+                chars_number--;
+                chars[chars_number].IsActive = true;
+            }
+        }
         
         public void UnLoadChar() 
         {
