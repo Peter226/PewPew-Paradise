@@ -53,7 +53,7 @@
 
             </Image>
             <Image HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="502" Source="Images/Logo.png" Margin="6,10,0,0"/>
-            <Button x:Name="bt_leaderboard"  HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
+            <Button x:Name="bt_leaderboard"  HorizontalAlignment="Left" Margin="430,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/leaderboard.png" />
 
