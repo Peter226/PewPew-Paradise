@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CharacterSelect.cs" />
     <Compile Include="Editor\CollisionEditor.cs" />
     <Compile Include="GameLogic\AnimationCollection.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
@@ -186,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\underground_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Characters\Unicorn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

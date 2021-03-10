@@ -10,7 +10,7 @@
 
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
-        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026">
+        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible">
             <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave" Click="bt_singleplay_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
@@ -82,6 +82,13 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="bt_back_op" Content="" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
+
+                </Button.Background>
+            </Button>
+
+            <Button x:Name="bt_charsselect1_r" Content="" HorizontalAlignment="Left" Margin="153,385,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_charsselect1_r_Click" Grid.ColumnSpan="2">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
@@ -608,8 +615,8 @@
             <Image HorizontalAlignment="Left" Height="121" Margin="51,278,0,0" VerticalAlignment="Top" Width="169" Source="Images/Characters.png" Grid.Column="1"/>
             <Image HorizontalAlignment="Left" Height="31" Margin="60,328,0,0" VerticalAlignment="Top" Width="91" Source="Images/Player1.png" Grid.Column="1"/>
             <Image Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="225,328,0,0" VerticalAlignment="Top" Width="95" Source="Images/Player2.png"/>
-            <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="60,373,0,0" VerticalAlignment="Top" Width="100" Source="Images/Sprites/Characters/OrkA.gif"/>
-            <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="108,420,0,-8" VerticalAlignment="Top" Width="100"/>
+
+
         </Grid>
         <Grid x:Name="SinglePlayer" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
             <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Left" Margin="220,0,0,477" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">

@@ -37,7 +37,7 @@ namespace PewPew_Paradise
         MediaPlayer mp = new MediaPlayer();
 
         public MapLoad load;
-
+        public CharacterSelect chars;
 
         /// <summary>
         /// Get instance
@@ -70,6 +70,7 @@ namespace PewPew_Paradise
 
 
             load = new MapLoad();
+            chars = new CharacterSelect();
 
 
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -338,12 +339,15 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Visible;
             Help.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Collapsed;
+            chars.UnLoadChar();
         }
 
         private void bt_options_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Visible;
+            chars.LoadChar();
+            
         }
         /// <summary>
         /// Selection arrow moving events
@@ -426,6 +430,11 @@ namespace PewPew_Paradise
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
             CollisionEditor.Draw(sender, e);
+        }
+
+        private void bt_charsselect1_r_Click(object sender, RoutedEventArgs e)
+        {
+            chars.NextChar();
         }
 
 
