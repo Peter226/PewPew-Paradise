@@ -20,6 +20,7 @@ namespace PewPew_Paradise
         public CharacterSelect()
         {
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
+            SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/OrkPM.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder1.png", "MrPlaceholder");
             Sprite unicorn1 = new Sprite("unicorn", select_pos1, select_size, false);
