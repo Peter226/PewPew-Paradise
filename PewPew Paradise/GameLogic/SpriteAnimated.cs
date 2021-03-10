@@ -24,6 +24,8 @@ namespace PewPew_Paradise.GameLogic
         {
             _brush.Viewport = new Rect(new Vector2(0.0, 0.0),(Point)new Vector2(4.0,4.0));
             _animationCollection = SpriteManager.GetAnimationCollection(animationCollection);
+            _currentAnimation = _animationCollection.fallbackAnimation;
+            _lastAnimation = _currentAnimation;
         }
         
         public void PlayAnimation(int animation)
@@ -55,6 +57,7 @@ namespace PewPew_Paradise.GameLogic
                     {
                         if (!_animationCollection.animations[_currentAnimation].loop) {
                             _currentAnimation = _animationCollection.fallbackAnimation;
+                            _lastAnimation = _currentAnimation;
                             _animationTime = 0;
                         }
                         _currentKeyFrame = 0;

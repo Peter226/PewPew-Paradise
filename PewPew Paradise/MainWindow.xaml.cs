@@ -90,7 +90,7 @@ namespace PewPew_Paradise
             jumpAnimation.keyFrames.Add(new Vector2(2, 0));
             jumpAnimation.keyFrames.Add(new Vector2(3, 0));
 
-            SpriteAnimation walkAnimation = new SpriteAnimation(150, true);
+            SpriteAnimation walkAnimation = new SpriteAnimation(100, true);
             playerAnimations.animations.Add(walkAnimation);
             walkAnimation.keyFrames.Add(new Vector2(0, 1));
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
