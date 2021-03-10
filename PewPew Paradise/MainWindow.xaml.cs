@@ -81,13 +81,21 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
             SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
 
-            SpriteAnimation animation = new SpriteAnimation(150,true);
-            AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4);
-            playerAnimations.animations.Add(animation);
-            animation.keyFrames.Add(new Vector2(0, 0));
-            animation.keyFrames.Add(new Vector2(1, 0));
-            animation.keyFrames.Add(new Vector2(2, 0));
-            animation.keyFrames.Add(new Vector2(3, 0));
+            
+            AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4,1);
+            SpriteAnimation jumpAnimation = new SpriteAnimation(150, false, 2);
+            playerAnimations.animations.Add(jumpAnimation);
+            jumpAnimation.keyFrames.Add(new Vector2(0, 0));
+            jumpAnimation.keyFrames.Add(new Vector2(1, 0));
+            jumpAnimation.keyFrames.Add(new Vector2(2, 0));
+            jumpAnimation.keyFrames.Add(new Vector2(3, 0));
+
+            SpriteAnimation walkAnimation = new SpriteAnimation(150, true);
+            playerAnimations.animations.Add(walkAnimation);
+            walkAnimation.keyFrames.Add(new Vector2(0, 1));
+            walkAnimation.keyFrames.Add(new Vector2(1, 1));
+            walkAnimation.keyFrames.Add(new Vector2(2, 1));
+            walkAnimation.keyFrames.Add(new Vector2(1, 1));
             SpriteManager.AddAnimationCollection(playerAnimations,"Player");
 
 
@@ -114,21 +122,21 @@ namespace PewPew_Paradise
         public void Update()
         {
             Timer -= (float)(GameManager.DeltaTime * 0.00075);
-            foreach (Sprite sprite in MrPlaceHolders)
+            foreach (SpriteAnimated sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
                 newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y) * 0.1f) * 0.1f;
                 newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x) * 0.1f) * 0.1f;
                 sprite.Position = newpos;
 
-               /* if (Math.Sin(Timer * 10.0f + newpos.x) < -0.8)
+               if (Math.Sin(Timer * 0.1f + newpos.x) < 0.0)
                 {
-                    sprite.IsActive = false;
+                    sprite.PlayAnimation(0);
                 }
                 else
                 {
-                    sprite.IsActive = true;
-                }*/
+                    sprite.PlayAnimation(1);
+                }
             }
             // Moving arrows by sin timer
             MatrixTransform mt_left= new MatrixTransform();
@@ -153,7 +161,7 @@ namespace PewPew_Paradise
         private void KeyPress(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.P) {
-                SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
+                SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(4, 4));
                 MrPlaceHolders.Add(mrph);
             }
         }

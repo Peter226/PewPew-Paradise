@@ -11,11 +11,13 @@ namespace PewPew_Paradise.GameLogic
         public double frameTime { get; }
         public List<Vector2> keyFrames { get; } = new List<Vector2>();
         public bool loop;
+        public int priority;
 
-        public SpriteAnimation(double frameTime, bool looping)
+        public SpriteAnimation(double frameTime, bool looping, int priority = 1)
         {
             this.frameTime = frameTime;
             loop = looping;
+            this.priority = priority;
         }
 
     }

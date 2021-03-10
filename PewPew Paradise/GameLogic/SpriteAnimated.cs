@@ -12,9 +12,10 @@ namespace PewPew_Paradise.GameLogic
     {
         private AnimationCollection _animationCollection { get; }
 
-        int currentAnimation = 0;
-        int currentKeyFrame = 0;
-        double animTime = 0;
+        private int _currentAnimation = 0;
+        private int _currentKeyFrame = 0;
+        private int _lastAnimation = 0;
+        private double _animationTime = 0;
 
         public delegate void AnimationEndedEvent(Sprite sprite);
         public event AnimationEndedEvent OnAnimationEnded;
@@ -27,9 +28,15 @@ namespace PewPew_Paradise.GameLogic
         
         public void PlayAnimation(int animation)
         {
-            currentAnimation = animation;
-            animTime = 0;
-            currentKeyFrame = 0;
+            if (_animationCollection.animations[animation].priority >= _animationCollection.animations[_currentAnimation].priority) {
+                _currentAnimation = animation;
+                if (_lastAnimation != _currentAnimation) {
+                    _animationTime = 0;
+                    _currentKeyFrame = 0;
+                    _lastAnimation = _currentAnimation;
+                    Animate();
+                }
+            }
         }
 
         public override void Update()
@@ -40,19 +47,23 @@ namespace PewPew_Paradise.GameLogic
         private void Animate()
         {
             if (_animationCollection.animations.Count > 0) {
-                while (animTime > _animationCollection.animations[currentAnimation].frameTime)
+                while (_animationTime > _animationCollection.animations[_currentAnimation].frameTime)
                 {
-                    animTime -= _animationCollection.animations[currentAnimation].frameTime;
-                    currentKeyFrame++;
-                    if (currentKeyFrame >= _animationCollection.animations[currentAnimation].keyFrames.Count)
+                    _animationTime -= _animationCollection.animations[_currentAnimation].frameTime;
+                    _currentKeyFrame++;
+                    if (_currentKeyFrame >= _animationCollection.animations[_currentAnimation].keyFrames.Count)
                     {
-                        currentKeyFrame = 0;
+                        if (!_animationCollection.animations[_currentAnimation].loop) {
+                            _currentAnimation = _animationCollection.fallbackAnimation;
+                            _animationTime = 0;
+                        }
+                        _currentKeyFrame = 0;
                     }
                 }
                 
-                Vector2 keyframe = _animationCollection.animations[currentAnimation].keyFrames[currentKeyFrame];
+                Vector2 keyframe = _animationCollection.animations[_currentAnimation].keyFrames[_currentKeyFrame];
                 _brush.Viewport = new Rect(-1 * keyframe, (Point)((Vector2.One) * _animationCollection.atlasDimensions - keyframe));
-                animTime += GameManager.DeltaTime;
+                _animationTime += GameManager.DeltaTime;
             }
         }
 
