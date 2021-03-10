@@ -16,7 +16,7 @@ using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 using System.Windows.Resources;
-
+using System.ComponentModel;
 namespace PewPew_Paradise.GameLogic
 {
     public class SpriteManager
@@ -46,14 +46,20 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="name">Reference name</param>
         public static void LoadImage(string path, string name)
         {
-            Uri uri = new Uri(path, UriKind.Relative);
-            StreamResourceInfo info = Application.GetResourceStream(uri);
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.StreamSource = info.Stream;
-            image.CacheOption = BitmapCacheOption.OnDemand;
-            image.EndInit();
-            _images.Add(name, image);
+            if (!_images.ContainsKey(name)) {
+                Uri uri = new Uri(path, UriKind.Relative);
+                StreamResourceInfo info = Application.GetResourceStream(uri);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = info.Stream;
+                image.CacheOption = BitmapCacheOption.OnDemand;
+                image.EndInit();
+                _images.Add(name, image);
+            }
+            else
+            {
+                Console.WriteLine($"SpriteManager: Image already loaded: {name} ignoring...");
+            }
         }
 
         /// <summary>
@@ -63,7 +69,13 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="name">Reference name</param>
         public static void AddAnimationCollection(AnimationCollection animationCollection, string name)
         {
-            _animations.Add(name,animationCollection);
+            if (!_animations.ContainsKey(name)) {
+                _animations.Add(name, animationCollection);
+            }
+            else
+            {
+                Console.WriteLine($"SpriteManager: Animation already added: {name} ignoring...");
+            }
         }
 
 

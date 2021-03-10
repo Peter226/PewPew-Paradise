@@ -177,14 +177,10 @@ namespace PewPew_Paradise
             if(e.Key == Key.M)
             {
                 load.UnLoadMap();
-                
             }
             if (e.Key == Key.N)
             {
                 load.NextMap();
-                Console.WriteLine("mittomén");
-                //2x hivta meg
-                
             }
         }
 
