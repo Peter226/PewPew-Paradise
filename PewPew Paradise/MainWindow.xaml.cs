@@ -341,7 +341,8 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Visible;
             Help.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Collapsed;
-            chars.UnLoadChar();
+            chars.UnLoadChar(1);
+            chars.UnLoadChar(2);
         }
 
         private void bt_options_Click(object sender, RoutedEventArgs e)
@@ -436,9 +437,22 @@ namespace PewPew_Paradise
 
         private void bt_charsselect1_r_Click(object sender, RoutedEventArgs e)
         {
-            chars.NextChar();
+            chars.NextChar(1);
         }
 
+        private void bt_charsselect2_r_Click(object sender, RoutedEventArgs e)
+        {
+            chars.NextChar(2);
+        }
 
+        private void bt_charsselect1_l_Click(object sender, RoutedEventArgs e)
+        {
+            chars.PreChar(1);
+        }
+
+        private void bt_charsselect2_l_Click(object sender, RoutedEventArgs e)
+        {
+            chars.PreChar(2);
+        }
     }
 }

@@ -191,5 +191,12 @@
   <ItemGroup>
     <Resource Include="Images\Sprites\Characters\Unicorn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Characters\MrPlaceHolder1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\small_arrow_left.png" />
+    <Resource Include="Images\small_arrow_right.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
