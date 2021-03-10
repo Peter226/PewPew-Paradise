@@ -15,7 +15,6 @@ namespace PewPew_Paradise.Maths
         public double x;
         public double y;
 
-
         public Vector2(double x = 0, double y = 0)
         {
             this.x = x;
@@ -29,6 +28,13 @@ namespace PewPew_Paradise.Maths
         {
             get { return new Vector2(); }
         }
+
+
+        public override string ToString()
+        {
+            return $"({x}; {y})";
+        }
+
 
         /// <summary>
         /// Rounded vector

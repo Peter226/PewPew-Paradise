@@ -17,7 +17,7 @@ namespace PewPew_Paradise.GameLogic
         private int _lastAnimation = 0;
         private double _animationTime = 0;
 
-        public delegate void AnimationEndedEvent(Sprite sprite);
+        public delegate void AnimationEndedEvent(Sprite sprite, int animationID);
         public event AnimationEndedEvent OnAnimationEnded;
 
         public SpriteAnimated(string image, string animationCollection, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
@@ -59,6 +59,9 @@ namespace PewPew_Paradise.GameLogic
                             _currentAnimation = _animationCollection.fallbackAnimation;
                             _lastAnimation = _currentAnimation;
                             _animationTime = 0;
+                            if (OnAnimationEnded != null) {
+                                OnAnimationEnded.Invoke(this, _currentAnimation);
+                            }
                         }
                         _currentKeyFrame = 0;
                     }
