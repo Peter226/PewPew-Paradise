@@ -133,12 +133,52 @@ namespace PewPew_Paradise.GameLogic
             }
         }
 
+        /// <summary>
+        /// Get the Rect of the Sprite in game units
+        /// </summary>
+        /// <returns></returns>
+        public Rect GetRect()
+        {
+            Rect rect = new Rect();
+            Vector2 topLeft = Position - Size / 2.0;
+            rect.X = topLeft.x;
+            rect.Y = topLeft.y;
+            rect.Width = Size.x;
+            rect.Height = Size.y;
+            return rect;
+        }
 
+
+        /// <summary>
+        /// Stretch Sprite to a Rect
+        /// </summary>
+        /// <param name="rect"></param>
+        public void StretchToBounds(Rect rect)
+        {
+            StretchToBounds(new Vector2(rect.Left,rect.Top),new Vector2(rect.Right,rect.Bottom));
+        }
+        /// <summary>
+        /// Stretch Sprite to a Rect (does not allow negative values)
+        /// </summary>
+        /// <param name="rect"></param>
+        public void StretchToAbsoluteBounds(Rect rect)
+        {
+            StretchToAbsoluteBounds(new Vector2(rect.Left, rect.Top), new Vector2(rect.Right, rect.Bottom));
+        }
+
+        /// <summary>
+        /// Stretch Sprite to a Rect defined by two Vector2s
+        /// </summary>
+        /// <param name="rect"></param>
         public void StretchToBounds(Vector2 a, Vector2 b)
         {
             Position = ((a + b) / 2.0);
             Size = (b - a);
         }
+        /// <summary>
+        /// Stretch Sprite to a Rect defined by two Vector2s (does not allow negative values)
+        /// </summary>
+        /// <param name="rect"></param>
         public void StretchToAbsoluteBounds(Vector2 a, Vector2 b)
         {
             Position = ((a + b) / 2.0);
