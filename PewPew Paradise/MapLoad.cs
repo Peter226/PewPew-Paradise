@@ -54,6 +54,8 @@ namespace PewPew_Paradise
         public void NextMap(int player_number)
         {
             UnLoadMap();
+            MainWindow.Instance.chars.UnLoadCharacter(1);
+            MainWindow.Instance.chars.UnLoadCharacter(2);
             level_number++;
             level_number = level_number % maps.Count;
             floor++;

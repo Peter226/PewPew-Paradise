@@ -134,5 +134,10 @@ namespace PewPew_Paradise
                 chosen_char2.IsActive = true;
             }
         }
+        public void UnLoadCharacter(int player_number)
+        {
+            SelectedChar(1).IsActive = false;
+            SelectedChar(2).IsActive = false;
+        }
     }
 }
