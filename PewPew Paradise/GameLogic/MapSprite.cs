@@ -10,6 +10,9 @@ namespace PewPew_Paradise.GameLogic
 {
     public class MapSprite : Sprite
     {
+        /// <summary>
+        /// MapSprite for changing background colors
+        /// </summary>
         public SolidColorBrush map_color;
         public MapSprite(string image, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {

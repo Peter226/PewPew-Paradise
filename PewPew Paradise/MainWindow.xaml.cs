@@ -174,6 +174,7 @@ namespace PewPew_Paradise
                     MrPlaceHolders.RemoveAt(i);
                 }
             }
+            //This is for just testing now
             if(e.Key == Key.M)
             {
                 load.NextMap(2);
@@ -181,10 +182,6 @@ namespace PewPew_Paradise
             if (e.Key == Key.N)
             {
                 load.NextMap(1);
-
-                //Console.WriteLine("mittomén");
-                //2x hivta meg
-
             }
         }
 
@@ -352,6 +349,18 @@ namespace PewPew_Paradise
             chars.LoadChar();
             
         }
+        private void bt_singleplay_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            SinglePlayer.Visibility = Visibility.Visible;
+            load.LoadMap(1);
+        }
+        private void bt_multiplay_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            SinglePlayer.Visibility = Visibility.Visible;
+            load.LoadMap(2);
+        }
         /// <summary>
         /// Selection arrow moving events
         /// </summary>
@@ -403,18 +412,11 @@ namespace PewPew_Paradise
             Arrow_clear();
         }
 
-        private void bt_singleplay_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu.Visibility = Visibility.Collapsed;
-            SinglePlayer.Visibility = Visibility.Visible;
-            load.LoadMap(1);
-        }
-        private void bt_multiplay_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu.Visibility = Visibility.Collapsed;
-            SinglePlayer.Visibility = Visibility.Visible;
-            load.LoadMap(2);
-        }
+        /// <summary>
+        /// Options button events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -445,7 +447,11 @@ namespace PewPew_Paradise
         {
             chars.PreChar(2);
         }
-        //Mouse events
+        /// <summary>
+        /// Mouse events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             CollisionEditor.StartDrawing(sender,e);

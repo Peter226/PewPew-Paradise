@@ -11,16 +11,15 @@ using System.Windows.Media;
 namespace PewPew_Paradise
 {
     public class MapLoad
-    //Init -> betölt minden pályát és a textúrájukat egy listába/tömbbe/dict-be
-    //LoadLevel -> betölti az első pályát
-    //NextLevel -> betölti a következő pályát
-    //UnloadLevel -> kitörli a pályát
     {
         Vector2 map_position = new Vector2(8, 8);
         Vector2 map_size = new Vector2(16, 16);
         public List<MapSprite> maps = new List<MapSprite>();
         public int floor = 1;
         public int level_number;
+        /// <summary>
+        /// Loading all the maps and saving them into a list
+        /// </summary>
         public MapLoad ()
         {
 
@@ -34,6 +33,12 @@ namespace PewPew_Paradise
             MapSprite underground_map = new MapSprite("underground_map",new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
         }
+        /// <summary>
+        /// Loading first map with characters
+        /// player_number is for single/multiplayer -> same everywhere here
+        /// changing floor counter to 1
+        /// </summary>
+        /// <param name="player_number"></param>
         public void LoadMap(int player_number)
         {
             floor =1;
@@ -51,6 +56,10 @@ namespace PewPew_Paradise
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
         }
+        /// <summary>
+        /// Loading next map and replace players to start position
+        /// </summary>
+        /// <param name="player_number"></param>
         public void NextMap(int player_number)
         {
             UnLoadMap();
@@ -72,13 +81,17 @@ namespace PewPew_Paradise
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
         }
+        /// <summary>
+        /// Unload map
+        /// </summary>
         public void UnLoadMap()
         {
             maps[level_number].IsActive = false;
         }
-
-
-
+        /// <summary>
+        /// Return the number of finished floors
+        /// </summary>
+        /// <returns></returns>
         public int Floornumbers() { return floor; }
     }
 }

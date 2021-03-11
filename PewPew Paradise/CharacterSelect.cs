@@ -17,6 +17,9 @@ namespace PewPew_Paradise
         Vector2 select_size = new Vector2(3, 3);
         public int chars_number1;
         public int chars_number2;
+        /// <summary>
+        /// Loading and saving character sprites into a list
+        /// </summary>
         public CharacterSelect()
         {
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
@@ -36,6 +39,9 @@ namespace PewPew_Paradise
             PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
         }
+        /// <summary>
+        /// Load Characters to options at first time
+        /// </summary>
         public void LoadChar() 
         {
             chars_number1 = 0;
@@ -43,6 +49,11 @@ namespace PewPew_Paradise
             chars_number2 = 0;
             chars2[chars_number2].IsActive = true;
         }
+        /// <summary>
+        /// Loading the next char in the list
+        /// player_number for player1 or 2 -> same for all the incoming functions
+        /// </summary>
+        /// <param name="player_number"></param>
         public void NextChar(int player_number) 
         {
             if (player_number == 1)
@@ -60,6 +71,10 @@ namespace PewPew_Paradise
                 chars2[chars_number2].IsActive = true;
             }
         }
+        /// <summary>
+        /// Loading the prev char in the list
+        /// </summary>
+        /// <param name="player_number"></param>
         public void PreChar(int player_number)
         {
             if (player_number == 1)
@@ -91,7 +106,10 @@ namespace PewPew_Paradise
                 }
             }
         }
-        
+        /// <summary>
+        /// Unload characters
+        /// </summary>
+        /// <param name="player_number"></param>
         public void UnLoadChar(int player_number) 
         {
             if (player_number == 1)
@@ -103,6 +121,11 @@ namespace PewPew_Paradise
                 chars2[chars_number2].IsActive = false;
             }
         }
+        /// <summary>
+        /// Returns which sprite was active when options was closed
+        /// </summary>
+        /// <param name="player_number"></param>
+        /// <returns></returns>
         public PlayerSprite SelectedChar(int player_number)
         {
             if (player_number == 1)
@@ -110,6 +133,10 @@ namespace PewPew_Paradise
             else
                 return chars2[chars_number2];
         }
+        /// <summary>
+        /// Load characters to maps
+        /// </summary>
+        /// <param name="player_number"></param>
         public void CharacterLoad(int player_number)
         {
             Vector2 load_pos1 = new Vector2(4.5,2);
@@ -134,6 +161,10 @@ namespace PewPew_Paradise
                 chosen_char2.IsActive = true;
             }
         }
+        /// <summary>
+        /// Unload both player sprite in maps
+        /// </summary>
+        /// <param name="player_number"></param>
         public void UnLoadCharacter(int player_number)
         {
             SelectedChar(1).IsActive = false;

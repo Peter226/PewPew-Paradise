@@ -10,6 +10,7 @@
 
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
+        <!--Main Menu Grid-->
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible">
             <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave" Click="bt_singleplay_Click">
                 <Button.Background>
@@ -60,6 +61,7 @@
                 </Button.Background>
             </Button>
         </Grid>
+        <!--Help Grid-->
         <Grid x:Name="Help" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026" >
             <Label x:Name="lb_ruletext" Content="Még nem tudni" HorizontalAlignment="Left" Margin="71,132,0,0" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
             <Label x:Name="lb_p1keys" Content="Még nem tudni" HorizontalAlignment="Left" Margin="55,328,0,0" FontSize="18" FontFamily="Comic Sans MS" Foreground="#7C0476"></Label>
@@ -76,6 +78,7 @@
             <Image HorizontalAlignment="Left" Height="100" Margin="39,88,0,0" VerticalAlignment="Top" Width="100" Source="Images/Rules.png"/>
             <Image HorizontalAlignment="Left" Height="100" Margin="39,238,0,0" VerticalAlignment="Top" Width="100" Source="Images/Keys.png"/>
         </Grid>
+        <!--Options Grid-->
         <Grid x:Name="Options" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
@@ -108,6 +111,7 @@
                     <ImageBrush ImageSource="Images/small_arrow_right.png" />
                 </Button.Background>
             </Button>
+            <!--Music slider with its template-->
             <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="20" ValueChanged="sl_music_ValueChanged" >
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
@@ -364,7 +368,7 @@
                     </Style>
                 </Slider.Resources>
             </Slider>
-
+            <!--Effect slider and its template-->
             <Slider x:Name="sl_effect" Margin="90,232,161,260" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle2}" Grid.Column="1" >
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
@@ -622,6 +626,7 @@
                 </Slider.Resources>
 
             </Slider>
+            <!--End of sliders and their templates-->
             <Image HorizontalAlignment="Left" Height="78" Margin="6,10,0,0" VerticalAlignment="Top" Width="218" Source="Images/OptionsBIG.png" Grid.Column="1"/>
             <Image HorizontalAlignment="Left" Height="100" Margin="51,88,0,0" VerticalAlignment="Top" Width="100" Source="Images/Audio.png" Grid.Column="1"/>
             <Image HorizontalAlignment="Left" Height="33" Margin="90,134,0,0" VerticalAlignment="Top" Width="127" Source="Images/MusicVolume.png" Grid.Column="1"/>
@@ -632,6 +637,7 @@
 
 
         </Grid>
+        <!--Playing Area Grid-->
         <Grid x:Name="SinglePlayer" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
             <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Left" Margin="220,0,0,477" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">
 
@@ -640,6 +646,7 @@
 
             </Label>
         </Grid>
+        <!--End Game Grid-->
         <Grid x:Name="EndGame" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
 
             <Button x:Name="bt_mainmenu" HorizontalAlignment="Left" Margin="20,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_mainmenu_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
@@ -658,7 +665,7 @@
         <Grid x:Name="collisionEditor" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
     </Grid>
 
-
+<!--Button Templates for clearing basic hover animation-->
     <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
