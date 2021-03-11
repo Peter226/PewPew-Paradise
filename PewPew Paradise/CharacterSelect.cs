@@ -15,8 +15,8 @@ namespace PewPew_Paradise
         Vector2 select_pos1 = new Vector2(3, 13);
         Vector2 select_pos2 = new Vector2(10, 13);
         Vector2 select_size = new Vector2(3, 3);
-        public int chars_number1 = 0;
-        public int chars_number2 = 0;
+        public int chars_number1;
+        public int chars_number2;
         public CharacterSelect()
         {
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
