@@ -10,8 +10,8 @@ namespace PewPew_Paradise
 {
     public class CharacterSelect
     {
-        public List<Sprite> chars1 = new List<Sprite>();
-        public List<Sprite> chars2 = new List<Sprite>();
+        public List<PlayerSprite> chars1 = new List<PlayerSprite>();
+        public List<PlayerSprite> chars2 = new List<PlayerSprite>();
         Vector2 select_pos1 = new Vector2(3, 13);
         Vector2 select_pos2 = new Vector2(10, 13);
         Vector2 select_size = new Vector2(3, 3);
@@ -23,17 +23,17 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/OrkPM.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder1.png", "MrPlaceholder");
-            Sprite unicorn1 = new Sprite("unicorn", select_pos1, select_size, false);
+            PlayerSprite unicorn1 = new PlayerSprite("unicorn", 1, select_pos1, select_size, false);
             chars1.Add(unicorn1);
-            Sprite ork1 = new Sprite("ork", select_pos1, select_size, false);
+            PlayerSprite ork1 = new PlayerSprite("ork", 1, select_pos1, select_size, false);
             chars1.Add(ork1);
-            Sprite MrPlaceholder1 = new Sprite("MrPlaceholder", select_pos1, select_size, false);
+            PlayerSprite MrPlaceholder1 = new PlayerSprite("MrPlaceholder", 1, select_pos1, select_size, false);
             chars1.Add(MrPlaceholder1);
-            Sprite unicorn2 = new Sprite("unicorn", select_pos2, select_size, false);
+            PlayerSprite unicorn2 = new PlayerSprite("unicorn", 2, select_pos2, select_size, false);
             chars2.Add(unicorn2);
-            Sprite ork2 = new Sprite("ork", select_pos2, select_size, false);
+            PlayerSprite ork2 = new PlayerSprite("ork", 2, select_pos2, select_size, false);
             chars2.Add(ork2);
-            Sprite MrPlaceholder2 = new Sprite("MrPlaceholder", select_pos2, select_size, false);
+            PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
         }
         public void LoadChar() 
@@ -103,7 +103,7 @@ namespace PewPew_Paradise
                 chars2[chars_number2].IsActive = false;
             }
         }
-        public Sprite SelectedChar(int player_number)
+        public PlayerSprite SelectedChar(int player_number)
         {
             if (player_number == 1)
                 return chars1[chars_number1];
@@ -117,18 +117,18 @@ namespace PewPew_Paradise
             Vector2 load_size = new Vector2(1, 1);
             if (player_number ==1)
             {
-                Sprite chosen_char1 = SelectedChar(1);
+                PlayerSprite chosen_char1 = SelectedChar(1);
                 chosen_char1.Position = load_pos1;
                 chosen_char1.Size = load_size;
                 chosen_char1.IsActive = true;
             }
             else
             {
-                Sprite chosen_char1 = SelectedChar(1);
+                PlayerSprite chosen_char1 = SelectedChar(1);
                 chosen_char1.Position = load_pos1;
                 chosen_char1.Size = load_size;
                 chosen_char1.IsActive = true;
-                Sprite chosen_char2 = SelectedChar(2);
+                PlayerSprite chosen_char2 = SelectedChar(2);
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
                 chosen_char2.IsActive = true;

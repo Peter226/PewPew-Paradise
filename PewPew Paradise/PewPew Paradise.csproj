@@ -73,6 +73,7 @@
     <Compile Include="GameLogic\AnimationCollection.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
     <Compile Include="GameLogic\MapSprite.cs" />
+    <Compile Include="GameLogic\PlayerSprite.cs" />
     <Compile Include="GameLogic\Sprite.cs" />
     <Compile Include="GameLogic\SpriteAnimated.cs" />
     <Compile Include="GameLogic\SpriteAnimation.cs" />
