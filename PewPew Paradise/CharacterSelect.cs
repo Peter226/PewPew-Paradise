@@ -110,5 +110,29 @@ namespace PewPew_Paradise
             else
                 return chars2[chars_number2];
         }
+        public void CharacterLoad(int player_number)
+        {
+            Vector2 load_pos1 = new Vector2(4.5,2);
+            Vector2 load_pos2 = new Vector2(11.5, 2);
+            Vector2 load_size = new Vector2(1, 1);
+            if (player_number ==1)
+            {
+                Sprite chosen_char1 = SelectedChar(1);
+                chosen_char1.Position = load_pos1;
+                chosen_char1.Size = load_size;
+                chosen_char1.IsActive = true;
+            }
+            else
+            {
+                Sprite chosen_char1 = SelectedChar(1);
+                chosen_char1.Position = load_pos1;
+                chosen_char1.Size = load_size;
+                chosen_char1.IsActive = true;
+                Sprite chosen_char2 = SelectedChar(2);
+                chosen_char2.Size = load_size;
+                chosen_char2.Position = load_pos2;
+                chosen_char2.IsActive = true;
+            }
+        }
     }
 }

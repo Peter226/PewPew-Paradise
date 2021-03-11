@@ -21,8 +21,7 @@ namespace PewPew_Paradise
         public List<MapSprite> maps = new List<MapSprite>();
         public int floor = 1;
         public int level_number;
-        
-
+        public CharacterSelect load_char = new CharacterSelect();
         public MapLoad ()
         {
 
@@ -36,15 +35,24 @@ namespace PewPew_Paradise
             MapSprite underground_map = new MapSprite("underground_map",new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
         }
-        public void LoadMap()
+        public void LoadMap(int player_number)
         {
             floor =1;
             level_number = 0;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
             MainWindow.Instance.SinglePlayer.Background = maps[level_number].map_color;
+            if (player_number == 1)
+            {
+                load_char.CharacterLoad(1);
+            }
+            else 
+            {
+                load_char.CharacterLoad(1);
+                load_char.CharacterLoad(2);
+            }
         }
-        public void NextMap()
+        public void NextMap(int player_number)
         {
             UnLoadMap();
             level_number++;
@@ -53,6 +61,15 @@ namespace PewPew_Paradise
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
             MainWindow.Instance.SinglePlayer.Background = maps[level_number].map_color;
+            if (player_number == 1)
+            {
+                load_char.CharacterLoad(1);
+            }
+            else
+            {
+                load_char.CharacterLoad(1);
+                load_char.CharacterLoad(2);
+            }
         }
         public void UnLoadMap()
         {

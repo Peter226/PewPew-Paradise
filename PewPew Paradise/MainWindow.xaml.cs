@@ -176,11 +176,11 @@ namespace PewPew_Paradise
             }
             if(e.Key == Key.M)
             {
-                load.UnLoadMap();
+                load.NextMap(2);
             }
             if (e.Key == Key.N)
             {
-                load.NextMap();
+                load.NextMap(1);
 
                 //Console.WriteLine("mittomén");
                 //2x hivta meg
@@ -407,13 +407,13 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             SinglePlayer.Visibility = Visibility.Visible;
-            load.LoadMap();
+            load.LoadMap(1);
         }
         private void bt_multiplay_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Collapsed;
             SinglePlayer.Visibility = Visibility.Visible;
-            load.LoadMap();
+            load.LoadMap(2);
         }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
