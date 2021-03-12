@@ -93,5 +93,9 @@ namespace PewPew_Paradise
         /// </summary>
         /// <returns></returns>
         public int Floornumbers() { return floor; }
+        public MapSprite CurrentMap()
+        {
+            return maps[level_number];
+        }
     }
 }
