@@ -57,12 +57,10 @@ namespace PewPew_Paradise.GameLogic
         }
 
         /// <summary>
-        /// Create a new game instance
+        /// Initialize GameManager
         /// </summary>
         /// <param name="frameRate"></param>
         /// 
-
-
         public static void Init(int frameRate)
         {
             _updateAction = new Action<object>(delegate (object param) { Update(); });

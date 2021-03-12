@@ -35,6 +35,13 @@ namespace PewPew_Paradise.Editor
             _endPoint = GetPoint(e);
             _previewSprites[_previewSprites.Count - 1].StretchToAbsoluteBounds(_startPoint, _endPoint);
             _isDrawing = false;
+
+            List<Rect> hitboxes = MainWindow.Instance.load.CurrentMap().hitboxes;
+            hitboxes.Clear();
+            foreach (Sprite sprite in _previewSprites)
+            {
+                hitboxes.Add(sprite.GetRect());
+            }
         }
         public static void Draw(object sender, MouseEventArgs e)
         {
