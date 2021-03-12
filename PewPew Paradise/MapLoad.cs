@@ -45,7 +45,7 @@ namespace PewPew_Paradise
             level_number = 0;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            MainWindow.Instance.SinglePlayer.Background = maps[level_number].map_color;
+            MainWindow.Instance.PlayingField.Background = maps[level_number].map_color;
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);
@@ -70,7 +70,7 @@ namespace PewPew_Paradise
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            MainWindow.Instance.SinglePlayer.Background = maps[level_number].map_color;
+            MainWindow.Instance.PlayingField.Background = maps[level_number].map_color;
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);

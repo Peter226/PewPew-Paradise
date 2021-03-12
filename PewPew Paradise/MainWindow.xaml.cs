@@ -354,6 +354,7 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Visible;
             Help.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Collapsed;
+            Leaderboard.Visibility = Visibility.Collapsed;
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
         }
@@ -368,14 +369,19 @@ namespace PewPew_Paradise
         private void bt_singleplay_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Collapsed;
-            SinglePlayer.Visibility = Visibility.Visible;
+            PlayingField.Visibility = Visibility.Visible;
             load.LoadMap(1);
         }
         private void bt_multiplay_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Collapsed;
-            SinglePlayer.Visibility = Visibility.Visible;
+            PlayingField.Visibility = Visibility.Visible;
             load.LoadMap(2);
+        }
+        private void bt_leaderboard_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            Leaderboard.Visibility = Visibility.Visible;
         }
         /// <summary>
         /// Selection arrow moving events

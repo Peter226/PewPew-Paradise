@@ -54,7 +54,7 @@
 
             </Image>
             <Image HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="502" Source="Images/Logo.png" Margin="6,10,0,0"/>
-            <Button x:Name="bt_leaderboard"  HorizontalAlignment="Left" Margin="430,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
+            <Button x:Name="bt_leaderboard"  HorizontalAlignment="Left" Margin="430,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1" Click="bt_leaderboard_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/leaderboard.png" />
 
@@ -637,8 +637,17 @@
 
 
         </Grid>
-        <!--Playing Area Grid-->
-        <Grid x:Name="SinglePlayer" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
+        <!--Leaderboard Grid-->
+        <Grid x:Name="Leaderboard" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed" >
+            <Button x:Name="bt_back_leaderboard" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
+
+                </Button.Background>
+            </Button>
+        </Grid>
+        <!--Playing Field Grid-->
+        <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
             <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Left" Margin="220,0,0,477" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">
 
             </Label>
