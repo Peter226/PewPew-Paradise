@@ -100,7 +100,6 @@ namespace PewPew_Paradise
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
             SpriteManager.AddAnimationCollection(playerAnimations,"Player");
 
-
         }
 
         /// <summary>
@@ -186,25 +185,11 @@ namespace PewPew_Paradise
             {
                 load.NextMap(1);
             }
-            if(e.Key == Key.A)
-            {
-               chars.SelectedChar(1).MoveLeft();
-            }
-            if(e.Key == Key.D)
-            {
-                chars.SelectedChar(1).MoveRight();
-            }
+
             if (e.Key == Key.W)
             {
+                
                 chars.SelectedChar(1).Jump();
-            }
-            if (e.Key == Key.Left)
-            {
-                chars.SelectedChar(2).MoveLeft();
-            }
-            if(e.Key == Key.Right)
-            {
-                chars.SelectedChar(2).MoveRight();
             }
 
             if (e.Key == Key.Up)
@@ -218,6 +203,8 @@ namespace PewPew_Paradise
                 enemy.AddComponent<CollideComponent>();
 
             }
+            if(e.Key == Key.Escape)
+                System.Windows.Application.Current.Shutdown();
         }
 
         /// <summary>
