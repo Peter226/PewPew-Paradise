@@ -71,7 +71,7 @@ namespace PewPew_Paradise
 
             load = new MapLoad();
             chars = new CharacterSelect();
-
+           
 
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
@@ -186,19 +186,19 @@ namespace PewPew_Paradise
             }
             if(e.Key == Key.A)
             {
-               chars.MoveLeft(1);
+               chars.SelectedChar(1).MoveLeft();
             }
             if(e.Key == Key.D)
             {
-                chars.MoveRight(1);
+                chars.SelectedChar(1).MoveRight();
             }
             if(e.Key == Key.Left)
             {
-                chars.MoveLeft(2);
+                chars.SelectedChar(2).MoveLeft();
             }
             if(e.Key == Key.Right)
             {
-                chars.MoveRight(2);
+                chars.SelectedChar(2).MoveRight();
             }
         }
 

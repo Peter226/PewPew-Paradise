@@ -183,73 +183,7 @@ namespace PewPew_Paradise
                 return chosen_char.Position;
             }
         }
-        /// <summary>
-        /// Moving left and right
-        /// </summary>
-        /// <param name="player_number"></param>
 
-        public void MoveLeft(int player_number)
-        {
-            Vector2 current_pos1 = MainWindow.Instance.chars.PlayerCurrentPosition(1);
-            Vector2 current_pos2 = MainWindow.Instance.chars.PlayerCurrentPosition(2);
-            Vector2 current_size1 = MainWindow.Instance.chars.SelectedChar(1).Size;
-            Vector2 current_size2 = MainWindow.Instance.chars.SelectedChar(2).Size;
-
-            if (player_number == 1)
-            {
-                current_size1.x = -1;
-                MainWindow.Instance.chars.SelectedChar(1).Size = current_size1;
-                if (current_pos1.x > 1)
-                {
-                    current_pos1.x-=0.1;
-                    MainWindow.Instance.chars.SelectedChar(1).Position = current_pos1;
-                }
-
-            }
-            else
-            {
-                current_size2.x = -1;
-                MainWindow.Instance.chars.SelectedChar(2).Size = current_size2;
-                if (current_pos2.x > 1)
-                {
-                    current_pos2.x-=0.1;
-                    MainWindow.Instance.chars.SelectedChar(2).Position = current_pos2;
-                }
-
-            }
-
-        }
-        public void MoveRight(int player_number)
-        {
-            Vector2 current_pos1 = MainWindow.Instance.chars.PlayerCurrentPosition(1);
-            Vector2 current_pos2 = MainWindow.Instance.chars.PlayerCurrentPosition(2);
-            Vector2 current_size1 = MainWindow.Instance.chars.SelectedChar(1).Size;
-            Vector2 current_size2 = MainWindow.Instance.chars.SelectedChar(2).Size;
-            if (player_number == 1)
-            {
-                current_size1.x = 1;
-                MainWindow.Instance.chars.SelectedChar(1).Size = current_size1;
-                if (current_pos1.x < 15)
-                {
-
-                    current_pos1.x+=0.1;
-                    MainWindow.Instance.chars.SelectedChar(1).Position = current_pos1;
-
-                }
-
-            }
-            else
-            {
-                current_size2.x = 1;
-                MainWindow.Instance.chars.SelectedChar(2).Size = current_size2;
-                if (current_pos2.x < 15)
-                {
-                    current_pos2.x+=0.1;
-                    MainWindow.Instance.chars.SelectedChar(2).Position = current_pos2;
-                }
-
-            }
-
-        }
+       
     }
 }
