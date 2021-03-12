@@ -11,12 +11,19 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
     class PhysicsComponent : SpriteComponent
     {
         const double gravityspeed = 9.81;
+        Vector2 speed;
         public PhysicsComponent(Sprite parent) : base(parent)
         { 
         }
         public override void Update()
         {
-            sprite.Position = new Vector2(sprite.Position.x, sprite.Position.y + gravityspeed*0.01);
+            speed.y += gravityspeed*0.000015*GameManager.DeltaTime;
+            sprite.Position += speed;
+            
+        }
+        public override void Disabled()
+        {
+            speed = Vector2.Zero;
         }
 
     }
