@@ -40,6 +40,7 @@ namespace PewPew_Paradise.GameLogic
         /// <returns></returns>
         public T AddComponent<T>() where T : SpriteComponent
         {
+
             foreach (SpriteComponent existingComponent in _components)
             {
                 if (existingComponent.GetType() == typeof(T))
@@ -126,9 +127,12 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Update()
         {
-
+            if (_components.Count > 0) {
+                Console.WriteLine(_components.Count);
+            }
             foreach (SpriteComponent component in _components)
             {
+                Console.WriteLine("Updated");
                 component.Update();
             }
 
@@ -141,7 +145,6 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Destroy()
         {
-            GameManager.OnUpdate -= Update;
             SpriteManager.RemoveSprite(this);
         }
 
@@ -168,7 +171,6 @@ namespace PewPew_Paradise.GameLogic
             Size = size;
             IsActive = active;
             SpriteManager.AddSprite(this);
-            GameManager.OnUpdate += Update;
         }
 
         /// <summary>

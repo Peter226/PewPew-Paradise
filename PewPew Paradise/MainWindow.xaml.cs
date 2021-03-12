@@ -158,6 +158,7 @@ namespace PewPew_Paradise
             if (e.Key == Key.P) {
                 SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(4, 4));
                 MrPlaceHolders.Add(mrph);
+                mrph.AddComponent<GameLogic.SpriteComponents.SpriteRandomizer>();
             }
             if (e.Key == Key.Space)
             {

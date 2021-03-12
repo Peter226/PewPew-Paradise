@@ -173,5 +173,14 @@ namespace PewPew_Paradise.GameLogic
             return 0;
         }
 
+
+        public static void UpdateSprites()
+        {
+            foreach (KeyValuePair<int,Sprite> sprite in Sprites)
+            {
+                sprite.Value.Update();
+            }
+        }
+
     }
 }

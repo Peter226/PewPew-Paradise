@@ -66,6 +66,7 @@ namespace PewPew_Paradise.GameLogic
             _updateAction = new Action<object>(delegate (object param) { Update(); });
             FrameRate = frameRate;
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png", "MrPlaceHolder");
+            OnUpdate += SpriteManager.UpdateSprites;
         }
 
         
