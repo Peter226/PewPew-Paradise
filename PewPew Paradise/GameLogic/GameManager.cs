@@ -7,6 +7,7 @@ using System.Threading;
 using System.Runtime.Remoting.Contexts;
 using PewPew_Paradise.Maths;
 using System.Diagnostics;
+using System.Windows.Threading;
 namespace PewPew_Paradise.GameLogic
 {
 
@@ -29,8 +30,6 @@ namespace PewPew_Paradise.GameLogic
 
         //Update Thread
         private static int _minimumDelta;
-        private static Action<object> _updateAction;
-        static Thread UpdateThread;
 
         //Update Event
         public delegate void UpdateDelegate();
@@ -38,14 +37,13 @@ namespace PewPew_Paradise.GameLogic
         public static event UpdateDelegate OnUpdate;
         public static event UpdateDelegate OnPostUpdate;
 
+        //Timer for update call
+        private static DispatcherTimer _dispatherTimer = new DispatcherTimer();
+
         //variables used to calculate DeltaTime
         private static double _lastTime;
         private static double _deltaTime;
         private static Stopwatch _stopWatch = new Stopwatch();
-
-        //fliplock
-        private static bool _threadFlipLock;
-        private static bool _threadLastLock;
 
         /// <summary>
         /// Get the elapsed time in milliseconds between two Update() calls
@@ -65,7 +63,6 @@ namespace PewPew_Paradise.GameLogic
         /// 
         public static void Init(int frameRate)
         {
-            _updateAction = new Action<object>(delegate (object param) { Update(); });
             FrameRate = frameRate;
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceHolder.png", "MrPlaceHolder");
             OnUpdate += SpriteManager.UpdateSprites;
@@ -84,32 +81,19 @@ namespace PewPew_Paradise.GameLogic
             }
             set
             {
-                _minimumDelta = 1000 / value - 1;
+                _minimumDelta = Math.Max(1,1000 / value - 1);
             }
         }
 
-        /// <summary>
-        /// Update function thread call that invokes a callback in the main thread [Do not call]
-        /// </summary>
-        private static void UpdateCall()
-        {
-            if (_threadFlipLock != _threadLastLock) {
-                _threadLastLock = _threadFlipLock;
-                if (_minimumDelta < 1) _minimumDelta = 1;
-                MainWindow.Instance.Dispatcher.Invoke(_updateAction, new object[] { 0 });
-            }
-            Thread.Sleep((int)Math.Max(0, _minimumDelta - (_stopWatch.ElapsedMilliseconds - _lastTime)));
-            UpdateCall();
-           
-        }
+       
 
         /// <summary>
         /// Function that calls the OnUpdate event [Do not call]
         /// </summary>
-        protected static void Update()
+        protected static void Update(object state, EventArgs e)
         {
-            _threadFlipLock = !_threadFlipLock;
             _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
+            Console.WriteLine(_deltaTime);
             if (OnPreUpdate != null)
             {
                 OnPreUpdate.Invoke();
@@ -130,12 +114,11 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public static void Begin()
         {
-            _threadFlipLock = false;
-            _threadLastLock = true;
+            
             _stopWatch.Start();
-            UpdateThread = new Thread(UpdateCall);
-            UpdateThread.Priority = ThreadPriority.Lowest;
-            UpdateThread.Start();
+            _dispatherTimer.Interval = TimeSpan.FromMilliseconds(_minimumDelta);
+            _dispatherTimer.Tick += Update;
+            _dispatherTimer.Start();
         }
 
         /// <summary>
@@ -144,10 +127,7 @@ namespace PewPew_Paradise.GameLogic
         public static void Stop()
         {
             _stopWatch.Stop();
-            if (UpdateThread != null)
-            {
-                UpdateThread.Abort();
-            }
+            _dispatherTimer.Stop();
         }
 
 
