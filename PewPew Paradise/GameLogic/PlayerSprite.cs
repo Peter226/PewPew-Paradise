@@ -59,7 +59,6 @@ namespace PewPew_Paradise.GameLogic
         }
         public override void Update()
         {
-            base.Update();
         }
         public override void Start()
         {

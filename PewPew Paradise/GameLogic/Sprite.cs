@@ -34,6 +34,16 @@ namespace PewPew_Paradise.GameLogic
         private List<SpriteComponent> _components = new List<SpriteComponent>();
 
         /// <summary>
+        /// Get the current components added
+        /// </summary>
+        /// <returns></returns>
+        public List<SpriteComponent> GetComponents()
+        {
+            return _components;
+        }
+
+
+        /// <summary>
         /// Add a new SpriteComponent to the Sprite (Only one of each type can be added per Sprite)
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -127,12 +137,7 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Update()
         {
-            foreach (SpriteComponent component in _components)
-            {
-                if (component.IsActive) {
-                    component.Update();
-                }
-            }
+            
         }
 
         /// <summary>

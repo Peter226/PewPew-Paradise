@@ -34,7 +34,9 @@ namespace PewPew_Paradise.GameLogic
 
         //Update Event
         public delegate void UpdateDelegate();
+        public static event UpdateDelegate OnPreUpdate;
         public static event UpdateDelegate OnUpdate;
+        public static event UpdateDelegate OnPostUpdate;
 
         //variables used to calculate DeltaTime
         private static double _lastTime;
@@ -108,7 +110,17 @@ namespace PewPew_Paradise.GameLogic
         {
             _threadFlipLock = !_threadFlipLock;
             _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
-            OnUpdate.Invoke();
+            if (OnPreUpdate != null)
+            {
+                OnPreUpdate.Invoke();
+            }
+            if (OnUpdate != null) {
+                OnUpdate.Invoke();
+            }
+            if (OnPostUpdate != null)
+            {
+                OnPostUpdate.Invoke();
+            }
             _lastTime = _stopWatch.ElapsedMilliseconds;
         }
 

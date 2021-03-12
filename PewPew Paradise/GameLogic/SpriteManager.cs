@@ -17,6 +17,8 @@ using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 using System.Windows.Resources;
 using System.ComponentModel;
+using PewPew_Paradise.GameLogic.SpriteComponents;
+
 namespace PewPew_Paradise.GameLogic
 {
     public class SpriteManager
@@ -179,6 +181,13 @@ namespace PewPew_Paradise.GameLogic
             foreach (KeyValuePair<int,Sprite> sprite in Sprites)
             {
                 sprite.Value.Update();
+                foreach (SpriteComponent component in sprite.Value.GetComponents())
+                {
+                    if (component.IsActive)
+                    {
+                        component.Update();
+                    }
+                }
             }
         }
 
