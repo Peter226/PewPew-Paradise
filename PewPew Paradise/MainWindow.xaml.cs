@@ -192,7 +192,6 @@ namespace PewPew_Paradise
                 chars.SelectedChar(1).Jump();
             }
 
-
             if (e.Key == Key.Up)
             {
                 chars.SelectedChar(2).Jump();
