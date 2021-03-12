@@ -15,6 +15,7 @@ using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
 using System.ComponentModel;
 using PewPew_Paradise.Editor;
+using PewPew_Paradise.GameLogic.SpriteComponents;
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -158,7 +159,8 @@ namespace PewPew_Paradise
             if (e.Key == Key.P) {
                 SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(4, 4));
                 MrPlaceHolders.Add(mrph);
-                mrph.AddComponent<GameLogic.SpriteComponents.SpriteRandomizer>();
+                mrph.AddComponent<PhysicsComponent>();
+                
             }
             if (e.Key == Key.Space)
             {
