@@ -206,9 +206,17 @@ namespace PewPew_Paradise
             {
                 chars.SelectedChar(2).MoveRight();
             }
+
             if (e.Key == Key.Up)
             {
                 chars.SelectedChar(2).Jump();
+            }
+            if (e.Key == Key.E)
+            {
+                EnemySprite enemy = new EnemySprite("ork", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
+                enemy.AddComponent<PhysicsComponent>();
+                enemy.AddComponent<CollideComponent>();
+
             }
         }
 

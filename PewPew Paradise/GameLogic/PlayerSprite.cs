@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PewPew_Paradise.Maths;
 using PewPew_Paradise.GameLogic;
+using PewPew_Paradise.GameLogic.SpriteComponents;
 
 namespace PewPew_Paradise.GameLogic
 {
@@ -59,6 +60,11 @@ namespace PewPew_Paradise.GameLogic
         public override void Update()
         {
             base.Update();
+        }
+        public override void Start()
+        {
+            AddComponent<PhysicsComponent>().IsActive=false;
+            AddComponent<CollideComponent>().IsActive=false;
         }
 
     }

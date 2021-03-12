@@ -8,10 +8,10 @@ using PewPew_Paradise.Maths;
 
 namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
-    class PhysicsComponent : SpriteComponent
+    public class PhysicsComponent : SpriteComponent
     {
         const double gravityspeed = 9.81;
-        Vector2 speed;
+        public Vector2 speed;
         public PhysicsComponent(Sprite parent) : base(parent)
         { 
         }

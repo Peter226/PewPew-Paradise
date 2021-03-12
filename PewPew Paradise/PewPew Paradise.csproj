@@ -71,9 +71,12 @@
     <Compile Include="CharacterSelect.cs" />
     <Compile Include="Editor\CollisionEditor.cs" />
     <Compile Include="GameLogic\AnimationCollection.cs" />
+    <Compile Include="GameLogic\CollideComponent.cs" />
+    <Compile Include="GameLogic\EnemySprite.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
     <Compile Include="GameLogic\MapSprite.cs" />
     <Compile Include="GameLogic\PlayerSprite.cs" />
+    <Compile Include="GameLogic\ProjectileSprite.cs" />
     <Compile Include="GameLogic\Sprite.cs" />
     <Compile Include="GameLogic\SpriteAnimated.cs" />
     <Compile Include="GameLogic\SpriteAnimation.cs" />

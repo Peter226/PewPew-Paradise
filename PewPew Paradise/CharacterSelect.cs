@@ -40,13 +40,6 @@ namespace PewPew_Paradise
             PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
 
-            unicorn2.AddComponent<PhysicsComponent>().IsActive = false;
-            unicorn1.AddComponent<PhysicsComponent>().IsActive = false;
-            MrPlaceholder1.AddComponent<PhysicsComponent>().IsActive = false;
-            MrPlaceholder2.AddComponent<PhysicsComponent>().IsActive = false;
-            ork1.AddComponent<PhysicsComponent>().IsActive = false;
-            ork2.AddComponent<PhysicsComponent>().IsActive = false;
-
         }
         /// <summary>
         /// Load Characters to options at first time
@@ -155,6 +148,7 @@ namespace PewPew_Paradise
             {
                 PlayerSprite chosen_char1 = SelectedChar(1);
                 SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
+                SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
                 chosen_char1.Position = load_pos1;
                 chosen_char1.Size = load_size;
                 chosen_char1.IsActive = true;
@@ -163,11 +157,13 @@ namespace PewPew_Paradise
             {
                 PlayerSprite chosen_char1 = SelectedChar(1);
                 SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
+                SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
                 chosen_char1.Position = load_pos1;
                 chosen_char1.Size = load_size;
                 chosen_char1.IsActive = true;
                 PlayerSprite chosen_char2 = SelectedChar(2);
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
+                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
                 chosen_char2.IsActive = true;
@@ -182,7 +178,9 @@ namespace PewPew_Paradise
             SelectedChar(1).IsActive = false;
             SelectedChar(2).IsActive = false;
             SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
+            SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
             SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
+            SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
         }
         public Vector2 PlayerCurrentPosition(int player_number)
         {
