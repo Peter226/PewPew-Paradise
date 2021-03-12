@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.Maths;
+using PewPew_Paradise.GameLogic.SpriteComponents;
 namespace PewPew_Paradise.GameLogic
 {
     /// <summary>
@@ -28,7 +29,27 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _size;
         private bool _active;
         private int _id;
-        
+
+        private List<SpriteComponent> _components = new List<SpriteComponent>();
+
+
+        public T AddComponent<T>() where T : SpriteComponent
+        {
+            foreach (SpriteComponent existingComponent in _components)
+            {
+                if (existingComponent.GetType() == typeof(T))
+                {
+                    return null;
+                }
+            }
+            T spriteComponent = (T)Activator.CreateInstance(typeof(T), new object[] { this });
+            spriteComponent.Start();
+            _components.Add(spriteComponent);
+            return spriteComponent;
+        }
+
+
+
         public int ID
         {
             get { return _id; }
@@ -67,7 +88,14 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Update()
         {
-            
+
+            foreach (SpriteComponent component in _components)
+            {
+                component.Update();
+            }
+
+
+
         }
 
         /// <summary>

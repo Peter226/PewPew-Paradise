@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PewPew_Paradise.GameLogic.SpriteComponent
+namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
-    class SpriteComponent
+    public class SpriteComponent
     {
         public Sprite sprite { get; }
         private bool _isActive;
