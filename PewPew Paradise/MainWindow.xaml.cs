@@ -185,15 +185,19 @@ namespace PewPew_Paradise
             }
             if(e.Key == Key.A)
             {
-                
                chars.MoveLeft(1);
-                
-                Console.WriteLine("A");
             }
             if(e.Key == Key.D)
             {
                 chars.MoveRight(1);
-                Console.WriteLine("D");
+            }
+            if(e.Key == Key.Left)
+            {
+                chars.MoveLeft(2);
+            }
+            if(e.Key == Key.Right)
+            {
+                chars.MoveRight(2);
             }
         }
 

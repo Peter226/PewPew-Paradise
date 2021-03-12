@@ -183,7 +183,10 @@ namespace PewPew_Paradise
                 return chosen_char.Position;
             }
         }
-
+        /// <summary>
+        /// Moving left and right
+        /// </summary>
+        /// <param name="player_number"></param>
 
         public void MoveLeft(int player_number)
         {
@@ -230,7 +233,6 @@ namespace PewPew_Paradise
                 {
 
                     current_pos1.x+=0.1;
-                    Console.WriteLine("1++");
                     MainWindow.Instance.chars.SelectedChar(1).Position = current_pos1;
 
                 }
