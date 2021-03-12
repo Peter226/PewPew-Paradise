@@ -30,9 +30,14 @@ namespace PewPew_Paradise.GameLogic
         private bool _active;
         private int _id;
 
+        //List of components that have been added to the spirte
         private List<SpriteComponent> _components = new List<SpriteComponent>();
 
-
+        /// <summary>
+        /// Add a new SpriteComponent to the Sprite (Only one of each type can be added per Sprite)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public T AddComponent<T>() where T : SpriteComponent
         {
             foreach (SpriteComponent existingComponent in _components)
@@ -46,6 +51,39 @@ namespace PewPew_Paradise.GameLogic
             spriteComponent.Start();
             _components.Add(spriteComponent);
             return spriteComponent;
+        }
+
+        /// <summary>
+        /// Get a SpriteComponent of a Sprite that has already been added
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetComponent<T>() where T : SpriteComponent
+        {
+            foreach (SpriteComponent existingComponent in _components)
+            {
+                if (existingComponent.GetType() == typeof(T))
+                {
+                    return (T)existingComponent;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Remove a certain type of component from the sprite
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public void RemoveComponent<T>() where T : SpriteComponent
+        {
+            for (int i = 0;i < _components.Count;i++)
+            {
+                if (_components[i].GetType() == typeof(T))
+                {
+                    _components.RemoveAt(i);
+                    return;
+                }
+            }
         }
 
 

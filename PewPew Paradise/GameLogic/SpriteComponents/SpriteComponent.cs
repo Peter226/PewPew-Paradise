@@ -11,6 +11,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         public Sprite sprite { get; }
         private bool _isActive;
 
+        /// <summary>
+        /// Get or set the active state of the component
+        /// </summary>
         public bool IsActive
         {
             get { return _isActive; }
@@ -29,26 +32,36 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             }
         }
 
+        /// <summary>
+        /// Called when component is enabled 
+        /// </summary>
         public virtual void Enabled()
         {
 
         }
+        /// <summary>
+        /// Called when component is disabled
+        /// </summary>
         public virtual void Disabled()
         {
 
         }
 
-
+        /// <summary>
+        /// Called when component is added
+        /// </summary>
         public virtual void Start()
         {
 
         }
+        /// <summary>
+        /// Called every frame
+        /// </summary>
         public virtual void Update()
         {
 
         }
 
-        
 
         /// <summary>
         /// Creates a new SpriteComponent for parent Sprite. [Do not use]
