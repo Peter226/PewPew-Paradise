@@ -77,7 +77,6 @@
     <Compile Include="GameLogic\Sprite.cs" />
     <Compile Include="GameLogic\SpriteAnimated.cs" />
     <Compile Include="GameLogic\SpriteAnimation.cs" />
-    <Compile Include="GameLogic\SpriteComponent\SpriteComponent.cs" />
     <Compile Include="GameLogic\SpriteManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

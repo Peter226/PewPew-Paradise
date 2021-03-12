@@ -28,7 +28,7 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _size;
         private bool _active;
         private int _id;
-
+        
         public int ID
         {
             get { return _id; }
