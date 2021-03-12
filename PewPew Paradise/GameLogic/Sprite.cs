@@ -127,17 +127,12 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Update()
         {
-            if (_components.Count > 0) {
-                Console.WriteLine(_components.Count);
-            }
             foreach (SpriteComponent component in _components)
             {
-                Console.WriteLine("Updated");
-                component.Update();
+                if (component.IsActive) {
+                    component.Update();
+                }
             }
-
-
-
         }
 
         /// <summary>
