@@ -70,6 +70,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         public SpriteComponent(Sprite parent)
         {
             sprite = parent;
+            IsActive = true;
         }
 
     }
