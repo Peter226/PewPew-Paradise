@@ -183,6 +183,18 @@ namespace PewPew_Paradise
             {
                 load.NextMap(1);
             }
+            if(e.Key == Key.A)
+            {
+                
+               chars.MoveLeft(1);
+                
+                Console.WriteLine("A");
+            }
+            if(e.Key == Key.D)
+            {
+                chars.MoveRight(1);
+                Console.WriteLine("D");
+            }
         }
 
         /// <summary>
