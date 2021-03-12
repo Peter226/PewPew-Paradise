@@ -194,13 +194,21 @@ namespace PewPew_Paradise
             {
                 chars.SelectedChar(1).MoveRight();
             }
-            if(e.Key == Key.Left)
+            if (e.Key == Key.W)
+            {
+                chars.SelectedChar(1).Jump();
+            }
+            if (e.Key == Key.Left)
             {
                 chars.SelectedChar(2).MoveLeft();
             }
             if(e.Key == Key.Right)
             {
                 chars.SelectedChar(2).MoveRight();
+            }
+            if (e.Key == Key.Up)
+            {
+                chars.SelectedChar(2).Jump();
             }
         }
 

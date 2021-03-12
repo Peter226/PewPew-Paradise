@@ -49,7 +49,13 @@ namespace PewPew_Paradise.GameLogic
             }
 
         }
+        public void Jump()
+        {
+            Vector2 current_pos = Position;
+            current_pos.y -= 1;
+            Position = current_pos;
 
+        }
         public override void Update()
         {
             base.Update();
