@@ -13,10 +13,13 @@ namespace PewPew_Paradise.GameLogic
     public class PlayerSprite : Sprite
     {
         public int player_id;
+        public string projectile;
         public List<Key> _keys = new List<Key>();
-        public PlayerSprite(string image, int player_id, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
+        public double timer =100000;
+        public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             this.player_id = player_id;
+            this.projectile = projectile;
             if(player_id == 1)
             {
                 _keys.Add(Key.W);
@@ -73,22 +76,33 @@ namespace PewPew_Paradise.GameLogic
 
 
         }
+        public void Shoot()
+        {
+            Vector2 size = Size * 0.5;
+            Vector2 position = Position;
+            if( size.x > 0 )
+                position.x += 1;
+            else
+                position.x -= 1;
+            ProjectileSprite projectile = new ProjectileSprite(this.projectile, position, size, true);
+            timer = 0;
+        }
+
         public override void Update()
         {
             if (Keyboard.IsKeyDown(_keys[1]))
                 MoveLeft();
             if (Keyboard.IsKeyDown(_keys[2]))
                 MoveRight();
-
             if (Keyboard.IsKeyDown(_keys[0]))
-            {
                 Jump();
-            }
+           if(timer>=500) 
+            if (Keyboard.IsKeyDown(_keys[3]))
+                Shoot();
 
-           
 
-
-            base.Update();
+            timer += GameManager.DeltaTime;
+                base.Update();
         }
         public override void Start()
         {

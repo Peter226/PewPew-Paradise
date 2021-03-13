@@ -24,20 +24,22 @@ namespace PewPew_Paradise
         public CharacterSelect()
         {
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
-            SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/OrkPM.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder1.png", "MrPlaceholder");
-            PlayerSprite unicorn1 = new PlayerSprite("unicorn", 1, select_pos1, select_size, false);
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/unicorn_projectile.png", "unicorn_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/OrkP.png", "ork_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/MrPlaceholder_projectile.png", "MrPlaceholder_projectile");
+            PlayerSprite unicorn1 = new PlayerSprite("unicorn", 1, "unicorn_projectile", select_pos1, select_size, false);
             chars1.Add(unicorn1);
-            PlayerSprite ork1 = new PlayerSprite("ork", 1, select_pos1, select_size, false);
+            PlayerSprite ork1 = new PlayerSprite("ork", 1, "ork_projectile", select_pos1, select_size, false);
             chars1.Add(ork1);
-            PlayerSprite MrPlaceholder1 = new PlayerSprite("MrPlaceholder", 1, select_pos1, select_size, false);
+            PlayerSprite MrPlaceholder1 = new PlayerSprite("MrPlaceholder", 1, "MrPlaceholder_projectile", select_pos1, select_size, false);
             chars1.Add(MrPlaceholder1);
-            PlayerSprite unicorn2 = new PlayerSprite("unicorn", 2, select_pos2, select_size, false);
+            PlayerSprite unicorn2 = new PlayerSprite("unicorn", 2, "unicorn_projectile", select_pos2, select_size, false);
             chars2.Add(unicorn2);
-            PlayerSprite ork2 = new PlayerSprite("ork", 2, select_pos2, select_size, false);
+            PlayerSprite ork2 = new PlayerSprite("ork", 2, "ork_projectile", select_pos2, select_size, false);
             chars2.Add(ork2);
-            PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, select_pos2, select_size, false);
+            PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, "MrPlaceholder_projectile", select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
 
         }
