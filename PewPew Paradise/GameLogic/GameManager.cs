@@ -93,20 +93,12 @@ namespace PewPew_Paradise.GameLogic
         {
             _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
             Console.WriteLine(_deltaTime);
-            if (OnPreUpdate != null)
-            {
-                OnPreUpdate.Invoke();
-            }
-            if (OnUpdate != null) {
-                OnUpdate.Invoke();
-            }
-            if (OnPostUpdate != null)
-            {
-                OnPostUpdate.Invoke();
-            }
+            OnPreUpdate?.Invoke();
+            OnUpdate?.Invoke();
+            OnPostUpdate?.Invoke();
             _lastTime = _stopWatch.ElapsedMilliseconds;
         }
-
+        
 
         /// <summary>
         /// Start the game Update loop

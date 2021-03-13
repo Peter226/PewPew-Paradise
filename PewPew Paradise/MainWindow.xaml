@@ -677,6 +677,7 @@
                 <ColumnDefinition Width="79*"/>
             </Grid.ColumnDefinitions>
         </Grid>
+        <Image x:Name="Dummy" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="arrow_left.png"/>
     </Grid>
 
 <!--Button Templates for clearing basic hover animation-->

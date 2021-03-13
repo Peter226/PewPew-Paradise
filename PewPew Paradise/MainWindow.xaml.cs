@@ -16,6 +16,7 @@ using PewPew_Paradise.Maths;
 using System.ComponentModel;
 using PewPew_Paradise.Editor;
 using PewPew_Paradise.GameLogic.SpriteComponents;
+using System.Windows.Media.Animation;
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -99,6 +100,13 @@ namespace PewPew_Paradise
             walkAnimation.keyFrames.Add(new Vector2(2, 1));
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
             SpriteManager.AddAnimationCollection(playerAnimations,"Player");
+
+
+            DoubleAnimation enslaveWPF = new DoubleAnimation(20.0,30.0,TimeSpan.FromMilliseconds(1));
+            enslaveWPF.RepeatBehavior = RepeatBehavior.Forever;
+            enslaveWPF.AutoReverse = true;
+            Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
+
 
         }
 
