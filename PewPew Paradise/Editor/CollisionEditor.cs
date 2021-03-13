@@ -40,12 +40,22 @@ namespace PewPew_Paradise.Editor
             previewSprite.RectangleElement.Fill = _colliderBrush;
             _previewSprites.Add(previewSprite);
             _endPoint = _startPoint;
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                _endPoint = (_startPoint * 2).Ceil() * 0.5;
+                _startPoint = (_startPoint * 2).Floor() * 0.5;
+                previewSprite.StretchToBounds(_endPoint,_startPoint);
+            }
             _isDrawing = true;
         }
         public static void StopDrawing(object sender, MouseEventArgs e)
         {
             _endPoint = GetPoint(e);
-            _previewSprites[_previewSprites.Count - 1].StretchToAbsoluteBounds(_startPoint, _endPoint);
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                _endPoint = (_endPoint * 2).Ceil() * 0.5;
+            }
+            _previewSprites[_previewSprites.Count - 1].StretchToAbsoluteBounds(_startPoint.RoundToPixels(), _endPoint.RoundToPixels());
             _isDrawing = false;
 
             UpdateMapHitboxes();   
@@ -66,11 +76,17 @@ namespace PewPew_Paradise.Editor
         public static void Draw(object sender, MouseEventArgs e)
         {
             _mousePos = GetPoint(e);
+
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                _mousePos = (_mousePos * 2).Ceil() * 0.5;
+            }
+
             _mouseNonRoundPos = GetPointNonRounded(e);
             if (_isDrawing)
             {
                 _endPoint = _mousePos;
-                _previewSprites[_previewSprites.Count - 1].StretchToAbsoluteBounds(_startPoint,_endPoint);
+                _previewSprites[_previewSprites.Count - 1].StretchToAbsoluteBounds(_startPoint.RoundToPixels(), _endPoint.RoundToPixels());
             }
             PositionZoom();
 

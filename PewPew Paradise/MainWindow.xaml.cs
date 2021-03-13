@@ -126,7 +126,16 @@ namespace PewPew_Paradise
             foreach (SpriteAnimated sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
-                newpos.x += Math.Sin(Timer * 2.2 + Math.Cos(newpos.y) * 0.1f) * 0.1f;
+                double deltaX = Math.Sin(Timer * 2.2 + Math.Cos(newpos.y) * 0.1f) * 0.1f;
+                if (deltaX < 0)
+                {
+                    sprite.Size = new Vector2(-Math.Abs(sprite.Size.x),sprite.Size.y);
+                }
+                else
+                {
+                    sprite.Size = new Vector2(Math.Abs(sprite.Size.x), sprite.Size.y);
+                }
+                newpos.x += deltaX;
                 newpos.y += Math.Sin(Timer * 3.3 + Math.Cos(newpos.x) * 0.1f) * 0.1f;
                 sprite.Position = newpos;
             }
@@ -156,9 +165,10 @@ namespace PewPew_Paradise
         {
             
             if (e.Key == Key.P) {
-                SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(4, 4));
+                SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
                 MrPlaceHolders.Add(mrph);
                 mrph.AddComponent<PhysicsComponent>();
+                mrph.AddComponent<CollideComponent>();
                 
             }
             if (e.Key == Key.Space)

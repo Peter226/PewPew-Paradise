@@ -17,8 +17,8 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         }
         public override void Update()
         {
-            speed.y += gravityspeed*0.000015*GameManager.DeltaTime;
-            sprite.Position += speed;
+            speed.y += gravityspeed * 0.002 * GameManager.DeltaTime;
+            sprite.Position += speed * 0.002 * GameManager.DeltaTime;
             
         }
         public override void Disabled()

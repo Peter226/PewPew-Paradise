@@ -9,7 +9,7 @@
         Title="PewPew Paradise" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
 
 
-    <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" RenderOptions.BitmapScalingMode="NearestNeighbor">
         <!--Main Menu Grid-->
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible">
             <Button x:Name="bt_singleplay" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" MouseEnter="bt_singleplay_MouseEnter" MouseLeave="bt_singleplay_MouseLeave" Click="bt_singleplay_Click">

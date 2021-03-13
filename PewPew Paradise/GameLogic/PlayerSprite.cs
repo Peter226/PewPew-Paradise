@@ -69,7 +69,7 @@ namespace PewPew_Paradise.GameLogic
         public void Jump()
         {
             if(GetComponent<CollideComponent>().isOnGround)
-            GetComponent<PhysicsComponent>().speed.y = -0.075;
+            GetComponent<PhysicsComponent>().speed.y = -8.075;
 
 
         }

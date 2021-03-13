@@ -46,6 +46,27 @@ namespace PewPew_Paradise.Maths
         }
 
         /// <summary>
+        /// Floored vector
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 Floor()
+        {
+            return new Vector2(Math.Floor(this.x), Math.Floor(this.y));
+        }
+
+
+        /// <summary>
+        /// Ceiled vector
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 Ceil()
+        {
+            return new Vector2(Math.Ceiling(this.x), Math.Ceiling(this.y));
+        }
+
+
+
+        /// <summary>
         /// Rounded vector to the game's pixel art resolution
         /// </summary>
         public Vector2 RoundToPixels()
