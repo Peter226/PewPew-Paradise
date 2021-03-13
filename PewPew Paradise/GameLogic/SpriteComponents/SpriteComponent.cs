@@ -52,7 +52,10 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             GameManager.OnUpdate -= this.CallUpdate;
         }
 
-
+        protected virtual void OnParentDestroyed(object parent)
+        {
+            Destroy();
+        }
 
         /// <summary>
         /// Called when component is added
@@ -87,6 +90,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             sprite = parent;
             IsActive = true;
             GameManager.OnUpdate += CallUpdate;
+            parent.OnDetroyed += OnParentDestroyed;
         }
 
     }

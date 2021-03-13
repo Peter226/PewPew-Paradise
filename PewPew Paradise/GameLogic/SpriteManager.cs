@@ -176,10 +176,5 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
-        public static void UpdateSprites()
-        {
-            
-        }
-
     }
 }

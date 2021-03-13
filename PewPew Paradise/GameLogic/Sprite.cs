@@ -34,6 +34,9 @@ namespace PewPew_Paradise.GameLogic
         //List of components that have been added to the spirte
         private List<SpriteComponent> _components = new List<SpriteComponent>();
 
+        public delegate void OnDestroyDelegate(object state);
+        public event OnDestroyDelegate OnDetroyed;
+
         /// <summary>
         /// Get the current components added
         /// </summary>
@@ -92,7 +95,7 @@ namespace PewPew_Paradise.GameLogic
             {
                 if (_components[i].GetType() == typeof(T))
                 {
-                    _components[i].Destroy();
+                    SpriteComponent spriteComponent = _components[i];
                     _components.RemoveAt(i);
                     return;
                 }
@@ -157,6 +160,9 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public virtual void Destroy()
         {
+            if (OnDetroyed != null) {
+                OnDetroyed.Invoke(this);
+            }
             GameManager.OnUpdate -= CallUpdate;
             SpriteManager.RemoveSprite(this);
         }
@@ -180,7 +186,6 @@ namespace PewPew_Paradise.GameLogic
             brush.ImageSource = SpriteManager.GetImage(image);
             _image.Fill = brush;
             _brush = brush;
-            _image.RenderTransformOrigin = new Point(0.5, 0.5);
             Position = position;
             Size = size;
             IsActive = active;
@@ -223,11 +228,11 @@ namespace PewPew_Paradise.GameLogic
         public Rect GetRect()
         {
             Rect rect = new Rect();
-            Vector2 topLeft = Position - Size / 2.0;
+            Vector2 topLeft = Position - Size.Abs() / 2.0;
             rect.X = topLeft.x;
             rect.Y = topLeft.y;
-            rect.Width = Size.x;
-            rect.Height = Size.y;
+            rect.Width = Size.Abs().x;
+            rect.Height = Size.Abs().y;
             return rect;
         }
 
@@ -284,16 +289,14 @@ namespace PewPew_Paradise.GameLogic
                 _size = value;
                 if (_size.x < 0)
                 {
-                    _size.x = -_size.x;
                     scale.x = -1;
                 }
                 if (_size.y < 0) {
-                    _size.y = -_size.y;
                     scale.y = -1;
                 }
                 ScaleTransform scaleTransform = new ScaleTransform(scale.x,scale.y);
                 _image.RenderTransform = scaleTransform;
-                Vector2 canvasSize = SpriteManager.VectorToCanvas(_size);
+                Vector2 canvasSize = SpriteManager.VectorToCanvas(_size.Abs());
                 _image.Width = canvasSize.x;
                 _image.Height = canvasSize.y;
                 Position = _position;
