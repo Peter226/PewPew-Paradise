@@ -186,16 +186,7 @@ namespace PewPew_Paradise
                 load.NextMap(1);
             }
 
-            if (e.Key == Key.W)
-            {
-                
-                chars.SelectedChar(1).Jump();
-            }
-
-            if (e.Key == Key.Up)
-            {
-                chars.SelectedChar(2).Jump();
-            }
+            
             if (e.Key == Key.E)
             {
                 EnemySprite enemy = new EnemySprite("ork", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
@@ -475,23 +466,7 @@ namespace PewPew_Paradise
         {
             chars.PreChar(2);
         }
-        /// <summary>
-        /// Mouse events
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            CollisionEditor.StartDrawing(sender,e);
-        }
-        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            CollisionEditor.StopDrawing(sender, e);
-        }
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-            CollisionEditor.Draw(sender, e);
-        }
+        
 
 
     }

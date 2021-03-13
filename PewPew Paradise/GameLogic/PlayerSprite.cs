@@ -79,6 +79,15 @@ namespace PewPew_Paradise.GameLogic
                 MoveLeft();
             if (Keyboard.IsKeyDown(_keys[2]))
                 MoveRight();
+
+            if (Keyboard.IsKeyDown(_keys[0]))
+            {
+                Jump();
+            }
+
+           
+
+
             base.Update();
         }
         public override void Start()

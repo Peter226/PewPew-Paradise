@@ -23,6 +23,7 @@ namespace PewPew_Paradise.GameLogic
     /// </summary>
     public class Sprite
     {
+        public string image { get; }
         protected Rectangle _image { get; }
         protected ImageBrush _brush { get; }
         private Vector2 _position;
@@ -156,6 +157,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="size">Size in game units</param>
         public Sprite(string image, Vector2 position, Vector2 size, bool active = true)
         {
+            this.image = image;   
             _id = SpriteManager.CreateSpriteID();
             _image = new Rectangle();
             _image.Stretch = Stretch.Fill;

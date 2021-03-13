@@ -60,7 +60,11 @@ namespace PewPew_Paradise.Maths
         /// <returns></returns>
         public Vector2 Normalize()
         {
-            return this / Length();
+            double length = Length();
+            if (length == 0.0) {
+                return Vector2.One;
+            }
+            return this / length;
         }
 
         /// <summary>

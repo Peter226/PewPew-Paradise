@@ -187,9 +187,6 @@
     <Resource Include="Images\Sprites\sky2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Sprites\Utility\collision_preview.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\leaderboard.png" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +202,8 @@
     <Resource Include="Images\small_arrow_left.png" />
     <Resource Include="Images\small_arrow_right.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\Sprites\Utility\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
