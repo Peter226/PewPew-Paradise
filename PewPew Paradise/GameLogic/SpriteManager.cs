@@ -178,17 +178,7 @@ namespace PewPew_Paradise.GameLogic
 
         public static void UpdateSprites()
         {
-            foreach (KeyValuePair<int,Sprite> sprite in Sprites)
-            {
-                sprite.Value.Update();
-                foreach (SpriteComponent component in sprite.Value.GetComponents())
-                {
-                    if (component.IsActive)
-                    {
-                        component.Update();
-                    }
-                }
-            }
+            
         }
 
     }

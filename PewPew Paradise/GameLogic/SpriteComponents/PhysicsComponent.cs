@@ -25,6 +25,5 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
             speed = Vector2.Zero;
         }
-
     }
 }

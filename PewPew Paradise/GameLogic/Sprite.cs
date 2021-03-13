@@ -92,6 +92,7 @@ namespace PewPew_Paradise.GameLogic
             {
                 if (_components[i].GetType() == typeof(T))
                 {
+                    _components[i].Destroy();
                     _components.RemoveAt(i);
                     return;
                 }
@@ -141,11 +142,22 @@ namespace PewPew_Paradise.GameLogic
             
         }
 
+        private void CallUpdate()
+        {
+            if (IsActive)
+            {
+                Update();
+            }
+        }
+
+
+
         /// <summary>
         /// Destroy sprite
         /// </summary>
         public virtual void Destroy()
         {
+            GameManager.OnUpdate -= CallUpdate;
             SpriteManager.RemoveSprite(this);
         }
 
@@ -173,6 +185,7 @@ namespace PewPew_Paradise.GameLogic
             Size = size;
             IsActive = active;
             SpriteManager.AddSprite(this);
+            GameManager.OnUpdate += CallUpdate;
         }
 
         /// <summary>

@@ -205,5 +205,8 @@
   <ItemGroup>
     <Folder Include="Images\Sprites\Utility\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Collectibles\Banana.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

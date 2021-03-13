@@ -47,6 +47,13 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
 
         }
 
+        public void Destroy()
+        {
+            GameManager.OnUpdate -= this.CallUpdate;
+        }
+
+
+
         /// <summary>
         /// Called when component is added
         /// </summary>
@@ -62,6 +69,14 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
 
         }
 
+        private void CallUpdate()
+        {
+            if (IsActive)
+            {
+                Update();
+            }
+        }
+
 
         /// <summary>
         /// Creates a new SpriteComponent for parent Sprite. [Do not use]
@@ -71,6 +86,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
             sprite = parent;
             IsActive = true;
+            GameManager.OnUpdate += CallUpdate;
         }
 
     }
