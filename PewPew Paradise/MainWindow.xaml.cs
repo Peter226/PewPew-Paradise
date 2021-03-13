@@ -101,7 +101,7 @@ namespace PewPew_Paradise
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
             SpriteManager.AddAnimationCollection(playerAnimations,"Player");
 
-
+            Dummy.Opacity = 0.0;
             DoubleAnimation enslaveWPF = new DoubleAnimation(20.0,30.0,TimeSpan.FromMilliseconds(1));
             enslaveWPF.RepeatBehavior = RepeatBehavior.Forever;
             enslaveWPF.AutoReverse = true;
