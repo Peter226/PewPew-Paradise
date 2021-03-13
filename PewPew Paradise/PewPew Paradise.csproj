@@ -162,7 +162,6 @@
     <Resource Include="Images\Sprites\Characters\OrkF.png" />
     <Resource Include="Images\Sprites\Characters\OrkIM.png" />
     <Resource Include="Images\Sprites\Characters\OrkIT.png" />
-    <Resource Include="Images\Sprites\Characters\OrkP.png" />
     <Resource Include="Images\Sprites\Characters\OrkP2.png" />
     <Resource Include="Images\Sprites\Characters\OrkP3.png" />
     <Resource Include="Images\Sprites\Characters\OrkPM.png" />
@@ -207,6 +206,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\Collectibles\Banana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Projectiles\MrPlaceholder_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\OrkP.png" />
+    <Resource Include="Images\Sprites\Projectiles\unicorn_projectile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
