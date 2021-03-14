@@ -131,7 +131,7 @@ namespace PewPew_Paradise
         public void Update()
         {
             Timer -= (float)(GameManager.DeltaTime * 0.00075);
-            foreach (SpriteAnimated sprite in MrPlaceHolders)
+            foreach (Sprite sprite in MrPlaceHolders)
             {
                 Vector2 newpos = sprite.Position;
                 double deltaX = Math.Sin(Timer * 2.2 + Math.Cos(newpos.y) * 0.1f) * 0.1f;
@@ -173,17 +173,17 @@ namespace PewPew_Paradise
         {
             
             if (e.Key == Key.P) {
-                SpriteAnimated mrph = new SpriteAnimated("MrPlaceHolder", "Player", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
+                Sprite mrph = new Sprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
                 MrPlaceHolders.Add(mrph);
                 mrph.AddComponent<PhysicsComponent>();
                 mrph.AddComponent<CollideComponent>();
-                
+                mrph.AddComponent<AnimatorComponent>().SetAnimation("Player");
             }
             if (e.Key == Key.Space)
             {
-                foreach (SpriteAnimated spriteAnimated in MrPlaceHolders)
+                foreach (Sprite spriteAnimated in MrPlaceHolders)
                 {
-                    spriteAnimated.PlayAnimation(0);
+                    spriteAnimated.GetComponent<AnimatorComponent>().PlayAnimation(0);
                 }
             }
             if (e.Key == Key.Delete)

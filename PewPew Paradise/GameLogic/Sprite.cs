@@ -23,6 +23,7 @@ namespace PewPew_Paradise.GameLogic
     /// </summary>
     public class Sprite
     {
+
         public string image { get; }
         protected Rectangle _image { get; }
         protected ImageBrush _brush { get; }
