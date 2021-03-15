@@ -29,7 +29,7 @@ namespace PewPew_Paradise.GameLogic
             double distance = splast.DistanceTo(sprite.Position);
             int iterations = (int)Math.Ceiling(3 * distance);
             Vector2 phx = sprite.Position;
-            for (int i=0; i<iterations; i++ )
+            for (int i=0; i < iterations; i++ )
             {
                 Vector2 spbetween = splast + (phx - splast) * ((i + 1) / iterations);
                 sprite.Position = spbetween;
@@ -42,7 +42,7 @@ namespace PewPew_Paradise.GameLogic
                     if (PlayerHitBox.IntersectsWith(platform))
                     {
                         didhit = true;
-                        Vector2 sp = spbetween;
+                        Vector2 sp = sprite.Position;
                         double Bottom = Math.Abs(PlayerHitBox.Bottom - platform.Top);
                         double Left = Math.Abs(PlayerHitBox.Right - platform.Left);
                         double Right = Math.Abs(PlayerHitBox.Left - platform.Right);
