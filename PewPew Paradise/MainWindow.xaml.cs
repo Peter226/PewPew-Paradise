@@ -85,7 +85,7 @@ namespace PewPew_Paradise
 
             
 
-            AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One,Vector2.One * 4,1);
+            AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One * 4,1);
             SpriteAnimation jumpAnimation = new SpriteAnimation(150, false, 2);
             playerAnimations.animations.Add(jumpAnimation);
             jumpAnimation.keyFrames.Add(new Vector2(0, 0));
