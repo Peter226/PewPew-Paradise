@@ -22,7 +22,6 @@ namespace PewPew_Paradise
         /// </summary>
         public MapLoad ()
         {
-
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
             SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
             SpriteManager.LoadImage("Images/Sprites/underground_map.png", "underground_map");

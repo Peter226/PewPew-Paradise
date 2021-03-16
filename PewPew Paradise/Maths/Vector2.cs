@@ -35,6 +35,14 @@ namespace PewPew_Paradise.Maths
             return $"({x}; {y})";
         }
 
+        /// <summary>
+        /// Lerp.
+        /// </summary>
+        public static Vector2 Lerp(Vector2 A, Vector2 B, double t)
+        {
+            return B * t + A * (1 - t);
+        }
+
 
         /// <summary>
         /// Rounded vector
@@ -63,7 +71,6 @@ namespace PewPew_Paradise.Maths
         {
             return new Vector2(Math.Ceiling(this.x), Math.Ceiling(this.y));
         }
-
 
 
         /// <summary>

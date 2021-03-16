@@ -177,7 +177,7 @@ namespace PewPew_Paradise
                 Sprite mrph = new Sprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
                 MrPlaceHolders.Add(mrph);
                 mrph.AddComponent<Portal>();
-                mrph.AddComponent<PhysicsComponent>();
+                mrph.AddComponent<PhysicsComponent>().IsActive=false;
                 mrph.AddComponent<CollideComponent>();
                 mrph.AddComponent<AnimatorComponent>().SetAnimation("Player");
             }

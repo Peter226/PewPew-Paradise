@@ -33,12 +33,13 @@ namespace PewPew_Paradise.GameLogic
             {
                 Vector2 spbetween = splast + (phx - splast) * ((i + 1) / iterations);
                 sprite.Position = spbetween;
-                Rect PlayerHitBox = sprite.GetRect();
+                
 
                 bool didhit = false;
 
                 foreach (Rect platform in MainWindow.Instance.load.CurrentMap().hitboxes)
                 {
+                    Rect PlayerHitBox = sprite.GetRect();
                     if (PlayerHitBox.IntersectsWith(platform))
                     {
                         didhit = true;
@@ -53,29 +54,25 @@ namespace PewPew_Paradise.GameLogic
                         if (Bottom == min)
                         {
                             sp.y -= PlayerHitBox.Bottom - platform.Top;
-                            sprite.Position = sp;
                             physicsComponent.speed.y = Math.Min(physicsComponent.speed.y, 0);
                             isOnGround = true;
                         }
                         else if (Top == min)
                         {
                             sp.y -= PlayerHitBox.Top - platform.Bottom;
-                            sprite.Position = sp;
                             physicsComponent.speed.y = Math.Max(physicsComponent.speed.y, 0);
                         }
                         else if (Right == min)
                         {
                             sp.x -= PlayerHitBox.Left - platform.Right;
-                            sprite.Position = sp;
                             physicsComponent.speed.x = Math.Max(physicsComponent.speed.x, 0);
                         }
                         else if (Left == min)
                         {
                             sp.x -= PlayerHitBox.Right - platform.Left;
-                            sprite.Position = sp;
                             physicsComponent.speed.x = Math.Min(physicsComponent.speed.x, 0);
                         }
-
+                        sprite.Position = sp;
 
 
 
