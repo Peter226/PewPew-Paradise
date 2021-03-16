@@ -18,6 +18,7 @@ namespace PewPew_Paradise.GameLogic
         public double timer =100000;
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
+            AddComponent<Portal>();
             this.player_id = player_id;
             this.projectile = projectile;
             if(player_id == 1)
@@ -88,16 +89,18 @@ namespace PewPew_Paradise.GameLogic
 
         public override void Update()
         {
-            if (Keyboard.IsKeyDown(_keys[1]))
-                MoveLeft();
-            if (Keyboard.IsKeyDown(_keys[2]))
-                MoveRight();
-            if (Keyboard.IsKeyDown(_keys[0]))
-                Jump();
-           if(timer>=500) 
-            if (Keyboard.IsKeyDown(_keys[3]))
-                Shoot();
-
+            if (MainWindow.Instance.PlayingField.IsVisible)
+            {
+                if (Keyboard.IsKeyDown(_keys[1]))
+                    MoveLeft();
+                if (Keyboard.IsKeyDown(_keys[2]))
+                    MoveRight();
+                if (Keyboard.IsKeyDown(_keys[0]))
+                    Jump();
+                if (timer >= 500)
+                    if (Keyboard.IsKeyDown(_keys[3]))
+                        Shoot();
+            }
 
             timer += GameManager.DeltaTime;
                 base.Update();

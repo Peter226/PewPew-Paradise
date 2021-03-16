@@ -146,23 +146,16 @@ namespace PewPew_Paradise
             Vector2 load_pos1 = new Vector2(4.5,2);
             Vector2 load_pos2 = new Vector2(11.5, 2);
             Vector2 load_size = new Vector2(1, 1);
-            if (player_number ==1)
+
+            PlayerSprite chosen_char1 = SelectedChar(1);
+            SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
+            SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
+            chosen_char1.Position = load_pos1;
+            chosen_char1.Size = load_size;
+            chosen_char1.IsActive = true;
+
+            if(player_number!=1)
             {
-                PlayerSprite chosen_char1 = SelectedChar(1);
-                SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
-                SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
-                chosen_char1.Position = load_pos1;
-                chosen_char1.Size = load_size;
-                chosen_char1.IsActive = true;
-            }
-            else
-            {
-                PlayerSprite chosen_char1 = SelectedChar(1);
-                SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
-                SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
-                chosen_char1.Position = load_pos1;
-                chosen_char1.Size = load_size;
-                chosen_char1.IsActive = true;
                 PlayerSprite chosen_char2 = SelectedChar(2);
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
                 SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
@@ -177,25 +170,17 @@ namespace PewPew_Paradise
         /// <param name="player_number"></param>
         public void UnLoadCharacter(int player_number)
         {
-            SelectedChar(1).IsActive = false;
-            SelectedChar(2).IsActive = false;
-            SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
-            SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
-            SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
-            SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
+            SelectedChar(player_number).IsActive = false;
+            SelectedChar(player_number).GetComponent<PhysicsComponent>().IsActive = false;
+            SelectedChar(player_number).GetComponent<CollideComponent>().IsActive = false;
+
         }
         public Vector2 PlayerCurrentPosition(int player_number)
         {
-            if (player_number == 1)
-            {
-                PlayerSprite chosen_char = SelectedChar(1);
+
+                PlayerSprite chosen_char = SelectedChar(player_number);
                 return chosen_char.Position;
-            }
-            else
-            {
-                PlayerSprite chosen_char = SelectedChar(2);
-                return chosen_char.Position;
-            }
+
         }
 
        

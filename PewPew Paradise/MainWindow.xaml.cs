@@ -173,8 +173,10 @@ namespace PewPew_Paradise
         {
             
             if (e.Key == Key.P) {
+
                 Sprite mrph = new Sprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
                 MrPlaceHolders.Add(mrph);
+                mrph.AddComponent<Portal>();
                 mrph.AddComponent<PhysicsComponent>();
                 mrph.AddComponent<CollideComponent>();
                 mrph.AddComponent<AnimatorComponent>().SetAnimation("Player");
