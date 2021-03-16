@@ -55,9 +55,14 @@ namespace PewPew_Paradise.Editor
             {
                 _endPoint = (_endPoint * 2).Ceil() * 0.5;
             }
-            _previewSprites[_previewSprites.Count - 1].StretchToAbsoluteBounds(_startPoint.RoundToPixels(), _endPoint.RoundToPixels());
+            Sprite sprite = _previewSprites[_previewSprites.Count - 1];
+            sprite.StretchToAbsoluteBounds(_startPoint.RoundToPixels(), _endPoint.RoundToPixels());
             _isDrawing = false;
-
+            if (sprite.Size.x * sprite.Size.y <= 0.0001)
+            {
+                sprite.Destroy();
+                _previewSprites.RemoveAt(_previewSprites.Count - 1);
+            }
             UpdateMapHitboxes();   
         }
 
@@ -148,9 +153,11 @@ namespace PewPew_Paradise.Editor
             {
                 if (Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    _previewSprites[_previewSprites.Count - 1].Destroy();
-                    _previewSprites.RemoveAt(_previewSprites.Count - 1);
-                    UpdateMapHitboxes();
+                    if (_previewSprites.Count > 0) {
+                        _previewSprites[_previewSprites.Count - 1].Destroy();
+                        _previewSprites.RemoveAt(_previewSprites.Count - 1);
+                        UpdateMapHitboxes();
+                    }
                 }
             }
 

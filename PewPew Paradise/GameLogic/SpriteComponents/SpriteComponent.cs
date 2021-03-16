@@ -49,7 +49,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
 
         public void Destroy()
         {
-            GameManager.OnUpdate -= this.CallUpdate;
+            GameManager.OnUpdate -= CallUpdate;
+            GameManager.OnPostUpdate -= CallPostUpdate;
+            GameManager.OnPreUpdate -= CallPreUpdate;
         }
 
         protected virtual void OnParentDestroyed(object parent)
@@ -64,6 +66,16 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
 
         }
+
+
+        /// <summary>
+        /// Called every frame before Update
+        /// </summary>
+        public virtual void PreUpdate()
+        {
+
+        }
+
         /// <summary>
         /// Called every frame
         /// </summary>
@@ -71,15 +83,35 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
 
         }
+        /// <summary>
+        /// Called every frame after Update
+        /// </summary>
+        public virtual void PostUpdate()
+        {
+
+        }
 
         private void CallUpdate()
         {
-            if (IsActive)
+            if (IsActive && sprite.IsActive)
             {
                 Update();
             }
         }
-
+        private void CallPostUpdate()
+        {
+            if (IsActive && sprite.IsActive)
+            {
+                PostUpdate();
+            }
+        }
+        private void CallPreUpdate()
+        {
+            if (IsActive && sprite.IsActive)
+            {
+                PreUpdate();
+            }
+        }
 
         /// <summary>
         /// Creates a new SpriteComponent for parent Sprite. [Do not use]
@@ -90,6 +122,8 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             sprite = parent;
             IsActive = true;
             GameManager.OnUpdate += CallUpdate;
+            GameManager.OnPostUpdate += CallPostUpdate;
+            GameManager.OnPreUpdate += CallPreUpdate;
             parent.OnDetroyed += OnParentDestroyed;
         }
 

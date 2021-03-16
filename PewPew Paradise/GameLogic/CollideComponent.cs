@@ -21,7 +21,7 @@ namespace PewPew_Paradise.GameLogic
         {
         }
 
-       public override void Update()
+       public override void PostUpdate()
         {
             isOnGround = false;
             
@@ -49,30 +49,31 @@ namespace PewPew_Paradise.GameLogic
                         double Top = Math.Abs(PlayerHitBox.Top - platform.Bottom);
                         double min = Math.Min(Math.Min(Bottom, Left), Math.Min(Right, Top));
 
+                        PhysicsComponent physicsComponent = sprite.GetComponent<PhysicsComponent>();
                         if (Bottom == min)
                         {
                             sp.y -= PlayerHitBox.Bottom - platform.Top;
                             sprite.Position = sp;
-                            sprite.GetComponent<PhysicsComponent>().speed.y = 0;
+                            physicsComponent.speed.y = Math.Min(physicsComponent.speed.y, 0);
                             isOnGround = true;
                         }
                         else if (Top == min)
                         {
                             sp.y -= PlayerHitBox.Top - platform.Bottom;
                             sprite.Position = sp;
-                            sprite.GetComponent<PhysicsComponent>().speed.y = 0;
+                            physicsComponent.speed.y = Math.Max(physicsComponent.speed.y, 0);
                         }
                         else if (Right == min)
                         {
                             sp.x -= PlayerHitBox.Left - platform.Right;
                             sprite.Position = sp;
-                            sprite.GetComponent<PhysicsComponent>().speed.x = 0;
+                            physicsComponent.speed.x = Math.Max(physicsComponent.speed.x, 0);
                         }
                         else if (Left == min)
                         {
                             sp.x -= PlayerHitBox.Right - platform.Left;
                             sprite.Position = sp;
-                            sprite.GetComponent<PhysicsComponent>().speed.x = 0;
+                            physicsComponent.speed.x = Math.Min(physicsComponent.speed.x, 0);
                         }
 
 
