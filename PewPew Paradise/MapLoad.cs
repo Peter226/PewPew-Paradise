@@ -12,7 +12,7 @@ namespace PewPew_Paradise
 {
     public class MapLoad
     {
-        Vector2 map_position = new Vector2(8, 8);
+        Vector2 map_position = new Vector2(8, 24);
         Vector2 map_size = new Vector2(16, 16);
         public List<MapSprite> maps = new List<MapSprite>();
         public int floor = 1;
@@ -54,6 +54,7 @@ namespace PewPew_Paradise
                 MainWindow.Instance.chars.CharacterLoad(1);
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
+            maps[level_number].MapLoaded();
         }
         /// <summary>
         /// Loading next map and replace players to start position
@@ -75,13 +76,18 @@ namespace PewPew_Paradise
             {
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
+            maps[level_number].MapLoaded();
+
+
         }
         /// <summary>
         /// Unload map
         /// </summary>
         public void UnLoadMap()
         {
-            maps[level_number].IsActive = false;
+            //maps[level_number].IsActive = false;
+            maps[level_number].MapUnloaded();
+
         }
         /// <summary>
         /// Return the number of finished floors
