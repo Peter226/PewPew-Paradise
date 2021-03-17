@@ -13,8 +13,9 @@ namespace PewPew_Paradise
     {
         public List<PlayerSprite> chars1 = new List<PlayerSprite>();
         public List<PlayerSprite> chars2 = new List<PlayerSprite>();
-        Vector2 select_pos1 = new Vector2(4, 9);
-        Vector2 select_pos2 = new Vector2(12, 9);
+        public static Vector2 select_pos1 = new Vector2(4, 9);
+        public static Vector2 select_pos2 = new Vector2(12, 9);
+        public static Vector2 select_pos_mid = new Vector2(8, 9);
         Vector2 select_size = new Vector2(3, 3);
         public int chars_number1;
         public int chars_number2;
@@ -88,6 +89,11 @@ namespace PewPew_Paradise
             {
                 chars_number2 = 0;
                 chars2[chars_number2].IsActive = true;
+                SelectedChar(1).Position = select_pos1;
+            }
+            else
+            {
+                SelectedChar(1).Position = select_pos_mid;
             }
         }
         /// <summary>
@@ -110,6 +116,14 @@ namespace PewPew_Paradise
                 chars_number2++;
                 chars_number2 = chars_number2 % chars2.Count;
                 chars2[chars_number2].IsActive = true;
+            }
+            if (chars2[chars_number2].IsActive)
+            {
+                SelectedChar(1).Position = select_pos1;
+            }
+            else
+            {
+                SelectedChar(1).Position = select_pos_mid;
             }
         }
         /// <summary>

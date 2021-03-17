@@ -234,5 +234,9 @@
     <Resource Include="Images\Sprites\Characters\toast.png" />
     <Resource Include="Images\Sprites\Characters\turtle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\button_mid.png" />
+    <Resource Include="Images\Play.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

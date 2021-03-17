@@ -395,10 +395,15 @@ namespace PewPew_Paradise
         {
             Selection.Visibility = Visibility.Visible;
             MainMenu.Visibility = Visibility.Collapsed;
-            Player1.Visibility = Visibility.Visible; 
+            Player1.Visibility = Visibility.Visible;
+            Player2.Visibility = Visibility.Collapsed;
+
+            Thickness margin = Player1.Margin;
+            margin.Right = GameWindow.Width / 2 - Player1.Width;
+            Player1.Margin = margin;
+
             player_number = 1;
             chars.LoadChar(player_number);
-
         }
         private void bt_multiplay_Click(object sender, RoutedEventArgs e)
         {
@@ -406,9 +411,13 @@ namespace PewPew_Paradise
             Selection.Visibility = Visibility.Visible;
             Player1.Visibility = Visibility.Visible;
             Player2.Visibility = Visibility.Visible;
+
+            Thickness margin = Player1.Margin;
+            margin.Right = Player1.Width;
+            Player1.Margin = margin;
+
             player_number = 2;
             chars.LoadChar(player_number);
-
 
         }
         private void bt_play_Click(object sender, RoutedEventArgs e)
