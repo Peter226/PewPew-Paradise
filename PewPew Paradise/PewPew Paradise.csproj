@@ -226,5 +226,13 @@
     <Resource Include="Images\Sprites\Projectiles\OrkP.png" />
     <Resource Include="Images\Sprites\Projectiles\unicorn_projectile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Characters\cactus.png" />
+    <Resource Include="Images\Sprites\Characters\monkey.png" />
+    <Resource Include="Images\Sprites\Characters\muffin.png" />
+    <Resource Include="Images\Sprites\Characters\penguin.png" />
+    <Resource Include="Images\Sprites\Characters\toast.png" />
+    <Resource Include="Images\Sprites\Characters\turtle.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

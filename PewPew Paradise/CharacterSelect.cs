@@ -13,8 +13,8 @@ namespace PewPew_Paradise
     {
         public List<PlayerSprite> chars1 = new List<PlayerSprite>();
         public List<PlayerSprite> chars2 = new List<PlayerSprite>();
-        Vector2 select_pos1 = new Vector2(3, 13);
-        Vector2 select_pos2 = new Vector2(10, 13);
+        Vector2 select_pos1 = new Vector2(4, 9);
+        Vector2 select_pos2 = new Vector2(12, 9);
         Vector2 select_size = new Vector2(3, 3);
         public int chars_number1;
         public int chars_number2;
@@ -23,35 +23,72 @@ namespace PewPew_Paradise
         /// </summary>
         public CharacterSelect()
         {
+            //Characters
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/OrkPM.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder1.png", "MrPlaceholder");
+            SpriteManager.LoadImage("Images/Sprites/Characters/cactus.png", "cactus");
+            SpriteManager.LoadImage("Images/Sprites/Characters/monkey.png", "monkey");
+            SpriteManager.LoadImage("Images/Sprites/Characters/muffin.png", "muffin");
+            SpriteManager.LoadImage("Images/Sprites/Characters/penguin.png", "penguin");
+            SpriteManager.LoadImage("Images/Sprites/Characters/toast.png", "toast");
+            SpriteManager.LoadImage("Images/Sprites/Characters/turtle.png", "turtle");
+            //Projectiles
             SpriteManager.LoadImage("Images/Sprites/Projectiles/unicorn_projectile.png", "unicorn_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/OrkP.png", "ork_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/MrPlaceholder_projectile.png", "MrPlaceholder_projectile");
+            //Player1
             PlayerSprite unicorn1 = new PlayerSprite("unicorn", 1, "unicorn_projectile", select_pos1, select_size, false);
             chars1.Add(unicorn1);
             PlayerSprite ork1 = new PlayerSprite("ork", 1, "ork_projectile", select_pos1, select_size, false);
             chars1.Add(ork1);
             PlayerSprite MrPlaceholder1 = new PlayerSprite("MrPlaceholder", 1, "MrPlaceholder_projectile", select_pos1, select_size, false);
             chars1.Add(MrPlaceholder1);
+            PlayerSprite cactus1 = new PlayerSprite("cactus", 1, "unicorn_projectile", select_pos1, select_size, false);
+            chars1.Add(cactus1);
+            PlayerSprite monkey1 = new PlayerSprite("monkey", 1, "unicorn_projectile", select_pos1, select_size, false);
+            chars1.Add(monkey1);
+            PlayerSprite muffin1 = new PlayerSprite("muffin", 1, "unicorn_projectile", select_pos1, select_size, false);
+            chars1.Add(muffin1);
+            PlayerSprite penguin1 = new PlayerSprite("penguin", 1, "unicorn_projectile", select_pos1, select_size, false);
+            chars1.Add(penguin1);
+            PlayerSprite toast1 = new PlayerSprite("toast", 1, "unicorn_projectile", select_pos1, select_size, false);
+            chars1.Add(toast1);
+            PlayerSprite turtle1 = new PlayerSprite("turtle", 1, "unicorn_projectile", select_pos1, select_size, false);
+            chars1.Add(turtle1);
+            //Player2
             PlayerSprite unicorn2 = new PlayerSprite("unicorn", 2, "unicorn_projectile", select_pos2, select_size, false);
             chars2.Add(unicorn2);
             PlayerSprite ork2 = new PlayerSprite("ork", 2, "ork_projectile", select_pos2, select_size, false);
             chars2.Add(ork2);
             PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, "MrPlaceholder_projectile", select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
+            PlayerSprite cactus2 = new PlayerSprite("cactus", 2, "unicorn_projectile", select_pos2, select_size, false);
+            chars2.Add(cactus2);
+            PlayerSprite monkey2 = new PlayerSprite("monkey", 2, "unicorn_projectile", select_pos2, select_size, false);
+            chars2.Add(monkey2);
+            PlayerSprite muffin2 = new PlayerSprite("muffin", 2, "unicorn_projectile", select_pos2, select_size, false);
+            chars2.Add(muffin2);
+            PlayerSprite penguin2 = new PlayerSprite("penguin", 2, "unicorn_projectile", select_pos2, select_size, false);
+            chars2.Add(penguin2);
+            PlayerSprite toast2 = new PlayerSprite("toast", 2, "unicorn_projectile", select_pos2, select_size, false);
+            chars2.Add(toast2);
+            PlayerSprite turtle2 = new PlayerSprite("turtle", 2, "unicorn_projectile", select_pos2, select_size, false);
+            chars2.Add(turtle2);
 
         }
         /// <summary>
         /// Load Characters to options at first time
         /// </summary>
-        public void LoadChar() 
+        public void LoadChar(int player_number) 
         {
             chars_number1 = 0;
             chars1[chars_number1].IsActive = true;
-            chars_number2 = 0;
-            chars2[chars_number2].IsActive = true;
+            if (player_number != 1)
+            {
+                chars_number2 = 0;
+                chars2[chars_number2].IsActive = true;
+            }
         }
         /// <summary>
         /// Loading the next char in the list
@@ -148,20 +185,22 @@ namespace PewPew_Paradise
             Vector2 load_size = new Vector2(1, 1);
 
             PlayerSprite chosen_char1 = SelectedChar(1);
-            SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
-            SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
+            
             chosen_char1.Position = load_pos1;
             chosen_char1.Size = load_size;
             chosen_char1.IsActive = true;
+            SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
+            SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
 
-            if(player_number!=1)
+            if (player_number!=1)
             {
                 PlayerSprite chosen_char2 = SelectedChar(2);
-                SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
-                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
+                
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
                 chosen_char2.IsActive = true;
+                SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
+                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
             }
         }
         /// <summary>

@@ -41,6 +41,7 @@ namespace PewPew_Paradise
         public MapLoad load;
         public CharacterSelect chars;
 
+        public int player_number;
         /// <summary>
         /// Get instance
         /// </summary>
@@ -372,6 +373,7 @@ namespace PewPew_Paradise
             Help.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Collapsed;
+            Selection.Visibility = Visibility.Collapsed;
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
         }
@@ -380,20 +382,34 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Visible;
-            chars.LoadChar();
+            
             
         }
         private void bt_singleplay_Click(object sender, RoutedEventArgs e)
         {
+            Selection.Visibility = Visibility.Visible;
             MainMenu.Visibility = Visibility.Collapsed;
-            PlayingField.Visibility = Visibility.Visible;
-            load.LoadMap(1);
+            Player1.Visibility = Visibility.Visible; 
+            player_number = 1;
+            chars.LoadChar(player_number);
+
         }
         private void bt_multiplay_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Collapsed;
+            Selection.Visibility = Visibility.Visible;
+            Player1.Visibility = Visibility.Visible;
+            Player2.Visibility = Visibility.Visible;
+            player_number = 2;
+            chars.LoadChar(player_number);
+
+
+        }
+        private void bt_play_Click(object sender, RoutedEventArgs e)
+        {
+            Selection.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Visible;
-            load.LoadMap(2);
+            load.LoadMap(player_number);
         }
         private void bt_leaderboard_Click(object sender, RoutedEventArgs e)
         {
@@ -486,7 +502,6 @@ namespace PewPew_Paradise
         {
             chars.PreChar(2);
         }
-        
 
 
     }
