@@ -20,8 +20,12 @@ namespace PewPew_Paradise.GameLogic
         public CollideComponent(Sprite parent) : base(parent)
         {
         }
-
-       public override void PostUpdate()
+        public override void Enabled()
+        {
+            splast = sprite.Position;
+            isOnGround = false;
+        }
+        public override void PostUpdate()
         {
             isOnGround = false;
             
