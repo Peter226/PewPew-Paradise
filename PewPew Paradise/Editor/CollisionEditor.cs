@@ -161,6 +161,15 @@ namespace PewPew_Paradise.Editor
                 }
             }
 
+            if (e.Key == Key.S)
+            {
+                if (Keyboard.IsKeyDown(Key.LeftCtrl))
+                {
+                    MainWindow.Instance.load.CurrentMap().SerializeMap();
+                }
+            }
+
+
             if (e.Key == Key.Delete)
             {
                 Rect mouseRect = new Rect(_mousePos,new Size(0.0,0.0));
@@ -210,7 +219,38 @@ namespace PewPew_Paradise.Editor
             _zoomAmount = Math.Min(Math.Max(_zoomAmount,1.0),GameManager.GameResolution * 0.25);
             PositionZoom();
         }
+        /// <summary>
+        /// Load map colliders into the editor when a new map is loaded
+        /// </summary>
+        /// <param name="map"></param>
+        private static void MapLoaded(MapSprite map)
+        {
+            for (int i = 0;i < map.hitboxes.Count;i++)
+            {
+                Sprite previewSprite = new Sprite("MrPlaceHolder", _startPoint, Vector2.Zero);
+                previewSprite.RectangleElement.Fill = _colliderBrush;
+                _previewSprites.Add(previewSprite);
+                previewSprite.StretchToBounds(map.hitboxes[i]);
+            }
+        }
 
+        /// <summary>
+        /// clear all colliders on map unload
+        /// </summary>
+        /// <param name="map"></param>
+        private static void MapUnloaded(MapSprite map)
+        {
+            for (int i = 0;i < _previewSprites.Count;i++)
+            {
+                _previewSprites[i].Destroy();
+            }
+            _previewSprites.Clear();
+        }
+
+        /// <summary>
+        /// Initialize
+        /// </summary>
+        /// <param name="uIElement"></param>
         public static void Init(Grid uIElement)
         {
             MainWindow.Instance.MouseWheel += ZoomIn;
@@ -219,6 +259,10 @@ namespace PewPew_Paradise.Editor
             MainWindow.Instance.MouseDown += StartDrawing;
             MainWindow.Instance.MouseUp += StopDrawing;
             MainWindow.Instance.MouseMove += Draw;
+
+            MapSprite.OnMapLoaded += MapLoaded;
+            MapSprite.OnMapUnloaded += MapUnloaded;
+
             _collisionEditor = uIElement;
             _colliderBrush = new SolidColorBrush(Color.FromArgb(180,0,255,0));
             _colliderHoverBrush = new SolidColorBrush(Color.FromArgb(180, 255, 255, 0));

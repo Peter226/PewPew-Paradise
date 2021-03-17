@@ -67,7 +67,7 @@ namespace PewPew_Paradise
             GameManager.Init(60);
             GameManager.OnUpdate += Update;
             GameManager.Begin();
-            CollisionEditor.Init(collisionEditor);
+            //CollisionEditor.Init(collisionEditor); //COLLISION EDITOR
 
 
 

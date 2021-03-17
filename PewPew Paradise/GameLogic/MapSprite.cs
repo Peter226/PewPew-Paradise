@@ -6,6 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
+using Newtonsoft.Json;
+using System.Windows.Resources;
+using System.IO;
+using System.Reflection;
+
 namespace PewPew_Paradise.GameLogic
 {
     public class MapSprite : Sprite
@@ -14,24 +19,58 @@ namespace PewPew_Paradise.GameLogic
         /// MapSprite for changing background colors
         /// </summary>
         public SolidColorBrush map_color;
-
+        
         public List<Rect> hitboxes = new List<Rect>();
         public Vector2 mapplace = new Vector2(8, 8);
-        public Vector2 map_up = new Vector2(8, -16);
+        public Vector2 map_up = new Vector2(8, -8);
         Vector2 map_position = new Vector2(8, 24);
         public double timer;
         public bool just_loaded;
         public bool just_unloaded;
+
+
+        //JSON
+        public static JsonSerializer map_serializer = new JsonSerializer();
+        //JSON
+
+
         public MapSprite(string image, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             map_color = map_background;
-            
-
+            DeserializeMap();
         }
         public delegate void MapLoadDelegate(MapSprite map);
         public static event MapLoadDelegate OnMapLoaded;
         public static event MapLoadDelegate OnMapUnloaded;
         
+
+        public void SerializeMap()
+        {
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+            string path = Path.Combine(projectDirectory, "MapCollisions", this.image + ".json");
+            StreamWriter sw = new StreamWriter(path);
+            JsonWriter jw = new JsonTextWriter(sw);
+            map_serializer.Serialize(jw,hitboxes);
+            jw.Close();
+            sw.Close();
+        }
+
+        public void DeserializeMap()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = $"PewPew_Paradise.MapCollisions.{this.image}.json";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                using (JsonReader jreader = new JsonTextReader(reader))
+                {
+                    hitboxes = (List<Rect>)map_serializer.Deserialize(jreader, typeof(List<Rect>));
+                }
+            }
+        }
+
+
         public void MapLoaded() 
         {
             timer = 0;
