@@ -42,6 +42,12 @@ namespace PewPew_Paradise
         public CharacterSelect chars;
 
         public int player_number;
+        public string player1_name;
+        public string player2_name;
+        public int score1 = 0;
+        public int score2= 0;
+
+
         /// <summary>
         /// Get instance
         /// </summary>
@@ -409,6 +415,18 @@ namespace PewPew_Paradise
         {
             Selection.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Visible;
+            player1_name = tb_player1.Text;
+            lb_player1_name.Content = player1_name;
+            lb_player1_score.Content = score1;
+            if (player_number != 1)
+            { 
+                player2_name = tb_player2.Text;
+                lb_player2_name.Content = player2_name;
+                lb_player2_score.Content = score2;
+                lb_player2_name.Visibility = Visibility.Visible;
+                lb_player2_score.Visibility = Visibility.Visible;
+            }
+
             load.LoadMap(player_number);
         }
         private void bt_leaderboard_Click(object sender, RoutedEventArgs e)

@@ -612,7 +612,7 @@
             <Image HorizontalAlignment="Left" Height="100" Margin="51,88,0,0" VerticalAlignment="Top" Width="100" Source="Images/Audio.png" Grid.Column="1"/>
             <Image HorizontalAlignment="Left" Height="33" Margin="90,134,0,0" VerticalAlignment="Top" Width="127" Source="Images/MusicVolume.png" Grid.Column="1"/>
             <Image HorizontalAlignment="Left" Height="32" Margin="94,200,0,0" VerticalAlignment="Top" Width="123" Source="Images/EffectVolume.png" Grid.Column="1"/>
-            <!--Image HorizontalAlignment="Left" Height="121" Margin="51,278,0,0" VerticalAlignment="Top" Width="169" Source="Images/Characters.png" Grid.Column="1"/-->
+            
 
 
 
@@ -629,10 +629,22 @@
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
-            <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Left" Margin="220,0,0,477" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">
+            <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Left" Margin="220,0,0,477" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">
 
             </Label>
-            <Label x:Name="lb_floor_counter" HorizontalAlignment="Left" Margin="220,35,0,442" FontSize="20" FontFamily="Comic Sans MS" Foreground="#7C0476" Width="64" RenderTransformOrigin="0,0.429" HorizontalContentAlignment="Center">
+            <Label x:Name="lb_player1_name"  HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">
+           
+            </Label>
+            <Label x:Name="lb_player1_score"  HorizontalAlignment="Left" Margin="0,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361">
+
+            </Label>
+            <Label x:Name="lb_floor_counter" HorizontalAlignment="Left" Margin="220,35,0,442" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" Width="64" RenderTransformOrigin="0,0.429" HorizontalContentAlignment="Center">
+
+            </Label>
+            <Label x:Name="lb_player2_name"  HorizontalAlignment="Left" Margin="400,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed">
+
+            </Label>
+            <Label x:Name="lb_player2_score"  HorizontalAlignment="Left" Margin="400,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed">
 
             </Label>
         </Grid>
