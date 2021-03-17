@@ -92,7 +92,6 @@ namespace PewPew_Paradise.GameLogic
         protected static void Update(object state, EventArgs e)
         {
             _deltaTime = _stopWatch.Elapsed.TotalMilliseconds - _lastTime;
-            Console.WriteLine(_deltaTime);
             OnPreUpdate?.Invoke();
             OnUpdate?.Invoke();
             OnPostUpdate?.Invoke();
