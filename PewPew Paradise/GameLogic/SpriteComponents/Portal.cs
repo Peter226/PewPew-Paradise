@@ -18,8 +18,17 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             if (sprite.Position.y > 15)
             {
                     pos.y = 2;
+                if (sprite.GetComponent<CollideComponent>() != null)
+                {
+                    sprite.GetComponent<CollideComponent>().IsActive = false;
+                }
+                sprite.Position = pos;
+                if (sprite.GetComponent<CollideComponent>() != null)
+                {
+                    sprite.GetComponent<CollideComponent>().IsActive = true;
+                }
             }
-            sprite.Position = pos;
+            
             base.PreUpdate();
         }
     }

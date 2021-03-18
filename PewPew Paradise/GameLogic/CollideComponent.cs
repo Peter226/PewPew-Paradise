@@ -25,6 +25,7 @@ namespace PewPew_Paradise.GameLogic
             splast = sprite.Position;
             isOnGround = false;
         }
+        
         public override void PostUpdate()
         {
             isOnGround = false;
@@ -35,7 +36,7 @@ namespace PewPew_Paradise.GameLogic
             Vector2 phx = sprite.Position;
             for (int i=0; i < iterations; i++ )
             {
-                Vector2 spbetween = splast + (phx - splast) * ((i + 1) / iterations);
+                Vector2 spbetween = splast + (phx - splast) * (((double)i + 1.0) / (double)iterations);
                 sprite.Position = spbetween;
                 
 
@@ -44,6 +45,10 @@ namespace PewPew_Paradise.GameLogic
                 foreach (Rect platform in MainWindow.Instance.load.CurrentMap().hitboxes)
                 {
                     Rect PlayerHitBox = sprite.GetRect();
+                    PlayerHitBox.X += 0.1;
+                    PlayerHitBox.Width -= 0.2;
+                    PlayerHitBox.Y += 0.0001;
+                    PlayerHitBox.Height -= 0.0001;
                     if (PlayerHitBox.IntersectsWith(platform))
                     {
                         didhit = true;
@@ -65,7 +70,7 @@ namespace PewPew_Paradise.GameLogic
                         {
                             sp.y -= PlayerHitBox.Top - platform.Bottom;
                             physicsComponent.speed.y = Math.Max(physicsComponent.speed.y, 0);
-                        }
+                        } 
                         else if (Right == min)
                         {
                             sp.x -= PlayerHitBox.Left - platform.Right;
@@ -77,11 +82,6 @@ namespace PewPew_Paradise.GameLogic
                             physicsComponent.speed.x = Math.Min(physicsComponent.speed.x, 0);
                         }
                         sprite.Position = sp;
-
-
-
-
-
                     }
                 }
                 if (didhit) break;
@@ -89,7 +89,5 @@ namespace PewPew_Paradise.GameLogic
             }
             splast = sprite.Position;
         }
-
-
     }
 }

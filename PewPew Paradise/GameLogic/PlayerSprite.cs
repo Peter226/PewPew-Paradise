@@ -19,6 +19,8 @@ namespace PewPew_Paradise.GameLogic
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();
+            //AddComponent<AnimatorComponent>().SetAnimation("Player");
+
             this.player_id = player_id;
             this.projectile = projectile;
             if(player_id == 1)
@@ -72,8 +74,10 @@ namespace PewPew_Paradise.GameLogic
         }
         public void Jump()
         {
-            if(GetComponent<CollideComponent>().isOnGround)
-            GetComponent<PhysicsComponent>().speed.y = -6.375;
+            if (GetComponent<CollideComponent>().isOnGround)
+            {
+                GetComponent<PhysicsComponent>().speed.y = -6.375;
+            }
         }
         public void Shoot()
         {

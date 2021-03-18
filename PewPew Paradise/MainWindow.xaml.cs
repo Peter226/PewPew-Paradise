@@ -78,21 +78,7 @@ namespace PewPew_Paradise
 
 
 
-            load = new MapLoad();
-            chars = new CharacterSelect();
-           
-
-            string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string p = System.IO.Path.GetDirectoryName(l);
-            p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
-            Console.WriteLine(p);
-            mp.Open(new Uri(p));
-            mp.MediaOpened += new EventHandler(PlayMedia);
-
-
-            
-
-            AnimationCollection playerAnimations = new AnimationCollection("Player",Vector2.One * 4,1);
+            AnimationCollection playerAnimations = new AnimationCollection("Player", Vector2.One * 4, 1);
             SpriteAnimation jumpAnimation = new SpriteAnimation(150, false, 2);
             playerAnimations.animations.Add(jumpAnimation);
             jumpAnimation.keyFrames.Add(new Vector2(0, 0));
@@ -106,15 +92,27 @@ namespace PewPew_Paradise
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
             walkAnimation.keyFrames.Add(new Vector2(2, 1));
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
-            SpriteManager.AddAnimationCollection(playerAnimations,"Player");
+            SpriteManager.AddAnimationCollection(playerAnimations, "Player");
+
+
+
+            load = new MapLoad();
+            chars = new CharacterSelect();
+           
+
+            string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string p = System.IO.Path.GetDirectoryName(l);
+            p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
+            Console.WriteLine(p);
+            mp.Open(new Uri(p));
+            mp.MediaOpened += new EventHandler(PlayMedia);
+
 
             Dummy.Opacity = 0.0;
             DoubleAnimation enslaveWPF = new DoubleAnimation(20.0,30.0,TimeSpan.FromMilliseconds(1));
             enslaveWPF.RepeatBehavior = RepeatBehavior.Forever;
             enslaveWPF.AutoReverse = true;
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
-
-
         }
 
         /// <summary>
@@ -128,7 +126,6 @@ namespace PewPew_Paradise
             mp.Play();
             double k = (double)sl_music.Value;
             mp.Volume = k / 100;
-
         }
 
 
@@ -137,6 +134,47 @@ namespace PewPew_Paradise
         /// </summary>
         public void Update()
         {
+
+
+            if (Keyboard.IsKeyDown(Key.Left))
+            {
+                foreach (Sprite sprite in MrPlaceHolders)
+                {
+                    Vector2 newpos = sprite.Position;
+                    newpos.x -= GameManager.DeltaTime * 0.01;
+                    sprite.Position = newpos;
+                }
+            }
+            if (Keyboard.IsKeyDown(Key.Right))
+            {
+                foreach (Sprite sprite in MrPlaceHolders)
+                {
+                    Vector2 newpos = sprite.Position;
+                    newpos.x += GameManager.DeltaTime * 0.01;
+                    sprite.Position = newpos;
+                }
+            }
+            if (Keyboard.IsKeyDown(Key.Up))
+            {
+                foreach (Sprite sprite in MrPlaceHolders)
+                {
+                    Vector2 newpos = sprite.Position;
+                    newpos.y -= GameManager.DeltaTime * 0.01;
+                    sprite.Position = newpos;
+                }
+            }
+            if (Keyboard.IsKeyDown(Key.Down))
+            {
+                foreach (Sprite sprite in MrPlaceHolders)
+                {
+                    Vector2 newpos = sprite.Position;
+                    newpos.y += GameManager.DeltaTime * 0.01;
+                    sprite.Position = newpos;
+                }
+            }
+
+
+
             Timer -= (float)(GameManager.DeltaTime * 0.00075);
             foreach (Sprite sprite in MrPlaceHolders)
             {
@@ -184,7 +222,7 @@ namespace PewPew_Paradise
                 Sprite mrph = new Sprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
                 MrPlaceHolders.Add(mrph);
                 mrph.AddComponent<Portal>();
-                mrph.AddComponent<PhysicsComponent>().IsActive=false;
+                mrph.AddComponent<PhysicsComponent>();
                 mrph.AddComponent<CollideComponent>();
                 mrph.AddComponent<AnimatorComponent>().SetAnimation("Player");
             }
