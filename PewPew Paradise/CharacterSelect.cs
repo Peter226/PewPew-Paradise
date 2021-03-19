@@ -42,6 +42,15 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Projectiles/unicorn_projectile.png", "unicorn_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/OrkP.png", "ork_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/MrPlaceholder_projectile.png", "MrPlaceholder_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/cactus_projectile.png", "cactus_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/monkey_projectile.png", "monkey_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/muffin_projectile.png", "muffin_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/penguin_projectile.png", "penguin_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/toast_projectile.png", "toast_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/turtle_projectile.png", "turtle_projectile");
+            
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/dino_projectile.png", "dino_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/koala_projectile.png", "koala_projectile");
             //Player1
             PlayerSprite unicorn1 = new PlayerSprite("unicorn", 1, "unicorn_projectile", select_pos1, select_size, false);
             chars1.Add(unicorn1);
@@ -49,23 +58,23 @@ namespace PewPew_Paradise
             chars1.Add(ork1);
             PlayerSprite MrPlaceholder1 = new PlayerSprite("MrPlaceholder", 1, "MrPlaceholder_projectile", select_pos1, select_size, false);
             chars1.Add(MrPlaceholder1);
-            PlayerSprite cactus1 = new PlayerSprite("cactus", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite cactus1 = new PlayerSprite("cactus", 1, "cactus_projectile", select_pos1, select_size, false);
             chars1.Add(cactus1);
-            PlayerSprite monkey1 = new PlayerSprite("monkey", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite monkey1 = new PlayerSprite("monkey", 1, "monkey_projectile", select_pos1, select_size, false);
             chars1.Add(monkey1);
-            PlayerSprite muffin1 = new PlayerSprite("muffin", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite muffin1 = new PlayerSprite("muffin", 1, "muffin_projectile", select_pos1, select_size, false);
             chars1.Add(muffin1);
-            PlayerSprite penguin1 = new PlayerSprite("penguin", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite penguin1 = new PlayerSprite("penguin", 1, "penguin_projectile", select_pos1, select_size, false);
             chars1.Add(penguin1);
-            PlayerSprite toast1 = new PlayerSprite("toast", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite toast1 = new PlayerSprite("toast", 1, "toast_projectile", select_pos1, select_size, false);
             chars1.Add(toast1);
-            PlayerSprite turtle1 = new PlayerSprite("turtle", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite turtle1 = new PlayerSprite("turtle", 1, "turtle_projectile", select_pos1, select_size, false);
             chars1.Add(turtle1);
-            PlayerSprite t_rex1 = new PlayerSprite("t-rex", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite t_rex1 = new PlayerSprite("t-rex", 1, "dino_projectile", select_pos1, select_size, false);
             chars1.Add(t_rex1);
-            PlayerSprite dino1 = new PlayerSprite("dino", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite dino1 = new PlayerSprite("dino", 1, "dino_projectile", select_pos1, select_size, false);
             chars1.Add(dino1);
-            PlayerSprite koala1 = new PlayerSprite("koala", 1, "unicorn_projectile", select_pos1, select_size, false);
+            PlayerSprite koala1 = new PlayerSprite("koala", 1, "koala_projectile", select_pos1, select_size, false);
             chars1.Add(koala1);
             
 
@@ -77,23 +86,23 @@ namespace PewPew_Paradise
             chars2.Add(ork2);
             PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, "MrPlaceholder_projectile", select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
-            PlayerSprite cactus2 = new PlayerSprite("cactus", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite cactus2 = new PlayerSprite("cactus", 2, "cactus_projectile", select_pos2, select_size, false);
             chars2.Add(cactus2);
-            PlayerSprite monkey2 = new PlayerSprite("monkey", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite monkey2 = new PlayerSprite("monkey", 2, "monkey_projectile", select_pos2, select_size, false);
             chars2.Add(monkey2);
-            PlayerSprite muffin2 = new PlayerSprite("muffin", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite muffin2 = new PlayerSprite("muffin", 2, "muffin_projectile", select_pos2, select_size, false);
             chars2.Add(muffin2);
-            PlayerSprite penguin2 = new PlayerSprite("penguin", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite penguin2 = new PlayerSprite("penguin", 2, "penguin_projectile", select_pos2, select_size, false);
             chars2.Add(penguin2);
-            PlayerSprite toast2 = new PlayerSprite("toast", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite toast2 = new PlayerSprite("toast", 2, "toast_projectile", select_pos2, select_size, false);
             chars2.Add(toast2);
-            PlayerSprite turtle2 = new PlayerSprite("turtle", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite turtle2 = new PlayerSprite("turtle", 2, "turtle_projectile", select_pos2, select_size, false);
             chars2.Add(turtle2);
-            PlayerSprite t_rex2 = new PlayerSprite("t-rex", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite t_rex2 = new PlayerSprite("t-rex", 2, "dino_projectile", select_pos2, select_size, false);
             chars2.Add(t_rex2);
-            PlayerSprite dino2 = new PlayerSprite("dino", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite dino2 = new PlayerSprite("dino", 2, "dino_projectile", select_pos2, select_size, false);
             chars2.Add(dino2);
-            PlayerSprite koala2 = new PlayerSprite("koala", 2, "unicorn_projectile", select_pos2, select_size, false);
+            PlayerSprite koala2 = new PlayerSprite("koala", 2, "koala_projectile", select_pos2, select_size, false);
             chars2.Add(koala2);
             
 
