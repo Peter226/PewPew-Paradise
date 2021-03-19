@@ -141,7 +141,7 @@ namespace PewPew_Paradise
                 foreach (Sprite sprite in MrPlaceHolders)
                 {
                     Vector2 newpos = sprite.Position;
-                    newpos.x -= GameManager.DeltaTime * 0.01;
+                    newpos.x -= GameManager.DeltaTime * 0.03;
                     sprite.Position = newpos;
                 }
             }
@@ -150,7 +150,7 @@ namespace PewPew_Paradise
                 foreach (Sprite sprite in MrPlaceHolders)
                 {
                     Vector2 newpos = sprite.Position;
-                    newpos.x += GameManager.DeltaTime * 0.01;
+                    newpos.x += GameManager.DeltaTime * 0.03;
                     sprite.Position = newpos;
                 }
             }
@@ -159,7 +159,7 @@ namespace PewPew_Paradise
                 foreach (Sprite sprite in MrPlaceHolders)
                 {
                     Vector2 newpos = sprite.Position;
-                    newpos.y -= GameManager.DeltaTime * 0.01;
+                    newpos.y -= GameManager.DeltaTime * 0.03;
                     sprite.Position = newpos;
                 }
             }
@@ -168,7 +168,7 @@ namespace PewPew_Paradise
                 foreach (Sprite sprite in MrPlaceHolders)
                 {
                     Vector2 newpos = sprite.Position;
-                    newpos.y += GameManager.DeltaTime * 0.01;
+                    newpos.y += GameManager.DeltaTime * 0.03;
                     sprite.Position = newpos;
                 }
             }
