@@ -246,5 +246,22 @@
     <Resource Include="Images\Sprites\Characters\koala.png" />
     <Resource Include="Images\Sprites\Characters\zombie.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Projectiles\cactus_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\dino_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\koala_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\monkey_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\muffin_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\penguin_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\toast_projectile.png" />
+    <Resource Include="Images\Sprites\Projectiles\turtle_projectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Enemies\bee.png" />
+    <Resource Include="Images\Sprites\Enemies\fishbone.png" />
+    <Resource Include="Images\Sprites\Enemies\mushroom.png" />
+    <Resource Include="Images\Sprites\Enemies\witch.png" />
+    <Resource Include="Images\Sprites\Enemies\zombie.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
