@@ -37,7 +37,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Characters/t_rex.png", "t-rex");
             SpriteManager.LoadImage("Images/Sprites/Characters/dino.png", "dino");
             SpriteManager.LoadImage("Images/Sprites/Characters/koala.png", "koala");
-            SpriteManager.LoadImage("Images/Sprites/Characters/zombie.png", "zombie");
+            
             //Projectiles
             SpriteManager.LoadImage("Images/Sprites/Projectiles/unicorn_projectile.png", "unicorn_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/OrkP.png", "ork_projectile");
@@ -67,8 +67,7 @@ namespace PewPew_Paradise
             chars1.Add(dino1);
             PlayerSprite koala1 = new PlayerSprite("koala", 1, "unicorn_projectile", select_pos1, select_size, false);
             chars1.Add(koala1);
-            PlayerSprite zombie1 = new PlayerSprite("zombie", 1, "unicorn_projectile", select_pos1, select_size, false);
-            chars1.Add(zombie1);
+            
 
 
             //Player2
@@ -96,8 +95,7 @@ namespace PewPew_Paradise
             chars2.Add(dino2);
             PlayerSprite koala2 = new PlayerSprite("koala", 2, "unicorn_projectile", select_pos2, select_size, false);
             chars2.Add(koala2);
-            PlayerSprite zombie2 = new PlayerSprite("zombie", 2, "unicorn_projectile", select_pos2, select_size, false);
-            chars2.Add(zombie2);
+            
 
         }
         /// <summary>

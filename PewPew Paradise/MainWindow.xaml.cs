@@ -40,6 +40,7 @@ namespace PewPew_Paradise
 
         public MapLoad load;
         public CharacterSelect chars;
+        public Enemy enemy;
 
         public int player_number;
         public string player1_name;
@@ -98,7 +99,7 @@ namespace PewPew_Paradise
 
             load = new MapLoad();
             chars = new CharacterSelect();
-           
+            enemy = new Enemy();
 
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
@@ -252,13 +253,7 @@ namespace PewPew_Paradise
             }
 
             
-            if (e.Key == Key.E)
-            {
-                EnemySprite enemy = new EnemySprite("ork", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
-                enemy.AddComponent<PhysicsComponent>();
-                enemy.AddComponent<CollideComponent>();
 
-            }
             if(e.Key == Key.Escape)
                 System.Windows.Application.Current.Shutdown();
         }

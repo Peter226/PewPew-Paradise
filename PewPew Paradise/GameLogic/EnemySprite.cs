@@ -10,9 +10,14 @@ namespace PewPew_Paradise.GameLogic
 {
     public class EnemySprite : Sprite
     {
-        public EnemySprite(string image, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
+        
+
+        public EnemySprite(string image,  Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
+            
+            AddComponent<PhysicsComponent>().IsActive = false;
+            AddComponent<CollideComponent>().IsActive = false;
         }
-      
+
     }
 }

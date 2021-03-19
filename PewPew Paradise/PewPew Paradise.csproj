@@ -75,6 +75,7 @@
     <Compile Include="Editor\CollisionEditor.cs" />
     <Compile Include="GameLogic\AnimationCollection.cs" />
     <Compile Include="GameLogic\CollideComponent.cs" />
+    <Compile Include="GameLogic\Enemy.cs" />
     <Compile Include="GameLogic\EnemySprite.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
     <Compile Include="GameLogic\MapSprite.cs" />
@@ -244,7 +245,6 @@
   <ItemGroup>
     <Resource Include="Images\Sprites\Characters\dino.png" />
     <Resource Include="Images\Sprites\Characters\koala.png" />
-    <Resource Include="Images\Sprites\Characters\zombie.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\Projectiles\cactus_projectile.png" />
