@@ -67,6 +67,7 @@ namespace PewPew_Paradise
         {
             instance = this;
             InitializeComponent();
+
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;

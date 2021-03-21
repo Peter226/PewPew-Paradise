@@ -717,8 +717,8 @@
                     <ImageBrush ImageSource="Images/button_mid.png" />
 
                 </Button.Background>
-                <Image Height="54" Width="106" Source="Images/Play.png"/>
             </Button>
+            <Image Source="Images/Play.png" Margin="202,423,201,31" IsHitTestVisible="False"/>
 
         </Grid>
         <Image x:Name="Dummy" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="arrow_left.png"/>
