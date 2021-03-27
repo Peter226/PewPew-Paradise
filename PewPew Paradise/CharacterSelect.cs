@@ -112,13 +112,13 @@ namespace PewPew_Paradise
         /// </summary>
         public void LoadChar(int player_number) 
         {
-            chars_number1 = 0;
+            
             SelectedChar(1).Size = select_size;
             
             chars1[chars_number1].IsActive = true;
             if (player_number != 1)
             {
-                chars_number2 = 0;
+                
                 SelectedChar(2).Size = select_size;
                 SelectedChar(1).Position = select_pos1;
                 SelectedChar(2).Position = select_pos2;
