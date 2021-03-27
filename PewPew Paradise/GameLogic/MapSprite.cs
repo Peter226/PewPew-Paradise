@@ -27,6 +27,7 @@ namespace PewPew_Paradise.GameLogic
         public double timer;
         public bool just_loaded;
         public bool just_unloaded;
+        public string enemy;
 
 
         //JSON
@@ -34,10 +35,11 @@ namespace PewPew_Paradise.GameLogic
         //JSON
 
 
-        public MapSprite(string image, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
+        public MapSprite(string image, string enemy, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             map_color = map_background;
             DeserializeMap();
+            this.enemy = enemy;
         }
         public delegate void MapLoadDelegate(MapSprite map);
         public static event MapLoadDelegate OnMapLoaded;

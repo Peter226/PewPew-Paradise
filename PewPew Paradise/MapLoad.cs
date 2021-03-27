@@ -17,9 +17,10 @@ namespace PewPew_Paradise
         public List<MapSprite> maps = new List<MapSprite>();
         public int floor = 1;
         public int level_number;
-        public List<EnemySprite> enemys = new List<EnemySprite>();
         public List<EnemySprite> current = new List<EnemySprite>();
         public Vector2 enemy_pos =  new Vector2(6,7);
+        public List<double> randoms = new List<double>();
+        public Random rnd = new Random();
         /// <summary>
         /// Loading all the maps and saving them into a list
         /// </summary>
@@ -31,11 +32,11 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
             SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
             SpriteManager.LoadImage("Images/Sprites/underground_map.png", "underground_map");
-            MapSprite sky_map = new MapSprite("sky_map", new SolidColorBrush(Color.FromRgb(106,164,252)), map_position, map_size, false);
+            MapSprite sky_map = new MapSprite("sky_map", "bee", new SolidColorBrush(Color.FromRgb(106,164,252)), map_position, map_size, false);
             maps.Add(sky_map);
-            MapSprite forest_map = new MapSprite("forest_map", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
+            MapSprite forest_map = new MapSprite("forest_map", "mushroom", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
             maps.Add(forest_map);
-            MapSprite underground_map = new MapSprite("underground_map",new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            MapSprite underground_map = new MapSprite("underground_map", "witch", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
             //Enemys
             SpriteManager.LoadImage("Images/Sprites/Enemies/bee.png", "bee");
@@ -43,18 +44,6 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Enemies/mushroom.png", "mushroom");
             SpriteManager.LoadImage("Images/Sprites/Enemies/witch.png", "witch");
             SpriteManager.LoadImage("Images/Sprites/Enemies/zombie.png", "zombie");
-            EnemySprite bee1 = new EnemySprite("bee",  enemy_pos, new Vector2(1,1), false);
-            enemys.Add(bee1);
-            //EnemySprite bee2 = new EnemySprite("bee", "sky_map", enemy_pos[1], new Vector2(1, 1), false);
-            //enemys.Add(bee2);
-            EnemySprite mushroom1 = new EnemySprite("mushroom", enemy_pos, new Vector2(1, 1), false);
-            enemys.Add(mushroom1);
-            //EnemySprite mushroom2 = new EnemySprite("mushroom", "forest_map", enemy_pos[1], new Vector2(1, 1), false);
-            //enemys.Add(mushroom2);
-            EnemySprite witch1 = new EnemySprite("witch", enemy_pos, new Vector2(1, 1), false);
-            enemys.Add(witch1);
-            //EnemySprite witch2 = new EnemySprite("witch", "underground", enemy_pos[1], new Vector2(1, 1), false);
-            //enemys.Add(witch2);
 
         }
         /// <summary>
@@ -80,10 +69,11 @@ namespace PewPew_Paradise
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
             maps[level_number].MapLoaded();
-            EnemySprite first_enemy = enemys[level_number];
-            MainWindow.Instance.enemy.EnemyLoad(enemys[level_number]);
-            current.Add(first_enemy);
-
+            randoms.Add(rnd.Next(1, 15));
+            enemy_pos.x = randoms[0];
+            EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
+            current.Add(new_enemy);
+            MainWindow.Instance.enemy.EnemyLoad(new_enemy);
 
         }
         /// <summary>
@@ -92,13 +82,13 @@ namespace PewPew_Paradise
         /// <param name="player_number"></param>
         public void NextMap(int player_number)
         {
-
             UnLoadMap();
             for (int i = 0; i < current.Count; i++)
             {
                 current[i].Destroy();
             }
             current.Clear();
+            randoms.Clear();
             MainWindow.Instance.chars.UnLoadCharacter(1);
             MainWindow.Instance.chars.UnLoadCharacter(2);
             level_number++;
@@ -110,30 +100,26 @@ namespace PewPew_Paradise
             MainWindow.Instance.chars.CharacterLoad(1);
             for (int i = 0; i < Math.Ceiling((double)floor/3); i++)
             {
-                EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(enemys[level_number].image, enemy_pos);
+                
+                randoms.Add(rnd.Next(1, 15));
+                enemy_pos.x = randoms[i];
+                EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
                 current.Add(new_enemy);
                 MainWindow.Instance.enemy.EnemyLoad(new_enemy);
-                if (enemy_pos.x < 15)
-                    enemy_pos.x += 1;
-                else
-                    enemy_pos.x = 1;
+                
             }
             if (player_number != 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
-            maps[level_number].MapLoaded();
-
-            
+            maps[level_number].MapLoaded();    
         }
         /// <summary>
         /// Unload map
         /// </summary>
         public void UnLoadMap()
         {
-            //maps[level_number].IsActive = false;
             maps[level_number].MapUnloaded();
-
         }
         /// <summary>
         /// Return the number of finished floors
