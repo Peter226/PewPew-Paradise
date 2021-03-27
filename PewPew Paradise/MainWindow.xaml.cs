@@ -17,6 +17,9 @@ using System.ComponentModel;
 using PewPew_Paradise.Editor;
 using PewPew_Paradise.GameLogic.SpriteComponents;
 using System.Windows.Media.Animation;
+using Newtonsoft.Json;
+using System.IO;
+
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -50,6 +53,14 @@ namespace PewPew_Paradise
         public double enemyHitTimer;
 
 
+
+        //JSON saving system
+        public GameOptions gameOptions;
+        public static JsonSerializer optionsSerializer = new JsonSerializer();
+        //JSON saving system
+
+
+
         /// <summary>
         /// Get instance
         /// </summary>
@@ -66,6 +77,7 @@ namespace PewPew_Paradise
         /// </summary>
         public MainWindow()
         {
+            LoadGameOptions();
             instance = this;
             InitializeComponent();
             Thickness thickness = new Thickness();
@@ -365,6 +377,48 @@ namespace PewPew_Paradise
         }
         
         /// <summary>
+        /// Save options
+        /// </summary>
+        void SaveGameOptions()
+        {
+           /* gameOptions.musicVolume = sl_music.Value;
+            gameOptions.effectVolume = sl_effect.Value;
+
+            string workingDirectory = Environment.SpecialFolder.LocalApplicationData.ToString();
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+            string path = System.IO.Path.Combine(projectDirectory, "MapCollisions", this.image + ".json");
+            StreamWriter sw = new StreamWriter(path);
+            JsonWriter jw = new JsonTextWriter(sw);
+            optionsSerializer.Serialize(jw, gameOptions);
+            jw.Close();
+            sw.Close();*/
+            
+        }
+        /// <summary>
+        /// Load options
+        /// </summary>
+        void LoadGameOptions()
+        {
+
+            /*var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = $"PewPew_Paradise.MapCollisions.{this.image}.json";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                using (JsonReader jreader = new JsonTextReader(reader))
+                {
+                    gameOptions = (GameOptions)optionsSerializer.Deserialize(jreader, typeof(GameOptions));
+                }
+            }
+
+
+            sl_music.Value = gameOptions.musicVolume;
+            sl_effect.Value = gameOptions.effectVolume;*/
+        }
+
+
+
+        /// <summary>
         /// Replacing selection arrows with window size changing
         /// </summary>
         /// <param name="button"></param>
@@ -421,6 +475,7 @@ namespace PewPew_Paradise
             InGameOptions.Visibility = Visibility.Collapsed;
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
+            SaveGameOptions();
         }
 
         private void bt_options_Click(object sender, RoutedEventArgs e)

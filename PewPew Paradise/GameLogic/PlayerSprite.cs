@@ -16,7 +16,7 @@ namespace PewPew_Paradise.GameLogic
         public int player_id;
         public string projectile;
         public List<Key> _keys = new List<Key>();
-        public double timer =100000;
+        public double timer = 100000;
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();

@@ -40,8 +40,8 @@ namespace PewPew_Paradise.GameLogic
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Orange.png", "C_Orange");
             fruitTypes.Add(new FruitType("C_Apple", 200));
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Apple.png", "C_Apple");
-            /*fruitTypes.Add(new FruitType("C_Pineapple", 300));
-            SpriteManager.LoadImage("Images/Sprites/Collectibles/Pineapple.png", "C_Pineapple"); */
+            fruitTypes.Add(new FruitType("C_Pineapple", 300));
+            SpriteManager.LoadImage("Images/Sprites/Collectibles/Pineapple.png", "C_Pineapple");
 
         }
 

@@ -80,6 +80,7 @@
     <Compile Include="GameLogic\FruitSprite.cs" />
     <Compile Include="GameLogic\FruitType.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
+    <Compile Include="GameLogic\GameOptions.cs" />
     <Compile Include="GameLogic\MapSprite.cs" />
     <Compile Include="GameLogic\PlayerSprite.cs" />
     <Compile Include="GameLogic\ProjectileSprite.cs" />
@@ -277,6 +278,9 @@
   <ItemGroup>
     <Resource Include="Images\Sprites\Collectibles\Apple.png" />
     <Resource Include="Images\Sprites\Collectibles\Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Collectibles\Pineapple.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
