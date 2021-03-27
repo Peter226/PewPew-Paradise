@@ -19,7 +19,6 @@ namespace PewPew_Paradise
         public int level_number;
         public List<EnemySprite> current = new List<EnemySprite>();
         public Vector2 enemy_pos =  new Vector2(6,7);
-        public List<double> randoms = new List<double>();
         public Random rnd = new Random();
         /// <summary>
         /// Loading all the maps and saving them into a list
@@ -58,7 +57,8 @@ namespace PewPew_Paradise
             level_number = 0;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            MainWindow.Instance.PlayingField.Background = maps[level_number].map_color;
+            MainWindow.playingFieldBrush.Color = maps[level_number].map_color.Color;
+            MainWindow.Instance.Background = MainWindow.playingFieldBrush;
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);
@@ -69,8 +69,7 @@ namespace PewPew_Paradise
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
             maps[level_number].MapLoaded();
-            randoms.Add(rnd.Next(1, 15));
-            enemy_pos.x = randoms[0];
+            enemy_pos.x = rnd.Next(1, 15) + 0.5;
             EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
             current.Add(new_enemy);
             MainWindow.Instance.enemy.EnemyLoad(new_enemy);
@@ -88,7 +87,6 @@ namespace PewPew_Paradise
                 current[i].Destroy();
             }
             current.Clear();
-            randoms.Clear();
             MainWindow.Instance.chars.UnLoadCharacter(1);
             MainWindow.Instance.chars.UnLoadCharacter(2);
             level_number++;
@@ -96,13 +94,12 @@ namespace PewPew_Paradise
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            MainWindow.Instance.PlayingField.Background = maps[level_number].map_color;
             MainWindow.Instance.chars.CharacterLoad(1);
             for (int i = 0; i < Math.Ceiling((double)floor/3); i++)
             {
                 
-                randoms.Add(rnd.Next(1, 15));
-                enemy_pos.x = randoms[i];
+                enemy_pos.x = rnd.Next(1, 15) + 0.5;
+                enemy_pos.y = rnd.Next(1, 15) + 0.5;
                 EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
                 current.Add(new_enemy);
                 MainWindow.Instance.enemy.EnemyLoad(new_enemy);
@@ -112,7 +109,7 @@ namespace PewPew_Paradise
             {
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
-            maps[level_number].MapLoaded();    
+            maps[level_number].MapLoaded();
         }
         /// <summary>
         /// Unload map

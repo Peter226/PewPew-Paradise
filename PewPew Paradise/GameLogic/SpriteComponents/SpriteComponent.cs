@@ -49,10 +49,16 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
 
         public void Destroy()
         {
-            GameManager.OnUpdate -= CallUpdate;
-            GameManager.OnPostUpdate -= CallPostUpdate;
-            GameManager.OnPreUpdate -= CallPreUpdate;
-            
+            if (sprite.GetComponent(GetType()) != null)
+            {
+                sprite.RemoveComponent(GetType());
+            }
+            else
+            {
+                GameManager.OnUpdate -= CallUpdate;
+                GameManager.OnPostUpdate -= CallPostUpdate;
+                GameManager.OnPreUpdate -= CallPreUpdate;
+            }
         }
 
         protected virtual void OnParentDestroyed(object parent)

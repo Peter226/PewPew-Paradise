@@ -48,19 +48,21 @@ namespace PewPew_Paradise.GameLogic
 
                 foreach (Rect platform in MainWindow.Instance.load.CurrentMap().hitboxes)
                 {
+                    //Rect modplat =  new Rect(platform.X + MainWindow.Instance.load.CurrentMap().Position.x - 8, platform.Y + MainWindow.Instance.load.CurrentMap().Position.y - 8, platform.Width,platform.Height);
+                    Rect modplat = platform;
                     Rect PlayerHitBox = sprite.GetRect();
                     PlayerHitBox.X += 0.1;
                     PlayerHitBox.Width -= 0.2;
                     PlayerHitBox.Y += 0.0001;
                     PlayerHitBox.Height -= 0.0001;
-                    if (PlayerHitBox.IntersectsWith(platform))
+                    if (PlayerHitBox.IntersectsWith(modplat))
                     {
                         didhit = true;
                         Vector2 sp = sprite.Position;
-                        double Bottom = Math.Abs(PlayerHitBox.Bottom - platform.Top);
-                        double Left = Math.Abs(PlayerHitBox.Right - platform.Left);
-                        double Right = Math.Abs(PlayerHitBox.Left - platform.Right);
-                        double Top = Math.Abs(PlayerHitBox.Top - platform.Bottom);
+                        double Bottom = Math.Abs(PlayerHitBox.Bottom - modplat.Top);
+                        double Left = Math.Abs(PlayerHitBox.Right - modplat.Left);
+                        double Right = Math.Abs(PlayerHitBox.Left - modplat.Right);
+                        double Top = Math.Abs(PlayerHitBox.Top - modplat.Bottom);
                         double min = Math.Min(Math.Min(Bottom, Left), Math.Min(Right, Top));
 
                         PhysicsComponent physicsComponent = sprite.GetComponent<PhysicsComponent>();
@@ -68,23 +70,23 @@ namespace PewPew_Paradise.GameLogic
                         {
                             if (Bottom == min)
                             {
-                                sp.y -= PlayerHitBox.Bottom - platform.Top;
+                                sp.y -= PlayerHitBox.Bottom - modplat.Top;
                                 physicsComponent.speed.y = Math.Min(physicsComponent.speed.y, 0);
                                 isOnGround = true;
                             }
                             else if (Top == min)
                             {
-                                sp.y -= PlayerHitBox.Top - platform.Bottom;
+                                sp.y -= PlayerHitBox.Top - modplat.Bottom;
                                 physicsComponent.speed.y = Math.Max(physicsComponent.speed.y, 0);
                             }
                             else if (Right == min)
                             {
-                                sp.x -= PlayerHitBox.Left - platform.Right;
+                                sp.x -= PlayerHitBox.Left - modplat.Right;
                                 physicsComponent.speed.x = Math.Max(physicsComponent.speed.x, 0);
                             }
                             else if (Left == min)
                             {
-                                sp.x -= PlayerHitBox.Right - platform.Left;
+                                sp.x -= PlayerHitBox.Right - modplat.Left;
                                 physicsComponent.speed.x = Math.Min(physicsComponent.speed.x, 0);
                             }
                         }
@@ -92,20 +94,20 @@ namespace PewPew_Paradise.GameLogic
                         {
                             if (Bottom == min)
                             {
-                                sp.y -= PlayerHitBox.Bottom - platform.Top;
+                                sp.y -= PlayerHitBox.Bottom - modplat.Top;
                                 isOnGround = true;
                             }
                             else if (Top == min)
                             {
-                                sp.y -= PlayerHitBox.Top - platform.Bottom;
+                                sp.y -= PlayerHitBox.Top - modplat.Bottom;
                             }
                             else if (Right == min)
                             {
-                                sp.x -= PlayerHitBox.Left - platform.Right;
+                                sp.x -= PlayerHitBox.Left - modplat.Right;
                             }
                             else if (Left == min)
                             {
-                                sp.x -= PlayerHitBox.Right - platform.Left;
+                                sp.x -= PlayerHitBox.Right - modplat.Left;
                             }
                         }
 

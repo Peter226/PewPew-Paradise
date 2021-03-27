@@ -44,6 +44,7 @@ namespace PewPew_Paradise
         public MapLoad load;
         public CharacterSelect chars;
         public Enemy enemy;
+        public static SolidColorBrush playingFieldBrush;
 
         public int player_number;
         public string player1_name;
@@ -77,6 +78,7 @@ namespace PewPew_Paradise
         /// </summary>
         public MainWindow()
         {
+            
             LoadGameOptions();
             instance = this;
             InitializeComponent();
@@ -113,6 +115,8 @@ namespace PewPew_Paradise
             load = new MapLoad();
             chars = new CharacterSelect();
             enemy = new Enemy();
+            PlayingField.Background = new SolidColorBrush();
+            playingFieldBrush = (SolidColorBrush)PlayingField.Background;
 
             string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
@@ -129,6 +133,7 @@ namespace PewPew_Paradise
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
 
             FruitSprite.LoadImages();
+
         }
 
         /// <summary>
@@ -150,8 +155,6 @@ namespace PewPew_Paradise
         /// </summary>
         public void Update()
         {
-
-
             if (Keyboard.IsKeyDown(Key.Left))
             {
                 foreach (Sprite sprite in MrPlaceHolders)
@@ -267,11 +270,18 @@ namespace PewPew_Paradise
 
 
             if (e.Key == Key.Escape)
-            //System.Windows.Application.Current.Shutdown();
             {
-                InGameOptions.Visibility = Visibility.Visible;
-                GameWindow.Children.Remove(InGameOptions);
-                GameWindow.Children.Add(InGameOptions);
+                if (InGameOptions.Visibility == Visibility.Collapsed) {
+                    InGameOptions.Visibility = Visibility.Visible;
+                    GameWindow.Children.Remove(InGameOptions);
+                    GameWindow.Children.Add(InGameOptions);
+                    GameManager.Stop();
+                }
+                else
+                {
+                    InGameOptions.Visibility = Visibility.Collapsed;
+                    GameManager.Begin();
+                }
             }
         }
 

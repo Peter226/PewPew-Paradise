@@ -36,14 +36,14 @@ namespace PewPew_Paradise.GameLogic
                 {
                     hitEnemy = enemy;
                     break;
-
+                    
                 }
             }
             if(hitEnemy!=null)
             {
-                hitEnemy.EnemyDeath();
-                MainWindow.Instance.enemyHitTimer = 1;
-                Destroy();
+                    hitEnemy.EnemyDeath();
+                    MainWindow.Instance.enemyHitTimer = 1;
+                    Destroy();
             }
 
         }

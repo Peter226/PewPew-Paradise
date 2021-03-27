@@ -85,6 +85,22 @@ namespace PewPew_Paradise.GameLogic
             }
             return null;
         }
+        /// <summary>
+        /// Get a SpriteComponent of a Sprite that has already been added (return value needs to be casted)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public SpriteComponent GetComponent(Type t)
+        {
+            foreach (SpriteComponent existingComponent in _components)
+            {
+                if (existingComponent.GetType() == t)
+                {
+                    return existingComponent;
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// Remove a certain type of component from the sprite
@@ -98,11 +114,29 @@ namespace PewPew_Paradise.GameLogic
                 {
                     SpriteComponent spriteComponent = _components[i];
                     _components.RemoveAt(i);
+                    spriteComponent.Destroy();
                     return;
                 }
             }
         }
 
+        /// <summary>
+        /// Remove a certain type of component from the sprite
+        /// </summary>
+        /// <param name="t"></param>
+        public void RemoveComponent(Type t)
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                if (_components[i].GetType() == t)
+                {
+                    SpriteComponent spriteComponent = _components[i];
+                    _components.RemoveAt(i);
+                    spriteComponent.Destroy();
+                    return;
+                }
+            }
+        }
 
 
         public int ID

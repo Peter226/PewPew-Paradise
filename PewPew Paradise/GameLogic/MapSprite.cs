@@ -105,6 +105,11 @@ namespace PewPew_Paradise.GameLogic
                     timer = 1;
                 }
                 Position = Vector2.Lerp(map_position, mapplace, timer);
+                double mcR = map_color.Color.R * timer + MainWindow.playingFieldBrush.Color.R * (1.0 - timer);
+                double mcG = map_color.Color.G * timer + MainWindow.playingFieldBrush.Color.G * (1.0 - timer);
+                double mcB = map_color.Color.B * timer + MainWindow.playingFieldBrush.Color.B * (1.0 - timer);
+
+                MainWindow.playingFieldBrush.Color = Color.FromRgb((byte)mcR, (byte)mcG, (byte)mcB);
             }
             if (just_unloaded)
             {

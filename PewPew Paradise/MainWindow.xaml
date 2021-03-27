@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PewPew_Paradise"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PewPew_Paradise.MainWindow"
         mc:Ignorable="d"
-        Title="PewPew Paradise" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="{DynamicResource BackgroundBrush}" Closed="Window_Closed">
+        Title="PewPew Paradise" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="Red" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White">
 
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" RenderOptions.BitmapScalingMode="NearestNeighbor" ClipToBounds="True">
@@ -89,7 +89,7 @@
 
 
             <!--Music slider with its template-->
-            <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="20" ValueChanged="sl_music_ValueChanged" >
+            <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="1" ValueChanged="sl_music_ValueChanged" >
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
                     <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#CB00A4"/>
@@ -655,7 +655,7 @@
             </Grid.ColumnDefinitions>
         </Grid>
         <!--Ingame Optiopns Grid-->
-        <Grid x:Name="InGameOptions" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
+        <Grid x:Name="InGameOptions" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#7F260026">
             <Button x:Name="bt_resume" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" >
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
