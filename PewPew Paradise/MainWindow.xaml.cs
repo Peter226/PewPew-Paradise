@@ -133,7 +133,6 @@ namespace PewPew_Paradise
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
 
             FruitSprite.LoadImages();
-
         }
 
         /// <summary>
@@ -155,6 +154,8 @@ namespace PewPew_Paradise
         /// </summary>
         public void Update()
         {
+
+
             if (Keyboard.IsKeyDown(Key.Left))
             {
                 foreach (Sprite sprite in MrPlaceHolders)

@@ -58,7 +58,6 @@ namespace PewPew_Paradise
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
             MainWindow.playingFieldBrush.Color = maps[level_number].map_color.Color;
-            MainWindow.Instance.Background = MainWindow.playingFieldBrush;
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);

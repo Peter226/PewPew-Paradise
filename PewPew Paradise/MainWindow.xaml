@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PewPew_Paradise"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PewPew_Paradise.MainWindow"
         mc:Ignorable="d"
-        Title="PewPew Paradise" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="Red" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White">
+        Title="PewPew Paradise" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="#FF260026" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White">
 
 
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" RenderOptions.BitmapScalingMode="NearestNeighbor" ClipToBounds="True">
