@@ -252,10 +252,15 @@ namespace PewPew_Paradise
                 load.NextMap(1);
             }
 
-            
 
-            if(e.Key == Key.Escape)
-                System.Windows.Application.Current.Shutdown();
+
+            if (e.Key == Key.Escape)
+            //System.Windows.Application.Current.Shutdown();
+            {
+                InGameOptions.Visibility = Visibility.Visible;
+                GameWindow.Children.Remove(InGameOptions);
+                GameWindow.Children.Add(InGameOptions);
+            }
         }
 
         /// <summary>
@@ -413,6 +418,7 @@ namespace PewPew_Paradise
             Options.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Collapsed;
             Selection.Visibility = Visibility.Collapsed;
+            InGameOptions.Visibility = Visibility.Collapsed;
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
         }
@@ -476,6 +482,27 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Visible;
         }
+
+        private void bt_menu_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < FruitSprite.fruitList.Count; i++)
+            {
+                FruitSprite.fruitList[i].Destroy();
+            }
+            FruitSprite.fruitList.Clear();
+            for (int i = 0; i < Enemy.enemyList.Count; i++)
+            {
+                Enemy.enemyList[i].Destroy();
+            }
+            Enemy.enemyList.Clear();
+            load.CurrentMap().IsActive = false;
+            chars.UnLoadChar(1);
+            chars.UnLoadChar(2);
+            InGameOptions.Visibility = Visibility.Collapsed;
+            PlayingField.Visibility = Visibility.Collapsed;
+            MainMenu.Visibility = Visibility.Visible;
+        }
+
         /// <summary>
         /// Selection arrow moving events
         /// </summary>
@@ -563,6 +590,6 @@ namespace PewPew_Paradise
             chars.PreChar(2);
         }
 
-
+ 
     }
 }

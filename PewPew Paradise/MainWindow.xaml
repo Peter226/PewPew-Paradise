@@ -654,6 +654,24 @@
                 <ColumnDefinition Width="79*"/>
             </Grid.ColumnDefinitions>
         </Grid>
+        <!--Ingame Optiopns Grid-->
+        <Grid x:Name="InGameOptions" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#FF260026">
+            <Button x:Name="bt_resume" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_menu" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_menu_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_exitingame" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_exit_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
         <!--Selection Grid-->
         <Grid x:Name="Selection" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed" >
             <Grid x:Name="Player1" Height="512" Width="256" Margin="0,0,256,0" Background="#FF260026" Visibility="Visible">
