@@ -47,7 +47,7 @@ namespace PewPew_Paradise.GameLogic
 
         public void FruitCollect()
         {
-            FruitSprite.fruitList.Remove(this);
+            fruitList.Remove(this);
             Destroy();
         }
     }

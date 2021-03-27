@@ -28,10 +28,5 @@ namespace PewPew_Paradise.GameLogic
             
             return enemy;
         }
-        public void UnloadEnemy()
-        {
-            
-
-        }
     }
 }

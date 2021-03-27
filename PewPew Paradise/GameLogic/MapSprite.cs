@@ -95,8 +95,8 @@ namespace PewPew_Paradise.GameLogic
         
         public override void Update()
         {
-            
-            timer += 0.001 * GameManager.DeltaTime;
+            MainWindow.Instance.projectile_timer += 0.001 * GameManager.DeltaTime;
+            timer += 0.00075 * GameManager.DeltaTime;
             if (just_loaded)
             {
                 if (timer > 1)
@@ -116,6 +116,15 @@ namespace PewPew_Paradise.GameLogic
                 }
                     Position = Vector2.Lerp(mapplace, map_up, timer);
                 
+            }
+            if (Enemy.enemyList.Count == 0 && MainWindow.Instance.projectile_timer > 3)
+            {
+                for(int i=0; i < FruitSprite.fruitList.Count; i++)
+                {
+                    FruitSprite.fruitList[i].Destroy();
+                }
+                FruitSprite.fruitList.Clear();
+                MainWindow.Instance.load.NextMap(MainWindow.Instance.player_number);
             }
             base.Update();
         }

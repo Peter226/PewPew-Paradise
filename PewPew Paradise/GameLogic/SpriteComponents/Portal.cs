@@ -28,7 +28,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                     sprite.GetComponent<CollideComponent>().IsActive = true;
                 }
             }
-            
+
             base.PreUpdate();
         }
     }

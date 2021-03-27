@@ -47,6 +47,7 @@ namespace PewPew_Paradise
         public string player2_name;
         public int score1 = 0;
         public int score2= 0;
+        public double projectile_timer;
 
 
         /// <summary>

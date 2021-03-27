@@ -118,11 +118,20 @@ namespace PewPew_Paradise.GameLogic
                 {
                     collectFruit = fruit;
                     break;
-
                 }
             }
             if (collectFruit != null)
             {
+                if (player_id == 1)
+                {
+                    MainWindow.Instance.score1 += collectFruit.point;
+                    MainWindow.Instance.lb_player1_score.Content = MainWindow.Instance.score1;
+                }
+                else
+                {
+                    MainWindow.Instance.score2 += collectFruit.point;
+                    MainWindow.Instance.lb_player2_score.Content = MainWindow.Instance.score2;
+                }
                 collectFruit.FruitCollect();
             }
 

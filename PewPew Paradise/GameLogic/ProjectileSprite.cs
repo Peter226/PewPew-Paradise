@@ -11,6 +11,7 @@ namespace PewPew_Paradise.GameLogic
 {
     class ProjectileSprite : Sprite
     {
+        
         public ProjectileSprite(string image, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<CollideComponent>().OnCollide += Collision;
@@ -18,7 +19,7 @@ namespace PewPew_Paradise.GameLogic
         }
         public override void Update()
         {
-           
+            
             Vector2 pos = Position;
             if(Size.x > 0)
                 pos.x += 0.01 * GameManager.DeltaTime;
@@ -41,7 +42,9 @@ namespace PewPew_Paradise.GameLogic
             if(hitEnemy!=null)
             {
                 hitEnemy.EnemyDeath();
+                MainWindow.Instance.projectile_timer = 1;
             }
+            
         }
         public void Collision()
         {
