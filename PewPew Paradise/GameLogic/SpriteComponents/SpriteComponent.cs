@@ -52,6 +52,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             GameManager.OnUpdate -= CallUpdate;
             GameManager.OnPostUpdate -= CallPostUpdate;
             GameManager.OnPreUpdate -= CallPreUpdate;
+            
         }
 
         protected virtual void OnParentDestroyed(object parent)

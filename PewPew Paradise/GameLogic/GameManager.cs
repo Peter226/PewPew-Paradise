@@ -44,6 +44,7 @@ namespace PewPew_Paradise.GameLogic
         private static double _lastTime;
         private static double _deltaTime;
         private static Stopwatch _stopWatch = new Stopwatch();
+        private static bool _running;
 
         /// <summary>
         /// Get the elapsed time in milliseconds between two Update() calls
@@ -97,18 +98,23 @@ namespace PewPew_Paradise.GameLogic
             OnPostUpdate?.Invoke();
             _lastTime = _stopWatch.ElapsedMilliseconds;
         }
-        
+
 
         /// <summary>
         /// Start the game Update loop
         /// </summary>
         public static void Begin()
         {
-            
-            _stopWatch.Start();
-            _dispatherTimer.Interval = TimeSpan.FromMilliseconds(_minimumDelta);
-            _dispatherTimer.Tick += Update;
-            _dispatherTimer.Start();
+            if (!_running)
+            {
+                _running = true;
+                _lastTime = 0;
+                _stopWatch.Reset();
+                _stopWatch.Start();
+                _dispatherTimer.Interval = TimeSpan.FromMilliseconds(_minimumDelta);
+                _dispatherTimer.Tick += Update;
+                _dispatherTimer.Start();
+            }
         }
 
         /// <summary>
@@ -116,8 +122,13 @@ namespace PewPew_Paradise.GameLogic
         /// </summary>
         public static void Stop()
         {
-            _stopWatch.Stop();
-            _dispatherTimer.Stop();
+            if (_running)
+            {
+                _running = false;
+                _stopWatch.Stop();
+                _dispatherTimer.Stop();
+                _dispatherTimer.Tick -= Update;
+            }
         }
 
 

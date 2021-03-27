@@ -64,27 +64,51 @@ namespace PewPew_Paradise.GameLogic
                         double min = Math.Min(Math.Min(Bottom, Left), Math.Min(Right, Top));
 
                         PhysicsComponent physicsComponent = sprite.GetComponent<PhysicsComponent>();
-                        if (Bottom == min)
+                        if (physicsComponent != null)
                         {
-                            sp.y -= PlayerHitBox.Bottom - platform.Top;
-                            physicsComponent.speed.y = Math.Min(physicsComponent.speed.y, 0);
-                            isOnGround = true;
+                            if (Bottom == min)
+                            {
+                                sp.y -= PlayerHitBox.Bottom - platform.Top;
+                                physicsComponent.speed.y = Math.Min(physicsComponent.speed.y, 0);
+                                isOnGround = true;
+                            }
+                            else if (Top == min)
+                            {
+                                sp.y -= PlayerHitBox.Top - platform.Bottom;
+                                physicsComponent.speed.y = Math.Max(physicsComponent.speed.y, 0);
+                            }
+                            else if (Right == min)
+                            {
+                                sp.x -= PlayerHitBox.Left - platform.Right;
+                                physicsComponent.speed.x = Math.Max(physicsComponent.speed.x, 0);
+                            }
+                            else if (Left == min)
+                            {
+                                sp.x -= PlayerHitBox.Right - platform.Left;
+                                physicsComponent.speed.x = Math.Min(physicsComponent.speed.x, 0);
+                            }
                         }
-                        else if (Top == min)
+                        else
                         {
-                            sp.y -= PlayerHitBox.Top - platform.Bottom;
-                            physicsComponent.speed.y = Math.Max(physicsComponent.speed.y, 0);
-                        } 
-                        else if (Right == min)
-                        {
-                            sp.x -= PlayerHitBox.Left - platform.Right;
-                            physicsComponent.speed.x = Math.Max(physicsComponent.speed.x, 0);
+                            if (Bottom == min)
+                            {
+                                sp.y -= PlayerHitBox.Bottom - platform.Top;
+                                isOnGround = true;
+                            }
+                            else if (Top == min)
+                            {
+                                sp.y -= PlayerHitBox.Top - platform.Bottom;
+                            }
+                            else if (Right == min)
+                            {
+                                sp.x -= PlayerHitBox.Left - platform.Right;
+                            }
+                            else if (Left == min)
+                            {
+                                sp.x -= PlayerHitBox.Right - platform.Left;
+                            }
                         }
-                        else if (Left == min)
-                        {
-                            sp.x -= PlayerHitBox.Right - platform.Left;
-                            physicsComponent.speed.x = Math.Min(physicsComponent.speed.x, 0);
-                        }
+
                         sprite.Position = sp;
                     }
                 }

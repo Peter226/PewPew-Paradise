@@ -68,7 +68,6 @@ namespace PewPew_Paradise
         {
             instance = this;
             InitializeComponent();
-
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
@@ -80,8 +79,8 @@ namespace PewPew_Paradise
             //CollisionEditor.Init(collisionEditor); //COLLISION EDITOR
 
 
-
             AnimationCollection playerAnimations = new AnimationCollection("Player", Vector2.One * 4, 1);
+            SpriteManager.canvas = SpriteCanvas;
             SpriteAnimation jumpAnimation = new SpriteAnimation(150, false, 2);
             playerAnimations.animations.Add(jumpAnimation);
             jumpAnimation.keyFrames.Add(new Vector2(0, 0));
@@ -224,11 +223,8 @@ namespace PewPew_Paradise
             
             if (e.Key == Key.P) {
 
-                Sprite mrph = new Sprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
+                EnemySprite mrph = new EnemySprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
                 MrPlaceHolders.Add(mrph);
-                mrph.AddComponent<Portal>();
-                mrph.AddComponent<PhysicsComponent>();
-                mrph.AddComponent<CollideComponent>();
                 mrph.AddComponent<AnimatorComponent>().SetAnimation("Player");
             }
             if (e.Key == Key.Space)

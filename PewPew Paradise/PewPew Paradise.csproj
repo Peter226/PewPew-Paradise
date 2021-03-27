@@ -86,6 +86,7 @@
     <Compile Include="GameLogic\Sprite.cs" />
     <Compile Include="GameLogic\SpriteAnimation.cs" />
     <Compile Include="GameLogic\SpriteComponents\AnimatorComponent.cs" />
+    <Compile Include="GameLogic\SpriteComponents\EnemyLoadAnimatorComponent.cs" />
     <Compile Include="GameLogic\SpriteComponents\PhysicsComponent.cs" />
     <Compile Include="GameLogic\SpriteComponents\Portal.cs" />
     <Compile Include="GameLogic\SpriteComponents\SpriteComponent.cs" />

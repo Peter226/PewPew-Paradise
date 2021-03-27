@@ -30,7 +30,7 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// Canvas UIElement
         /// </summary>
-        public static Grid canvas { get; } = (Grid)MainWindow.Instance.Content;
+        public static Grid canvas;
         /// <summary>
         /// Loaded images
         /// </summary>
