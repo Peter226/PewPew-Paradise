@@ -36,7 +36,7 @@ namespace PewPew_Paradise.GameLogic
         private List<SpriteComponent> _components = new List<SpriteComponent>();
 
         public delegate void OnDestroyDelegate(object state);
-        public event OnDestroyDelegate OnDetroyed;
+        public event OnDestroyDelegate OnDestroyed;
 
         /// <summary>
         /// Get the current components added
@@ -155,14 +155,21 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
+        protected virtual void OnDestroy()
+        {
+
+        }
+
+
 
         /// <summary>
         /// Destroy sprite
         /// </summary>
         public virtual void Destroy()
         {
-            if (OnDetroyed != null) {
-                OnDetroyed.Invoke(this);
+            OnDestroy();
+            if (OnDestroyed != null) {
+                OnDestroyed.Invoke(this);
             }
             GameManager.OnUpdate -= CallUpdate;
             SpriteManager.RemoveSprite(this);
