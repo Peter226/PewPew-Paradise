@@ -77,6 +77,8 @@
     <Compile Include="GameLogic\CollideComponent.cs" />
     <Compile Include="GameLogic\Enemy.cs" />
     <Compile Include="GameLogic\EnemySprite.cs" />
+    <Compile Include="GameLogic\FruitSprite.cs" />
+    <Compile Include="GameLogic\FruitType.cs" />
     <Compile Include="GameLogic\GameManager.cs" />
     <Compile Include="GameLogic\MapSprite.cs" />
     <Compile Include="GameLogic\PlayerSprite.cs" />
@@ -262,6 +264,14 @@
     <Resource Include="Images\Sprites\Enemies\mushroom.png" />
     <Resource Include="Images\Sprites\Enemies\witch.png" />
     <Resource Include="Images\Sprites\Enemies\zombie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Collectibles\Cherry.png" />
+    <Resource Include="Images\Sprites\Collectibles\Grapes.png" />
+    <Resource Include="Images\Sprites\Collectibles\Kiwi.png" />
+    <Resource Include="Images\Sprites\Collectibles\Lemon.png" />
+    <Resource Include="Images\Sprites\Collectibles\Plum.png" />
+    <Resource Include="Images\Sprites\Collectibles\Strawberry.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

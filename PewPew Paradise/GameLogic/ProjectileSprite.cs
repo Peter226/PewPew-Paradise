@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using PewPew_Paradise.GameLogic.SpriteComponents;
 using PewPew_Paradise.Maths;
 
@@ -12,7 +13,8 @@ namespace PewPew_Paradise.GameLogic
     {
         public ProjectileSprite(string image, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
-
+            AddComponent<CollideComponent>().OnCollide += Collision;
+            AddComponent<PhysicsComponent>().IsActive = false;
         }
         public override void Update()
         {
@@ -25,6 +27,25 @@ namespace PewPew_Paradise.GameLogic
             if (Position.x > 15 || Position.x < 1)
                 Destroy();
             Position = pos;
+            EnemySprite hitEnemy = null;
+            foreach (EnemySprite enemy in Enemy.enemyList)
+            {
+                Rect enemyHitBox = enemy.GetRect();
+                if (enemyHitBox.IntersectsWith(this.GetRect()))
+                {
+                    hitEnemy = enemy;
+                    break;
+
+                }
+            }
+            if(hitEnemy!=null)
+            {
+                hitEnemy.EnemyDeath();
+            }
+        }
+        public void Collision()
+        {
+            Destroy();
         }
     }
 }

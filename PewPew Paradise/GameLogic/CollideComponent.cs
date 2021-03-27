@@ -25,6 +25,9 @@ namespace PewPew_Paradise.GameLogic
             splast = sprite.Position;
             isOnGround = false;
         }
+        public delegate void OnCollideDelegate();
+
+        public event OnCollideDelegate OnCollide;
         
         public override void PostUpdate()
         {
@@ -41,6 +44,7 @@ namespace PewPew_Paradise.GameLogic
                 
 
                 bool didhit = false;
+
 
                 foreach (Rect platform in MainWindow.Instance.load.CurrentMap().hitboxes)
                 {
@@ -84,7 +88,14 @@ namespace PewPew_Paradise.GameLogic
                         sprite.Position = sp;
                     }
                 }
-                if (didhit) break;
+                if (didhit) 
+                {
+                    if(OnCollide != null)
+                    {
+                        OnCollide.Invoke();
+                    }
+                    break;
+                }
                
             }
             splast = sprite.Position;

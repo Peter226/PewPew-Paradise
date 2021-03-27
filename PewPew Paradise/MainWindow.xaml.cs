@@ -115,6 +115,8 @@ namespace PewPew_Paradise
             enslaveWPF.RepeatBehavior = RepeatBehavior.Forever;
             enslaveWPF.AutoReverse = true;
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
+
+            FruitSprite.LoadImages();
         }
 
         /// <summary>

@@ -7,6 +7,7 @@ using PewPew_Paradise.Maths;
 using PewPew_Paradise.GameLogic;
 using System.Windows.Input;
 using PewPew_Paradise.GameLogic.SpriteComponents;
+using System.Windows;
 
 namespace PewPew_Paradise.GameLogic
 {
@@ -108,6 +109,23 @@ namespace PewPew_Paradise.GameLogic
 
             timer += GameManager.DeltaTime;
                 base.Update();
+
+            FruitSprite collectFruit = null;
+            foreach (FruitSprite fruit in FruitSprite.fruitList)
+            {
+                Rect fruitHitBox = fruit.GetRect();
+                if (fruitHitBox.IntersectsWith(this.GetRect()))
+                {
+                    collectFruit = fruit;
+                    break;
+
+                }
+            }
+            if (collectFruit != null)
+            {
+                collectFruit.FruitCollect();
+            }
+
         }
         public override void Start()
         {

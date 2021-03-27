@@ -154,8 +154,14 @@ namespace PewPew_Paradise.GameLogic
 
         public static void RemoveSprite(Sprite sprite)
         {
-            ((Panel)sprite.RectangleElement.Parent).Children.Remove(sprite.RectangleElement);
-            Sprites.Remove(sprite.ID);
+            if (sprite.RectangleElement != null)
+            { 
+                if(sprite.RectangleElement.Parent != null)
+                { 
+                    ((Panel)sprite.RectangleElement.Parent).Children.Remove(sprite.RectangleElement);
+                    Sprites.Remove(sprite.ID);
+                }
+            }
         }
 
 
