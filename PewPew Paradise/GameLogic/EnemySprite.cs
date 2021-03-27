@@ -23,9 +23,12 @@ namespace PewPew_Paradise.GameLogic
         {
             Random random = new Random();
             int randomfruit = random.Next(FruitSprite.fruitTypes.Count);
-            new FruitSprite(FruitSprite.fruitTypes[randomfruit].name,this.Position,Vector2.One).point= FruitSprite.fruitTypes[randomfruit].point;
-            Enemy.enemyList.Remove(this);
+            new FruitSprite(FruitSprite.fruitTypes[randomfruit].name, this.Position, Vector2.One).point = FruitSprite.fruitTypes[randomfruit].point;
             Destroy();
+        }
+        protected override void OnDestroy()
+        {
+            Enemy.enemyList.Remove(this);
         }
 
     }

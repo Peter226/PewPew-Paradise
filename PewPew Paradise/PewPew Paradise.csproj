@@ -273,5 +273,9 @@
     <Resource Include="Images\Sprites\Collectibles\Plum.png" />
     <Resource Include="Images\Sprites\Collectibles\Strawberry.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Collectibles\Apple.png" />
+    <Resource Include="Images\Sprites\Collectibles\Orange.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,11 +36,11 @@ namespace PewPew_Paradise.GameLogic
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Plum.png", "C_Plum");
             fruitTypes.Add(new FruitType("C_Strawberry", 800));
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Strawberry.png", "C_Strawberry");
-            /* fruitTypes.Add(new FruitType("C_Orange", 100));
+            fruitTypes.Add(new FruitType("C_Orange", 100));
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Orange.png", "C_Orange");
             fruitTypes.Add(new FruitType("C_Apple", 200));
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Apple.png", "C_Apple");
-            fruitTypes.Add(new FruitType("C_Pineapple", 300));
+            /*fruitTypes.Add(new FruitType("C_Pineapple", 300));
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Pineapple.png", "C_Pineapple"); */
 
         }

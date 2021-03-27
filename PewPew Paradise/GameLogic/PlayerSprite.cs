@@ -85,9 +85,9 @@ namespace PewPew_Paradise.GameLogic
             Vector2 size = Size * 0.5;
             Vector2 position = Position;
             if( size.x > 0 )
-                position.x += 1;
+                position.x += 0.5;
             else
-                position.x -= 1;
+                position.x -= 0.5;
             ProjectileSprite projectile = new ProjectileSprite(this.projectile, position, size, true);
             timer = 0;
         }
