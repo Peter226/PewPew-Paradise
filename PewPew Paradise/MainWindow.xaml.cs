@@ -551,23 +551,7 @@ namespace PewPew_Paradise
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < FruitSprite.fruitList.Count; i++)
-            {
-                FruitSprite.fruitList[i].Destroy();
-            }
-            FruitSprite.fruitList.Clear();
-            for (int i = 0; i < Enemy.enemyList.Count; i++)
-            {
-                Enemy.enemyList[i].Destroy();
-            }
-            Enemy.enemyList.Clear();
-            chars.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
-            chars.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
-            chars.SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
-            chars.SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
-            load.CurrentMap().IsActive = false;
-            chars.UnLoadChar(1);
-            chars.UnLoadChar(2);
+            load.ClearAll();
             InGameOptions.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Collapsed;
             MainMenu.Visibility = Visibility.Visible;

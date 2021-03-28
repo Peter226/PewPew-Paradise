@@ -1,4 +1,5 @@
 ﻿using PewPew_Paradise.GameLogic;
+using PewPew_Paradise.GameLogic.SpriteComponents;
 using PewPew_Paradise.Maths;
 using System;
 using System.Collections.Generic;
@@ -55,12 +56,14 @@ namespace PewPew_Paradise
         {
             floor =1;
             level_number = 0;
+            
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
             MainWindow.playingFieldBrush.Color = maps[level_number].map_color.Color;
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);
+
             }
             else 
             {
@@ -72,6 +75,7 @@ namespace PewPew_Paradise
             EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
             current.Add(new_enemy);
             MainWindow.Instance.enemy.EnemyLoad(new_enemy);
+
 
         }
         /// <summary>
@@ -126,6 +130,24 @@ namespace PewPew_Paradise
         {
             return maps[level_number];
         }
-
+        public void ClearAll() 
+        {
+            for (int i = 0; i < FruitSprite.fruitList.Count; i++)
+            {
+                FruitSprite.fruitList[0].Destroy();
+            }
+            FruitSprite.fruitList.Clear();
+            for (int i = 0; i < Enemy.enemyList.Count; i++)
+            {
+                Enemy.enemyList[0].Destroy();
+            }
+            MainWindow.Instance.chars.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
+            MainWindow.Instance.chars.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
+            MainWindow.Instance.chars.SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
+            MainWindow.Instance.chars.SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
+            MainWindow.Instance.load.CurrentMap().IsActive = false;
+            MainWindow.Instance.chars.UnLoadChar(1);
+            MainWindow.Instance.chars.UnLoadChar(2);
+        }
     }
 }

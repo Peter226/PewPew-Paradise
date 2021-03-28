@@ -17,6 +17,7 @@ namespace PewPew_Paradise.GameLogic
         public string projectile;
         public List<Key> _keys = new List<Key>();
         public double timer = 100000;
+        public int life = 3;
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();
@@ -135,8 +136,45 @@ namespace PewPew_Paradise.GameLogic
                 }
                 collectFruit.FruitCollect();
             }
+            for(int i =0; i < Enemy.enemyList.Count; i++)
+            {
 
+                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect())) 
+                {
+                    life--;
+                    if (MainWindow.Instance.player_number == 1) 
+                    {
+                        if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
+                        {
+                            MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                            MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
+                            MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
+                            MainWindow.Instance.load.ClearAll();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
+                        {
+                            MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                            if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
+                            {
+                                MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
+                                MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
+                                MainWindow.Instance.load.ClearAll();
+                                break;
+                            }
+                        }
+                        if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
+                        {
+                            MainWindow.Instance.chars.SelectedChar(2).IsActive = false;
+                        }
+                    }
+                }
+            }
         }
+        
         public override void Start()
         {
             AddComponent<PhysicsComponent>().IsActive=false;

@@ -238,7 +238,7 @@ namespace PewPew_Paradise
             chosen_char1.IsActive = true;
             SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
             SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
-
+            SelectedChar(1).life = 3;
             if (player_number!=1)
             {
                 PlayerSprite chosen_char2 = SelectedChar(2);
@@ -248,6 +248,7 @@ namespace PewPew_Paradise
                 chosen_char2.IsActive = true;
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
                 SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
+                SelectedChar(2).life = 3;
             }
         }
         /// <summary>
