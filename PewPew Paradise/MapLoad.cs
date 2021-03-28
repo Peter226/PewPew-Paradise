@@ -142,8 +142,7 @@ namespace PewPew_Paradise
             int enemycount = Enemy.enemyList.Count;
             for (int i = 0; i < enemycount; i++)
             {
-                Enemy.enemyList[0].Destroy();
-                
+                Enemy.enemyList[0].Destroy(); 
             }
             MainWindow.Instance.chars.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
             MainWindow.Instance.chars.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;

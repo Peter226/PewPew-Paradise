@@ -634,20 +634,30 @@
         </Grid>
         <!--End Game Grid-->
         <Grid x:Name="EndGame" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
-
-            <Button x:Name="bt_mainmenu" HorizontalAlignment="Left" Margin="20,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_mainmenu_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Label x:Name="lb_player1name" Content="" HorizontalAlignment="Left" Margin="30,130,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
+            <Label x:Name="lb_floortext1" Content="Floor:" HorizontalAlignment="Left" Margin="30,150,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" />
+            <Label x:Name="lb_floor_player1" HorizontalAlignment="Left" Margin="80,150,0,0" Width="150" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
+            <Label x:Name="lb_scoretext1" Content="Score:" HorizontalAlignment="Left" Margin="30,170,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
+            <Label x:Name="lb_player1score"  HorizontalAlignment="Left" Margin="80,170,0,0" Width="150" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
+            <Label x:Name="lb_player2name" Content="" HorizontalAlignment="Left" Margin="30,200,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
+            <Label x:Name="lb_floortext2" Content="Floor:" HorizontalAlignment="Left" Margin="30,220,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" />
+            <Label x:Name="lb_floor_player2"  HorizontalAlignment="Left" Margin="80,220,0,0" FontSize="20"  Width="150" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
+            <Label x:Name="lb_scoretext2" Content="Score:" HorizontalAlignment="Left" Margin="30,240,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
+            <Label x:Name="lb_player2score"  HorizontalAlignment="Left" Margin="80,240,0,0" FontSize="20" Width="150" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
+            <Button x:Name="bt_mainmenu" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_mainmenu_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_exit_end" HorizontalAlignment="Left" Margin="369,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_exit_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Button x:Name="bt_exit_end" HorizontalAlignment="Left" Margin="250,420,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_exit_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
             </Button>
         </Grid>
+        <!--Collision Edtor-->
         <Grid x:Name="collisionEditor" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="49*"/>

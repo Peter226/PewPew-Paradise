@@ -531,11 +531,15 @@ namespace PewPew_Paradise
             PlayingField.Visibility = Visibility.Visible;
             player1_name = tb_player1.Text;
             lb_player1_name.Content = player1_name;
+            lb_player1name.Content = player1_name;
             lb_player1_score.Content = score1;
+            lb_floor_player1.Content = 0;
             if (player_number != 1)
             { 
                 player2_name = tb_player2.Text;
                 lb_player2_name.Content = player2_name;
+                lb_player2name.Content = player2_name;
+                lb_floor_player2.Content = 0;
                 lb_player2_score.Content = score2;
                 lb_player2_name.Visibility = Visibility.Visible;
                 lb_player2_score.Visibility = Visibility.Visible;

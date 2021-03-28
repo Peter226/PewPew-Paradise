@@ -150,6 +150,8 @@ namespace PewPew_Paradise.GameLogic
                             MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
                             MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
                             MainWindow.Instance.load.ClearAll();
+                            MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
+                            MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
                             break;
                         }
                     }
@@ -158,8 +160,18 @@ namespace PewPew_Paradise.GameLogic
                         if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
                         {
                             MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                            if ((int)MainWindow.Instance.lb_floor_player1.Content == 0)
+                            { 
+                                MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor; 
+                            }
+                            MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
                             if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
                             {
+                                if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
+                                { 
+                                    MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor; 
+                                }
+                                MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
                                 MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
                                 MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
                                 MainWindow.Instance.load.ClearAll();
@@ -169,6 +181,11 @@ namespace PewPew_Paradise.GameLogic
                         if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
                         {
                             MainWindow.Instance.chars.SelectedChar(2).IsActive = false;
+                            if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
+                            {
+                                MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor; 
+                            }
+                            MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
                         }
                     }
                 }
