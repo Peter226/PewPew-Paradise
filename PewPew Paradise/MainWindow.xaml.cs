@@ -132,7 +132,7 @@ namespace PewPew_Paradise
             enslaveWPF.AutoReverse = true;
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
 
-            FruitSprite.LoadImages();
+            FruitSprite.LoadImages(); //??
         }
 
         /// <summary>
