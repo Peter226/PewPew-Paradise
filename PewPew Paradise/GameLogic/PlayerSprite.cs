@@ -94,6 +94,7 @@ namespace PewPew_Paradise.GameLogic
 
         public override void Update()
         {
+            if(MainWindow.Instance.PlayingField.Visibility == Visibility.Visible)
             if (!MainWindow.Instance.load.CurrentMap().just_loaded)
             {
                 if (Keyboard.IsKeyDown(_keys[1]))

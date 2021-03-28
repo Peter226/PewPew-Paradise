@@ -656,7 +656,7 @@
         </Grid>
         <!--Ingame Optiopns Grid-->
         <Grid x:Name="InGameOptions" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#7F260026">
-            <Button x:Name="bt_resume" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" >
+            <Button x:Name="bt_resume" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_resume_Click" >
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>

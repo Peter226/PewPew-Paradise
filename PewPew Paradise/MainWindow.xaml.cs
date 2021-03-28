@@ -561,14 +561,24 @@ namespace PewPew_Paradise
                 Enemy.enemyList[i].Destroy();
             }
             Enemy.enemyList.Clear();
+            chars.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
+            chars.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
+            chars.SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
+            chars.SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
             load.CurrentMap().IsActive = false;
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
             InGameOptions.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Collapsed;
             MainMenu.Visibility = Visibility.Visible;
-        }
 
+            GameManager.Begin();
+        }
+        private void bt_resume_Click(object sender, RoutedEventArgs e)
+        {
+            InGameOptions.Visibility = Visibility.Collapsed;
+            GameManager.Begin();
+        }
         /// <summary>
         /// Selection arrow moving events
         /// </summary>
@@ -656,6 +666,6 @@ namespace PewPew_Paradise
             chars.PreChar(2);
         }
 
- 
+
     }
 }
