@@ -559,7 +559,6 @@ namespace PewPew_Paradise
             InGameOptions.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Collapsed;
             MainMenu.Visibility = Visibility.Visible;
-
             GameManager.Begin();
         }
         private void bt_resume_Click(object sender, RoutedEventArgs e)

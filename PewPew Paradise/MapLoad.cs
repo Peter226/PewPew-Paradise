@@ -7,6 +7,7 @@ using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PewPew_Paradise
@@ -153,6 +154,8 @@ namespace PewPew_Paradise
             MainWindow.Instance.chars.UnLoadChar(2);
             MainWindow.Instance.score1 = 0;
             MainWindow.Instance.score2 = 0;
+            MainWindow.Instance.lb_player2_name.Visibility = Visibility.Collapsed;
+            MainWindow.Instance.lb_player2_score.Visibility = Visibility.Collapsed;
         }
     }
 }

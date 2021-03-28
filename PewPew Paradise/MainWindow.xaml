@@ -629,7 +629,7 @@
             <Label x:Name="lb_player1_name"  HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_player1_score"  HorizontalAlignment="Left" Margin="0,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_floor_counter" HorizontalAlignment="Left" Margin="220,35,0,442" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" Width="64" RenderTransformOrigin="0,0.429" HorizontalContentAlignment="Center"/>
-            <Label x:Name="lb_player2_name"  HorizontalAlignment="Left" Margin="400,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
+            <Label x:Name="lb_player2_name" HorizontalAlignment="Left" Margin="400,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
             <Label x:Name="lb_player2_score"  HorizontalAlignment="Left" Margin="400,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
         </Grid>
         <!--End Game Grid-->
