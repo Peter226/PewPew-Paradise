@@ -633,6 +633,10 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Visible;
             EndGame.Visibility = Visibility.Collapsed;
+            lb_floor_player1.Content = 0;
+            lb_floor_player2.Content = 0;
+            lb_player1score.Content = 0;
+            lb_player2score.Content = 0;
         }
         private void bt_charsselect1_r_Click(object sender, RoutedEventArgs e)
         {

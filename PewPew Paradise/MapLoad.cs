@@ -151,6 +151,8 @@ namespace PewPew_Paradise
             MainWindow.Instance.load.CurrentMap().IsActive = false;
             MainWindow.Instance.chars.UnLoadChar(1);
             MainWindow.Instance.chars.UnLoadChar(2);
+            MainWindow.Instance.score1 = 0;
+            MainWindow.Instance.score2 = 0;
         }
     }
 }

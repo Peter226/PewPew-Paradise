@@ -18,6 +18,7 @@ namespace PewPew_Paradise.GameLogic
         public List<Key> _keys = new List<Key>();
         public double timer = 100000;
         public int life = 3;
+        public double dietimer;
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();
@@ -110,7 +111,8 @@ namespace PewPew_Paradise.GameLogic
             }
 
             timer += GameManager.DeltaTime;
-                base.Update();
+            dietimer += 0.00075 * GameManager.DeltaTime;
+            base.Update();
 
             FruitSprite collectFruit = null;
             foreach (FruitSprite fruit in FruitSprite.fruitList)
@@ -139,8 +141,9 @@ namespace PewPew_Paradise.GameLogic
             for(int i =0; i < Enemy.enemyList.Count; i++)
             {
 
-                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect())) 
+                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 1.5) 
                 {
+                    dietimer = 1;
                     life--;
                     if (MainWindow.Instance.player_number == 1) 
                     {
@@ -149,9 +152,15 @@ namespace PewPew_Paradise.GameLogic
                             MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
                             MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
                             MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
-                            MainWindow.Instance.load.ClearAll();
+                            
                             MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
                             MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
+                            MainWindow.Instance.lb_floortext2.Visibility = Visibility.Collapsed;
+                            MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Collapsed;
+                            MainWindow.Instance.lb_floor_player2.Visibility = Visibility.Collapsed;
+                            MainWindow.Instance.lb_player2score.Visibility = Visibility.Collapsed;
+                            MainWindow.Instance.lb_player2name.Visibility = Visibility.Collapsed;
+                            MainWindow.Instance.load.ClearAll();
                             break;
                         }
                     }
@@ -174,6 +183,8 @@ namespace PewPew_Paradise.GameLogic
                                 MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
                                 MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
                                 MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
+                                MainWindow.Instance.lb_floortext2.Visibility = Visibility.Visible;
+                                MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Visible;
                                 MainWindow.Instance.load.ClearAll();
                                 break;
                             }

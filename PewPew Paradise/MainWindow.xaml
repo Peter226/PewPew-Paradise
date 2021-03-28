@@ -640,9 +640,9 @@
             <Label x:Name="lb_scoretext1" Content="Score:" HorizontalAlignment="Left" Margin="30,170,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_player1score"  HorizontalAlignment="Left" Margin="80,170,0,0" Width="150" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
             <Label x:Name="lb_player2name" Content="" HorizontalAlignment="Left" Margin="30,200,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
-            <Label x:Name="lb_floortext2" Content="Floor:" HorizontalAlignment="Left" Margin="30,220,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" />
+            <Label x:Name="lb_floortext2" Visibility ="Collapsed" Content="Floor:" HorizontalAlignment="Left" Margin="30,220,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" />
             <Label x:Name="lb_floor_player2"  HorizontalAlignment="Left" Margin="80,220,0,0" FontSize="20"  Width="150" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
-            <Label x:Name="lb_scoretext2" Content="Score:" HorizontalAlignment="Left" Margin="30,240,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
+            <Label x:Name="lb_scoretext2" Content="Score:" Visibility ="Collapsed" HorizontalAlignment="Left" Margin="30,240,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_player2score"  HorizontalAlignment="Left" Margin="80,240,0,0" FontSize="20" Width="150" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
             <Button x:Name="bt_mainmenu" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_mainmenu_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
