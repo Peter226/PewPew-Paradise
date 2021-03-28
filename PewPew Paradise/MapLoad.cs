@@ -97,7 +97,8 @@ namespace PewPew_Paradise
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            MainWindow.Instance.chars.CharacterLoad(1);
+            if (MainWindow.Instance.chars.SelectedChar(1).life != 0)
+            { MainWindow.Instance.chars.CharacterLoad(1); }
             for (int i = 0; i < Math.Ceiling((double)floor/3); i++)
             {
                 
@@ -108,7 +109,7 @@ namespace PewPew_Paradise
                 MainWindow.Instance.enemy.EnemyLoad(new_enemy);
                 
             }
-            if (player_number != 1)
+            if (player_number != 1 && MainWindow.Instance.chars.SelectedChar(2).life != 0)
             {
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
@@ -132,14 +133,17 @@ namespace PewPew_Paradise
         }
         public void ClearAll() 
         {
-            for (int i = 0; i < FruitSprite.fruitList.Count; i++)
+            int fruitcount = FruitSprite.fruitList.Count;
+            for (int i = 0; i < fruitcount; i++)
             {
                 FruitSprite.fruitList[0].Destroy();
             }
             FruitSprite.fruitList.Clear();
-            for (int i = 0; i < Enemy.enemyList.Count; i++)
+            int enemycount = Enemy.enemyList.Count;
+            for (int i = 0; i < enemycount; i++)
             {
                 Enemy.enemyList[0].Destroy();
+                Console.WriteLine("Lókuki");
             }
             MainWindow.Instance.chars.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
             MainWindow.Instance.chars.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
