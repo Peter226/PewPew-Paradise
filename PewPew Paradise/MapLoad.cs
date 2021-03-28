@@ -156,6 +156,8 @@ namespace PewPew_Paradise
             MainWindow.Instance.score2 = 0;
             MainWindow.Instance.lb_player2_name.Visibility = Visibility.Collapsed;
             MainWindow.Instance.lb_player2_score.Visibility = Visibility.Collapsed;
+            MainWindow.Instance.chars.SelectedChar(1).life = 3;
+            MainWindow.Instance.chars.SelectedChar(2).life = 3;
         }
     }
 }

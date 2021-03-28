@@ -193,6 +193,14 @@ namespace PewPew_Paradise
                     chars2[chars_number2].IsActive = true;
                 }
             }
+            if (chars2[chars_number2].IsActive)
+            {
+                SelectedChar(1).Position = select_pos1;
+            }
+            else
+            {
+                SelectedChar(1).Position = select_pos_mid;
+            }
         }
         /// <summary>
         /// Unload characters

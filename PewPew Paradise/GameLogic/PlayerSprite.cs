@@ -22,7 +22,7 @@ namespace PewPew_Paradise.GameLogic
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();
-            //AddComponent<AnimatorComponent>().SetAnimation("Player");
+            AddComponent<AnimatorComponent>().SetAnimation("Player");
 
             this.player_id = player_id;
             this.projectile = projectile;
@@ -48,6 +48,7 @@ namespace PewPew_Paradise.GameLogic
 
         public void MoveLeft()
         {
+            GetComponent<AnimatorComponent>().PlayAnimation(1);
             Vector2 current_pos = Position;
             Vector2 current_size = Size;
             current_size.x = -1;
@@ -62,6 +63,7 @@ namespace PewPew_Paradise.GameLogic
 
         public void MoveRight()
         {
+            GetComponent<AnimatorComponent>().PlayAnimation(1);
             Vector2 current_pos = Position;
             Vector2 current_size = Size;
 
@@ -80,6 +82,7 @@ namespace PewPew_Paradise.GameLogic
             if (GetComponent<CollideComponent>().isOnGround)
             {
                 GetComponent<PhysicsComponent>().speed.y = -6.375;
+                GetComponent<AnimatorComponent>().PlayAnimation(2);
             }
         }
         public void Shoot()
@@ -92,12 +95,27 @@ namespace PewPew_Paradise.GameLogic
                 position.x -= 0.5;
             ProjectileSprite projectile = new ProjectileSprite(this.projectile, position, size, true);
             timer = 0;
+            GetComponent<AnimatorComponent>().PlayAnimation(4);
         }
 
         public override void Update()
         {
+
+            if (life > 0)
+            {
+                if (RectangleElement.Opacity != 1) {
+                    RectangleElement.Opacity = 1;
+                }
+            }
+            else
+            {
+                RectangleElement.Opacity -= GameManager.DeltaTime * 0.0005;
+                Position -= new Vector2(0, GameManager.DeltaTime * 0.0015);
+            }
+
+
             if(MainWindow.Instance.PlayingField.Visibility == Visibility.Visible)
-            if (!MainWindow.Instance.load.CurrentMap().just_loaded)
+            if (!MainWindow.Instance.load.CurrentMap().just_loaded && life > 0)
             {
                 if (Keyboard.IsKeyDown(_keys[1]))
                     MoveLeft();
@@ -141,68 +159,91 @@ namespace PewPew_Paradise.GameLogic
             for(int i =0; i < Enemy.enemyList.Count; i++)
             {
 
-                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 1.5) 
+                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0) 
                 {
                     dietimer = 1;
                     life--;
-                    if (MainWindow.Instance.player_number == 1) 
+                    GetComponent<AnimatorComponent>().PlayAnimation(5);
+                    if (life < 1)
                     {
-                        if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
-                        {
-                            MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
-                            MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
-                            MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
-                            
-                            MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
-                            MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
-                            MainWindow.Instance.lb_floortext2.Visibility = Visibility.Collapsed;
-                            MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Collapsed;
-                            MainWindow.Instance.lb_floor_player2.Visibility = Visibility.Collapsed;
-                            MainWindow.Instance.lb_player2score.Visibility = Visibility.Collapsed;
-                            MainWindow.Instance.lb_player2name.Visibility = Visibility.Collapsed;
-                            MainWindow.Instance.load.ClearAll();
-                            break;
-                        }
+                        GetComponent<CollideComponent>().IsActive = false;
+                        GetComponent<PhysicsComponent>().IsActive = false;
+                        GetComponent<AnimatorComponent>().PlayAnimation(6);
+                        GetComponent<AnimatorComponent>().OnAnimationEnded += FinishDeath;
                     }
-                    else
-                    {
-                        if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
-                        {
-                            MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
-                            if ((int)MainWindow.Instance.lb_floor_player1.Content == 0)
-                            { 
-                                MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor; 
-                            }
-                            MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
-                            if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
-                            {
-                                if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
-                                { 
-                                    MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor; 
-                                }
-                                MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
-                                MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
-                                MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
-                                MainWindow.Instance.lb_floortext2.Visibility = Visibility.Visible;
-                                MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Visible;
-                                MainWindow.Instance.load.ClearAll();
-                                break;
-                            }
-                        }
-                        if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
-                        {
-                            MainWindow.Instance.chars.SelectedChar(2).IsActive = false;
-                            if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
-                            {
-                                MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor; 
-                            }
-                            MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
-                        }
-                    }
+                    break;
                 }
             }
+
+            //Fall animation
+            if (!GetComponent<CollideComponent>().isOnGround && GetComponent<PhysicsComponent>().speed.y > 0.0)
+            {
+                GetComponent<AnimatorComponent>().PlayAnimation(3);
+            }
+
+
         }
         
+        void FinishDeath(AnimatorComponent animator, int animation)
+        {
+            GetComponent<AnimatorComponent>().OnAnimationEnded -= FinishDeath;
+            if (MainWindow.Instance.player_number == 1)
+            {
+                if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
+                {
+                    MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                    MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
+                    MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
+
+                    MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
+                    MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
+                    MainWindow.Instance.lb_floortext2.Visibility = Visibility.Collapsed;
+                    MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Collapsed;
+                    MainWindow.Instance.lb_floor_player2.Visibility = Visibility.Collapsed;
+                    MainWindow.Instance.lb_player2score.Visibility = Visibility.Collapsed;
+                    MainWindow.Instance.lb_player2name.Visibility = Visibility.Collapsed;
+                    MainWindow.Instance.load.ClearAll();
+                }
+            }
+            else
+            {
+                if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
+                {
+                    MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                    if ((int)MainWindow.Instance.lb_floor_player1.Content == 0)
+                    {
+                        MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
+                    }
+                    MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
+                    if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
+                    {
+                        if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
+                        {
+                            MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor;
+                        }
+                        MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
+                        MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
+                        MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
+                        MainWindow.Instance.lb_floortext2.Visibility = Visibility.Visible;
+                        MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Visible;
+                        MainWindow.Instance.load.ClearAll();
+                    }
+                }
+                if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
+                {
+                    MainWindow.Instance.chars.SelectedChar(2).IsActive = false;
+                    if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
+                    {
+                        MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor;
+                    }
+                    MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
+                }
+            }
+            RectangleElement.Opacity = 1;
+        }
+
+
+
         public override void Start()
         {
             AddComponent<PhysicsComponent>().IsActive=false;

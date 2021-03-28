@@ -655,6 +655,7 @@
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/Exit.png"/>
             </Button>
         </Grid>
         <!--Collision Edtor-->
@@ -680,6 +681,7 @@
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/Exit.png"/>
             </Button>
         </Grid>
         <!--Selection Grid-->

@@ -78,7 +78,6 @@ namespace PewPew_Paradise
         /// </summary>
         public MainWindow()
         {
-            
             LoadGameOptions();
             instance = this;
             InitializeComponent();
@@ -93,21 +92,41 @@ namespace PewPew_Paradise
             //CollisionEditor.Init(collisionEditor); //COLLISION EDITOR
 
 
-            AnimationCollection playerAnimations = new AnimationCollection("Player", Vector2.One * 4, 1);
+            AnimationCollection playerAnimations = new AnimationCollection("Player", Vector2.One * 4, 0);
             SpriteManager.canvas = SpriteCanvas;
-            SpriteAnimation jumpAnimation = new SpriteAnimation(150, false, 2);
-            playerAnimations.animations.Add(jumpAnimation);
-            jumpAnimation.keyFrames.Add(new Vector2(0, 0));
-            jumpAnimation.keyFrames.Add(new Vector2(1, 0));
-            jumpAnimation.keyFrames.Add(new Vector2(2, 0));
-            jumpAnimation.keyFrames.Add(new Vector2(3, 0));
+            SpriteAnimation idleAnimation = new SpriteAnimation(150, true);
+            playerAnimations.animations.Add(idleAnimation);
+            idleAnimation.keyFrames.Add(new Vector2(0, 0));
+            idleAnimation.keyFrames.Add(new Vector2(1, 0));
+            idleAnimation.keyFrames.Add(new Vector2(2, 0));
+            idleAnimation.keyFrames.Add(new Vector2(3, 0));
 
-            SpriteAnimation walkAnimation = new SpriteAnimation(100, true);
+            SpriteAnimation walkAnimation = new SpriteAnimation(100, false, 2);
             playerAnimations.animations.Add(walkAnimation);
             walkAnimation.keyFrames.Add(new Vector2(0, 1));
             walkAnimation.keyFrames.Add(new Vector2(1, 1));
-            walkAnimation.keyFrames.Add(new Vector2(2, 1));
-            walkAnimation.keyFrames.Add(new Vector2(1, 1));
+
+            SpriteAnimation jumpAnimation = new SpriteAnimation(300, false, 3);
+            playerAnimations.animations.Add(jumpAnimation);
+            jumpAnimation.keyFrames.Add(new Vector2(2, 1));
+            jumpAnimation.keyFrames.Add(new Vector2(3, 1));
+
+            SpriteAnimation fallAnimation = new SpriteAnimation(100, false, 3);
+            playerAnimations.animations.Add(fallAnimation);
+            fallAnimation.keyFrames.Add(new Vector2(0, 2));
+
+            SpriteAnimation shootingAnimation = new SpriteAnimation(300, false, 4);
+            playerAnimations.animations.Add(shootingAnimation);
+            shootingAnimation.keyFrames.Add(new Vector2(1, 2));
+
+            SpriteAnimation hurtAnimation = new SpriteAnimation(500, false, 5);
+            playerAnimations.animations.Add(hurtAnimation);
+            hurtAnimation.keyFrames.Add(new Vector2(3, 2));
+
+            SpriteAnimation deathAnimation = new SpriteAnimation(2000, false, 6);
+            playerAnimations.animations.Add(deathAnimation);
+            deathAnimation.keyFrames.Add(new Vector2(2, 2));
+
             SpriteManager.AddAnimationCollection(playerAnimations, "Player");
 
 

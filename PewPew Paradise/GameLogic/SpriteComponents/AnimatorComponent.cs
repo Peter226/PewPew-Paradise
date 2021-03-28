@@ -22,7 +22,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         private ImageBrush _brush;
         public delegate void AnimationEndedEvent(AnimatorComponent component, int animationID);
         public event AnimationEndedEvent OnAnimationEnded;
-
+        bool fallBack;
 
         public AnimatorComponent(Sprite parent) : base(parent)
         {
@@ -53,11 +53,28 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             }
         }
 
+
+
+        public override void PreUpdate()
+        {
+            base.PreUpdate();
+            if (fallBack) {
+                fallBack = false;
+                _currentAnimation = _animationCollection.fallbackAnimation;
+                _lastAnimation = _currentAnimation;
+            }
+        }
         public override void Update()
+        {
+            base.Update();
+        }
+
+        public override void PostUpdate()
         {
             base.Update();
             Animate();
         }
+
 
         private void Animate()
         {
@@ -71,7 +88,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                     {
                         if (!_animationCollection.animations[_currentAnimation].loop)
                         {
-                            _currentAnimation = _animationCollection.fallbackAnimation;
+                            fallBack = true;
                             _lastAnimation = _currentAnimation;
                             _animationTime = 0;
                             if (OnAnimationEnded != null)
