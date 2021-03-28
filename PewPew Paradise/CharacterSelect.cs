@@ -27,7 +27,7 @@ namespace PewPew_Paradise
             //Characters
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/OrkPM.png", "ork");
-            SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder1.png", "MrPlaceholder");
+            SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder.png", "MrPlaceholder");
             SpriteManager.LoadImage("Images/Sprites/Characters/cactus.png", "cactus");
             SpriteManager.LoadImage("Images/Sprites/Characters/monkey.png", "monkey");
             SpriteManager.LoadImage("Images/Sprites/Characters/muffin.png", "muffin");
@@ -246,7 +246,6 @@ namespace PewPew_Paradise
             chosen_char1.IsActive = true;
             SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
             SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
-            SelectedChar(1).life = 3;
             if (player_number!=1)
             {
                 PlayerSprite chosen_char2 = SelectedChar(2);
@@ -255,8 +254,7 @@ namespace PewPew_Paradise
                 chosen_char2.Position = load_pos2;
                 chosen_char2.IsActive = true;
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
-                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
-                SelectedChar(2).life = 3;
+                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true; 
             }
         }
         /// <summary>

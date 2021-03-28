@@ -37,7 +37,7 @@ namespace PewPew_Paradise
             maps.Add(sky_map);
             MapSprite forest_map = new MapSprite("forest_map", "mushroom", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
             maps.Add(forest_map);
-            MapSprite underground_map = new MapSprite("underground_map", "witch", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            MapSprite underground_map = new MapSprite("underground_map", "zombie", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
             //Enemys
             SpriteManager.LoadImage("Images/Sprites/Enemies/bee.png", "bee");
