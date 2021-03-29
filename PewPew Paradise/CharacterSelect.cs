@@ -26,8 +26,8 @@ namespace PewPew_Paradise
         {
             //Characters
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
-            SpriteManager.LoadImage("Images/Sprites/Characters/OrkPM.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder.png", "MrPlaceholder");
+            SpriteManager.LoadImage("Images/Sprites/Characters/ork.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/cactus.png", "cactus");
             SpriteManager.LoadImage("Images/Sprites/Characters/monkey.png", "monkey");
             SpriteManager.LoadImage("Images/Sprites/Characters/muffin.png", "muffin");
@@ -37,7 +37,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Characters/t_rex.png", "t-rex");
             SpriteManager.LoadImage("Images/Sprites/Characters/dino.png", "dino");
             SpriteManager.LoadImage("Images/Sprites/Characters/koala.png", "koala");
-            
+
             //Projectiles
             SpriteManager.LoadImage("Images/Sprites/Projectiles/unicorn_projectile.png", "unicorn_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/OrkP.png", "ork_projectile");
@@ -48,7 +48,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Projectiles/penguin_projectile.png", "penguin_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/toast_projectile.png", "toast_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/turtle_projectile.png", "turtle_projectile");
-            
+
             SpriteManager.LoadImage("Images/Sprites/Projectiles/dino_projectile.png", "dino_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/koala_projectile.png", "koala_projectile");
             //Player1
@@ -76,7 +76,7 @@ namespace PewPew_Paradise
             chars1.Add(dino1);
             PlayerSprite koala1 = new PlayerSprite("koala", 1, "koala_projectile", select_pos1, select_size, false);
             chars1.Add(koala1);
-            
+
 
 
             //Player2
@@ -104,21 +104,21 @@ namespace PewPew_Paradise
             chars2.Add(dino2);
             PlayerSprite koala2 = new PlayerSprite("koala", 2, "koala_projectile", select_pos2, select_size, false);
             chars2.Add(koala2);
-            
+
 
         }
         /// <summary>
         /// Load Characters to options at first time
         /// </summary>
-        public void LoadChar(int player_number) 
+        public void LoadChar(int player_number)
         {
-            
+
             SelectedChar(1).Size = select_size;
-            
+
             chars1[chars_number1].IsActive = true;
             if (player_number != 1)
             {
-                
+
                 SelectedChar(2).Size = select_size;
                 SelectedChar(1).Position = select_pos1;
                 SelectedChar(2).Position = select_pos2;
@@ -134,7 +134,7 @@ namespace PewPew_Paradise
         /// player_number for player1 or 2 -> same for all the incoming functions
         /// </summary>
         /// <param name="player_number"></param>
-        public void NextChar(int player_number) 
+        public void NextChar(int player_number)
         {
             if (player_number == 1)
             {
@@ -206,7 +206,7 @@ namespace PewPew_Paradise
         /// Unload characters
         /// </summary>
         /// <param name="player_number"></param>
-        public void UnLoadChar(int player_number) 
+        public void UnLoadChar(int player_number)
         {
             if (player_number == 1)
             {
@@ -240,7 +240,7 @@ namespace PewPew_Paradise
             Vector2 load_size = new Vector2(1, 1);
 
             PlayerSprite chosen_char1 = SelectedChar(1);
-            
+
             chosen_char1.Position = load_pos1;
             chosen_char1.Size = load_size;
             chosen_char1.IsActive = true;
@@ -249,12 +249,12 @@ namespace PewPew_Paradise
             if (player_number!=1)
             {
                 PlayerSprite chosen_char2 = SelectedChar(2);
-                
+
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
                 chosen_char2.IsActive = true;
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
-                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true; 
+                SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
             }
         }
         /// <summary>
@@ -276,6 +276,6 @@ namespace PewPew_Paradise
 
         }
 
-       
+
     }
 }

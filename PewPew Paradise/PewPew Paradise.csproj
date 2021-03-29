@@ -176,16 +176,8 @@
     <Resource Include="Images\Player2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Sprites\Characters\OrkA.gif" />
-    <Resource Include="Images\Sprites\Characters\OrkF.png" />
-    <Resource Include="Images\Sprites\Characters\OrkIM.png" />
-    <Resource Include="Images\Sprites\Characters\OrkIT.png" />
     <Resource Include="Images\Sprites\Characters\OrkP2.png" />
     <Resource Include="Images\Sprites\Characters\OrkP3.png" />
-    <Resource Include="Images\Sprites\Characters\OrkPM.png" />
-    <Resource Include="Images\Sprites\Characters\OrkSA.png" />
-    <Resource Include="Images\Sprites\Characters\OrkW1.png" />
-    <Resource Include="Images\Sprites\Characters\OrkW2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.png" />
@@ -280,6 +272,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\Collectibles\Pineapple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Characters\ork.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

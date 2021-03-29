@@ -72,7 +72,7 @@ namespace PewPew_Paradise
                 MainWindow.Instance.chars.CharacterLoad(2);
             }
             maps[level_number].MapLoaded();
-            enemy_pos.x = rnd.Next(1, 15) + 0.5;
+            enemy_pos.x = rnd.Next(1, 14) + 0.5;
             EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
             current.Add(new_enemy);
             MainWindow.Instance.enemy.EnemyLoad(new_enemy);
@@ -103,8 +103,8 @@ namespace PewPew_Paradise
             for (int i = 0; i < Math.Ceiling((double)floor/3); i++)
             {
                 
-                enemy_pos.x = rnd.Next(1, 15) + 0.5;
-                enemy_pos.y = rnd.Next(1, 15) + 0.5;
+                enemy_pos.x = rnd.Next(1, 14) + 0.5;
+                enemy_pos.y = rnd.Next(1, 14) + 0.5;
                 EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
                 current.Add(new_enemy);
                 MainWindow.Instance.enemy.EnemyLoad(new_enemy);
