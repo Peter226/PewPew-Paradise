@@ -286,5 +286,8 @@
     <Resource Include="Images\Sprites\lava_map.png" />
     <Resource Include="Images\Sprites\water_map.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\Enemies\dragon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
