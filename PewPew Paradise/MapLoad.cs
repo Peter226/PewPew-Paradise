@@ -33,12 +33,18 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
             SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
             SpriteManager.LoadImage("Images/Sprites/underground_map.png", "underground_map");
+            SpriteManager.LoadImage("Images/Sprites/water_map.png", "water_map");
+            SpriteManager.LoadImage("Images/Sprites/lava_map.png", "lava_map");
             MapSprite sky_map = new MapSprite("sky_map", "bee", new SolidColorBrush(Color.FromRgb(106,164,252)), map_position, map_size, false);
             maps.Add(sky_map);
             MapSprite forest_map = new MapSprite("forest_map", "mushroom", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
             maps.Add(forest_map);
             MapSprite underground_map = new MapSprite("underground_map", "zombie", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
+            MapSprite water_map = new MapSprite("water_map", "fishbone", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            maps.Add(water_map);
+            MapSprite lava_map = new MapSprite("lava_map", "witch", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            maps.Add(lava_map);
             //Enemys
             SpriteManager.LoadImage("Images/Sprites/Enemies/bee.png", "bee");
             SpriteManager.LoadImage("Images/Sprites/Enemies/fishbone.png", "fishbone");

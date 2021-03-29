@@ -126,6 +126,12 @@
     <EmbeddedResource Include="MapCollisions\underground_map.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapCollisions\lava_map.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCollisions\water_map.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -275,6 +281,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\Characters\ork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\lava_map.png" />
+    <Resource Include="Images\Sprites\water_map.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
