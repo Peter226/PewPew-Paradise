@@ -41,9 +41,9 @@ namespace PewPew_Paradise
             maps.Add(forest_map);
             MapSprite underground_map = new MapSprite("underground_map", "witch", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
-            MapSprite water_map = new MapSprite("water_map", "fishbone", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            MapSprite water_map = new MapSprite("water_map", "fishbone", new SolidColorBrush(Color.FromRgb(38, 196, 255)), map_position, map_size, false);
             maps.Add(water_map);
-            MapSprite lava_map = new MapSprite("lava_map", "dragon", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            MapSprite lava_map = new MapSprite("lava_map", "dragon", new SolidColorBrush(Color.FromRgb(168, 69, 25)), map_position, map_size, false);
             maps.Add(lava_map);
             //Enemys
             SpriteManager.LoadImage("Images/Sprites/Enemies/bee.png", "bee");
@@ -71,7 +71,6 @@ namespace PewPew_Paradise
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);
-
             }
             else 
             {

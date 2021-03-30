@@ -37,6 +37,17 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             _lastAnimation = _currentAnimation;
         }
 
+        public void ForcePlayAnimation(int animation)
+        {
+            _currentAnimation = animation;
+            if (_lastAnimation != _currentAnimation)
+            {
+                _animationTime = 0;
+                _currentKeyFrame = 0;
+                _lastAnimation = _currentAnimation;
+                Animate();
+            }
+        }
 
         public void PlayAnimation(int animation)
         {

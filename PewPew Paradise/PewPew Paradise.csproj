@@ -75,6 +75,7 @@
     <Compile Include="Editor\CollisionEditor.cs" />
     <Compile Include="GameLogic\AnimationCollection.cs" />
     <Compile Include="GameLogic\CollideComponent.cs" />
+    <Compile Include="GameLogic\DebugSprite.cs" />
     <Compile Include="GameLogic\Enemy.cs" />
     <Compile Include="GameLogic\EnemySprite.cs" />
     <Compile Include="GameLogic\FruitSprite.cs" />

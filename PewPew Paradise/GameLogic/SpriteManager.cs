@@ -165,6 +165,13 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
+        public static void DebugRect(Rect rect, double time = 1.0)
+        {
+            DebugSprite sp = new DebugSprite("water_map",time,Vector2.One,Vector2.One);
+            sp.StretchToAbsoluteBounds(rect);
+        }
+
+
         /// <summary>
         /// Get a unique sprite ID for a new Sprite [Do not use unless necessary]
         /// </summary>

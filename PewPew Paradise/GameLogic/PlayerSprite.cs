@@ -101,6 +101,8 @@ namespace PewPew_Paradise.GameLogic
 
         public override void Update()
         {
+            Console.WriteLine($"char{player_id}|hp:{life}");
+
 
             if (life > 0)
             {
