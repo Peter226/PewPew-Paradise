@@ -132,7 +132,7 @@ namespace PewPew_Paradise
                     dangerzone.Height++;
                 }
             }
-            dangerzone.Height += 2;
+            dangerzone.Height += 0.5;
             dangerzone.X -= 1.5;
             dangerzone.Width += 3;
             SpriteManager.DebugRect(dangerzone, 5);
