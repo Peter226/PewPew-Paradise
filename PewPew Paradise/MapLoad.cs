@@ -22,6 +22,8 @@ namespace PewPew_Paradise
         public List<EnemySprite> current = new List<EnemySprite>();
         public Vector2 enemy_pos =  new Vector2(6,7);
         public Random rnd = new Random();
+        public Rect dangerzone = new Rect();
+        public bool danger = true;
         /// <summary>
         /// Loading all the maps and saving them into a list
         /// </summary>
@@ -52,7 +54,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Enemies/witch.png", "witch");
             SpriteManager.LoadImage("Images/Sprites/Enemies/zombie.png", "zombie");
             SpriteManager.LoadImage("Images/Sprites/Enemies/dragon.png", "dragon");
-
+            
         }
         /// <summary>
         /// Loading first map with characters
@@ -92,7 +94,8 @@ namespace PewPew_Paradise
         public void NextMap(int player_number)
         {
             UnLoadMap();
-            for (int i = 0; i < current.Count; i++)
+            int smthing = current.Count;
+            for (int i = 0; i < smthing; i++)
             {
                 current[i].Destroy();
             }
@@ -104,19 +107,41 @@ namespace PewPew_Paradise
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-
-                MainWindow.Instance.chars.CharacterLoad(1);
-
-            for (int i = 0; i < Math.Ceiling((double)floor/3); i++)
+            MainWindow.Instance.chars.CharacterLoad(1);
+            dangerzone = MainWindow.Instance.chars.SelectedChar(1).GetRect();
+            dangerzone.Width -= 0.2;
+            dangerzone.X += 0.1;
+            foreach (Rect hitbox in maps[level_number].hitboxes)
             {
+                //why u dont work!? c:
                 
-                enemy_pos.x = rnd.Next(1, 14) + 0.5;
-                enemy_pos.y = rnd.Next(1, 14) + 0.5;
-                EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
-                current.Add(new_enemy);
-                MainWindow.Instance.enemy.EnemyLoad(new_enemy);
-                
+                if (!dangerzone.IntersectsWith(hitbox))
+                {
+                    dangerzone.Height++;
+                }
+                else
+                { 
+                    SpriteManager.DebugRect(hitbox, 5);
+                break;
+                }
             }
+            SpriteManager.DebugRect(dangerzone, 5);
+            for (int i = 0; i < Math.Ceiling((double)floor/5); i++)
+            {
+                do
+                {
+                    enemy_pos.x = rnd.Next(1, 14) + 0.5;
+                    enemy_pos.y = rnd.Next(1, 14) + 0.5;
+                }
+                while (!((enemy_pos.x < dangerzone.TopLeft.X || enemy_pos.x > dangerzone.TopRight.X) || enemy_pos.y > dangerzone.BottomLeft.Y));
+
+                EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
+                danger = true;
+                current.Add(new_enemy);
+                new_enemy.IsActive = true;
+                MainWindow.Instance.enemy.EnemyLoad(new_enemy);
+            }
+
             if (player_number != 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(2);
