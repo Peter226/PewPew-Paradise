@@ -17,6 +17,7 @@ namespace PewPew_Paradise.GameLogic
             Enemy.enemyList.Add(this);
             AddComponent<PhysicsComponent>().IsActive = false;
             AddComponent<CollideComponent>().IsActive = false;
+            AddComponent<Portal>().IsActive = false;
         }
         public void EnemyDeath()
         {

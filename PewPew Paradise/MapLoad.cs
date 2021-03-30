@@ -22,8 +22,11 @@ namespace PewPew_Paradise
         public List<EnemySprite> current = new List<EnemySprite>();
         public Vector2 enemy_pos =  new Vector2(6,7);
         public Random rnd = new Random();
-        public Rect dangerzone = new Rect();
-        public bool danger = true;
+        public Rect dangerzone1 = new Rect();
+        public Rect dangerzone2 = new Rect();
+        public Rect dangerzone3 = new Rect();
+        public Rect dangerzone4 = new Rect();
+        
         /// <summary>
         /// Loading all the maps and saving them into a list
         /// </summary>
@@ -76,18 +79,37 @@ namespace PewPew_Paradise
             if (player_number == 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(1);
+                
             }
             else 
             {
                 MainWindow.Instance.chars.CharacterLoad(1);
                 MainWindow.Instance.chars.CharacterLoad(2);
+                dangerzone2 = MainWindow.Instance.chars.SelectedChar(2).GetRect();
+                dangerzone2 = Dangerzone(dangerzone2);
             }
             maps[level_number].MapLoaded();
-            enemy_pos.x = rnd.Next(1, 14) + 0.5;
-            EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
-            current.Add(new_enemy);
-            MainWindow.Instance.enemy.EnemyLoad(new_enemy);
+            dangerzone1 = MainWindow.Instance.chars.SelectedChar(1).GetRect();
+            dangerzone1 = Dangerzone(dangerzone1);
+            dangerzone3 = new Rect(4.5, 15.5, 0, 1);
+            dangerzone3 = PortalDanger(dangerzone3);
+            dangerzone4 = new Rect(11.5, 15.5, 0, 1);
+            dangerzone4 = PortalDanger(dangerzone4);
+            do
+            {
+                enemy_pos.x = rnd.Next(1, 14) + 0.5;
+                enemy_pos.y = rnd.Next(3, 14) + 0.5;
+            }
+            while (!(((enemy_pos.x < dangerzone1.TopLeft.X || enemy_pos.x > dangerzone1.TopRight.X) || enemy_pos.y > dangerzone1.BottomLeft.Y) &&
+                       ((enemy_pos.x < dangerzone2.TopLeft.X || enemy_pos.x > dangerzone2.TopRight.X) || enemy_pos.y > dangerzone2.BottomLeft.Y) &&
+                       ((enemy_pos.x < dangerzone3.TopLeft.X || enemy_pos.x > dangerzone3.TopRight.X) || enemy_pos.y < dangerzone3.TopLeft.Y) &&
+                       ((enemy_pos.x < dangerzone4.TopLeft.X || enemy_pos.x > dangerzone4.TopRight.X) || enemy_pos.y < dangerzone4.TopLeft.Y)));
 
+            EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
+            
+            current.Add(new_enemy);
+            new_enemy.IsActive = true;
+            MainWindow.Instance.enemy.EnemyLoad(new_enemy);
 
         }
         /// <summary>
@@ -111,52 +133,40 @@ namespace PewPew_Paradise
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
             MainWindow.Instance.chars.CharacterLoad(1);
-            dangerzone = MainWindow.Instance.chars.SelectedChar(1).GetRect();
-            dangerzone.Width -= 0.2;
-            dangerzone.X += 0.1;
-
-            bool intersected = false;
-            while (dangerzone.Height < 20 && !intersected) {
-                
-                foreach (Rect hitbox in maps[level_number].hitboxes)
-                {
-                    if (dangerzone.IntersectsWith(hitbox))
-                    {
-                        dangerzone.Height = hitbox.Top - dangerzone.Y;
-                        intersected = true;
-                        break;
-                    }
-                }
-                if (!intersected)
-                {
-                    dangerzone.Height++;
-                }
+            dangerzone1 = MainWindow.Instance.chars.SelectedChar(1).GetRect();
+            dangerzone1=Dangerzone(dangerzone1);
+            dangerzone3 = new Rect(4.5,15.5,0,1);
+            dangerzone3 = PortalDanger(dangerzone3);
+            dangerzone4 = new Rect(11.5, 15.5, 0, 1);
+            dangerzone4 = PortalDanger(dangerzone4);
+            if (player_number != 1)
+            {
+                MainWindow.Instance.chars.CharacterLoad(2);
+                dangerzone2 = MainWindow.Instance.chars.SelectedChar(2).GetRect();
+                dangerzone2 = Dangerzone(dangerzone2);
             }
-            dangerzone.Height += 0.5;
-            dangerzone.X -= 1.5;
-            dangerzone.Width += 3;
-            SpriteManager.DebugRect(dangerzone, 5);
             int enemyCount = (int)Math.Ceiling((double)floor / maps.Count);
             for (int i = 0; i < enemyCount; i++)
             {
+                if(i==6)
+                { break; }
                 do
                 {
                     enemy_pos.x = rnd.Next(1, 14) + 0.5;
-                    enemy_pos.y = rnd.Next(1, 14) + 0.5;
+                    enemy_pos.y = rnd.Next(3, 14) + 0.5;
                 }
-                while (!((enemy_pos.x < dangerzone.TopLeft.X || enemy_pos.x > dangerzone.TopRight.X) || enemy_pos.y > dangerzone.BottomLeft.Y));
+                while (!(((enemy_pos.x < dangerzone1.TopLeft.X || enemy_pos.x > dangerzone1.TopRight.X) || enemy_pos.y > dangerzone1.BottomLeft.Y) &&
+                       ((enemy_pos.x < dangerzone2.TopLeft.X || enemy_pos.x > dangerzone2.TopRight.X) || enemy_pos.y > dangerzone2.BottomLeft.Y) &&
+                       ((enemy_pos.x < dangerzone3.TopLeft.X || enemy_pos.x > dangerzone3.TopRight.X) || enemy_pos.y < dangerzone3.TopLeft.Y) &&
+                       ((enemy_pos.x < dangerzone4.TopLeft.X || enemy_pos.x > dangerzone4.TopRight.X) || enemy_pos.y < dangerzone4.TopLeft.Y)));
 
                 EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
-                danger = true;
                 current.Add(new_enemy);
                 new_enemy.IsActive = true;
                 MainWindow.Instance.enemy.EnemyLoad(new_enemy);
             }
 
-            if (player_number != 1)
-            {
-                MainWindow.Instance.chars.CharacterLoad(2);
-            }
+
             maps[level_number].MapLoaded();
         }
         /// <summary>
@@ -174,6 +184,65 @@ namespace PewPew_Paradise
         public MapSprite CurrentMap()
         {
             return maps[level_number];
+        }
+        public Rect Dangerzone(Rect rect) 
+        {
+            
+            rect.Width -= 0.2;
+            rect.X += 0.1;
+            bool intersected = false;
+            while (rect.Height < 20 && !intersected)
+            {
+
+                foreach (Rect hitbox in maps[level_number].hitboxes)
+                {
+                    if (rect.IntersectsWith(hitbox))
+                    {
+                        rect.Height = hitbox.Top - rect.Y;
+                        intersected = true;
+                        break;
+                    }
+                }
+                if (!intersected)
+                {
+                    rect.Height++;
+                }
+            }
+            rect.Height += 0.5;
+            rect.X -= 1.5;
+            rect.Width += 3;
+            //SpriteManager.DebugRect(rect, 5);
+            return rect;
+        }
+        public Rect PortalDanger(Rect rect)
+        {
+
+            
+            bool intersected = false;
+            while (rect.Height < 20 && !intersected)
+            {
+
+                foreach (Rect hitbox in maps[level_number].hitboxes)
+                {
+                    if (rect.IntersectsWith(hitbox))
+                    {
+                        rect.Y = hitbox.Y;
+                        rect.Height = 17 - rect.Y;
+                        intersected = true;
+                        break;
+                    }
+                }
+                if (!intersected)
+                {
+                    rect.Y--;
+                }
+            }
+            
+            
+            rect.X -= 0.5;
+            rect.Width += 1;
+            //SpriteManager.DebugRect(rect, 5);
+            return rect;
         }
         public void ClearAll() 
         {

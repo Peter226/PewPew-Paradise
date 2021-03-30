@@ -20,6 +20,7 @@ namespace PewPew_Paradise.GameLogic
             enemy.IsActive = true;
             enemy.GetComponent<PhysicsComponent>().IsActive = true;
             enemy.GetComponent<CollideComponent>().IsActive = true;
+            enemy.GetComponent<Portal>().IsActive = true;
 
         }
         public EnemySprite AddEnemy(string spritename, Vector2 pos)
