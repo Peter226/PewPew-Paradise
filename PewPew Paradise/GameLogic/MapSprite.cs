@@ -75,8 +75,10 @@ namespace PewPew_Paradise.GameLogic
 
         public void MapLoaded() 
         {
+            Position = map_position;
             timer = 0;
             just_loaded = true;
+            just_unloaded = false;
             if (OnMapLoaded != null)
             {
                 OnMapLoaded.Invoke(this);
@@ -86,7 +88,7 @@ namespace PewPew_Paradise.GameLogic
         {
             timer = 0;
             just_unloaded = true;
-
+            just_loaded = false;
             if (OnMapUnloaded != null)
             {
                 OnMapUnloaded.Invoke(this);
