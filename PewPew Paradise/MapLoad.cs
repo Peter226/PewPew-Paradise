@@ -105,8 +105,9 @@ namespace PewPew_Paradise
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            if (MainWindow.Instance.chars.SelectedChar(1).life != 0)
-            { MainWindow.Instance.chars.CharacterLoad(1); }
+
+                MainWindow.Instance.chars.CharacterLoad(1);
+
             for (int i = 0; i < Math.Ceiling((double)floor/3); i++)
             {
                 
@@ -117,7 +118,7 @@ namespace PewPew_Paradise
                 MainWindow.Instance.enemy.EnemyLoad(new_enemy);
                 
             }
-            if (player_number != 1 && MainWindow.Instance.chars.SelectedChar(2).life != 0)
+            if (player_number != 1)
             {
                 MainWindow.Instance.chars.CharacterLoad(2);
             }

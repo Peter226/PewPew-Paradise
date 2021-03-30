@@ -112,7 +112,6 @@ namespace PewPew_Paradise
         /// </summary>
         public void LoadChar(int player_number)
         {
-
             SelectedChar(1).Size = select_size;
 
             chars1[chars_number1].IsActive = true;
@@ -243,7 +242,8 @@ namespace PewPew_Paradise
 
             chosen_char1.Position = load_pos1;
             chosen_char1.Size = load_size;
-            chosen_char1.IsActive = true;
+            if (MainWindow.Instance.chars.SelectedChar(1).life != 0)
+            { chosen_char1.IsActive = true; }
             SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
             SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
             if (player_number!=1)
@@ -252,7 +252,8 @@ namespace PewPew_Paradise
 
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
-                chosen_char2.IsActive = true;
+                if (MainWindow.Instance.chars.SelectedChar(2).life != 0)
+                    chosen_char2.IsActive = true;
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
                 SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;
             }
