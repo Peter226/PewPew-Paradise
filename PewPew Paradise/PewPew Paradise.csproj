@@ -133,6 +133,9 @@
     <EmbeddedResource Include="MapCollisions\water_map.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapCollisions\spooky_map.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -289,6 +292,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\Enemies\dragon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sprites\spooky_map.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

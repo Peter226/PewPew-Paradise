@@ -37,6 +37,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/underground_map.png", "underground_map");
             SpriteManager.LoadImage("Images/Sprites/water_map.png", "water_map");
             SpriteManager.LoadImage("Images/Sprites/lava_map.png", "lava_map");
+            SpriteManager.LoadImage("Images/Sprites/spooky_map.png", "spooky_map");
             MapSprite sky_map = new MapSprite("sky_map", "bee", new SolidColorBrush(Color.FromRgb(106,164,252)), map_position, map_size, false);
             maps.Add(sky_map);
             MapSprite forest_map = new MapSprite("forest_map", "mushroom", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
@@ -47,6 +48,8 @@ namespace PewPew_Paradise
             maps.Add(water_map);
             MapSprite lava_map = new MapSprite("lava_map", "dragon", new SolidColorBrush(Color.FromRgb(168, 69, 25)), map_position, map_size, false);
             maps.Add(lava_map);
+            MapSprite spooky_map = new MapSprite("spooky_map", "witch", new SolidColorBrush(Color.FromRgb(0, 10, 18)), map_position, map_size, false);
+            maps.Add(spooky_map);
             //Enemys
             SpriteManager.LoadImage("Images/Sprites/Enemies/bee.png", "bee");
             SpriteManager.LoadImage("Images/Sprites/Enemies/fishbone.png", "fishbone");
@@ -111,20 +114,27 @@ namespace PewPew_Paradise
             dangerzone = MainWindow.Instance.chars.SelectedChar(1).GetRect();
             dangerzone.Width -= 0.2;
             dangerzone.X += 0.1;
-            foreach (Rect hitbox in maps[level_number].hitboxes)
-            {
-                //why u dont work!? c:
+
+            bool intersected = false;
+            while (dangerzone.Height < 20 && !intersected) {
                 
-                if (!dangerzone.IntersectsWith(hitbox))
+                foreach (Rect hitbox in maps[level_number].hitboxes)
+                {
+                    if (dangerzone.IntersectsWith(hitbox))
+                    {
+                        dangerzone.Height = hitbox.Top - dangerzone.Y;
+                        intersected = true;
+                        break;
+                    }
+                }
+                if (!intersected)
                 {
                     dangerzone.Height++;
                 }
-                else
-                { 
-                    SpriteManager.DebugRect(hitbox, 5);
-                break;
-                }
             }
+            dangerzone.Height += 2;
+            dangerzone.X -= 1.5;
+            dangerzone.Width += 3;
             SpriteManager.DebugRect(dangerzone, 5);
             for (int i = 0; i < Math.Ceiling((double)floor/5); i++)
             {

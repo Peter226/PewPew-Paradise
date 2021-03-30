@@ -19,7 +19,6 @@ namespace PewPew_Paradise.GameLogic
         }
         public override void Update()
         {
-
             Vector2 pos = Position;
             if(Size.x > 0)
                 pos.x += 0.01 * GameManager.DeltaTime;

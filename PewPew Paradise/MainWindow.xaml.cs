@@ -174,9 +174,6 @@ namespace PewPew_Paradise
         public void Update()
         {
 
-            
-
-
 
             if (Keyboard.IsKeyDown(Key.Left))
             {

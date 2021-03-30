@@ -44,8 +44,6 @@ namespace PewPew_Paradise.GameLogic
                 
 
                 bool didhit = false;
-
-
                 foreach (Rect platform in MainWindow.Instance.load.CurrentMap().hitboxes)
                 {
                     //Rect modplat =  new Rect(platform.X + MainWindow.Instance.load.CurrentMap().Position.x - 8, platform.Y + MainWindow.Instance.load.CurrentMap().Position.y - 8, platform.Width,platform.Height);
@@ -64,7 +62,6 @@ namespace PewPew_Paradise.GameLogic
                         double Right = Math.Abs(PlayerHitBox.Left - modplat.Right);
                         double Top = Math.Abs(PlayerHitBox.Top - modplat.Bottom);
                         double min = Math.Min(Math.Min(Bottom, Left), Math.Min(Right, Top));
-
                         PhysicsComponent physicsComponent = sprite.GetComponent<PhysicsComponent>();
                         if (physicsComponent != null)
                         {
