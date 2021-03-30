@@ -174,7 +174,7 @@ namespace PewPew_Paradise
         public void Update()
         {
 
-            SpriteManager.DebugRect(chars.SelectedChar(1).GetRect());
+            
 
 
 
