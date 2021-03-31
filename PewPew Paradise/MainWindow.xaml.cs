@@ -573,7 +573,7 @@ namespace PewPew_Paradise
             }
 
             load.LoadMap(player_number);
-            Refresh();
+            
         }
         private void bt_leaderboard_Click(object sender, RoutedEventArgs e)
         {
@@ -582,6 +582,7 @@ namespace PewPew_Paradise
             AccessData score = new AccessData();
             
             data = score.GetScore();
+            data_scores2.Content = data[0].FullInfo;
         }
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)

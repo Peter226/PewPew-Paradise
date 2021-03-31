@@ -14,7 +14,7 @@ namespace PewPew_Paradise.Highscore
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Connection.Connect("Highscore")))
             {
-                var output  = connection.Query<Hscore>("select * from HIGHSCORES ").ToList();
+                var output  = connection.Query<Hscore>("select * from dbo.Highscores ").ToList();
                 return output;
             }
         }
