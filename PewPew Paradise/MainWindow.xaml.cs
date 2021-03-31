@@ -19,6 +19,7 @@ using PewPew_Paradise.GameLogic.SpriteComponents;
 using System.Windows.Media.Animation;
 using Newtonsoft.Json;
 using System.IO;
+using PewPew_Paradise.Highscore;
 
 namespace PewPew_Paradise
 {
@@ -38,6 +39,7 @@ namespace PewPew_Paradise
         float Timer = 0;
 
         List<Sprite> MrPlaceHolders = new List<Sprite>();
+        List<Hscore> data = new List<Hscore>();
 
         MediaPlayer mp = new MediaPlayer();
 
@@ -151,9 +153,15 @@ namespace PewPew_Paradise
             enslaveWPF.AutoReverse = true;
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
 
-            FruitSprite.LoadImages(); //??
+            FruitSprite.LoadImages();
+            Refresh();
+            
         }
-
+        public void Refresh()
+        {
+            data_scores.DataContext = data;
+            data_scores.DisplayMemberPath = "FullInfo";
+        }
         /// <summary>
         /// Music
         /// </summary>
@@ -565,11 +573,15 @@ namespace PewPew_Paradise
             }
 
             load.LoadMap(player_number);
+            Refresh();
         }
         private void bt_leaderboard_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Visible;
+            AccessData score = new AccessData();
+            
+            data = score.GetScore();
         }
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)
