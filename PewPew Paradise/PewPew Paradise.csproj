@@ -303,5 +303,10 @@
   <ItemGroup>
     <Resource Include="Images\Sprites\spooky_map.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GameOver.png" />
+    <Resource Include="Images\MainMenu.png" />
+    <Resource Include="Images\Resume.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

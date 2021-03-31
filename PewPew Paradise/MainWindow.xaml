@@ -623,7 +623,7 @@
                 </Button.Background>
             </Button>
             <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" >
-                
+
             </ListBox>
         </Grid>
         <!--Playing Field Grid-->
@@ -637,6 +637,7 @@
         </Grid>
         <!--End Game Grid-->
         <Grid x:Name="EndGame" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
+            <Image Source="Images/GameOver.png" Margin="10,30,20,367"/>
             <Label x:Name="lb_player1name" Content="" HorizontalAlignment="Left" Margin="30,130,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_floortext1" Content="Floor:" HorizontalAlignment="Left" Margin="30,150,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" />
             <Label x:Name="lb_floor_player1" HorizontalAlignment="Left" Margin="80,150,0,0" Width="150" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" HorizontalContentAlignment="Right"/>
@@ -652,6 +653,7 @@
                     <ImageBrush ImageSource="Images/button.png" />
 
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/MainMenu.png"/>
             </Button>
             <Button x:Name="bt_exit_end" HorizontalAlignment="Left" Margin="250,420,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_exit_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
@@ -674,11 +676,13 @@
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/Resume.png"/>
             </Button>
             <Button x:Name="bt_menu" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_menu_Click" >
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>
+                <Image Height="54" Width="222" Source="Images/MainMenu.png"/>
             </Button>
             <Button x:Name="bt_exitingame" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_exit_Click" >
                 <Button.Background>
@@ -741,7 +745,7 @@
         <!--Sprite Canvas Grid-->
         <Grid x:Name="SpriteCanvas" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
         <Image x:Name="Dummy" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="arrow_left.png"/>
-        
+
     </Grid>
 
     <!--Button Templates for clearing basic hover animation-->
