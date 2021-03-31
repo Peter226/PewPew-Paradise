@@ -66,4 +66,3 @@ namespace PewPew_Paradise.GameLogic
 
     }
 }
-//((timer > 2 && timer < 2.5) || (timer > 4 && timer < 4.5))
