@@ -124,7 +124,7 @@ namespace PewPew_Paradise.GameLogic
                     Position = Vector2.Lerp(mapplace, map_up, timer);
                 
             }
-            if (Enemy.enemyList.Count == 0 && MainWindow.Instance.enemyHitTimer > 3)
+            if (Enemy.enemyList.Count == 0 && MainWindow.Instance.enemyHitTimer > 4)
             {
                 for(int i=0; i < FruitSprite.fruitList.Count; i++)
                 {

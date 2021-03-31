@@ -10,7 +10,7 @@ namespace PewPew_Paradise.GameLogic
 {
     public class EnemySprite : Sprite
     {
-        
+        double timer = 0;
 
         public EnemySprite(string image,  Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
@@ -32,5 +32,38 @@ namespace PewPew_Paradise.GameLogic
             Enemy.enemyList.Remove(this);
         }
 
+        public override void Update()
+        {
+            Vector2 pos = this.Position;
+            Vector2 size = this.Size;
+            timer += GameManager.DeltaTime*0.001;
+            if(!MainWindow.Instance.load.CurrentMap().just_loaded)
+            { 
+                if (timer < 7)
+                {
+                    size.x = 1;
+                    pos.x += 0.002 * GameManager.DeltaTime;
+                    this.Position = pos;
+                    this.Size = size;
+                }
+                else if(timer > 7 && timer < 14)
+                {
+                    pos.x += -0.002 * GameManager.DeltaTime;
+                    size.x = -1;
+                    this.Size = size;
+                }
+                else
+                {
+                    timer = 0;
+                }
+                if (timer%2 < 0.25  && GetComponent<CollideComponent>().isOnGround)
+                {
+                    GetComponent<PhysicsComponent>().speed.y = -6.375;
+                }
+               this.Position = pos;
+            }
+        }
+
     }
 }
+//((timer > 2 && timer < 2.5) || (timer > 4 && timer < 4.5))
