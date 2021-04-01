@@ -47,6 +47,7 @@ namespace PewPew_Paradise
         public CharacterSelect chars;
         public Enemy enemy;
         public static SolidColorBrush playingFieldBrush;
+        public AccessData score = new AccessData();
 
         public int player_number;
         public string player1_name;
@@ -579,9 +580,8 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Visible;
-            AccessData score = new AccessData();
+            
             //score.ClearDB();
-            //score.AddScore(new Hscore() { uname ="Peti",score=420,floor=69 });
             data = score.GetScore();
             data_scores.ItemsSource = data;
             Refresh();
@@ -599,6 +599,12 @@ namespace PewPew_Paradise
         {
             InGameOptions.Visibility = Visibility.Collapsed;
             GameManager.Begin();
+        }
+        private void bt_exit_end_Click(object sender, RoutedEventArgs e)
+        {
+            score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content });
+            if (player_number != 1)
+                score.AddScore(new Hscore() { uname = player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content });
         }
         /// <summary>
         /// Selection arrow moving events
@@ -664,6 +670,10 @@ namespace PewPew_Paradise
         }
         private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
         {
+            
+            score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content });
+            if (player_number != 1)
+                score.AddScore(new Hscore() { uname =player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content });
             MainMenu.Visibility = Visibility.Visible;
             EndGame.Visibility = Visibility.Collapsed;
             lb_floor_player1.Content = 0;

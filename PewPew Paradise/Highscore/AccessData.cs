@@ -23,10 +23,16 @@ namespace PewPew_Paradise.Highscore
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
             {
-                connection.Execute("INSERT INTO HIGHSCORE (uname, score, floorcount) VALUES (@uname, @score, @floorcount)",score);
+                connection.Execute("INSERT INTO HIGHSCORE (uname, score, floorcount, characterid) VALUES (@uname, @score, @floorcount, @characterid)",score);
             }
         }
-
+        public void AddChar(Character character)
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                connection.Execute("INSERT INTO CHARACTER (characterid, charactername) VALUES (@characterid, @charactername)", character);
+            }
+        }
         public void ClearDB()
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))

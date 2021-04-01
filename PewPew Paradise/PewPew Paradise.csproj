@@ -132,6 +132,7 @@
     <Compile Include="GameLogic\SpriteComponents\SpriteRandomizer.cs" />
     <Compile Include="GameLogic\SpriteManager.cs" />
     <Compile Include="Highscore\AccessData.cs" />
+    <Compile Include="Highscore\CharacterTable.cs" />
     <Compile Include="Highscore\Connection.cs" />
     <Compile Include="Highscore\Highscore.cs" />
     <Compile Include="MainWindow.xaml.cs">

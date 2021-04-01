@@ -1,5 +1,6 @@
 ﻿using PewPew_Paradise.GameLogic;
 using PewPew_Paradise.GameLogic.SpriteComponents;
+using PewPew_Paradise.Highscore;
 using PewPew_Paradise.Maths;
 using System;
 using System.Collections.Generic;
@@ -246,6 +247,7 @@ namespace PewPew_Paradise
         }
         public void ClearAll() 
         {
+            
             int fruitcount = FruitSprite.fruitList.Count;
             for (int i = 0; i < fruitcount; i++)
             {
@@ -270,6 +272,7 @@ namespace PewPew_Paradise
             MainWindow.Instance.lb_player2_score.Visibility = Visibility.Collapsed;
             MainWindow.Instance.chars.SelectedChar(1).life = 3;
             MainWindow.Instance.chars.SelectedChar(2).life = 3;
+            
         }
     }
 }

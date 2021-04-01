@@ -622,7 +622,7 @@
 
                 </Button.Background>
             </Button>
-            <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="500" Margin="0,0,0,0" VerticalAlignment="Top" Width="500" >
+            <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="300" Margin="0,0,0,0" VerticalAlignment="Top" Width="300" >
 
             </ListBox>
         </Grid>
@@ -655,7 +655,7 @@
                 </Button.Background>
                 <Image Height="54" Width="222" Source="Images/MainMenu.png"/>
             </Button>
-            <Button x:Name="bt_exit_end" HorizontalAlignment="Left" Margin="250,420,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_exit_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Button x:Name="bt_exit_end" HorizontalAlignment="Left" Margin="250,420,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_exit_end_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png" />
 
