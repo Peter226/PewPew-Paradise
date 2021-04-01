@@ -17,7 +17,7 @@ namespace PewPew_Paradise.Highscore
         {
             get 
             {
-                return $"{ uname } { score } { floorcount }";
+                return $"{ uname }\t { score }\t{ floorcount }";
             }
         }
     }

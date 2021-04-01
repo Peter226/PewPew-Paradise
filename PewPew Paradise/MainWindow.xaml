@@ -615,16 +615,19 @@
 
         </Grid>
         <!--Leaderboard Grid-->
-        <Grid x:Name="Leaderboard" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed" >
+        <Grid x:Name="Leaderboard" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible" >
             <Button x:Name="bt_back_leaderboard" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
                 </Button.Background>
             </Button>
-            <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="300" Margin="0,0,0,0" VerticalAlignment="Top" Width="300" >
-
-            </ListBox>
+            <!-- <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="300" Margin="0,0,0,0" VerticalAlignment="Top" Width="300" >
+            
+            </ListBox>-->
+            <Label x:Name="lb_data_scoresname"  HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="10,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
+            <Label x:Name="lb_data_scores"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="140,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
+            <Label x:Name="lb_data_scoresfloor"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="270,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="70"/>
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
@@ -699,7 +702,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="img_player1" HorizontalAlignment="Left" Height="31" Margin="80,80,0,0" VerticalAlignment="Top" Width="88" Source="Images/Player1.png" Grid.Column="1"/>
-                <TextBox x:Name="tb_player1" Text="Player1" Margin="51,130,56,347" Grid.Column="1" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="15"/>
+                <TextBox x:Name="tb_player1" Text="Player1" Margin="51,130,56,347" Grid.Column="1" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="8"/>
                 <Button x:Name="bt_charsselect1_r" Content="" HorizontalAlignment="Right" Margin="0,280,8,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_charsselect1_r_Click" Grid.Column="1">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/small_arrow_left.png" />
@@ -715,7 +718,7 @@
 
             <Grid x:Name="Player2" Height="512" Width="256" Margin="256,0,0,0" Background="#FF260026" Visibility="Visible">
                 <Image x:Name="img_player2" HorizontalAlignment="Left" Height="31" Margin="80,80,0,0" VerticalAlignment="Top" Width="88" Source="Images/Player2.png"/>
-                <TextBox x:Name="tb_player2" Text="Player2" Margin="52,130,57,347" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="15"/>
+                <TextBox x:Name="tb_player2" Text="Player2" Margin="52,130,57,347" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="8"/>
                 <Button x:Name="bt_charsselect2_r" Content="" HorizontalAlignment="Right" Margin="0,280,8,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_charsselect2_r_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/small_arrow_left.png" />

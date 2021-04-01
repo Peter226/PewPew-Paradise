@@ -155,14 +155,14 @@ namespace PewPew_Paradise
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
 
             FruitSprite.LoadImages();
-            Refresh();
+            //Refresh();
             
         }
-        public void Refresh()
-        {
-            data_scores.DataContext = data;
-            data_scores.DisplayMemberPath = "FullInfo";
-        }
+        //public void Refresh()
+        //{
+            //data_scores.DataContext = data;
+            //data_scores.DisplayMemberPath = "FullInfo";
+        //}
         /// <summary>
         /// Music
         /// </summary>
@@ -583,8 +583,13 @@ namespace PewPew_Paradise
             
             //score.ClearDB();
             data = score.GetScore();
-            data_scores.ItemsSource = data;
-            Refresh();
+            for (int i = 0; i < 9; i++)
+            {
+                lb_data_scoresname.Content += data[i].uname + "\n";
+                lb_data_scores.Content += data[i].score.ToString() + "\n";
+                lb_data_scoresfloor.Content += data[i].floorcount.ToString() + "\n";
+            }
+            //Refresh();
         }
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)
