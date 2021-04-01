@@ -155,14 +155,15 @@ namespace PewPew_Paradise
             Dummy.BeginAnimation(Image.WidthProperty,enslaveWPF);
 
             FruitSprite.LoadImages();
-            //Refresh();
+            Refresh();
             
         }
-        //public void Refresh()
-        //{
-            //data_scores.DataContext = data;
-            //data_scores.DisplayMemberPath = "FullInfo";
-        //}
+        public void Refresh()
+        {
+            lb_data_scoresname.Content = "Name:";
+            lb_data_scores.Content = "Score:";
+            lb_data_scoresfloor.Content = "Floor:";
+        }
         /// <summary>
         /// Music
         /// </summary>
@@ -515,6 +516,7 @@ namespace PewPew_Paradise
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
             SaveGameOptions();
+            Refresh();
         }
 
         private void bt_options_Click(object sender, RoutedEventArgs e)
@@ -582,14 +584,19 @@ namespace PewPew_Paradise
             Leaderboard.Visibility = Visibility.Visible;
             
             //score.ClearDB();
-            data = score.GetScore();
-            for (int i = 0; i < 9; i++)
+            data = score.GetOrderedScore();
+            int amount = score.ScoreAmount();
+            for (int i =0; i < amount; i++)
             {
-                lb_data_scoresname.Content += data[i].uname + "\n";
-                lb_data_scores.Content += data[i].score.ToString() + "\n";
-                lb_data_scoresfloor.Content += data[i].floorcount.ToString() + "\n";
+                if (i == 10)
+                    break;
+                lb_data_scoresname.Content += "\n" + data[i].uname ;
+                lb_data_scores.Content += "\n" + data[i].score.ToString();
+                lb_data_scoresfloor.Content += "\n" + data[i].floorcount.ToString();
+                
             }
-            //Refresh();
+            
+
         }
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)
@@ -610,6 +617,40 @@ namespace PewPew_Paradise
             score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content });
             if (player_number != 1)
                 score.AddScore(new Hscore() { uname = player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content });
+        }
+        private void bt_tofloors_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+            data = score.GetOrderedFloor();
+            int amount = score.ScoreAmount();
+            for (int i = 0; i < amount; i++)
+            {
+                if (i == 10)
+                    break;
+                lb_data_scoresname.Content += "\n" + data[i].uname;
+                lb_data_scores.Content += "\n" + data[i].score.ToString();
+                lb_data_scoresfloor.Content += "\n" + data[i].floorcount.ToString();
+
+            }
+        }
+        private void bt_toscore_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+            data = score.GetOrderedScore();
+            int amount = score.ScoreAmount();
+            for (int i = 0; i < amount; i++)
+            {
+                if (i == 10)
+                    break;
+                lb_data_scoresname.Content += "\n" + data[i].uname;
+                lb_data_scores.Content += "\n" + data[i].score.ToString();
+                lb_data_scoresfloor.Content += "\n" + data[i].floorcount.ToString();
+
+            }
+        }
+        private void bt_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            score.ClearDB();
         }
         /// <summary>
         /// Selection arrow moving events

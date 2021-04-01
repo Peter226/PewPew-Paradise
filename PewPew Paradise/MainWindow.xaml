@@ -86,7 +86,13 @@
 
                 </Button.Background>
             </Button>
+            <Label x:Name="lb_clear" Content="Click here to reset ur leaderboard:&#x0a;WARNING: This data cannot be returned!" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="-3,300,0,137" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="354" Grid.ColumnSpan="2"/>
+            <Button x:Name="bt_Clear" Content="" HorizontalAlignment="Left" Margin="350,300,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_Clear_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
 
+                </Button.Background>
+            </Button>
 
             <!--Music slider with its template-->
             <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="1" ValueChanged="sl_music_ValueChanged" >
@@ -615,19 +621,28 @@
 
         </Grid>
         <!--Leaderboard Grid-->
-        <Grid x:Name="Leaderboard" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible" >
+        <Grid x:Name="Leaderboard" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed" >
             <Button x:Name="bt_back_leaderboard" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
                 </Button.Background>
             </Button>
-            <!-- <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="300" Margin="0,0,0,0" VerticalAlignment="Top" Width="300" >
-            
-            </ListBox>-->
-            <Label x:Name="lb_data_scoresname"  HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="10,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
-            <Label x:Name="lb_data_scores"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="140,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
-            <Label x:Name="lb_data_scoresfloor"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="270,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="70"/>
+            <Button x:Name="bt_tofloors" HorizontalAlignment="Left" Margin="420,200,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_tofloors_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
+
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_toscore" HorizontalAlignment="Left" Margin="420,300,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_toscore_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
+
+                </Button.Background>
+            </Button>
+            <Label x:Name="lb_data_scoresname" Content="Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="10,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
+            <Label x:Name="lb_data_scores" Content="Score:" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="140,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
+            <Label x:Name="lb_data_scoresfloor" Content="Floor:"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="270,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="70"/>
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >

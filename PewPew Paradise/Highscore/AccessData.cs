@@ -19,6 +19,32 @@ namespace PewPew_Paradise.Highscore
                 return output;
             }
         }
+        public int ScoreAmount() 
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                int output = connection.Query<Hscore>("SELECT * from HIGHSCORE").Count();
+                return output; 
+            }
+        }
+        public List<Hscore> GetOrderedScore()
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                var output = connection.Query<Hscore>("SELECT * from HIGHSCORE ORDER BY score DESC ").ToList();
+                
+                return output;
+            }
+        }
+        public List<Hscore> GetOrderedFloor()
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                var output = connection.Query<Hscore>("SELECT * from HIGHSCORE ORDER BY floorcount DESC ").ToList();
+
+                return output;
+            }
+        }
         public void AddScore(Hscore score)
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
