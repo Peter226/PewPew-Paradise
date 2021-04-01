@@ -582,7 +582,8 @@ namespace PewPew_Paradise
             AccessData score = new AccessData();
             score.AddScore(new Hscore() { uname ="Peti",score=420,floor=69 });
             data = score.GetScore();
-            data_scores2.Content = data[0].FullInfo;
+            data_scores.ItemsSource = data;
+            Refresh();
         }
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)

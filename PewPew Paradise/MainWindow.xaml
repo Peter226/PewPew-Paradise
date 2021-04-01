@@ -622,12 +622,9 @@
 
                 </Button.Background>
             </Button>
-            <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="100" Margin="0,0,0,0" VerticalAlignment="Top" Width="100" >
+            <ListBox x:Name="data_scores" HorizontalAlignment="Left" Height="500" Margin="0,0,0,0" VerticalAlignment="Top" Width="500" >
 
             </ListBox>
-            <Label x:Name="data_scores2" HorizontalAlignment="Left" Height="100" Margin="100,100,0,0" VerticalAlignment="Top" Width="300" Background="Blue" Content="">
-
-            </Label>
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
