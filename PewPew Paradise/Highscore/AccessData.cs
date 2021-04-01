@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,18 @@ namespace PewPew_Paradise.Highscore
     {
         public List<Hscore> GetScore() 
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Connection.Connect("Highscore")))
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
             {
-                var output  = connection.Query<Hscore>("select * from dbo.Highscores ").ToList();
+                var output  = connection.Query<Hscore>("select * from HIGHSCORES ").ToList();
                 return output;
             }
         }
-
+        public void AddScore(Hscore score)
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                connection.Execute("insert into HIGHSCORES (uname, score, floor) VALUES (@uname, @score, @floor)",score);
+            }
+        }
     }
 }
