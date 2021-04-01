@@ -86,7 +86,7 @@
 
                 </Button.Background>
             </Button>
-            <Label x:Name="lb_clear" Content="Click here to reset ur leaderboard:&#x0a;WARNING: This data cannot be returned!" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="-3,300,0,137" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="354" Grid.ColumnSpan="2"/>
+            <Label x:Name="lb_clear" Content="Click here to reset ur leaderboard:&#x0a;WARNING: This data cannot be returned!" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="15,300,0,137" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="354" Grid.ColumnSpan="2"/>
             <Button x:Name="bt_Clear" Content="" HorizontalAlignment="Left" Margin="350,300,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_Clear_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
