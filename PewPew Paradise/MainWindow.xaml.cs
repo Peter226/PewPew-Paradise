@@ -580,7 +580,8 @@ namespace PewPew_Paradise
             MainMenu.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Visible;
             AccessData score = new AccessData();
-            score.AddScore(new Hscore() { uname ="Peti",score=420,floor=69 });
+            //score.ClearDB();
+            //score.AddScore(new Hscore() { uname ="Peti",score=420,floor=69 });
             data = score.GetScore();
             data_scores.ItemsSource = data;
             Refresh();

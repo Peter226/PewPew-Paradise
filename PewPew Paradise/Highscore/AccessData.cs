@@ -15,7 +15,7 @@ namespace PewPew_Paradise.Highscore
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
             {
-                var output  = connection.Query<Hscore>("select * from HIGHSCORES ").ToList();
+                var output  = connection.Query<Hscore>("SELECT * from HIGHSCORE ").ToList();
                 return output;
             }
         }
@@ -23,8 +23,18 @@ namespace PewPew_Paradise.Highscore
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
             {
-                connection.Execute("insert into HIGHSCORES (uname, score, floor) VALUES (@uname, @score, @floor)",score);
+                connection.Execute("INSERT INTO HIGHSCORE (uname, score, floorcount) VALUES (@uname, @score, @floorcount)",score);
             }
         }
+
+        public void ClearDB()
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                connection.Execute("DELETE FROM HIGHSCORE");
+            }
+        }
+
+
     }
 }
