@@ -118,7 +118,7 @@ namespace PewPew_Paradise
         public void LoadChar(int player_number)
         {
             SelectedChar(1).Size = select_size;
-
+            SelectedChar(1).Position = select_pos1;
             chars1[chars_number1].IsActive = true;
             MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
             if (player_number != 1)

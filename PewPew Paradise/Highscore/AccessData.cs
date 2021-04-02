@@ -46,6 +46,16 @@ namespace PewPew_Paradise.Highscore
                 return output;
             }
         }
+        public int GetMostPlayedChar()
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+
+                var output = connection.Query<int>("Select characterid from Highscore Group By characterid Order By count(*) DESC").ToList();
+
+                return output[0];
+            }
+        }
         public void AddScore(Hscore score)
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))

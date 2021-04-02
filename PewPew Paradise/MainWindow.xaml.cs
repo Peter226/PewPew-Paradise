@@ -57,7 +57,6 @@ namespace PewPew_Paradise
         public double enemyHitTimer;
 
 
-
         //JSON saving system
         public GameOptions gameOptions;
         public static JsonSerializer optionsSerializer = new JsonSerializer();
@@ -96,6 +95,7 @@ namespace PewPew_Paradise
             Console.WriteLine(score.GetCharName(10));
             Console.WriteLine(score.GetCharName(11));
             Console.WriteLine(score.GetCharName(12));
+            Console.WriteLine(score.GetMostPlayedChar());
             instance = this;
             InitializeComponent();
             Thickness thickness = new Thickness();
@@ -491,6 +491,7 @@ namespace PewPew_Paradise
             Leaderboard.Visibility = Visibility.Collapsed;
             Selection.Visibility = Visibility.Collapsed;
             InGameOptions.Visibility = Visibility.Collapsed;
+            chars.chars1[score.GetMostPlayedChar()].IsActive = false;
             chars.UnLoadChar(1);
             chars.UnLoadChar(2);
             SaveGameOptions();
@@ -562,7 +563,12 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Visible;
-            
+            Vector2 mostplayedsize = new Vector2(2, 2);
+            Vector2 mostplayedpos = new Vector2(6, 13.5);
+            chars.chars1[score.GetMostPlayedChar()].Position = mostplayedpos;
+            chars.chars1[score.GetMostPlayedChar()].Size = mostplayedsize;
+            chars.chars1[score.GetMostPlayedChar()].IsActive = true;
+            lb_mostplayedname.Content = score.GetCharName(score.GetMostPlayedChar());
             //score.ClearDB();
             data = score.GetOrderedScore();
             int amount = score.ScoreAmount();
@@ -570,6 +576,7 @@ namespace PewPew_Paradise
             {
                 if (i == 10)
                     break;
+                Console.WriteLine(data[i].characterid);
                 lb_data_scoresname.Content += "\n" + data[i].uname ;
                 lb_data_scores.Content += "\n" + data[i].score.ToString();
                 lb_data_scoresfloor.Content += "\n" + data[i].floorcount.ToString();

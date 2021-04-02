@@ -643,6 +643,8 @@
             <Label x:Name="lb_data_scoresname" Content="Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="10,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
             <Label x:Name="lb_data_scores" Content="Score:" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="140,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
             <Label x:Name="lb_data_scoresfloor" Content="Floor:"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="270,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="70"/>
+            <Label x:Name="lb_mostplayed" Content="Most Played Character:" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="25,370,137,0" VerticalAlignment="Top" Width="350" Height="35" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
+            <Label x:Name="lb_mostplayedname" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="25,462,137,0" VerticalAlignment="Top" Width="350" Height="40" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
