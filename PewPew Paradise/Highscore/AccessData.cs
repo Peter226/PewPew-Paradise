@@ -59,6 +59,15 @@ namespace PewPew_Paradise.Highscore
                 connection.Execute("INSERT INTO CHARACTER (characterid, charactername) VALUES (@characterid, @charactername)", character);
             }
         }
+        public string GetCharName(int id)
+        {
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                var charname = connection.Query<Character>("SELECT charactername FROM CHARACTER WHERE characterid=@id", id ).ToString();
+                return charname;
+            }
+        }
+
         public void ClearDB()
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
