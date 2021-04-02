@@ -159,25 +159,27 @@ namespace PewPew_Paradise.GameLogic
                 }
                 collectFruit.FruitCollect();
             }
-            for(int i =0; i < Enemy.enemyList.Count; i++)
+            if (life > 0)
             {
-
-                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0) 
+                for (int i = 0; i < Enemy.enemyList.Count; i++)
                 {
-                    dietimer = 1;
-                    life--;
-                    GetComponent<AnimatorComponent>().PlayAnimation(5);
-                    if (life < 1)
+
+                    if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0)
                     {
-                        GetComponent<CollideComponent>().IsActive = false;
-                        GetComponent<PhysicsComponent>().IsActive = false;
-                        GetComponent<AnimatorComponent>().PlayAnimation(6);
-                        GetComponent<AnimatorComponent>().OnAnimationEnded += FinishDeath;
+                        dietimer = 1;
+                        life--;
+                        GetComponent<AnimatorComponent>().PlayAnimation(5);
+                        if (life < 1)
+                        {
+                            GetComponent<CollideComponent>().IsActive = false;
+                            GetComponent<PhysicsComponent>().IsActive = false;
+                            GetComponent<AnimatorComponent>().PlayAnimation(6);
+                            GetComponent<AnimatorComponent>().OnAnimationEnded += FinishDeath;
+                        }
+                        break;
                     }
-                    break;
                 }
             }
-
             //Fall animation
             if (!GetComponent<CollideComponent>().isOnGround && GetComponent<PhysicsComponent>().speed.y > 0.0)
             {
