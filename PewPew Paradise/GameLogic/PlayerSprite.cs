@@ -161,7 +161,9 @@ namespace PewPew_Paradise.GameLogic
             }
             if (life > 0)
             {
-                for (int i = 0; i < Enemy.enemyList.Count; i++)
+                for (int i = 0; i < Enemy.enemyList.Count; i++) {
+                if (Enemy.enemyList[i].dead)continue;
+                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0) 
                 {
 
                     if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0)
@@ -178,6 +180,7 @@ namespace PewPew_Paradise.GameLogic
                         }
                         break;
                     }
+                }
                 }
             }
             //Fall animation
