@@ -13,12 +13,6 @@ namespace PewPew_Paradise.Highscore
         public int score { get; set; }
         public int floorcount { get; set; }
         public int characterid { get; set; }
-        public string FullInfo
-        {
-            get 
-            {
-                return $"{ uname }\t { score }\t{ floorcount }";
-            }
-        }
+
     }
 }
