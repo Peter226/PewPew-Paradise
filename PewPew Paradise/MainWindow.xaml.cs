@@ -82,6 +82,20 @@ namespace PewPew_Paradise
         public MainWindow()
         {
             LoadGameOptions();
+            score.InitDB();
+            Console.WriteLine(score.GetCharName(0));
+            Console.WriteLine(score.GetCharName(1));
+            Console.WriteLine(score.GetCharName(2));
+            Console.WriteLine(score.GetCharName(3));
+            Console.WriteLine(score.GetCharName(4));
+            Console.WriteLine(score.GetCharName(5));
+            Console.WriteLine(score.GetCharName(6));
+            Console.WriteLine(score.GetCharName(7));
+            Console.WriteLine(score.GetCharName(8));
+            Console.WriteLine(score.GetCharName(9));
+            Console.WriteLine(score.GetCharName(10));
+            Console.WriteLine(score.GetCharName(11));
+            Console.WriteLine(score.GetCharName(12));
             instance = this;
             InitializeComponent();
             Thickness thickness = new Thickness();
@@ -93,7 +107,9 @@ namespace PewPew_Paradise
             GameManager.OnUpdate += Update;
             GameManager.Begin();
             //CollisionEditor.Init(collisionEditor); //COLLISION EDITOR
-            SpriteManager.canvas = SpriteCanvas;
+            SpriteManager.canvases[1] = SpriteCanvas;
+            SpriteManager.canvases[2] = FrontSpriteCanvas;
+            SpriteManager.mainCanvas = SpriteCanvas;
             AnimationCollection.LoadAll();
 
             load = new MapLoad();
@@ -118,7 +134,7 @@ namespace PewPew_Paradise
 
             FruitSprite.LoadImages();
             Refresh();
-            
+
         }
         public void Refresh()
         {
@@ -526,6 +542,7 @@ namespace PewPew_Paradise
             lb_player1name.Content = player1_name;
             lb_player1_score.Content = score1;
             lb_floor_player1.Content = 0;
+            chars.SelectedChar(1).Life = PlayerSprite.maxLife;
             if (player_number != 1)
             { 
                 player2_name = tb_player2.Text;
@@ -535,6 +552,7 @@ namespace PewPew_Paradise
                 lb_player2_score.Content = score2;
                 lb_player2_name.Visibility = Visibility.Visible;
                 lb_player2_score.Visibility = Visibility.Visible;
+                chars.SelectedChar(2).Life = PlayerSprite.maxLife;
             }
 
             load.LoadMap(player_number);

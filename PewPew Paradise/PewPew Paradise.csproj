@@ -156,6 +156,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Images\Sprites\Utility\hp_empty.png" />
+    <Resource Include="Images\Sprites\Utility\hp_full.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -266,9 +268,7 @@
     <Resource Include="Images\small_arrow_left.png" />
     <Resource Include="Images\small_arrow_right.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\Sprites\Utility\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Sprites\Collectibles\Banana.png" />
   </ItemGroup>

@@ -646,12 +646,12 @@
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >
-            <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Left" Margin="220,0,0,477" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
+            <Label x:Name="lb_floor" Content="Floor:" HorizontalAlignment="Center" Margin="0,0,0,477" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_player1_name"  HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
             <Label x:Name="lb_player1_score"  HorizontalAlignment="Left" Margin="0,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361"/>
-            <Label x:Name="lb_floor_counter" HorizontalAlignment="Left" Margin="220,35,0,442" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" Width="64" RenderTransformOrigin="0,0.429" HorizontalContentAlignment="Center"/>
-            <Label x:Name="lb_player2_name" HorizontalAlignment="Left" Margin="400,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
-            <Label x:Name="lb_player2_score"  HorizontalAlignment="Left" Margin="400,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
+            <Label x:Name="lb_floor_counter" HorizontalAlignment="Center" Margin="0,35,0,442" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" Width="64" RenderTransformOrigin="0,0.429" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lb_player2_name" HorizontalAlignment="Right" Margin="0,0,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
+            <Label x:Name="lb_player2_score"  HorizontalAlignment="Right" Margin="0,30,0,0" FontSize="20" FontFamily="Bauhaus 93" Foreground="#7C0476" RenderTransformOrigin="0.453,0.361" Visibility="Collapsed"/>
         </Grid>
         <!--End Game Grid-->
         <Grid x:Name="EndGame" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed">
@@ -717,7 +717,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image x:Name="img_player1" HorizontalAlignment="Left" Height="31" Margin="80,80,0,0" VerticalAlignment="Top" Width="88" Source="Images/Player1.png" Grid.Column="1"/>
-                <TextBox x:Name="tb_player1" Text="Player1" Margin="51,130,56,347" Grid.Column="1" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="8"/>
+                <TextBox x:Name="tb_player1" Text="Player1" Margin="0,130,0,347" Grid.Column="1" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="8" Width="192" HorizontalAlignment="Center"/>
                 <Button x:Name="bt_charsselect1_r" Content="" HorizontalAlignment="Right" Margin="0,280,8,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_charsselect1_r_Click" Grid.Column="1">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/small_arrow_left.png" />
@@ -733,7 +733,7 @@
 
             <Grid x:Name="Player2" Height="512" Width="256" Margin="256,0,0,0" Background="#FF260026" Visibility="Visible">
                 <Image x:Name="img_player2" HorizontalAlignment="Left" Height="31" Margin="80,80,0,0" VerticalAlignment="Top" Width="88" Source="Images/Player2.png"/>
-                <TextBox x:Name="tb_player2" Text="Player2" Margin="52,130,57,347" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="8"/>
+                <TextBox x:Name="tb_player2" Text="Player2" Margin="0,130,0,347" Background="#F6C9FF" Foreground="#8A5895" FontFamily="Bauhaus 93" FontSize="24" MaxLength="8" Width="192" HorizontalAlignment="Center"/>
                 <Button x:Name="bt_charsselect2_r" Content="" HorizontalAlignment="Right" Margin="0,280,8,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_charsselect2_r_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/small_arrow_left.png" />
@@ -751,17 +751,18 @@
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_play" HorizontalAlignment="Left" Margin="198,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_play_Click">
+            <Button x:Name="bt_play" HorizontalAlignment="Center" Margin="0,420,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_play_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_mid.png" />
 
                 </Button.Background>
             </Button>
-            <Image Source="Images/Play.png" Margin="202,423,201,31" IsHitTestVisible="False"/>
+            <Image Source="Images/Play.png" Margin="0,423,0,31" IsHitTestVisible="False" HorizontalAlignment="Center"/>
 
         </Grid>
         <!--Sprite Canvas Grid-->
         <Grid x:Name="SpriteCanvas" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
+        <Grid x:Name="FrontSpriteCanvas" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
         <Image x:Name="Dummy" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="arrow_left.png"/>
 
     </Grid>

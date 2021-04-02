@@ -38,6 +38,13 @@ namespace PewPew_Paradise.GameLogic
         public delegate void OnDestroyDelegate(object state);
         public event OnDestroyDelegate OnDestroyed;
 
+        private int canvasLayer;
+
+        public int CanvasLayer
+        {
+            get { return canvasLayer; }
+        }
+
         /// <summary>
         /// Get the current components added
         /// </summary>
@@ -155,14 +162,31 @@ namespace PewPew_Paradise.GameLogic
             }
             set
             {
+                if (_active != value) {
+                    if (value)
+                    {
+                        Console.WriteLine("Activated");
+                        OnEnabled();
+                    }
+                    else
+                    {
+                        OnDisabled();
+                    }
+                }
                 _active = value;
                 _image.IsEnabled = _active;
                 _image.Visibility = (Visibility)_active.CompareTo(true);
             }
         }
 
+        
+        public virtual void OnEnabled() {
+        
+        }
+        public virtual void OnDisabled()
+        {
 
-
+        }
 
         /// <summary>
         /// Called when sprite is created
@@ -215,7 +239,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="image">Name reference defined with SpriteManager.Instance.LoadImage</param>
         /// <param name="position">Position in game units</param>
         /// <param name="size">Size in game units</param>
-        public Sprite(string image, Vector2 position, Vector2 size, bool active = true)
+        public Sprite(string image, Vector2 position, Vector2 size, bool active = true, int canvas = 1)
         {
             this.image = image;   
             _id = SpriteManager.CreateSpriteID();
@@ -231,6 +255,7 @@ namespace PewPew_Paradise.GameLogic
             Position = position;
             Size = size;
             IsActive = active;
+            canvasLayer = canvas;
             SpriteManager.AddSprite(this);
             GameManager.OnUpdate += CallUpdate;
         }

@@ -27,10 +27,16 @@ namespace PewPew_Paradise.GameLogic
         /// All existing sprites
         /// </summary>
         public static Dictionary<int,Sprite> Sprites = new Dictionary<int,Sprite>();
+
         /// <summary>
-        /// Canvas UIElement
+        /// All canvases used by the SpriteManager;
         /// </summary>
-        public static Grid canvas;
+        public static Grid[] canvases = new Grid[3];
+        /// <summary>
+        /// Main canvas
+        /// </summary>
+        public static Grid mainCanvas;
+
         /// <summary>
         /// Loaded images
         /// </summary>
@@ -89,8 +95,8 @@ namespace PewPew_Paradise.GameLogic
         public static Vector2 VectorToCanvas(Vector2 vector)
         {
             Vector2 canvasV = vector;
-            canvasV.x *= canvas.Width / GameManager.GameUnitSize;
-            canvasV.y *= canvas.Height / GameManager.GameUnitSize;
+            canvasV.x *= mainCanvas.Width / GameManager.GameUnitSize;
+            canvasV.y *= mainCanvas.Height / GameManager.GameUnitSize;
             return canvasV;
         }
         /// <summary>
@@ -101,8 +107,8 @@ namespace PewPew_Paradise.GameLogic
         public static Vector2 CanvasToVector(Vector2 canvasV)
         {
             Vector2 vector = canvasV;
-            vector.x *= GameManager.GameUnitSize / canvas.Width;
-            vector.y *= GameManager.GameUnitSize / canvas.Height;
+            vector.x *= GameManager.GameUnitSize / mainCanvas.Width;
+            vector.y *= GameManager.GameUnitSize / mainCanvas.Height;
             return vector;
         }
 
@@ -147,7 +153,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="sprite"></param>
         public static void AddSprite(Sprite sprite)
         {
-            canvas.Children.Add(sprite.RectangleElement);
+            canvases[sprite.CanvasLayer].Children.Add(sprite.RectangleElement);
             Sprites.Add(sprite.ID,sprite);
             sprite.Start();
         }

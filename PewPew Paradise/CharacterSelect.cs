@@ -24,6 +24,11 @@ namespace PewPew_Paradise
         /// </summary>
         public CharacterSelect()
         {
+
+            //HP
+            SpriteManager.LoadImage("Images/Sprites/Utility/hp_empty.png", "hp_empty");
+            SpriteManager.LoadImage("Images/Sprites/Utility/hp_full.png", "hp_full");
+
             //Characters
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder.png", "MrPlaceholder");
@@ -242,8 +247,8 @@ namespace PewPew_Paradise
 
             chosen_char1.Position = load_pos1;
             chosen_char1.Size = load_size;
-            if (MainWindow.Instance.chars.SelectedChar(1).life != 0)
-            { chosen_char1.IsActive = true; }
+            if (MainWindow.Instance.chars.SelectedChar(1).Life != 0)
+            chosen_char1.IsActive = true;
             SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
             SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
             if (player_number!=1)
@@ -252,7 +257,7 @@ namespace PewPew_Paradise
 
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
-                if (MainWindow.Instance.chars.SelectedChar(2).life != 0)
+                if (MainWindow.Instance.chars.SelectedChar(2).Life != 0)
                     chosen_char2.IsActive = true;
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
                 SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;

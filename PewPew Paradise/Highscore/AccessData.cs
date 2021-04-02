@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
@@ -63,8 +64,8 @@ namespace PewPew_Paradise.Highscore
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
             {
-                var charname = connection.Query<Character>("SELECT charactername FROM CHARACTER WHERE characterid=@id", id ).ToString();
-                return charname;
+                var charname = connection.Query<string>($"SELECT charactername FROM CHARACTER WHERE characterid={id}").ToList();
+                return charname[0];
             }
         }
 
@@ -76,6 +77,30 @@ namespace PewPew_Paradise.Highscore
             }
         }
 
+        public void InitDB()
+        {
+            List<Character> chars;
+            using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
+            {
+                chars = connection.Query<Character>("SELECT * from CHARACTER").ToList();
+            }
+            if (chars == null || chars.Count < 1)
+            {
+                AddChar(new Character() { characterid = 0, charactername = "Moni The Unicorn" });
+                AddChar(new Character() { characterid = 1, charactername = "Oli The Orc" });
+                AddChar(new Character() { characterid = 2, charactername = "Peti the Rat" });
+                AddChar(new Character() { characterid = 3, charactername = "Mr. The PlaceHolder" });
+                AddChar(new Character() { characterid = 4, charactername = "Hugo The Cactus" });
+                AddChar(new Character() { characterid = 5, charactername = "Michael The Monkey" });
+                AddChar(new Character() { characterid = 6, charactername = "Chochie The Muffin" });
+                AddChar(new Character() { characterid = 7, charactername = "Philip The Penguin" });
+                AddChar(new Character() { characterid = 8, charactername = "Ms.Bread The Toast" });
+                AddChar(new Character() { characterid = 9, charactername = "Frigyes The Turtle" });
+                AddChar(new Character() { characterid = 10, charactername = "Jello The Slime" });
+                AddChar(new Character() { characterid = 11, charactername = "Fred The Dinosaur" });
+                AddChar(new Character() { characterid = 12, charactername = "Cola The Koala" });
+            }
+        }
 
     }
 }

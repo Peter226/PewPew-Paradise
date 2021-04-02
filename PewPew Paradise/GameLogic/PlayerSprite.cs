@@ -17,9 +17,50 @@ namespace PewPew_Paradise.GameLogic
         public string projectile;
         public List<Key> _keys = new List<Key>();
         public double timer = 100000;
-        public int life = 3;
+        private int life = 3;
+        public static int maxLife = 3;
         public double dietimer;
-        
+        List<Sprite> lifeSprites = new List<Sprite>();
+
+        public int Life
+        {
+            get { return life; }
+            set {
+                for (int i = 0; i < lifeSprites.Count; i++)
+                {
+                    lifeSprites[i].Destroy();
+                }
+                lifeSprites.Clear();
+                life = value;
+                if (MainWindow.Instance.PlayingField.Visibility == Visibility.Visible) {
+                    for (int i = 0; i < maxLife; i++)
+                    {
+                        Vector2 HpPos;
+                        Vector2 HpDir;
+                        if (player_id == 1)
+                        {
+                            HpPos = new Vector2(4.5, 0.5);
+                            HpDir = new Vector2(0.5, 0);
+                        }
+                        else
+                        {
+                            HpPos = new Vector2(11.5, 0.5);
+                            HpDir = new Vector2(-0.5, 0);
+                        }
+                        if (i < life)
+                        {
+                            lifeSprites.Add(new Sprite("hp_full", HpPos + HpDir * i, Vector2.One * 0.5, true, 2));
+                        }
+                        else
+                        {
+                            lifeSprites.Add(new Sprite("hp_empty", HpPos + HpDir * i, Vector2.One * 0.5, true, 2));
+                        }
+                    }
+                }
+               
+            }
+        }
+
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();
@@ -41,6 +82,7 @@ namespace PewPew_Paradise.GameLogic
                 _keys.Add(Key.Right);
                 _keys.Add(Key.RightCtrl);
             }
+            Life = maxLife;
         }
         /// <summary>
         /// Moving left and right
@@ -99,26 +141,33 @@ namespace PewPew_Paradise.GameLogic
             GetComponent<AnimatorComponent>().PlayAnimation(4);
         }
 
-        public override void Update()
+
+
+        public override void OnEnabled()
         {
-            Console.WriteLine($"char{player_id}|hp:{life}");
+            GetComponent<AnimatorComponent>().ForcePlayAnimation(0);
+        }
 
 
-            if (life > 0)
-            {
-                if (RectangleElement.Opacity != 1) {
-                    RectangleElement.Opacity = 1;
+        public override void Update()
+            { 
+            //Console.WriteLine($"char{player_id}|hp:{Life}");
+
+                if (Life > 0)
+                {
+                    if (RectangleElement.Opacity != 1) {
+                        RectangleElement.Opacity = 1;
+                    }
                 }
-            }
-            else
-            {
-                RectangleElement.Opacity -= GameManager.DeltaTime * 0.0005;
-                Position -= new Vector2(0, GameManager.DeltaTime * 0.0015);
-            }
+                else
+                {
+                    RectangleElement.Opacity -= GameManager.DeltaTime * 0.0005;
+                    Position -= new Vector2(0, GameManager.DeltaTime * 0.0015);
+                }
 
 
             if(MainWindow.Instance.PlayingField.Visibility == Visibility.Visible)
-            if (!MainWindow.Instance.load.CurrentMap().just_loaded && life > 0)
+            if (!MainWindow.Instance.load.CurrentMap().just_loaded && Life > 0)
             {
                 if (Keyboard.IsKeyDown(_keys[1]))
                     MoveLeft();
@@ -159,7 +208,7 @@ namespace PewPew_Paradise.GameLogic
                 }
                 collectFruit.FruitCollect();
             }
-            if (life > 0)
+            if (Life > 0)
             {
                 for (int i = 0; i < Enemy.enemyList.Count; i++) {
                 if (Enemy.enemyList[i].dead)continue;
@@ -168,10 +217,11 @@ namespace PewPew_Paradise.GameLogic
 
                     if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0)
                     {
+                            Console.WriteLine("EUGGGH");
                         dietimer = 1;
-                        life--;
+                        Life--;
                         GetComponent<AnimatorComponent>().PlayAnimation(5);
-                        if (life < 1)
+                        if (Life < 1)
                         {
                             GetComponent<CollideComponent>().IsActive = false;
                             GetComponent<PhysicsComponent>().IsActive = false;
@@ -197,7 +247,7 @@ namespace PewPew_Paradise.GameLogic
             GetComponent<AnimatorComponent>().OnAnimationEnded -= FinishDeath;
             if (MainWindow.Instance.player_number == 1)
             {
-                if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
+                if (MainWindow.Instance.chars.SelectedChar(1).Life == 0)
                 {
                     MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
                     MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
@@ -215,7 +265,7 @@ namespace PewPew_Paradise.GameLogic
             }
             else
             {
-                if (MainWindow.Instance.chars.SelectedChar(1).life == 0)
+                if (MainWindow.Instance.chars.SelectedChar(1).Life == 0)
                 {
                     MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
                     if ((int)MainWindow.Instance.lb_floor_player1.Content == 0)
@@ -223,7 +273,7 @@ namespace PewPew_Paradise.GameLogic
                         MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
                     }
                     MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
-                    if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
+                    if (MainWindow.Instance.chars.SelectedChar(2).Life == 0)
                     {
                         if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
                         {
@@ -237,7 +287,7 @@ namespace PewPew_Paradise.GameLogic
                         MainWindow.Instance.load.ClearAll();
                     }
                 }
-                if (MainWindow.Instance.chars.SelectedChar(2).life == 0)
+                if (MainWindow.Instance.chars.SelectedChar(2).Life == 0)
                 {
                     MainWindow.Instance.chars.SelectedChar(2).IsActive = false;
                     if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
