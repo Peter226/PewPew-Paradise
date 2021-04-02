@@ -581,10 +581,11 @@ namespace PewPew_Paradise
 
         private void bt_menu_Click(object sender, RoutedEventArgs e)
         {
-            load.ClearAll();
+            
             InGameOptions.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Collapsed;
             MainMenu.Visibility = Visibility.Visible;
+            load.ClearAll();
             GameManager.Begin();
         }
         private void bt_resume_Click(object sender, RoutedEventArgs e)
