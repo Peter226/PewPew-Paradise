@@ -52,8 +52,13 @@ namespace PewPew_Paradise.Highscore
             {
 
                 var output = connection.Query<int>("Select characterid from Highscore Group By characterid Order By count(*) DESC").ToList();
+                if (output.Count != 0)
+                {
+                    return output[0];
+                }
+                else
+                    return 0;
 
-                return output[0];
             }
         }
         public void AddScore(Hscore score)

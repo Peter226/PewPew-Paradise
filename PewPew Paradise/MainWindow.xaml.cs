@@ -565,13 +565,17 @@ namespace PewPew_Paradise
             Leaderboard.Visibility = Visibility.Visible;
             Vector2 mostplayedsize = new Vector2(2, 2);
             Vector2 mostplayedpos = new Vector2(6, 13.5);
-            chars.chars1[score.GetMostPlayedChar()].Position = mostplayedpos;
-            chars.chars1[score.GetMostPlayedChar()].Size = mostplayedsize;
-            chars.chars1[score.GetMostPlayedChar()].IsActive = true;
-            lb_mostplayedname.Content = score.GetCharName(score.GetMostPlayedChar());
+            int amount = score.ScoreAmount();
+            if (amount != 0)
+            {
+                chars.chars1[score.GetMostPlayedChar()].Position = mostplayedpos;
+                chars.chars1[score.GetMostPlayedChar()].Size = mostplayedsize;
+                chars.chars1[score.GetMostPlayedChar()].IsActive = true;
+                lb_mostplayedname.Content = score.GetCharName(score.GetMostPlayedChar());
+            }
             //score.ClearDB();
             data = score.GetOrderedScore();
-            int amount = score.ScoreAmount();
+            
             for (int i =0; i < amount; i++)
             {
                 if (i == 10)
@@ -706,9 +710,9 @@ namespace PewPew_Paradise
         private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
         {
             
-            score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content });
+            score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content, characterid = chars.chars_number1 });
             if (player_number != 1)
-                score.AddScore(new Hscore() { uname =player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content });
+                score.AddScore(new Hscore() { uname =player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
             MainMenu.Visibility = Visibility.Visible;
             EndGame.Visibility = Visibility.Collapsed;
             lb_floor_player1.Content = 0;
