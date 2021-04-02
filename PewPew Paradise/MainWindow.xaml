@@ -712,6 +712,7 @@
         <!--Selection Grid-->
         <Grid x:Name="Selection" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed" >
             <Grid x:Name="Player1" Height="512" Width="256" Margin="0,0,256,0" Background="#FF260026" Visibility="Visible">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0*"/>
                     <ColumnDefinition/>
@@ -728,6 +729,7 @@
                         <ImageBrush ImageSource="Images/small_arrow_right.png" />
                     </Button.Background>
                 </Button>
+                <Label x:Name="lb_charname1" Grid.ColumnSpan="2" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="32,365,26,92" FontSize="20" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="198"/>
 
             </Grid>
 
@@ -744,6 +746,7 @@
                         <ImageBrush ImageSource="Images/small_arrow_right.png" />
                     </Button.Background>
                 </Button>
+                <Label x:Name="lb_charname2" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="32,365,26,92" FontSize="20" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="198" />
             </Grid>
             <Button x:Name="bt_back_selection" HorizontalAlignment="Left" Margin="420,420,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_back_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
                 <Button.Background>
