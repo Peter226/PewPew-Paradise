@@ -55,6 +55,7 @@ namespace PewPew_Paradise
         public int score1 = 0;
         public int score2= 0;
         public double enemyHitTimer;
+
         
 
         //JSON saving system
@@ -161,7 +162,10 @@ namespace PewPew_Paradise
         /// </summary>
         public void Update()
         {
-
+            if (Confirm.Inst != null && Confirm.Inst.IsForeground() == false)
+            {
+                Confirm.Inst.Close();
+            }
 
             if (Keyboard.IsKeyDown(Key.Left))
             {
@@ -646,7 +650,6 @@ namespace PewPew_Paradise
             Confirm confirm = new Confirm();
             Confirm.Inst.Activate();
             Confirm.Inst.Show();
-            GameManager.Stop();
 
             //score.ClearDB();
         }

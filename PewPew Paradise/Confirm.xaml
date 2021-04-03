@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PewPew_Paradise"
         mc:Ignorable="d"
-        Title="Confirm" Height="300" Width="350" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF260026" BorderBrush="#F6C9FF" BorderThickness="5">
-    <Grid>
+        Title="Confirm" Height="300" Width="350" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF260026" BorderBrush="#F6C9FF" BorderThickness="5" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid >
+        
         <Button x:Name="bt_yes" HorizontalAlignment="Left" Margin="70,208,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_yes_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Images/button_small.png" />
