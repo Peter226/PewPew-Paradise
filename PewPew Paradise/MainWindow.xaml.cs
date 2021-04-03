@@ -622,6 +622,7 @@ namespace PewPew_Paradise
             score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content, characterid = chars.chars_number1 });
             if (player_number != 1)
                 score.AddScore(new Hscore() { uname = player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
+            System.Windows.Application.Current.Shutdown();
         }
         private void bt_tofloors_Click(object sender, RoutedEventArgs e)
         {
