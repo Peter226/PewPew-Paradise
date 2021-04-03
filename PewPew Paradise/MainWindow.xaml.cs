@@ -139,6 +139,8 @@ namespace PewPew_Paradise
         }
         void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (Confirm.Inst != null && Confirm.Inst.IsForeground() == false)
+                Confirm.Inst.Close();
             if (EndGame.Visibility == Visibility.Visible)
             {
                 score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content, characterid = chars.chars_number1 });
@@ -309,6 +311,8 @@ namespace PewPew_Paradise
                 }
                 else
                 {
+                    if (Confirm.Inst != null && Confirm.Inst.IsForeground() == false)
+                        Confirm.Inst.Close();
                     System.Windows.Application.Current.Shutdown();
                 }
             }
