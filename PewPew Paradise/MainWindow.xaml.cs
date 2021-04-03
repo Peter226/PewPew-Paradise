@@ -283,16 +283,24 @@ namespace PewPew_Paradise
 
             if (e.Key == Key.Escape)
             {
-                if (InGameOptions.Visibility == Visibility.Collapsed) {
-                    InGameOptions.Visibility = Visibility.Visible;
-                    GameWindow.Children.Remove(InGameOptions);
-                    GameWindow.Children.Add(InGameOptions);
-                    GameManager.Stop();
+                if (PlayingField.Visibility == Visibility.Visible)
+                {
+                    if (InGameOptions.Visibility == Visibility.Collapsed)
+                    {
+                        InGameOptions.Visibility = Visibility.Visible;
+                        GameWindow.Children.Remove(InGameOptions);
+                        GameWindow.Children.Add(InGameOptions);
+                        GameManager.Stop();
+                    }
+                    else
+                    {
+                        InGameOptions.Visibility = Visibility.Collapsed;
+                        GameManager.Begin();
+                    }
                 }
                 else
                 {
-                    InGameOptions.Visibility = Visibility.Collapsed;
-                    GameManager.Begin();
+                    System.Windows.Application.Current.Shutdown();
                 }
             }
         }
@@ -651,7 +659,7 @@ namespace PewPew_Paradise
             Confirm.Inst.Activate();
             Confirm.Inst.Show();
 
-            //score.ClearDB();
+            
         }
         /// <summary>
         /// Selection arrow moving events
