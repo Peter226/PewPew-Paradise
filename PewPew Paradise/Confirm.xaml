@@ -20,7 +20,7 @@
 
             </Button.Background>
         </Button>
-        <Label x:Name="lb_confirm" Content="Are you sure?&#xA;WARNING:&#xA;This data cannot be reseted!" HorizontalContentAlignment="Center" Margin="0,50,0,0" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
+        <Label x:Name="lb_confirm" Content="Are you sure?&#xA;WARNING:&#xA;This data cannot be reseted!" Height="100" HorizontalContentAlignment="Center" Margin="0,60,0,122" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
     </Grid>
     <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
