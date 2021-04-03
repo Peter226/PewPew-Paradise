@@ -86,13 +86,14 @@
 
                 </Button.Background>
             </Button>
-            <Label x:Name="lb_clear" Content="Click here to reset ur leaderboard:&#x0a;WARNING: This data cannot be reseted!" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="15,300,0,137" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="354" Grid.ColumnSpan="2"/>
+            <Label x:Name="lb_clear" Content="Click here to reset your leaderboard:&#xA;WARNING: This data cannot be restored!" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="15,300,0,137" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="354" Grid.ColumnSpan="2"/>
             <Button x:Name="bt_Clear" Content="" HorizontalAlignment="Left" Margin="350,300,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_Clear_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Grid.Column="1">
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button_small.png" />
 
                 </Button.Background>
             </Button>
+            <Image x:Name="trashImage" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="53" VerticalAlignment="Top" Width="48" Margin="358,297,0,0" Source="Images/Bin.png" IsHitTestVisible="False"/>
 
             <!--Music slider with its template-->
             <Slider x:Name="sl_music"  Margin="90,172,161,320" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle1}" Grid.Column="1" Value="1" ValueChanged="sl_music_ValueChanged" >

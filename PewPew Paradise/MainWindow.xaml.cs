@@ -20,7 +20,7 @@ using System.Windows.Media.Animation;
 using Newtonsoft.Json;
 using System.IO;
 using PewPew_Paradise.Highscore;
-
+using PewPew_Paradise.GameLogic.Sounds;
 namespace PewPew_Paradise
 {
     /// <summary>
@@ -41,7 +41,7 @@ namespace PewPew_Paradise
         List<Sprite> MrPlaceHolders = new List<Sprite>();
         List<Hscore> data = new List<Hscore>();
 
-        MediaPlayer mp = new MediaPlayer();
+        /*MediaPlayer mp = new MediaPlayer();*/
 
         public MapLoad load;
         public CharacterSelect chars;
@@ -103,7 +103,8 @@ namespace PewPew_Paradise
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
-            
+
+            SoundManager.Init();
             GameManager.Init(60);
             GameManager.OnUpdate += Update;
             GameManager.Begin();
@@ -119,12 +120,12 @@ namespace PewPew_Paradise
             PlayingField.Background = new SolidColorBrush();
             playingFieldBrush = (SolidColorBrush)PlayingField.Background;
 
-            string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            /*string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string p = System.IO.Path.GetDirectoryName(l);
             p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
             Console.WriteLine(p);
             mp.Open(new Uri(p));
-            mp.MediaOpened += new EventHandler(PlayMedia);
+            mp.MediaOpened += new EventHandler(PlayMedia);*/
 
 
             Dummy.Opacity = 0.0;
@@ -161,10 +162,10 @@ namespace PewPew_Paradise
         /// <param name="a"></param>
         public void PlayMedia(object sender, EventArgs a)
         {
-            Console.WriteLine("Opened Media");
+            /*Console.WriteLine("Opened Media");
             mp.Play();
             double k = (double)sl_music.Value;
-            mp.Volume = k / 100;
+            mp.Volume = k / 100;*/
         }
 
 
@@ -258,13 +259,11 @@ namespace PewPew_Paradise
         /// <param name="e"></param>
         private void KeyPress(object sender, KeyEventArgs e)
         {
-            
-            if (e.Key == Key.P) {
-
-                EnemySprite mrph = new EnemySprite("MrPlaceHolder", new Maths.Vector2(8, 8), new Maths.Vector2(1, 1));
-                MrPlaceHolders.Add(mrph);
-                mrph.AddComponent<AnimatorComponent>().SetAnimation("Player");
+            if (e.Key == Key.P)
+            {
+                GameLogic.Sounds.SoundManager.Test();
             }
+            
             if (e.Key == Key.Space)
             {
                 foreach (Sprite spriteAnimated in MrPlaceHolders)
@@ -735,7 +734,7 @@ namespace PewPew_Paradise
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             double k = (double)sl_music.Value;
-            mp.Volume = k/100;
+            //mp.Volume = k/100;
         }
         private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
         {

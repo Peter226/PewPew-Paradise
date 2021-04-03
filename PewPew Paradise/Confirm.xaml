@@ -6,21 +6,23 @@
         xmlns:local="clr-namespace:PewPew_Paradise"
         mc:Ignorable="d"
         Title="Confirm" Icon="Images/PewPewParadiseIcon.ico" ResizeMode="NoResize" Height="300" Width="350" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF260026" BorderBrush="#F6C9FF" BorderThickness="5" MouseLeftButtonDown="Window_MouseLeftButtonDown">
-    <Grid >
+    <Grid RenderOptions.BitmapScalingMode="NearestNeighbor">
 
-        <Button x:Name="bt_yes" HorizontalAlignment="Left" Margin="70,208,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_yes_Click">
+        <Button x:Name="bt_yes" HorizontalAlignment="Center" Margin="0,208,128,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_yes_Click">
             <Button.Background>
-                <ImageBrush ImageSource="Images/button_small.png" />
+                <ImageBrush ImageSource="Images/button_mid.png" />
 
             </Button.Background>
         </Button>
-        <Button x:Name="bt_no" HorizontalAlignment="Left" Margin="210,208,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_no_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+        <Button x:Name="bt_no" HorizontalAlignment="Center" Margin="128,208,0,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_no_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="Images/button_small.png" />
+                <ImageBrush ImageSource="Images/button_mid.png" />
 
             </Button.Background>
         </Button>
         <Label x:Name="lb_confirm" Content="Are you sure?&#xA;WARNING:&#xA;This data cannot be reseted!" Height="100" HorizontalContentAlignment="Center" Margin="0,60,0,122" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
+        <Image x:Name="noImage" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="116" Margin="128,208,0,0" Source="Images/No.png" IsHitTestVisible="False"/>
+        <Image x:Name="yesImage" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="116" Margin="0,208,128,0" Source="Images/Yes.png" IsHitTestVisible="False"/>
     </Grid>
     <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
