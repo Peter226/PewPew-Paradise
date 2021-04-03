@@ -163,6 +163,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Images\Bin.png" />
+    <Resource Include="Images\Floor.png" />
+    <Resource Include="Images\Leaderboardbig.png" />
+    <Resource Include="Images\No.png" />
+    <Resource Include="Images\Score.png" />
+    <Resource Include="Images\Yes.png" />
     <Resource Include="Images\Sprites\Utility\hp_empty.png" />
     <Resource Include="Images\Sprites\Utility\hp_full.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
