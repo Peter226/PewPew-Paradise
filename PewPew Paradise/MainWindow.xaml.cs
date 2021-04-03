@@ -643,7 +643,12 @@ namespace PewPew_Paradise
         }
         private void bt_Clear_Click(object sender, RoutedEventArgs e)
         {
-            score.ClearDB();
+            Confirm confirm = new Confirm();
+            Confirm.Inst.Activate();
+            Confirm.Inst.Show();
+            GameManager.Stop();
+
+            //score.ClearDB();
         }
         /// <summary>
         /// Selection arrow moving events

@@ -1,0 +1,53 @@
+﻿<Window x:Class="PewPew_Paradise.Confirm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PewPew_Paradise"
+        mc:Ignorable="d"
+        Title="Confirm" Height="300" Width="350" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF260026" BorderBrush="#F6C9FF" BorderThickness="5">
+    <Grid>
+        <Button x:Name="bt_yes" HorizontalAlignment="Left" Margin="70,208,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_yes_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/button_small.png" />
+
+            </Button.Background>
+        </Button>
+        <Button x:Name="bt_no" HorizontalAlignment="Left" Margin="210,208,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_no_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/button_small.png" />
+
+            </Button.Background>
+        </Button>
+    </Grid>
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowFrameColor }}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+</Window>
