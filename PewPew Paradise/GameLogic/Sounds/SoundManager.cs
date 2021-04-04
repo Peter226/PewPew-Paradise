@@ -27,31 +27,27 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
         public static void InitThread()
         {
-
-            mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 2));
-
-
-
-            mixerOut = new WaveOut(WaveCallbackInfo.FunctionCallback());
-            mixerOut.Init(mixer);
-            mixerOut.Volume = 0.05f;
-
-            while (MainWindow.Instance != null && MainWindow.Instance.Visibility == System.Windows.Visibility.Visible)
-            {
+                mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 2));
+                mixerOut = new WaveOut(WaveCallbackInfo.FunctionCallback());
+                mixerOut.Init(mixer);
+                mixerOut.Volume = 0.05f;
+                Console.WriteLine("finito sound init");
+                while (MainWindow.Instance != null && MainWindow.Instance.isWindowOpen)
+                {
                 Thread.Sleep(100);
-            }
+                }
+                Console.WriteLine("thread ended");
+                mixerOut.Stop();
+                Console.WriteLine("mixer stopped");
         }
 
         public static void PlaySong()
         {
 
-            try
-            {
-
+           
                 var assembly = Assembly.GetExecutingAssembly();
                 var resourceName = $"PewPew_Paradise.Sounds.Music.MainMenu_1.mp3";
                 Stream stream = assembly.GetManifestResourceStream(resourceName);
-
                 //var ms = File.OpenRead("D:/Unity Projects/Bloat2.mp3");
                 var rdr = new Mp3FileReader(stream);
                 var wavStream = WaveFormatConversionStream.CreatePcmStream(rdr);
@@ -61,13 +57,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
                 {
                     mixerOut.Play();
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-
+            
 
         }
 

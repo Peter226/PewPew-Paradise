@@ -63,7 +63,7 @@ namespace PewPew_Paradise
         public static JsonSerializer optionsSerializer = new JsonSerializer();
         //JSON saving system
 
-
+        public bool isWindowOpen;
 
         /// <summary>
         /// Get instance
@@ -81,6 +81,7 @@ namespace PewPew_Paradise
         /// </summary>
         public MainWindow()
         {
+            isWindowOpen = true;
             LoadGameOptions();
             score.InitDB();
             Console.WriteLine(score.GetCharName(0));
@@ -148,6 +149,7 @@ namespace PewPew_Paradise
                 if (player_number != 1)
                     score.AddScore(new Hscore() { uname = player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
             }
+            isWindowOpen = false;
         }
         public void Refresh()
         {
