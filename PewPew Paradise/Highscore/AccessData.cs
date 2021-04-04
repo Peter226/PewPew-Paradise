@@ -12,6 +12,10 @@ namespace PewPew_Paradise.Highscore
 {
     public class AccessData
     {
+        /// <summary>
+        /// Getting all the data from HIGHSCORE table in a Hscore list
+        /// </summary>
+        /// <returns></returns>
         public List<Hscore> GetScore() 
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -20,6 +24,10 @@ namespace PewPew_Paradise.Highscore
                 return output;
             }
         }
+        /// <summary>
+        /// Returns the number of rows in HIGHSCORE table
+        /// </summary>
+        /// <returns></returns>
         public int ScoreAmount() 
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -28,6 +36,11 @@ namespace PewPew_Paradise.Highscore
                 return output; 
             }
         }
+        /// <summary>
+        /// Returns a Hscore list ordered by score
+        /// This is used for showing top scores
+        /// </summary>
+        /// <returns></returns>
         public List<Hscore> GetOrderedScore()
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -37,6 +50,11 @@ namespace PewPew_Paradise.Highscore
                 return output;
             }
         }
+        /// <summary>
+        /// Returns a Hscore list ordered by floorcount
+        /// This is used for showing top floors
+        /// </summary>
+        /// <returns></returns>
         public List<Hscore> GetOrderedFloor()
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -46,6 +64,12 @@ namespace PewPew_Paradise.Highscore
                 return output;
             }
         }
+        /// <summary>
+        /// Returns a characterid from HIGHSCORE ordered by the count of characterids
+        /// This only returns the 1st element of the list
+        /// If the database is empty this returns 0
+        /// </summary>
+        /// <returns></returns>
         public int GetMostPlayedChar()
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -61,6 +85,10 @@ namespace PewPew_Paradise.Highscore
 
             }
         }
+        /// <summary>
+        /// Insert a full row into HIGHSCORE Table
+        /// </summary>
+        /// <param name="score"></param>
         public void AddScore(Hscore score)
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -68,6 +96,10 @@ namespace PewPew_Paradise.Highscore
                 connection.Execute("INSERT INTO HIGHSCORE (uname, score, floorcount, characterid) VALUES (@uname, @score, @floorcount, @characterid)",score);
             }
         }
+        /// <summary>
+        /// Insert a full row into CHARACTER Table
+        /// </summary>
+        /// <param name="character"></param>
         public void AddChar(Character character)
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -75,6 +107,11 @@ namespace PewPew_Paradise.Highscore
                 connection.Execute("INSERT INTO CHARACTER (characterid, charactername) VALUES (@characterid, @charactername)", character);
             }
         }
+        /// <summary>
+        /// Returns the name of the character from the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public string GetCharName(int id)
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -83,7 +120,9 @@ namespace PewPew_Paradise.Highscore
                 return charname[0];
             }
         }
-
+        /// <summary>
+        /// Deletes all the data from HIGHSCORE table
+        /// </summary>
         public void ClearDB()
         {
             using (IDbConnection connection = new SQLiteConnection(Connection.Connect("Highscore")))
@@ -91,7 +130,10 @@ namespace PewPew_Paradise.Highscore
                 connection.Execute("DELETE FROM HIGHSCORE");
             }
         }
-
+        /// <summary>
+        /// Filling CHARACTER table if its empty
+        /// This is called when the program starts to run to avoid missing data issues
+        /// </summary>
         public void InitDB()
         {
             List<Character> chars;

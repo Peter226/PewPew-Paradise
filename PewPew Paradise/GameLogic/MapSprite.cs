@@ -15,11 +15,7 @@ namespace PewPew_Paradise.GameLogic
 {
     public class MapSprite : Sprite
     {
-        /// <summary>
-        /// MapSprite for changing background colors
-        /// </summary>
         public SolidColorBrush map_color;
-        
         public List<Rect> hitboxes = new List<Rect>();
         public Vector2 mapplace = new Vector2(8, 8);
         public Vector2 map_up = new Vector2(8, -8);
@@ -29,23 +25,31 @@ namespace PewPew_Paradise.GameLogic
         public bool just_unloaded;
         public string enemy;
 
-
         //JSON
         public static JsonSerializer map_serializer = new JsonSerializer();
         //JSON
 
-
+        /// <summary>
+        /// Creating a MapSprite where you can add the background color with map_background
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="enemy"></param>
+        /// <param name="map_background"></param>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        /// <param name="active"></param>
         public MapSprite(string image, string enemy, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             map_color = map_background;
             DeserializeMap();
             this.enemy = enemy;
         }
+        //MapLoading events
         public delegate void MapLoadDelegate(MapSprite map);
         public static event MapLoadDelegate OnMapLoaded;
         public static event MapLoadDelegate OnMapUnloaded;
         
-
+        //Saving the map collisions into the project
         public void SerializeMap()
         {
             string workingDirectory = Environment.CurrentDirectory;
@@ -58,6 +62,8 @@ namespace PewPew_Paradise.GameLogic
             sw.Close();
         }
 
+
+        //Loading the map collisions from the project
         public void DeserializeMap()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -71,8 +77,7 @@ namespace PewPew_Paradise.GameLogic
                 }
             }
         }
-
-
+        //Invoke OnMapLoaded event when the map is loaded
         public void MapLoaded() 
         {
             Position = map_position;
@@ -84,6 +89,7 @@ namespace PewPew_Paradise.GameLogic
                 OnMapLoaded.Invoke(this);
             }
         }
+        //Invoke OnMapUnloaded event when the map is unloaded
         public void MapUnloaded()
         {
             timer = 0;
@@ -94,7 +100,13 @@ namespace PewPew_Paradise.GameLogic
                 OnMapUnloaded.Invoke(this);
             }
         }
-        
+        /// <summary>
+        /// This checks when a new map has to load OnUpdate
+        /// Activate mapchange animations
+        /// Changing the background of the playingField to map_color
+        /// Change map automatically 4 seconds after all the enemy is dead
+        /// Destroying remaining FruitSprites
+        /// </summary>
         public override void Update()
         {
             MainWindow.Instance.enemyHitTimer += 0.001 * GameManager.DeltaTime;

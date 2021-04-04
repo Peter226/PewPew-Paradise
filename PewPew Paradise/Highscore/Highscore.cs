@@ -8,6 +8,9 @@ namespace PewPew_Paradise.Highscore
 {
     public class Hscore
     {
+        /// <summary>
+        /// Giving properties to Hscore
+        /// </summary>
         public int id { get; set; }
         public string uname { get; set; }
         public int score { get; set; }
