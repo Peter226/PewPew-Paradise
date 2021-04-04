@@ -13,6 +13,9 @@ namespace PewPew_Paradise.GameLogic
     {
         public bool isOnGround;
         Vector2 splast;
+        /// <summary>
+        /// Gives back the starting position of the sprite
+        /// </summary>
         public override void Start()
         {
             splast = sprite.Position;
@@ -20,6 +23,9 @@ namespace PewPew_Paradise.GameLogic
         public CollideComponent(Sprite parent) : base(parent)
         {
         }
+        /// <summary>
+        /// On mapchange it enables flying through platforsm to start the new floor
+        /// </summary>
         public override void Enabled()
         {
             splast = sprite.Position;
@@ -28,7 +34,10 @@ namespace PewPew_Paradise.GameLogic
         public delegate void OnCollideDelegate();
 
         public event OnCollideDelegate OnCollide;
-        
+        /// <summary>
+        /// Checking if a player or an enemy sprite is intersecting with a platfrom, and if it does, what to do on postupdate
+        /// Filtering out sprite clipping through platforms because of lag
+        /// </summary>
         public override void PostUpdate()
         {
             isOnGround = false;

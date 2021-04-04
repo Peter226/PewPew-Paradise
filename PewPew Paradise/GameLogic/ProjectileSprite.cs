@@ -11,12 +11,23 @@ namespace PewPew_Paradise.GameLogic
 {
     class ProjectileSprite : Sprite
     {
-
+        /// <summary>
+        /// Setting the projectile's components
+        /// Enabling collision and disabling physics
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        /// <param name="active"></param>
         public ProjectileSprite(string image, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<CollideComponent>().OnCollide += Collision;
             AddComponent<PhysicsComponent>().IsActive = false;
         }
+        /// <summary>
+        /// Setting the speed of the projectile
+        /// Checking if projectile intersects with the enemy sprite and if it does what to do
+        /// </summary>
         public override void Update()
         {
             Vector2 pos = Position;
@@ -46,6 +57,9 @@ namespace PewPew_Paradise.GameLogic
             }
 
         }
+        /// <summary>
+        /// Destroying the projectile upon colliding with enemy sprite
+        /// </summary>
         public void Collision()
         {
             Destroy();

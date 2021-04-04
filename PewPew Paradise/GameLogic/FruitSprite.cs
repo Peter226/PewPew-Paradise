@@ -13,6 +13,14 @@ namespace PewPew_Paradise.GameLogic
         static public List<FruitType> fruitTypes = new List<FruitType>();
         static public List<FruitSprite> fruitList = new List<FruitSprite>();
         public int point;
+        /// <summary>
+        /// Adding physics, collision and portal components to collectibles
+        /// Storing each of them in a fruitTypes list
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        /// <param name="active"></param>
         public FruitSprite(string image, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<PhysicsComponent>();
@@ -20,6 +28,10 @@ namespace PewPew_Paradise.GameLogic
             AddComponent<Portal>();
             fruitList.Add(this);
         }
+        /// <summary>
+        /// Adding each collectibles to fruitTypes list with their name and point
+        /// Loading their sprite with LoadImage
+        /// </summary>
         public static void LoadImages()
         {
             fruitTypes.Add(new FruitType("C_Banana", 1000));
@@ -44,7 +56,9 @@ namespace PewPew_Paradise.GameLogic
             SpriteManager.LoadImage("Images/Sprites/Collectibles/Pineapple.png", "C_Pineapple");
 
         }
-
+        /// <summary>
+        /// Removeing the collectible from the list when collected and destroying it
+        /// </summary>
         public void FruitCollect()
         {
             fruitList.Remove(this);
