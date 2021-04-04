@@ -13,7 +13,10 @@ namespace PewPew_Paradise.GameLogic
         static public List<EnemySprite> enemyList = new List<EnemySprite>();
         
         
-        
+        /// <summary>
+        /// Loading an enemy, make components and activity true
+        /// </summary>
+        /// <param name="enemy"></param>
         public void EnemyLoad(EnemySprite enemy)
         {
 
@@ -23,6 +26,13 @@ namespace PewPew_Paradise.GameLogic
             enemy.GetComponent<Portal>().IsActive = true;
 
         }
+        /// <summary>
+        /// Creates an enemy in a position
+        /// spritename is the image of the enemysprite
+        /// </summary>
+        /// <param name="spritename"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public EnemySprite AddEnemy(string spritename, Vector2 pos)
         { 
             EnemySprite enemy = new EnemySprite(spritename, pos, new Vector2(1, 1), false);

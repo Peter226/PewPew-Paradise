@@ -12,6 +12,10 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         public Portal(Sprite parent) : base(parent)
         {
         }
+        /// <summary>
+        /// Makes a sprite porting up if it falls into the hole
+        /// It only changes the y position of the sprite not the x
+        /// </summary>
         public override void PreUpdate()
         {
             Vector2 pos = sprite.Position;

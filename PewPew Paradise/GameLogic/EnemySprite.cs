@@ -12,6 +12,14 @@ namespace PewPew_Paradise.GameLogic
     {
         double timer = 0;
         public bool dead;
+        /// <summary>
+        /// Creates an enemy sprite and adding the needed components
+        /// Creating an EnemySprite will be added to a list on creation
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        /// <param name="active"></param>
         public EnemySprite(string image,  Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             Enemy.enemyList.Add(this);
@@ -20,6 +28,9 @@ namespace PewPew_Paradise.GameLogic
             AddComponent<Portal>().IsActive = false;
             AddComponent<AnimatorComponent>().SetAnimation("Enemy");
         }
+        /// <summary>
+        /// Playing Death Animation and removing components from a dead enemy
+        /// </summary>
         public void EnemyDeath()
         {
             if (!dead) {
@@ -30,7 +41,11 @@ namespace PewPew_Paradise.GameLogic
                 GetComponent<AnimatorComponent>().OnAnimationEnded += FinishDeath;
             }
         }
-
+        /// <summary>
+        /// Creates a random FruitSprite in the place of the enemys
+        /// </summary>
+        /// <param name="animator"></param>
+        /// <param name="animationID"></param>
         private void FinishDeath(AnimatorComponent animator, int animationID)
         {
             GetComponent<AnimatorComponent>().OnAnimationEnded -= FinishDeath;
@@ -39,11 +54,17 @@ namespace PewPew_Paradise.GameLogic
             new FruitSprite(FruitSprite.fruitTypes[randomfruit].name, this.Position, Vector2.One).point = FruitSprite.fruitTypes[randomfruit].point;
             Destroy();
         }
+        /// <summary>
+        /// Destroying an enemy deletes it from the list too
+        /// </summary>
         protected override void OnDestroy()
         {
             Enemy.enemyList.Remove(this);
         }
-
+        /// <summary>
+        /// Enemy AI/moving and jumping
+        /// This contains enemy animations onupdate
+        /// </summary>
         public override void Update()
         {
             if (!dead) {
