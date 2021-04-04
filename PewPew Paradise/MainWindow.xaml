@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PewPew_Paradise"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PewPew_Paradise.MainWindow"
         mc:Ignorable="d"
-        Title="PewPew Paradise" WindowStartupLocation="CenterScreen" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="#FF260026" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White">
+        Title="PewPew Paradise" WindowStartupLocation="CenterScreen" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="#FF260026" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White" Closing="Window_Closing">
 
 <!--Base Grid-->
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" RenderOptions.BitmapScalingMode="NearestNeighbor" ClipToBounds="True">
@@ -353,7 +353,7 @@
                 </Slider.Resources>
             </Slider>
             <!--Effect slider and its template-->
-            <Slider x:Name="sl_effect" Margin="90,232,161,260" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle2}" Grid.Column="1" >
+            <Slider x:Name="sl_effect" Margin="90,232,161,260" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Style="{DynamicResource SliderStyle2}" Grid.Column="1" ValueChanged="sl_effect_ValueChanged" >
                 <Slider.Resources>
                     <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#CB00A4"/>
                     <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#CB00A4"/>

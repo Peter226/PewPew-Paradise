@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Windows.Resources;
 using System.IO;
 using System.Reflection;
+using PewPew_Paradise.GameLogic.Sounds;
 
 namespace PewPew_Paradise.GameLogic
 {
@@ -24,6 +25,7 @@ namespace PewPew_Paradise.GameLogic
         public bool just_loaded;
         public bool just_unloaded;
         public string enemy;
+        public string song;
 
         //JSON
         public static JsonSerializer map_serializer = new JsonSerializer();
@@ -38,17 +40,18 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="position"></param>
         /// <param name="size"></param>
         /// <param name="active"></param>
-        public MapSprite(string image, string enemy, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
+        public MapSprite(string image, string enemy, string song, SolidColorBrush map_background, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             map_color = map_background;
             DeserializeMap();
             this.enemy = enemy;
+            this.song = song;
         }
         //MapLoading events
         public delegate void MapLoadDelegate(MapSprite map);
         public static event MapLoadDelegate OnMapLoaded;
         public static event MapLoadDelegate OnMapUnloaded;
-        
+
         //Saving the map collisions into the project
         public void SerializeMap()
         {
@@ -78,7 +81,7 @@ namespace PewPew_Paradise.GameLogic
             }
         }
         //Invoke OnMapLoaded event when the map is loaded
-        public void MapLoaded() 
+        public void MapLoaded()
         {
             Position = map_position;
             timer = 0;
@@ -88,6 +91,7 @@ namespace PewPew_Paradise.GameLogic
             {
                 OnMapLoaded.Invoke(this);
             }
+            SoundManager.PlaySong(song);
         }
         //Invoke OnMapUnloaded event when the map is unloaded
         public void MapUnloaded()
@@ -134,7 +138,7 @@ namespace PewPew_Paradise.GameLogic
                     IsActive = false;
                 }
                     Position = Vector2.Lerp(mapplace, map_up, timer);
-                
+
             }
             if (Enemy.enemyList.Count == 0 && MainWindow.Instance.enemyHitTimer > 4)
             {

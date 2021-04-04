@@ -194,7 +194,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Sounds\Music\MainMenu_1.mp3">
+    <EmbeddedResource Include="Sounds\Effects\ButtonClick.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sounds\Music\MainMenu.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sounds\Music\SkyMap.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Resource Include="Images\Bin.png" />
@@ -315,9 +321,7 @@
     <Resource Include="Images\small_arrow_left.png" />
     <Resource Include="Images\small_arrow_right.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sounds\Effects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Sprites\Collectibles\Banana.png" />
   </ItemGroup>

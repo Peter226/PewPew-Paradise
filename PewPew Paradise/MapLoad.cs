@@ -42,17 +42,17 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/water_map.png", "water_map");
             SpriteManager.LoadImage("Images/Sprites/lava_map.png", "lava_map");
             SpriteManager.LoadImage("Images/Sprites/spooky_map.png", "spooky_map");
-            MapSprite sky_map = new MapSprite("sky_map", "bee", new SolidColorBrush(Color.FromRgb(106,164,252)), map_position, map_size, false);
+            MapSprite sky_map = new MapSprite("sky_map", "bee", "SkyMap.mp3", new SolidColorBrush(Color.FromRgb(106,164,252)), map_position, map_size, false);
             maps.Add(sky_map);
-            MapSprite forest_map = new MapSprite("forest_map", "mushroom", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
+            MapSprite forest_map = new MapSprite("forest_map", "mushroom", "SkyMap.mp3", new SolidColorBrush(Color.FromRgb(0, 170, 235)), map_position, map_size, false);
             maps.Add(forest_map);
-            MapSprite underground_map = new MapSprite("underground_map", "zombie", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
+            MapSprite underground_map = new MapSprite("underground_map", "zombie", "SkyMap.mp3", new SolidColorBrush(Color.FromRgb(155, 121, 93)), map_position, map_size, false);
             maps.Add(underground_map);
-            MapSprite water_map = new MapSprite("water_map", "fishbone", new SolidColorBrush(Color.FromRgb(38, 196, 255)), map_position, map_size, false);
+            MapSprite water_map = new MapSprite("water_map", "fishbone", "SkyMap.mp3", new SolidColorBrush(Color.FromRgb(38, 196, 255)), map_position, map_size, false);
             maps.Add(water_map);
-            MapSprite lava_map = new MapSprite("lava_map", "dragon", new SolidColorBrush(Color.FromRgb(168, 69, 25)), map_position, map_size, false);
+            MapSprite lava_map = new MapSprite("lava_map", "dragon", "SkyMap.mp3", new SolidColorBrush(Color.FromRgb(168, 69, 25)), map_position, map_size, false);
             maps.Add(lava_map);
-            MapSprite spooky_map = new MapSprite("spooky_map", "witch", new SolidColorBrush(Color.FromRgb(20, 30, 53)), map_position, map_size, false);
+            MapSprite spooky_map = new MapSprite("spooky_map", "witch", "SkyMap.mp3", new SolidColorBrush(Color.FromRgb(20, 30, 53)), map_position, map_size, false);
             maps.Add(spooky_map);
             //Enemys
             SpriteManager.LoadImage("Images/Sprites/Enemies/bee.png", "bee");

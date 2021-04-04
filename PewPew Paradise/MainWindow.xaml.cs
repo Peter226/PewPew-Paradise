@@ -81,6 +81,7 @@ namespace PewPew_Paradise
         /// </summary>
         public MainWindow()
         {
+            SoundManager.Init();
             isWindowOpen = true;
             LoadGameOptions();
             score.InitDB();
@@ -105,7 +106,7 @@ namespace PewPew_Paradise
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
 
-            SoundManager.Init();
+            
             GameManager.Init(60);
             GameManager.OnUpdate += Update;
             GameManager.Begin();
@@ -138,6 +139,7 @@ namespace PewPew_Paradise
             FruitSprite.LoadImages();
             Refresh();
             this.Closing += WindowClosing;
+            SoundManager.PlaySong("MainMenu.mp3");
         }
         void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -149,25 +151,13 @@ namespace PewPew_Paradise
                 if (player_number != 1)
                     score.AddScore(new Hscore() { uname = player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
             }
-            isWindowOpen = false;
+           
         }
         public void Refresh()
         {
             lb_data_scoresname.Content = "Name:";
             lb_data_scores.Content = "Score:";
             lb_data_scoresfloor.Content = "Floor:";
-        }
-        /// <summary>
-        /// Music
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="a"></param>
-        public void PlayMedia(object sender, EventArgs a)
-        {
-            /*Console.WriteLine("Opened Media");
-            mp.Play();
-            double k = (double)sl_music.Value;
-            mp.Volume = k / 100;*/
         }
 
 
@@ -261,11 +251,13 @@ namespace PewPew_Paradise
         /// <param name="e"></param>
         private void KeyPress(object sender, KeyEventArgs e)
         {
+
             if (e.Key == Key.P)
             {
-                GameLogic.Sounds.SoundManager.Test();
+                SoundManager.PlaySong("MainMenu.mp3");
             }
-            
+
+
             if (e.Key == Key.Space)
             {
                 foreach (Sprite spriteAnimated in MrPlaceHolders)
@@ -512,6 +504,7 @@ namespace PewPew_Paradise
         private void bt_back_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.Visibility = Visibility.Visible;
+            SoundManager.PlaySong("MainMenu.mp3");
             Help.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Collapsed;
             Leaderboard.Visibility = Visibility.Collapsed;
@@ -622,6 +615,7 @@ namespace PewPew_Paradise
             InGameOptions.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Collapsed;
             MainMenu.Visibility = Visibility.Visible;
+            SoundManager.PlaySong("MainMenu.mp3");
             load.ClearAll();
             GameManager.Begin();
         }
@@ -719,6 +713,7 @@ namespace PewPew_Paradise
 
         private void bt_singleplay_MouseEnter(object sender, MouseEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             Arrow_placing(bt_singleplay.Margin);
         }
 
@@ -733,10 +728,16 @@ namespace PewPew_Paradise
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
+        private void sl_effect_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            float k = (float)sl_effect.Value / 100.0f;
+            SoundManager.effectMixer.Volume = k * k;
+        }
+
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            double k = (double)sl_music.Value;
-            //mp.Volume = k/100;
+            float k = (float)sl_music.Value / 100.0f;
+            SoundManager.songMixer.Volume = k * k;
         }
         private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
         {
@@ -745,6 +746,7 @@ namespace PewPew_Paradise
             if (player_number != 1)
                 score.AddScore(new Hscore() { uname =player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
             MainMenu.Visibility = Visibility.Visible;
+            SoundManager.PlaySong("MainMenu.mp3");
             EndGame.Visibility = Visibility.Collapsed;
             lb_floor_player1.Content = 0;
             lb_floor_player2.Content = 0;
@@ -771,6 +773,11 @@ namespace PewPew_Paradise
             chars.PreChar(2);
         }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            isWindowOpen = false;
+        }
 
+        
     }
 }
