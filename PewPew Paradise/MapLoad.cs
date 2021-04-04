@@ -29,13 +29,13 @@ namespace PewPew_Paradise
         public Rect dangerzone4 = new Rect();
         
         /// <summary>
-        /// Loading all the maps and saving them into a list
+        /// Loading all the maps and enemys and saving them into a list
         /// </summary>
         public MapLoad ()
         {
            
             
-            
+            //Maps
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
             SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
             SpriteManager.LoadImage("Images/Sprites/underground_map.png", "underground_map");
@@ -64,7 +64,8 @@ namespace PewPew_Paradise
             
         }
         /// <summary>
-        /// Loading first map with characters
+        /// Loading first map with characters and enemy
+        /// The enemy spawn is random expect the dangerzones
         /// player_number is for single/multiplayer -> same everywhere here
         /// changing floor counter to 1
         /// </summary>
@@ -90,12 +91,14 @@ namespace PewPew_Paradise
                 dangerzone2 = Dangerzone(dangerzone2);
             }
             maps[level_number].MapLoaded();
+            //Adding dangerzones
             dangerzone1 = MainWindow.Instance.chars.SelectedChar(1).GetRect();
             dangerzone1 = Dangerzone(dangerzone1);
             dangerzone3 = new Rect(4.5, 15.5, 0, 1);
             dangerzone3 = PortalDanger(dangerzone3);
             dangerzone4 = new Rect(11.5, 15.5, 0, 1);
             dangerzone4 = PortalDanger(dangerzone4);
+            //Randomize new Vectors until its in one of the dangerzones
             do
             {
                 enemy_pos.x = rnd.Next(1, 14) + 0.5;
@@ -115,6 +118,7 @@ namespace PewPew_Paradise
         }
         /// <summary>
         /// Loading next map and replace players to start position
+        /// Loading enemys: amount is based on floors and position is random expect dangerzone
         /// </summary>
         /// <param name="player_number"></param>
         public void NextMap(int player_number)
@@ -129,11 +133,13 @@ namespace PewPew_Paradise
             MainWindow.Instance.chars.UnLoadCharacter(1);
             MainWindow.Instance.chars.UnLoadCharacter(2);
             level_number++;
+            //To restart mapspawning
             level_number = level_number % maps.Count;
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
             MainWindow.Instance.chars.CharacterLoad(1);
+            //Dangerzones
             dangerzone1 = MainWindow.Instance.chars.SelectedChar(1).GetRect();
             dangerzone1=Dangerzone(dangerzone1);
             dangerzone3 = new Rect(4.5,15.5,0,1);
@@ -146,11 +152,13 @@ namespace PewPew_Paradise
                 dangerzone2 = MainWindow.Instance.chars.SelectedChar(2).GetRect();
                 dangerzone2 = Dangerzone(dangerzone2);
             }
+            //Number of enemys
             int enemyCount = (int)Math.Ceiling((double)floor / maps.Count);
             for (int i = 0; i < enemyCount; i++)
-            {
+            {   //Makes the game unable to spawn more than 6 enemys
                 if(i==6)
                 { break; }
+                //Randomize new Vectors until its in one of the dangerzones
                 do
                 {
                     enemy_pos.x = rnd.Next(1, 14) + 0.5;
@@ -182,19 +190,30 @@ namespace PewPew_Paradise
         /// </summary>
         /// <returns></returns>
         public int Floornumbers() { return floor; }
+        /// <summary>
+        /// Returns the active mapSprite
+        /// </summary>
+        /// <returns></returns>
         public MapSprite CurrentMap()
         {
             return maps[level_number];
         }
+        /// <summary>
+        /// Setting dangerzones around playerspawn
+        /// rect where the player is
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <returns></returns>
         public Rect Dangerzone(Rect rect) 
         {
-            
+            //We do this to not intersect with maptop
             rect.Width -= 0.2;
             rect.X += 0.1;
             bool intersected = false;
             while (rect.Height < 20 && !intersected)
             {
-
+                //Checks the rect intersects with map hitboxes
+                //if yes it breaks
                 foreach (Rect hitbox in maps[level_number].hitboxes)
                 {
                     if (rect.IntersectsWith(hitbox))
@@ -204,22 +223,31 @@ namespace PewPew_Paradise
                         break;
                     }
                 }
+                //if no we increase the height of the erct
                 if (!intersected)
                 {
                     rect.Height++;
                 }
             }
+            //We makes it width 3 to have a distance from players and normalizing vectors
             rect.Height += 0.5;
             rect.X -= 1.5;
             rect.Width += 3;
-            //SpriteManager.DebugRect(rect, 5);
             return rect;
         }
+        /// <summary>
+        /// Setting dangerzone above the portals
+        /// rect is the position of the portal
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <returns></returns>
         public Rect PortalDanger(Rect rect)
         {
 
             
             bool intersected = false;
+            //Checks the rect intersects with map hitboxes
+            //if yes breaks if no decrease Y of the rect
             while (rect.Height < 20 && !intersected)
             {
 
@@ -239,12 +267,14 @@ namespace PewPew_Paradise
                 }
             }
             
-            
+            //Normalizeing vectors
             rect.X -= 0.5;
             rect.Width += 1;
-            //SpriteManager.DebugRect(rect, 5);
             return rect;
         }
+        /// <summary>
+        /// Reseting the Game, clearing lists. unload players, reset score and life
+        /// </summary>
         public void ClearAll() 
         {
             
