@@ -22,6 +22,10 @@ namespace PewPew_Paradise.GameLogic
         public double dietimer;
         List<Sprite> lifeSprites = new List<Sprite>();
 
+        /// <summary>
+        /// When player life changes this updatedes the healthbar
+        /// Healthbar is made of 2 sprites
+        /// </summary>
         public int Life
         {
             get { return life; }
@@ -60,7 +64,16 @@ namespace PewPew_Paradise.GameLogic
                
             }
         }
-
+        /// <summary>
+        /// Adding components, keys for controls, projectile string for shooting the right sprite
+        /// PlayerSprites are created with maxLife
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="player_id"></param>
+        /// <param name="projectile"></param>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        /// <param name="active"></param>
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             AddComponent<Portal>();
@@ -85,7 +98,7 @@ namespace PewPew_Paradise.GameLogic
             Life = maxLife;
         }
         /// <summary>
-        /// Moving left and right
+        /// Moving PlayerSprite left
         /// </summary>
         /// <param name="player_number"></param>
 
@@ -103,7 +116,9 @@ namespace PewPew_Paradise.GameLogic
                 Position = current_pos;
             }
         }
-
+        /// <summary>
+        /// Moving PlayerSprite right
+        /// </summary>
         public void MoveRight()
         {
             GetComponent<AnimatorComponent>().PlayAnimation(1);
@@ -120,6 +135,10 @@ namespace PewPew_Paradise.GameLogic
             }
 
         }
+        /// <summary>
+        /// Jumping PlayerSprite
+        /// It cant jump again until its on the ground
+        /// </summary>
         public void Jump()
         {
             if (GetComponent<CollideComponent>().isOnGround)
@@ -128,6 +147,9 @@ namespace PewPew_Paradise.GameLogic
                 GetComponent<AnimatorComponent>().PlayAnimation(2);
             }
         }
+        /// <summary>
+        /// Shooting ProjectileSprites 
+        /// </summary>
         public void Shoot()
         {
             Vector2 size = Size * 0.5;
@@ -142,7 +164,9 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
-
+        /// <summary>
+        /// Play Animations ignoring priority
+        /// </summary>
         public override void OnEnabled()
         {
             GetComponent<AnimatorComponent>().ForcePlayAnimation(0);
@@ -150,9 +174,8 @@ namespace PewPew_Paradise.GameLogic
 
 
         public override void Update()
-            { 
-            //Console.WriteLine($"char{player_id}|hp:{Life}");
-
+        { 
+                //If a player die this make it look like disappeare
                 if (Life > 0)
                 {
                     if (RectangleElement.Opacity != 1) {
@@ -165,7 +188,8 @@ namespace PewPew_Paradise.GameLogic
                     Position -= new Vector2(0, GameManager.DeltaTime * 0.0015);
                 }
 
-
+            //If PlayingField is active and map is loaded makes the player be able to move with the given keys
+            //This makes it to not shoot instantly
             if(MainWindow.Instance.PlayingField.Visibility == Visibility.Visible)
             if (!MainWindow.Instance.load.CurrentMap().just_loaded && Life > 0)
             {
@@ -184,6 +208,7 @@ namespace PewPew_Paradise.GameLogic
             dietimer += 0.00075 * GameManager.DeltaTime;
             base.Update();
 
+            //Collecting fruits and increasing scores
             FruitSprite collectFruit = null;
             foreach (FruitSprite fruit in FruitSprite.fruitList)
             {
@@ -208,29 +233,32 @@ namespace PewPew_Paradise.GameLogic
                 }
                 collectFruit.FruitCollect();
             }
+
+            //Checks if a player get hit by an enemy and reduce it life
+            //This makes the PlayerSprite to be able lose life in every 2 seconds
             if (Life > 0)
             {
-                for (int i = 0; i < Enemy.enemyList.Count; i++) {
-                if (Enemy.enemyList[i].dead)continue;
-                if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0) 
+                for (int i = 0; i < Enemy.enemyList.Count; i++) 
                 {
-
-                    if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0)
+                    if (Enemy.enemyList[i].dead)continue;
+                    if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0) 
                     {
-                            Console.WriteLine("EUGGGH");
-                        dietimer = 1;
-                        Life--;
-                        GetComponent<AnimatorComponent>().PlayAnimation(5);
-                        if (Life < 1)
+
+                        if (Enemy.enemyList[i].GetRect().IntersectsWith(this.GetRect()) && dietimer > 2.0)
                         {
-                            GetComponent<CollideComponent>().IsActive = false;
-                            GetComponent<PhysicsComponent>().IsActive = false;
-                            GetComponent<AnimatorComponent>().PlayAnimation(6);
-                            GetComponent<AnimatorComponent>().OnAnimationEnded += FinishDeath;
+                            dietimer = 1;
+                            Life--;
+                            GetComponent<AnimatorComponent>().PlayAnimation(5);
+                            if (Life < 1)
+                            {
+                                GetComponent<CollideComponent>().IsActive = false;
+                                GetComponent<PhysicsComponent>().IsActive = false;
+                                GetComponent<AnimatorComponent>().PlayAnimation(6);
+                                GetComponent<AnimatorComponent>().OnAnimationEnded += FinishDeath;
+                            }
+                            break;
                         }
-                        break;
                     }
-                }
                 }
             }
             //Fall animation
@@ -241,7 +269,13 @@ namespace PewPew_Paradise.GameLogic
 
 
         }
-        
+        /// <summary>
+        /// Checks which player is dead
+        /// In Singleplayer mode if the player is dead EndGame screen become available and show the scores in labels and reset the Game
+        /// In Multiplayer mode if 1 player is dead it saves the floor in a label and deactivate the sprite, if both player dead ndGame screen become available and show the scores in labels and reset the Game
+        /// </summary>
+        /// <param name="animator"></param>
+        /// <param name="animation"></param>
         void FinishDeath(AnimatorComponent animator, int animation)
         {
             GetComponent<AnimatorComponent>().OnAnimationEnded -= FinishDeath;
@@ -300,8 +334,9 @@ namespace PewPew_Paradise.GameLogic
             RectangleElement.Opacity = 1;
         }
 
-
-
+        /// <summary>
+        /// In Selection they have components but we need them to be false
+        /// </summary>
         public override void Start()
         {
             AddComponent<PhysicsComponent>().IsActive=false;

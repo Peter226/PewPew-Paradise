@@ -113,7 +113,7 @@ namespace PewPew_Paradise
 
         }
         /// <summary>
-        /// Load Characters to options at first time
+        /// Load Characters to Selection screen
         /// </summary>
         public void LoadChar(int player_number)
         {
@@ -136,8 +136,9 @@ namespace PewPew_Paradise
             }
         }
         /// <summary>
-        /// Loading the next char in the list
-        /// player_number for player1 or 2 -> same for all the incoming functions
+        /// Loading the next character to Selection screen and loading charcter names from the database
+        /// player_number for 1 or 2 player -> same for all the incoming functions
+        /// If singleplayer it loads it in the middle of the screen
         /// </summary>
         /// <param name="player_number"></param>
         public void NextChar(int player_number)
@@ -170,7 +171,8 @@ namespace PewPew_Paradise
             }
         }
         /// <summary>
-        /// Loading the prev char in the list
+        /// Loading the previous character to Selection screen and loading charcter names from the database
+        /// If singleplayer it loads it in the middle of the screen
         /// </summary>
         /// <param name="player_number"></param>
         public void PreChar(int player_number)
@@ -236,7 +238,7 @@ namespace PewPew_Paradise
             }
         }
         /// <summary>
-        /// Returns which sprite was active when options was closed
+        /// Returns which sprite was active when Selection screen was closed
         /// </summary>
         /// <param name="player_number"></param>
         /// <returns></returns>
@@ -248,7 +250,8 @@ namespace PewPew_Paradise
                 return chars2[chars_number2];
         }
         /// <summary>
-        /// Load characters to maps
+        /// Load characters to maps and give them components
+        /// Makes a character to not load if its life is 0
         /// </summary>
         /// <param name="player_number"></param>
         public void CharacterLoad(int player_number)
@@ -278,7 +281,7 @@ namespace PewPew_Paradise
             }
         }
         /// <summary>
-        /// Unload both player sprite in maps
+        /// Unload both player sprite in maps and deactive components
         /// </summary>
         /// <param name="player_number"></param>
         public void UnLoadCharacter(int player_number)
@@ -288,6 +291,11 @@ namespace PewPew_Paradise
             SelectedChar(player_number).GetComponent<CollideComponent>().IsActive = false;
 
         }
+        /// <summary>
+        /// Returns a character current position
+        /// </summary>
+        /// <param name="player_number"></param>
+        /// <returns></returns>
         public Vector2 PlayerCurrentPosition(int player_number)
         {
 
