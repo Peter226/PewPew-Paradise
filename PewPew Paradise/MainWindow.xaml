@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="PewPew Paradise" WindowStartupLocation="CenterScreen" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="#FF260026" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White">
 
-
+<!--Base Grid-->
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" RenderOptions.BitmapScalingMode="NearestNeighbor" ClipToBounds="True">
         <!--Main Menu Grid-->
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible">
@@ -767,9 +767,10 @@
             <Image Source="Images/Play.png" Margin="0,423,0,31" IsHitTestVisible="False" HorizontalAlignment="Center"/>
 
         </Grid>
-        <!--Sprite Canvas Grid-->
+        <!--Sprite Canvas Grids-->
         <Grid x:Name="SpriteCanvas" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
         <Grid x:Name="FrontSpriteCanvas" HorizontalAlignment="Left" Height="512" VerticalAlignment="Top" Width="512"/>
+        <!--Secret element for 60fps-->
         <Image x:Name="Dummy" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="arrow_left.png"/>
 
     </Grid>

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PewPew_Paradise"
         mc:Ignorable="d"
         Title="Confirm" Icon="Images/PewPewParadiseIcon.ico" ResizeMode="NoResize" Height="300" Width="350" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF260026" BorderBrush="#F6C9FF" BorderThickness="5" MouseLeftButtonDown="Window_MouseLeftButtonDown">
-    <Grid RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <!--Base Grid-->
+    <Grid x:Name="ConfirmWindow" RenderOptions.BitmapScalingMode="NearestNeighbor">
 
         <Button x:Name="bt_yes" HorizontalAlignment="Center" Margin="0,208,128,0" VerticalAlignment="Top" Width="116" Height="64" FontSize="20" FontFamily="Comic Sans MS" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Click="bt_yes_Click">
             <Button.Background>
@@ -24,6 +25,7 @@
         <Image x:Name="noImage" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="116" Margin="128,208,0,0" Source="Images/No.png" IsHitTestVisible="False"/>
         <Image x:Name="yesImage" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="116" Margin="0,208,128,0" Source="Images/Yes.png" IsHitTestVisible="False"/>
     </Grid>
+    <!--Template for fancy buttons-->
     <Window.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">

@@ -25,13 +25,20 @@ namespace PewPew_Paradise
         private static Confirm inst;
         [DllImport("user32.dll")]
         static extern IntPtr GetForegroundWindow();
-
+        /// <summary>
+        /// Checks if this window in foreground
+        /// Return true if the window is foreground
+        /// </summary>
+        /// <returns></returns>
         public bool IsForeground()
         {
             IntPtr windowHandle = new WindowInteropHelper(this).Handle;
             IntPtr foregroundWindow = GetForegroundWindow();
             return windowHandle == foregroundWindow;
         }
+        /// <summary>
+        /// Giving instance to this window
+        /// </summary>
         public static Confirm Inst
         {
             get
@@ -45,19 +52,31 @@ namespace PewPew_Paradise
             InitializeComponent();
 
         }
-
+        /// <summary>
+        /// Clearing database if the user clicks on yes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt_yes_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.Instance.score.ClearDB();
             Close();
         }
-
+        /// <summary>
+        /// Close this window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt_no_Click(object sender, RoutedEventArgs e)
         {
             
             Close();
         }
-
+        /// <summary>
+        /// If Windowstate change or the user clicks on the window anywhere expect yes button it closes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_StateChanged(object sender, EventArgs e)
         {
             
