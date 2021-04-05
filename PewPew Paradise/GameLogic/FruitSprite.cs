@@ -25,7 +25,7 @@ namespace PewPew_Paradise.GameLogic
         {
             AddComponent<PhysicsComponent>();
             AddComponent<CollideComponent>();
-            AddComponent<Portal>();
+            AddComponent<PortalComponent>();
             fruitList.Add(this);
         }
         /// <summary>

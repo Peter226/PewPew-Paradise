@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
-    public class Portal : SpriteComponent
+    public class PortalComponent : SpriteComponent
     {
-        public Portal(Sprite parent) : base(parent)
+        public PortalComponent(Sprite parent) : base(parent)
         {
         }
         /// <summary>

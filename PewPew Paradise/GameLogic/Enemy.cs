@@ -23,7 +23,7 @@ namespace PewPew_Paradise.GameLogic
             enemy.IsActive = true;
             enemy.GetComponent<PhysicsComponent>().IsActive = true;
             enemy.GetComponent<CollideComponent>().IsActive = true;
-            enemy.GetComponent<Portal>().IsActive = true;
+            enemy.GetComponent<PortalComponent>().IsActive = true;
 
         }
         /// <summary>

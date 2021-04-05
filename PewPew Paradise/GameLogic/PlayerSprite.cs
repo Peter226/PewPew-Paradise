@@ -76,7 +76,7 @@ namespace PewPew_Paradise.GameLogic
         /// <param name="active"></param>
         public PlayerSprite(string image, int player_id, string projectile, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
-            AddComponent<Portal>();
+            AddComponent<PortalComponent>();
             AddComponent<AnimatorComponent>().SetAnimation("Player");
 
             this.player_id = player_id;

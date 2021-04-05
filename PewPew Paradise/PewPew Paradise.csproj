@@ -150,7 +150,7 @@
     </Compile>
     <Compile Include="Editor\CollisionEditor.cs" />
     <Compile Include="GameLogic\AnimationCollection.cs" />
-    <Compile Include="GameLogic\CollideComponent.cs" />
+    <Compile Include="GameLogic\SpriteComponents\CollideComponent.cs" />
     <Compile Include="GameLogic\DebugSprite.cs" />
     <Compile Include="GameLogic\Enemy.cs" />
     <Compile Include="GameLogic\EnemySprite.cs" />
@@ -166,7 +166,7 @@
     <Compile Include="GameLogic\SpriteAnimation.cs" />
     <Compile Include="GameLogic\SpriteComponents\AnimatorComponent.cs" />
     <Compile Include="GameLogic\SpriteComponents\PhysicsComponent.cs" />
-    <Compile Include="GameLogic\SpriteComponents\Portal.cs" />
+    <Compile Include="GameLogic\SpriteComponents\PortalComponent.cs" />
     <Compile Include="GameLogic\SpriteComponents\SpriteComponent.cs" />
     <Compile Include="GameLogic\SpriteComponents\SpriteRandomizer.cs" />
     <Compile Include="GameLogic\SpriteManager.cs" />
