@@ -27,12 +27,15 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         public AnimatorComponent(Sprite parent) : base(parent)
         {
             _brush = (ImageBrush)sprite.RectangleElement.Fill;
-            _brush.Viewport = new Rect(new Vector2(0.0, 0.0), (Point)new Vector2(4.0, 4.0));
-           
+            _brush.ViewboxUnits = BrushMappingMode.RelativeToBoundingBox;
+            _brush.Stretch = Stretch.Fill;
         }
+
         public virtual void SetAnimation(string animationCollection)
         {
             _animationCollection = SpriteManager.GetAnimationCollection(animationCollection);
+            _brush.Viewport = new Rect(new Vector2(0.0, 0.0), (Point)Vector2.One);
+            _brush.Viewbox = new Rect(Vector2.Zero, (Size)((Vector2.One / _animationCollection.atlasDimensions)));
             _currentAnimation = _animationCollection.fallbackAnimation;
             _lastAnimation = _currentAnimation;
         }
@@ -110,9 +113,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                         _currentKeyFrame = 0;
                     }
                 }
-
+                
                 Vector2 keyframe = _animationCollection.animations[_currentAnimation].keyFrames[_currentKeyFrame];
-                _brush.Viewport = new Rect(-1 * keyframe, (Point)((Vector2.One) * _animationCollection.atlasDimensions - keyframe));
+                _brush.Viewbox = new Rect(keyframe / _animationCollection.atlasDimensions, (Size)((Vector2.One / _animationCollection.atlasDimensions)));
                 _animationTime += GameManager.DeltaTime;
             }
         }

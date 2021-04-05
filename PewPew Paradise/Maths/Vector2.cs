@@ -143,6 +143,9 @@ namespace PewPew_Paradise.Maths
         //Cast to vector and back
         public static implicit operator Vector(Vector2 vec) => new Vector(vec.x, vec.y);
         public static implicit operator Vector2(Vector vec) => new Vector2(vec.X, vec.Y);
+        //Cast to size and back
+        public static explicit operator Size(Vector2 vec) => new Size(vec.x,vec.y);
+        public static explicit operator Vector2(Size s) => new Vector2(s.Width, s.Height);
 
         //Operators for doing Math
         public static Vector2 operator +(Vector2 a, Vector2 b)

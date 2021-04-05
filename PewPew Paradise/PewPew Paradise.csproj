@@ -195,6 +195,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Images\Sprites\Projectiles\slime_projectile.png" />
+    <Resource Include="Images\Sprites\Characters\slime.png" />
     <EmbeddedResource Include="Sounds\Effects\ButtonClick.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -342,9 +344,6 @@
   <ItemGroup>
     <Resource Include="Images\button_mid.png" />
     <Resource Include="Images\Play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Sprites\Characters\t_rex.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Sprites\Characters\dino.png" />

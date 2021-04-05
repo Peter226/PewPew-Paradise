@@ -39,7 +39,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Characters/penguin.png", "penguin");
             SpriteManager.LoadImage("Images/Sprites/Characters/toast.png", "toast");
             SpriteManager.LoadImage("Images/Sprites/Characters/turtle.png", "turtle");
-            SpriteManager.LoadImage("Images/Sprites/Characters/t_rex.png", "t-rex");
+            SpriteManager.LoadImage("Images/Sprites/Characters/slime.png", "slime");
             SpriteManager.LoadImage("Images/Sprites/Characters/dino.png", "dino");
             SpriteManager.LoadImage("Images/Sprites/Characters/koala.png", "koala");
 
@@ -53,7 +53,7 @@ namespace PewPew_Paradise
             SpriteManager.LoadImage("Images/Sprites/Projectiles/penguin_projectile.png", "penguin_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/toast_projectile.png", "toast_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/turtle_projectile.png", "turtle_projectile");
-
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/slime_projectile.png", "slime_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/dino_projectile.png", "dino_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/koala_projectile.png", "koala_projectile");
             //Player1
@@ -75,8 +75,8 @@ namespace PewPew_Paradise
             chars1.Add(toast1);
             PlayerSprite turtle1 = new PlayerSprite("turtle", 1, "turtle_projectile", select_pos1, select_size, false);
             chars1.Add(turtle1);
-            PlayerSprite t_rex1 = new PlayerSprite("t-rex", 1, "dino_projectile", select_pos1, select_size, false);
-            chars1.Add(t_rex1);
+            PlayerSprite slime1 = new PlayerSprite("slime", 1, "slime_projectile", select_pos1, select_size, false);
+            chars1.Add(slime1);
             PlayerSprite dino1 = new PlayerSprite("dino", 1, "dino_projectile", select_pos1, select_size, false);
             chars1.Add(dino1);
             PlayerSprite koala1 = new PlayerSprite("koala", 1, "koala_projectile", select_pos1, select_size, false);
@@ -103,8 +103,8 @@ namespace PewPew_Paradise
             chars2.Add(toast2);
             PlayerSprite turtle2 = new PlayerSprite("turtle", 2, "turtle_projectile", select_pos2, select_size, false);
             chars2.Add(turtle2);
-            PlayerSprite t_rex2 = new PlayerSprite("t-rex", 2, "dino_projectile", select_pos2, select_size, false);
-            chars2.Add(t_rex2);
+            PlayerSprite slime2 = new PlayerSprite("slime", 2, "slime_projectile", select_pos2, select_size, false);
+            chars2.Add(slime2);
             PlayerSprite dino2 = new PlayerSprite("dino", 2, "dino_projectile", select_pos2, select_size, false);
             chars2.Add(dino2);
             PlayerSprite koala2 = new PlayerSprite("koala", 2, "koala_projectile", select_pos2, select_size, false);
