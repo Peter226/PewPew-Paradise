@@ -89,6 +89,13 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             Animate();
         }
 
+        private Vector2 GetAtlasDisplacement()
+        {
+            Vector2 src = SpriteManager.CanvasToVector(Vector2.One);
+            Vector2 scl = src / sprite.Size.Abs();
+            Vector2 dsp = scl / _animationCollection.atlasDimensions;
+            return dsp;
+        }
 
         private void Animate()
         {
@@ -115,7 +122,8 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 }
                 
                 Vector2 keyframe = _animationCollection.animations[_currentAnimation].keyFrames[_currentKeyFrame];
-                _brush.Viewbox = new Rect(keyframe / _animationCollection.atlasDimensions, (Size)((Vector2.One / _animationCollection.atlasDimensions)));
+                Vector2 disp = GetAtlasDisplacement() * 2;
+                _brush.Viewbox = new Rect((keyframe + disp) / _animationCollection.atlasDimensions, (Size)(((Vector2.One - disp * 2) / _animationCollection.atlasDimensions)));
                 _animationTime += GameManager.DeltaTime;
             }
         }
