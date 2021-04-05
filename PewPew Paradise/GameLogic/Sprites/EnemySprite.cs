@@ -110,7 +110,8 @@ namespace PewPew_Paradise.GameLogic
                     {
                         Vector2 diff = enemy.Position - this.Position;
                         double dist = diff.Length();
-                        this.GetComponent<PhysicsComponent>().speed -= (diff + Math.Sin(GameManager.DeltaTime * 10000.0) * 0.01).Normalize() * GameManager.DeltaTime * 0.005 * Math.Max(0,1 - dist);
+                        Vector2 push = (diff + Math.Sin(GameManager.DeltaTime * 10000.0) * 0.01).Normalize() * GameManager.DeltaTime * 0.002 * Math.Max(0, 1 - dist);
+                        this.GetComponent<PhysicsComponent>().speed.x -= push.x;
                     }
                 }
 
