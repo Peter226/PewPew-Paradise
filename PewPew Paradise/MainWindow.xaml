@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="PewPew Paradise" WindowStartupLocation="CenterScreen" Icon="Images/PewPewParadiseIcon.ico" Height="512" Width="512" KeyDown="KeyPress" KeyUp="KeyLift" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="220" Background="#FF260026" Closed="Window_Closed" Foreground="{x:Null}" OpacityMask="White" Closing="Window_Closing">
 
-<!--Base Grid-->
+    <!--Base Grid-->
     <Grid x:Name="GameWindow" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" SizeChanged="GameWindow_SizeChanged" RenderOptions.BitmapScalingMode="NearestNeighbor" ClipToBounds="True">
         <!--Main Menu Grid-->
         <Grid x:Name="MainMenu" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Visible">
@@ -694,24 +694,24 @@
         </Grid>
         <!--Ingame Optiopns Grid-->
         <Grid x:Name="InGameOptions" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Visibility="Collapsed" Background="#7F260026">
-            <Button x:Name="bt_resume" HorizontalAlignment="Left" Margin="141,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_resume_Click" >
+            <Button x:Name="bt_resume" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_resume_Click" >
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>
-                <Image Height="54" Width="222" Source="Images/Resume.png"/>
             </Button>
-            <Button x:Name="bt_menu" HorizontalAlignment="Left" Margin="141,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_menu_Click" >
+            <Image Source="Images/Resume.png" Margin="155,92,157,366" HorizontalAlignment="Center" IsHitTestVisible="False" Width="200"/>
+            <Button x:Name="bt_menu" HorizontalAlignment="Center" Margin="0,168,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_menu_Click" >
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>
-                <Image Height="54" Width="222" Source="Images/MainMenu.png"/>
             </Button>
-            <Button x:Name="bt_exitingame" HorizontalAlignment="Left" Margin="141,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_exit_Click" >
+            <Image Source="Images/MainMenu.png" Margin="154,172,157,285" HorizontalAlignment="Center" IsHitTestVisible="False" Width="201"/>
+            <Button x:Name="bt_exitingame" HorizontalAlignment="Center" Margin="0,249,0,0" VerticalAlignment="Top" Width="232" Height="64" FontSize="40" FontFamily="Comic Sans MS" BorderBrush="{x:Null}" Template="{DynamicResource ButtonControlTemplate1}" Click="bt_exit_Click" >
                 <Button.Background>
                     <ImageBrush ImageSource="Images/button.png"/>
                 </Button.Background>
-                <Image Height="54" Width="222" Source="Images/Exit.png"/>
             </Button>
+            <Image Source="Images/Exit.png" Margin="155,254,157,203" HorizontalAlignment="Center" IsHitTestVisible="False" Width="200"/>
         </Grid>
         <!--Selection Grid-->
         <Grid x:Name="Selection" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="#FF260026" Visibility="Collapsed" >
