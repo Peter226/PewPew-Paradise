@@ -677,6 +677,7 @@ namespace PewPew_Paradise
         /// <param name="e"></param>
         private void bt_options_MouseEnter(object sender, MouseEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             Arrow_placing(bt_options.Margin);
         }
 
@@ -686,6 +687,7 @@ namespace PewPew_Paradise
         }
         private void bt_help_MouseEnter(object sender, MouseEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             Arrow_placing(bt_help.Margin);
         }
         private void bt_help_MouseLeave(object sender, MouseEventArgs e)
@@ -694,6 +696,7 @@ namespace PewPew_Paradise
         }
         private void bt_exit_MouseEnter(object sender, MouseEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             Arrow_placing(bt_exit.Margin);
         }
         private void bt_exit_MouseLeave(object sender, MouseEventArgs e)
@@ -703,6 +706,7 @@ namespace PewPew_Paradise
 
         private void bt_multiplay_MouseEnter(object sender, MouseEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             Arrow_placing(bt_multiplay.Margin);
         }
 
@@ -731,13 +735,13 @@ namespace PewPew_Paradise
         private void sl_effect_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             float k = (float)sl_effect.Value / 100.0f;
-            SoundManager.effectMixer.Volume = k * k;
+            //SoundManager.effectMixer.Volume = k * k;
         }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             float k = (float)sl_music.Value / 100.0f;
-            SoundManager.songMixer.Volume = k * k;
+            //SoundManager.songMixer.Volume = k * k;
         }
         private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
         {
@@ -755,21 +759,25 @@ namespace PewPew_Paradise
         }
         private void bt_charsselect1_r_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             chars.NextChar(1);
         }
 
         private void bt_charsselect2_r_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             chars.NextChar(2);
         }
 
         private void bt_charsselect1_l_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             chars.PreChar(1);
         }
 
         private void bt_charsselect2_l_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySoundEffect("ButtonClick.mp3");
             chars.PreChar(2);
         }
 
