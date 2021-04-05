@@ -182,7 +182,8 @@ namespace PewPew_Paradise
                 UnLoadChar(1);
                 if (chars_number1 == 0)
                 {
-                    chars_number1 = chars1.Count - 1;
+                    chars_number1 = chars1.Count-1;
+                    chars_number1 = chars_number1 % chars1.Count;
                     SelectedChar(1).Size = select_size;
                     chars1[chars_number1].IsActive = true;
                     MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
@@ -190,6 +191,7 @@ namespace PewPew_Paradise
                 else
                 {
                     chars_number1--;
+                    chars_number1 = chars_number1 % chars1.Count;
                     SelectedChar(1).Size = select_size;
                     chars1[chars_number1].IsActive = true;
                     MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
@@ -201,6 +203,7 @@ namespace PewPew_Paradise
                 if (chars_number2 == 0)
                 {
                     chars_number2 = chars2.Count - 1;
+                    chars_number2 = chars_number2 % chars2.Count;
                     SelectedChar(2).Size = select_size;
                     chars2[chars_number2].IsActive = true;
                     MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.score.GetCharName(chars_number2);
@@ -208,6 +211,7 @@ namespace PewPew_Paradise
                 else
                 {
                     chars_number2--;
+                    chars_number2 = chars_number2 % chars2.Count;
                     SelectedChar(2).Size = select_size;
                     chars2[chars_number2].IsActive = true;
                     MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.score.GetCharName(chars_number2);
