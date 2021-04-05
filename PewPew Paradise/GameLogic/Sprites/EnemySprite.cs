@@ -102,6 +102,18 @@ namespace PewPew_Paradise.GameLogic
                 {
                     GetComponent<AnimatorComponent>().PlayAnimation(2);
                 }
+
+
+                foreach (EnemySprite enemy in Enemy.enemyList)
+                {
+                    if (enemy != this && enemy.GetRect().IntersectsWith(this.GetRect()))
+                    {
+                        Vector2 diff = enemy.Position - this.Position;
+                        double dist = diff.Length();
+                        this.GetComponent<PhysicsComponent>().speed -= (diff + Math.Sin(GameManager.DeltaTime * 10000.0) * 0.01).Normalize() * GameManager.DeltaTime * 0.005 * Math.Max(0,1 - dist);
+                    }
+                }
+
             }
 
         }

@@ -24,7 +24,14 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
             speed.y += gravityspeed * 0.002 * GameManager.DeltaTime;
             sprite.Position += speed * 0.002 * GameManager.DeltaTime;
-            
+            CollideComponent collider = sprite.GetComponent<CollideComponent>();
+            if (collider != null)
+            {
+                if (collider.isOnGround)
+                {
+                    speed.x /= 1 + (GameManager.DeltaTime * 0.01);
+                }
+            }
         }
         /// <summary>
         /// Disables the gravity/falling speed of sprites

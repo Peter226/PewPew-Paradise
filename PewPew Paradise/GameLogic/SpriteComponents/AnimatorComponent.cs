@@ -127,7 +127,5 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 _animationTime += GameManager.DeltaTime;
             }
         }
-
-
     }
 }
