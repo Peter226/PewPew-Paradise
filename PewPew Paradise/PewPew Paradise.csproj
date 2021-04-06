@@ -263,9 +263,6 @@
     <Resource Include="Images\Sprites\Characters\MrPlaceHolder.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arrow_left.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Exit.png" />
     <Resource Include="Images\Help.png" />
     <Resource Include="Images\Options.png" />
