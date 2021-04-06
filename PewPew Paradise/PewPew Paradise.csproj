@@ -144,7 +144,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CharacterSelect.cs" />
+    <Compile Include="GameLogic\CharacterSelect.cs" />
     <Compile Include="Confirm.xaml.cs">
       <DependentUpon>Confirm.xaml</DependentUpon>
     </Compile>
@@ -180,7 +180,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapLoad.cs" />
+    <Compile Include="GameLogic\MapLoad.cs" />
     <Compile Include="Maths\Vector2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
