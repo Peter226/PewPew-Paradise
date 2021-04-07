@@ -735,13 +735,13 @@ namespace PewPew_Paradise
         private void sl_effect_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             float k = (float)sl_effect.Value / 100.0f;
-            //SoundManager.effectMixer.Volume = k * k;
+            SoundManager.mixer.effectVolume = k * k * 4;
         }
 
         private void sl_music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             float k = (float)sl_music.Value / 100.0f;
-            //SoundManager.songMixer.Volume = k * k;
+            SoundManager.mixer.musicVolume = k * k * 0.3f;
         }
         private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
         {

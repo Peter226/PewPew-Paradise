@@ -97,26 +97,25 @@ namespace PewPew_Paradise.GameLogic.Sounds
                 {
                     masterMixerOut.Play();
                 }
-
         }
 
 
         public static void PlaySong(string songName)
         {
-           /* if (_songPlaying != songName) {
+           if (_songPlaying != songName) {
                 Thread playSong = new Thread(new ParameterizedThreadStart(PlaySongThread));
                 playSong.Start(songName);
                 _songPlaying = songName;
-            }*/
+            }
         }
         public static void PlaySoundEffect(string soundEffectName)
         {
-            /*Console.WriteLine("Hover detected");
-            songMixer.baseMixer.AddMixerInput(new CachedSoundSampleProvider(cachedSounds[soundEffectName]));
+            /*Console.WriteLine("Hover detected");*/
+            mixer.AddEffectSample(new CachedSoundSampleProvider(cachedSounds[soundEffectName]));
             if (masterMixerOut.PlaybackState == PlaybackState.Stopped)
             {
                 masterMixerOut.Play();
-            }*/
+            }
         }
 
 
@@ -130,6 +129,8 @@ namespace PewPew_Paradise.GameLogic.Sounds
         private float[] _innerBuffer;
         private List<ISampleProvider> _musicSamples;
         private List<ISampleProvider> _effectSamples;
+        public float musicVolume;
+        public float effectVolume;
 
         public PewPewSoundMixer()
         {
@@ -156,24 +157,65 @@ namespace PewPew_Paradise.GameLogic.Sounds
             {
                 _innerBuffer = new float[buffer.Length];
             }
-
-            for (int i = _musicSamples.Count - 1; i >= 0;i--)
+            for (int i = offset; i < count;i++)
             {
-                _musicSamples[i].Read(_innerBuffer, 0, count);
-                /*if (_musicSamples[i].Read(_innerBuffer, 0, count) < 1)
+                buffer[i] = 0;
+            }
+
+            int effectCount = _effectSamples.Count;
+            for (int i = _effectSamples.Count - 1; i >= 0; i--)
+            {
+                Console.WriteLine("playing sound effect");
+                if (_effectSamples[i] == null)
+                {
+                    _effectSamples.RemoveAt(i);
+                    continue;
+                }
+                int read = _effectSamples[i].Read(_innerBuffer, offset, count);
+                if (read < 1)
+                {
+                    _effectSamples.RemoveAt(i);
+                    continue;
+                }
+                for (int f = offset; f < read; f++)
+                {
+                    buffer[f] += _innerBuffer[f];
+                }
+            }
+
+            for (int f = offset; f < count; f++)
+            {
+                buffer[f] /= (effectCount + 1) / effectVolume;
+            }
+
+            for (int i = _musicSamples.Count - 1; i >= 0; i--)
+            {
+                Console.WriteLine("Playing music");
+                if (_musicSamples[i] == null)
                 {
                     _musicSamples.RemoveAt(i);
                     continue;
-                }*/
-
-                /*for (int f = 0;f < count;f++)
+                }
+                int read = _musicSamples[i].Read(_innerBuffer, offset, count);
+                Console.WriteLine("Ran after music");
+                if (read < 1)
                 {
-                    buffer[f] += _innerBuffer[f];
-                }*/
+                    _musicSamples.RemoveAt(i);
+                    continue;
+                }
+
+                for (int f = offset;f < read;f++)
+                {
+                    buffer[f] += _innerBuffer[f] * musicVolume;
+                }
             }
+
+
+
+
             for (int i = 0;i < count;i++)
             {
-                buffer[i] = (float)SoundManager.random.NextDouble() * 0.01f;
+                //buffer[i] = (float)SoundManager.random.NextDouble() * 0.01f;
             }
             
 
@@ -198,6 +240,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
             var samplesToCopy = Math.Min(availableSamples, count);
             Array.Copy(cachedSound.AudioData, position, buffer, offset, samplesToCopy);
             position += samplesToCopy;
+            Console.WriteLine(samplesToCopy);
             return (int)samplesToCopy;
         }
 
@@ -233,18 +276,21 @@ namespace PewPew_Paradise.GameLogic.Sounds
                 _innerBuffer = new byte[buffer.Length * 4];
             }
 
-
-            int read = reader.Read(_innerBuffer, offset, count * 4);
+            Console.WriteLine(count * 4);
+            Console.WriteLine(offset * 4);
+            int read = reader.Read(_innerBuffer, offset * 4, count * 4);
+            Console.WriteLine("Read complete");
             int maxRead = read / 4;
             for (int i = 0;i < maxRead;i++)
             {
                 int indx = i * 4;
                 float dest;
                 float* fp = &dest;
-                fp[0] = _innerBuffer[indx];
-                fp[1] = _innerBuffer[indx + 1];
-                fp[2] = _innerBuffer[indx + 2];
-                fp[3] = _innerBuffer[indx + 3];
+                byte* bp = (byte*)fp;
+                bp[0] = _innerBuffer[indx];
+                bp[1] = _innerBuffer[indx + 1];
+                bp[2] = _innerBuffer[indx + 2];
+                bp[3] = _innerBuffer[indx + 3];
                 buffer[i] = dest;
             }
             if (read == 0)
@@ -368,7 +414,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
     {
         public float[] AudioData { get; private set; }
         public WaveFormat WaveFormat { get; private set; }
-        public CachedSound(string soundFileName)
+        public unsafe CachedSound(string soundFileName)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"PewPew_Paradise.Sounds.Effects." + soundFileName;
@@ -388,8 +434,32 @@ namespace PewPew_Paradise.GameLogic.Sounds
                 }
                 byte[] fileArray = wholeFile.ToArray();
                 AudioData = new float[fileArray.Length / 4];
-                Buffer.BlockCopy(fileArray, 0, AudioData, 0, fileArray.Length);
+                for (int i = 0; i < AudioData.Length; i++)
+                {
+                    int indx = i * 4;
+                    float dest = 0;
+                    float* fp = &dest;
+                    byte* bp = (byte*)fp;
+                    bp[3] = fileArray[indx];
+                    bp[2] = fileArray[indx + 1];
+                    bp[1] = fileArray[indx + 2];
+                    bp[0] = fileArray[indx + 3];
+                    //Console.WriteLine(fileArray[indx]);
+                    AudioData[i] = dest;
+                }
             }
+
+
+            for (int j = 0; j < AudioData.Length; j++)
+            {
+                if (AudioData[j] != 0) {
+                    //Console.WriteLine(AudioData[j]);
+                }
+                AudioData[j] = (float)Math.Sin(j * 0.04) * (float)Math.Sin((float)j /(float)AudioData.Length * 6.28 * 0.1) * 0.1f;
+                AudioData[j] *= Math.Min(1, Math.Min(j * 0.0001f, (AudioData.Length - j) * 0.0001f));
+            }
+            
+
         }
     }
 
