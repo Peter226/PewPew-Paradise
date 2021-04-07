@@ -59,7 +59,7 @@ namespace PewPew_Paradise
         
 
         //JSON saving system
-        public GameOptions gameOptions;
+        public GameOptions gameOptions = new GameOptions();
         public static JsonSerializer optionsSerializer = new JsonSerializer();
         //JSON saving system
 
@@ -83,24 +83,12 @@ namespace PewPew_Paradise
         {
             SoundManager.Init();
             isWindowOpen = true;
-            LoadGameOptions();
+            
             score.InitDB();
-            Console.WriteLine(score.GetCharName(0));
-            Console.WriteLine(score.GetCharName(1));
-            Console.WriteLine(score.GetCharName(2));
-            Console.WriteLine(score.GetCharName(3));
-            Console.WriteLine(score.GetCharName(4));
-            Console.WriteLine(score.GetCharName(5));
-            Console.WriteLine(score.GetCharName(6));
-            Console.WriteLine(score.GetCharName(7));
-            Console.WriteLine(score.GetCharName(8));
-            Console.WriteLine(score.GetCharName(9));
-            Console.WriteLine(score.GetCharName(10));
-            Console.WriteLine(score.GetCharName(11));
-            Console.WriteLine(score.GetCharName(12));
-            Console.WriteLine(score.GetMostPlayedChar());
             instance = this;
+            
             InitializeComponent();
+            
             Thickness thickness = new Thickness();
             GameWindow.Margin = thickness;
             previousHeight = GameWindow.Height;
@@ -118,6 +106,7 @@ namespace PewPew_Paradise
 
             load = new MapLoad();
             chars = new CharacterSelect();
+            LoadGameOptions();
             enemy = new Enemy();
             PlayingField.Background = new SolidColorBrush();
             playingFieldBrush = (SolidColorBrush)PlayingField.Background;
@@ -417,18 +406,26 @@ namespace PewPew_Paradise
         /// </summary>
         void SaveGameOptions()
         {
-           /* gameOptions.musicVolume = sl_music.Value;
+            gameOptions.musicVolume = sl_music.Value;
             gameOptions.effectVolume = sl_effect.Value;
 
-            string workingDirectory = Environment.SpecialFolder.LocalApplicationData.ToString();
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
-            string path = System.IO.Path.Combine(projectDirectory, "MapCollisions", this.image + ".json");
-            StreamWriter sw = new StreamWriter(path);
-            JsonWriter jw = new JsonTextWriter(sw);
-            optionsSerializer.Serialize(jw, gameOptions);
-            jw.Close();
-            sw.Close();*/
-            
+            gameOptions.charName1 = tb_player1.Text;
+            gameOptions.charName2 = tb_player2.Text;
+            gameOptions.charID1 = chars.chars_number1;
+            gameOptions.charID2 = chars.chars_number2;
+
+
+            string workingDirectory = Environment.SpecialFolder.ApplicationData.ToString();
+            string projectDirectory = Directory.GetParent(workingDirectory).FullName;
+            string path = System.IO.Path.Combine(projectDirectory, "GameOptions.json");
+            using (FileStream fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                StreamWriter sw = new StreamWriter(fs);
+                JsonWriter jw = new JsonTextWriter(sw);
+                optionsSerializer.Serialize(jw, gameOptions);
+                jw.Close();
+                sw.Close();
+            }
         }
         /// <summary>
         /// Load options
@@ -436,20 +433,39 @@ namespace PewPew_Paradise
         void LoadGameOptions()
         {
 
-            /*var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = $"PewPew_Paradise.MapCollisions.{this.image}.json";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            string workingDirectory = Environment.SpecialFolder.ApplicationData.ToString();
+            string projectDirectory = Directory.GetParent(workingDirectory).FullName;
+            string path = System.IO.Path.Combine(projectDirectory, "GameOptions.json");
+            if (File.Exists(path))
             {
-                using (JsonReader jreader = new JsonTextReader(reader))
+                using (FileStream fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                using (StreamReader reader = new StreamReader(fs))
                 {
-                    gameOptions = (GameOptions)optionsSerializer.Deserialize(jreader, typeof(GameOptions));
+                    using (JsonReader jreader = new JsonTextReader(reader))
+                    {
+                        GameOptions go = (GameOptions)optionsSerializer.Deserialize(jreader, typeof(GameOptions));
+                        if (go != null)
+                        {
+                            gameOptions = go;
+                        }
+                    }
                 }
             }
-
-
+            else
+            {
+                gameOptions.effectVolume = 50;
+                gameOptions.musicVolume = 50;
+                gameOptions.charName1 = "Player 1";
+                gameOptions.charName2 = "Player 2";
+            }
+            player1_name = gameOptions.charName1;
+            player2_name = gameOptions.charName2;
+            tb_player1.Text = gameOptions.charName1;
+            tb_player2.Text = gameOptions.charName2;
+            chars.chars_number1 = gameOptions.charID1;
+            chars.chars_number2 = gameOptions.charID2;
             sl_music.Value = gameOptions.musicVolume;
-            sl_effect.Value = gameOptions.effectVolume;*/
+            sl_effect.Value = gameOptions.effectVolume;
         }
 
 
@@ -783,6 +799,7 @@ namespace PewPew_Paradise
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            SaveGameOptions();
             isWindowOpen = false;
         }
 

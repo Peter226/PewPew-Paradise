@@ -629,24 +629,24 @@
 
                 </Button.Background>
             </Button>
-            <Button x:Name="bt_tofloors" HorizontalAlignment="Left" Margin="420,200,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_tofloors_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <ImageBrush ImageSource="Images/button_small.png" />
-
-                </Button.Background>
-            </Button>
-            <Button x:Name="bt_toscore" HorizontalAlignment="Left" Margin="420,300,0,0" VerticalAlignment="Top" Width="64" Height="64" FontSize="20" FontFamily="Comic Sans MS" Click="bt_toscore_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <ImageBrush ImageSource="Images/button_small.png" />
-
-                </Button.Background>
-            </Button>
             <Label x:Name="lb_data_scoresname" Content="Name:" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" Margin="10,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
             <Label x:Name="lb_data_scores" Content="Score:" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="140,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="125"/>
             <Label x:Name="lb_data_scoresfloor" Content="Floor:"  HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="270,72,0,62" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF" Width="70"/>
             <Label x:Name="lb_mostplayed" Content="Most Played Character:" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="25,370,137,0" VerticalAlignment="Top" Width="350" Height="35" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
             <Label x:Name="lb_mostplayedname" Content="" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="25,462,137,0" VerticalAlignment="Top" Width="350" Height="40" FontSize="18" FontFamily="Bauhaus 93" Foreground="#F6C9FF"/>
             <Image HorizontalAlignment="Left" Height="117" Margin="0,-14,0,0" VerticalAlignment="Top" Width="484" Source="Images/Leaderboardbig.png"/>
+            <Button x:Name="bt_tofloors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="57" Height="41" FontSize="20" FontFamily="Comic Sans MS" Click="bt_tofloors_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Margin="283,72,0,0" Opacity="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
+
+                </Button.Background>
+            </Button>
+            <Button x:Name="bt_toscore" HorizontalAlignment="Left" Margin="170,72,0,0" VerticalAlignment="Top" Width="64" Height="41" FontSize="20" FontFamily="Comic Sans MS" Click="bt_toscore_Click" Template="{DynamicResource ButtonControlTemplate1}" BorderBrush="{x:Null}" Opacity="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/button_small.png" />
+
+                </Button.Background>
+            </Button>
         </Grid>
         <!--Playing Field Grid-->
         <Grid x:Name="PlayingField" HorizontalAlignment="Left" Height="512" Margin="0,0,0,0" VerticalAlignment="Top" Width="512" Background="Black" Visibility="Collapsed" >

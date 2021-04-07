@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.GameLogic
 {
-    public struct GameOptions
+    public class GameOptions
     {
-        public double musicVolume;
-        public double effectVolume;
+        public double musicVolume { get; set; }
+        public double effectVolume { get; set; }
+        public string charName1 { get; set; }
+        public string charName2 { get; set; }
+        public int charID1 { get; set; }
+        public int charID2 { get; set; }
     }
 }
