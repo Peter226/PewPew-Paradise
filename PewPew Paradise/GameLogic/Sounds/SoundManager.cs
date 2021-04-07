@@ -21,20 +21,15 @@ namespace PewPew_Paradise.GameLogic.Sounds
         {
             Thread thread = new Thread(InitThread);
             thread.Start();
-
             var executingAssembly = Assembly.GetExecutingAssembly();
             string folderName = string.Format("{0}.Resources.Folder", executingAssembly.GetName().Name);
-
             LoadSoundEffect("ButtonClick.mp3");
-
-
             GameManager.OnUpdate += Update;
-
         }
 
         public static void LoadSoundEffect(string soundName)
         {
-            cachedSounds.Add(soundName,new CachedSound(soundName));
+            cachedSounds.Add(soundName, new CachedSound(soundName));
         }
 
 
@@ -81,28 +76,29 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
         public static void PlaySongThread(object song)
         {
-                string songName = (string)song;
-                var assembly = Assembly.GetExecutingAssembly();
-                var resourceName = $"PewPew_Paradise.Sounds.Music." + songName;
-                Stream stream = assembly.GetManifestResourceStream(resourceName);
-                var rdr = new Mp3FileReader(stream);
-                var wavStream = WaveFormatConversionStream.CreatePcmStream(rdr);
-                var baStream = new BlockAlignReductionStream(wavStream);
-                var loopStream = new LoopStream(baStream);
-                var wave32stream = new WaveChannel32(loopStream, 0.0f, 0);
-                var mreader = new MusicReader(wave32stream);
-                songsPlaying.Enqueue(mreader);
-                mixer.AddMusicSample(mreader);
-                if (masterMixerOut.PlaybackState == PlaybackState.Stopped)
-                {
-                    masterMixerOut.Play();
-                }
+            string songName = (string)song;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = $"PewPew_Paradise.Sounds.Music." + songName;
+            Stream stream = assembly.GetManifestResourceStream(resourceName);
+            var rdr = new Mp3FileReader(stream);
+            var wavStream = WaveFormatConversionStream.CreatePcmStream(rdr);
+            var baStream = new BlockAlignReductionStream(wavStream);
+            var loopStream = new LoopStream(baStream);
+            var wave32stream = new WaveChannel32(loopStream, 0.0f, 0);
+            var mreader = new MusicReader(wave32stream);
+            songsPlaying.Enqueue(mreader);
+            mixer.AddMusicSample(mreader);
+            if (masterMixerOut.PlaybackState == PlaybackState.Stopped)
+            {
+                masterMixerOut.Play();
+            }
         }
 
 
         public static void PlaySong(string songName)
         {
-           if (_songPlaying != songName) {
+            if (_songPlaying != songName)
+            {
                 Thread playSong = new Thread(new ParameterizedThreadStart(PlaySongThread));
                 playSong.Start(songName);
                 _songPlaying = songName;
@@ -134,7 +130,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
         public PewPewSoundMixer()
         {
-            WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(44100,2);
+            WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(44100, 2);
             _innerBuffer = new float[short.MaxValue];
             _musicSamples = new List<ISampleProvider>();
             _effectSamples = new List<ISampleProvider>();
@@ -157,7 +153,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
             {
                 _innerBuffer = new float[buffer.Length];
             }
-            for (int i = offset; i < count;i++)
+            for (int i = offset; i < count; i++)
             {
                 buffer[i] = 0;
             }
@@ -204,7 +200,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
                     continue;
                 }
 
-                for (int f = offset;f < read;f++)
+                for (int f = offset; f < read; f++)
                 {
                     buffer[f] += _innerBuffer[f] * musicVolume;
                 }
@@ -213,11 +209,11 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
 
 
-            for (int i = 0;i < count;i++)
+            for (int i = 0; i < count; i++)
             {
                 //buffer[i] = (float)SoundManager.random.NextDouble() * 0.01f;
             }
-            
+
 
             return count;
         }
@@ -281,7 +277,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
             int read = reader.Read(_innerBuffer, offset * 4, count * 4);
             Console.WriteLine("Read complete");
             int maxRead = read / 4;
-            for (int i = 0;i < maxRead;i++)
+            for (int i = 0; i < maxRead; i++)
             {
                 int indx = i * 4;
                 float dest;
@@ -301,7 +297,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
             return read / 4;
         }
 
-     
+
         public WaveFormat WaveFormat { get; private set; }
     }
 
@@ -310,7 +306,8 @@ namespace PewPew_Paradise.GameLogic.Sounds
     {
         public MixingSampleProvider baseMixer;
         public float Volume = 1.0f;
-        public WaveFormat WaveFormat {
+        public WaveFormat WaveFormat
+        {
             get { return baseMixer.WaveFormat; }
         }
 
@@ -412,56 +409,49 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
     class CachedSound
     {
-        public float[] AudioData { get; private set; }
+        public float[] AudioData { get; set; }
         public WaveFormat WaveFormat { get; private set; }
         public unsafe CachedSound(string soundFileName)
         {
+
+
+            string songName = (string)soundFileName;
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = $"PewPew_Paradise.Sounds.Effects." + soundFileName;
+            var resourceName = $"PewPew_Paradise.Sounds.Effects." + songName;
             Stream stream = assembly.GetManifestResourceStream(resourceName);
-            using (var rdr = new Mp3FileReader(stream))
-            using (var wavStream = WaveFormatConversionStream.CreatePcmStream(rdr))
-            using (var baStream = new BlockAlignReductionStream(wavStream))
+            var rdr = new Mp3FileReader(stream);
+            var wavStream = WaveFormatConversionStream.CreatePcmStream(rdr);
+            var baStream = new BlockAlignReductionStream(wavStream);
+            var wave32stream = new WaveChannel32(baStream, 1.0f, 0);
+            var mreader = new MusicReader(wave32stream);
+            WaveFormat = mreader.WaveFormat;
+            float[] buffer = new float[mreader.reader.Length];
+            int read = mreader.Read(buffer, 0, (int)mreader.reader.Length);
+
+            int newlen = buffer.Length;
+            for (int i = buffer.Length; i >= 1; i--)
             {
-                // TODO: could add resampling in here if required
-                WaveFormat = baStream.WaveFormat;
-                var wholeFile = new List<byte>((int)(baStream.Length));
-                var readBuffer = new byte[baStream.WaveFormat.SampleRate * baStream.WaveFormat.Channels];
-                int samplesRead;
-                while ((samplesRead = baStream.Read(readBuffer, 0, readBuffer.Length)) > 0)
+                if (buffer[i - 1] != 0)
                 {
-                    wholeFile.AddRange(readBuffer.Take(samplesRead));
-                }
-                byte[] fileArray = wholeFile.ToArray();
-                AudioData = new float[fileArray.Length / 4];
-                for (int i = 0; i < AudioData.Length; i++)
-                {
-                    int indx = i * 4;
-                    float dest = 0;
-                    float* fp = &dest;
-                    byte* bp = (byte*)fp;
-                    bp[3] = fileArray[indx];
-                    bp[2] = fileArray[indx + 1];
-                    bp[1] = fileArray[indx + 2];
-                    bp[0] = fileArray[indx + 3];
-                    //Console.WriteLine(fileArray[indx]);
-                    AudioData[i] = dest;
+                    newlen = i;
+                    break;
                 }
             }
+
+
+            AudioData = new float[newlen];
+            Array.Copy(buffer, AudioData, newlen);
 
 
             for (int j = 0; j < AudioData.Length; j++)
             {
-                if (AudioData[j] != 0) {
-                    //Console.WriteLine(AudioData[j]);
-                }
-                AudioData[j] = (float)Math.Sin(j * 0.04) * (float)Math.Sin((float)j /(float)AudioData.Length * 6.28 * 0.1) * 0.1f;
+                Console.WriteLine(AudioData[j]);
+            }
+            for (int j = 0; j < AudioData.Length; j++)
+            {
+                //AudioData[j] = (float)Math.Sin(j * 0.004) * (float)Math.Sin((float)j /(float)AudioData.Length * 6.28 * 0.1) * 0.1f;
                 AudioData[j] *= Math.Min(1, Math.Min(j * 0.0001f, (AudioData.Length - j) * 0.0001f));
             }
-            
-
         }
     }
-
-
 }
