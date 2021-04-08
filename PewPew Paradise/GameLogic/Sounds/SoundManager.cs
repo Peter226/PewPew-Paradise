@@ -449,8 +449,10 @@ namespace PewPew_Paradise.GameLogic.Sounds
             }
             for (int j = 0; j < AudioData.Length; j++)
             {
-                //AudioData[j] = (float)Math.Sin(j * 0.004) * (float)Math.Sin((float)j /(float)AudioData.Length * 6.28 * 0.1) * 0.1f;
-                AudioData[j] *= Math.Min(1, Math.Min(j * 0.0001f, (AudioData.Length - j) * 0.0001f));
+                AudioData[j] = (float)Math.Sin(j * 0.04) * (float)Math.Sin((float)j / (float)AudioData.Length * 6.28 * 100.5f) * 0.1f * (float)Math.Sin((float)j / (float)AudioData.Length * 6.28 * 1.5f);
+                //AudioData[j] = (float)Math.Min(Math.Max(Math.Tan(Math.Sin(j * 0.01f) * 0.78539816f), -1.0f), 1.0f) * 0.1f;
+                //AudioData[j] = (float)Math.Min(Math.Max(Math.Tan((j * 0.01f) % (0.078539816f)), -1.0f), 1.0f) * 10.0f * (float)Math.Min(Math.Max(Math.Tan((j * 0.005f) % (0.078539816f)), -1.0f), 1.0f);
+                AudioData[j] *= Math.Min(1, Math.Min(j * 0.1f, (AudioData.Length - j) * 0.00003f));
             }
         }
     }

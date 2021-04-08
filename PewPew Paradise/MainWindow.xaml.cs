@@ -240,13 +240,6 @@ namespace PewPew_Paradise
         /// <param name="e"></param>
         private void KeyPress(object sender, KeyEventArgs e)
         {
-
-            if (e.Key == Key.P)
-            {
-                SoundManager.PlaySong("MainMenu.mp3");
-            }
-
-
             if (e.Key == Key.Space)
             {
                 foreach (Sprite spriteAnimated in MrPlaceHolders)
@@ -263,14 +256,14 @@ namespace PewPew_Paradise
                 }
             }
             //This is for just testing now
-            if(e.Key == Key.M)
+            /*if(e.Key == Key.M)
             {
                 load.NextMap(2);
             }
             if (e.Key == Key.N)
             {
                 load.NextMap(1);
-            }
+            }*/
 
 
 
