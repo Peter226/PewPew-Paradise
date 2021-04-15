@@ -41,8 +41,6 @@ namespace PewPew_Paradise
         List<Sprite> MrPlaceHolders = new List<Sprite>();
         List<Hscore> data = new List<Hscore>();
 
-        /*MediaPlayer mp = new MediaPlayer();*/
-
         public MapLoad load;
         public CharacterSelect chars;
         public Enemy enemy;
@@ -57,7 +55,6 @@ namespace PewPew_Paradise
         public double enemyHitTimer;
 
         
-
         //JSON saving system
         public GameOptions gameOptions = new GameOptions();
         public static JsonSerializer optionsSerializer = new JsonSerializer();
@@ -94,7 +91,6 @@ namespace PewPew_Paradise
             previousHeight = GameWindow.Height;
             previousWidth = GameWindow.Width;
 
-            
             GameManager.Init(60);
             GameManager.OnUpdate += Update;
             GameManager.Begin();
@@ -111,14 +107,6 @@ namespace PewPew_Paradise
             PlayingField.Background = new SolidColorBrush();
             playingFieldBrush = (SolidColorBrush)PlayingField.Background;
 
-            /*string l = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string p = System.IO.Path.GetDirectoryName(l);
-            p = System.IO.Path.Combine(p, "PewPew_Paradise_Assets/Music/MainMenu.mp3");
-            Console.WriteLine(p);
-            mp.Open(new Uri(p));
-            mp.MediaOpened += new EventHandler(PlayMedia);*/
-
-
             Dummy.Opacity = 0.0;
             DoubleAnimation enslaveWPF = new DoubleAnimation(20.0,30.0,TimeSpan.FromMilliseconds(1));
             enslaveWPF.RepeatBehavior = RepeatBehavior.Forever;
@@ -130,6 +118,11 @@ namespace PewPew_Paradise
             this.Closing += WindowClosing;
             SoundManager.PlaySong("MainMenu.mp3");
         }
+        /// <summary>
+        /// Before you click the mini x in the corner of the app, this saves data into database 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (Confirm.Inst != null && Confirm.Inst.IsForeground() == false)
@@ -142,14 +135,15 @@ namespace PewPew_Paradise
             }
            
         }
+        /// <summary>
+        /// Refresh the content of the labes in the leaderboard
+        /// </summary>
         public void Refresh()
         {
             lb_data_scoresname.Content = "Name:";
             lb_data_scores.Content = "Score:";
             lb_data_scoresfloor.Content = "Floor:";
         }
-
-
         /// <summary>
         /// Animation loop
         /// </summary>
@@ -196,8 +190,6 @@ namespace PewPew_Paradise
                     sprite.Position = newpos;
                 }
             }
-
-
 
             Timer -= (float)(GameManager.DeltaTime * 0.00075);
             foreach (Sprite sprite in MrPlaceHolders)
@@ -255,17 +247,6 @@ namespace PewPew_Paradise
                     MrPlaceHolders.RemoveAt(i);
                 }
             }
-            //This is for just testing now
-            /*if(e.Key == Key.M)
-            {
-                load.NextMap(2);
-            }
-            if (e.Key == Key.N)
-            {
-                load.NextMap(1);
-            }*/
-
-
 
             if (e.Key == Key.Escape)
             {
@@ -292,17 +273,6 @@ namespace PewPew_Paradise
                 }
             }
         }
-
-        /// <summary>
-        /// Detect Key lift
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void KeyLift(object sender, KeyEventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// Resize GameWindow when MainWindow changes it's size
         /// </summary>
@@ -601,7 +571,6 @@ namespace PewPew_Paradise
                 chars.chars1[score.GetMostPlayedChar()].IsActive = true;
                 lb_mostplayedname.Content = score.GetCharName(score.GetMostPlayedChar());
             }
-            //score.ClearDB();
             data = score.GetOrderedScore();
             
             for (int i =0; i < amount; i++)
@@ -679,6 +648,20 @@ namespace PewPew_Paradise
 
             
         }
+        private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
+        {
+
+            score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content, characterid = chars.chars_number1 });
+            if (player_number != 1)
+                score.AddScore(new Hscore() { uname = player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
+            MainMenu.Visibility = Visibility.Visible;
+            SoundManager.PlaySong("MainMenu.mp3");
+            EndGame.Visibility = Visibility.Collapsed;
+            lb_floor_player1.Content = 0;
+            lb_floor_player2.Content = 0;
+            lb_player1score.Content = 0;
+            lb_player2score.Content = 0;
+        }
         /// <summary>
         /// Selection arrow moving events
         /// </summary>
@@ -752,20 +735,7 @@ namespace PewPew_Paradise
             float k = (float)sl_music.Value / 100.0f;
             SoundManager.mixer.musicVolume = k * k * 0.3f;
         }
-        private void bt_mainmenu_Click(object sender, RoutedEventArgs e)
-        {
-            
-            score.AddScore(new Hscore() { uname = player1_name, score = (int)lb_player1score.Content, floorcount = (int)lb_floor_player1.Content, characterid = chars.chars_number1 });
-            if (player_number != 1)
-                score.AddScore(new Hscore() { uname =player2_name, score = (int)lb_player2score.Content, floorcount = (int)lb_floor_player2.Content, characterid = chars.chars_number2 });
-            MainMenu.Visibility = Visibility.Visible;
-            SoundManager.PlaySong("MainMenu.mp3");
-            EndGame.Visibility = Visibility.Collapsed;
-            lb_floor_player1.Content = 0;
-            lb_floor_player2.Content = 0;
-            lb_player1score.Content = 0;
-            lb_player2score.Content = 0;
-        }
+
         private void bt_charsselect1_r_Click(object sender, RoutedEventArgs e)
         {
             SoundManager.PlaySoundEffect("ButtonClick.mp3");
@@ -789,7 +759,11 @@ namespace PewPew_Paradise
             SoundManager.PlaySoundEffect("ButtonClick.mp3");
             chars.PreChar(2);
         }
-
+        /// <summary>
+        /// Save Game Options
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             SaveGameOptions();
