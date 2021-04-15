@@ -272,7 +272,7 @@ namespace PewPew_Paradise.GameLogic
         /// <summary>
         /// Checks which player is dead
         /// In Singleplayer mode if the player is dead EndGame screen become available and show the scores in labels and reset the Game
-        /// In Multiplayer mode if 1 player is dead it saves the floor in a label and deactivate the sprite, if both player dead ndGame screen become available and show the scores in labels and reset the Game
+        /// In Multiplayer mode if 1 player is dead it saves the floor in a label and deactivate the sprite, if both player dead EndGame screen become available and show the scores in labels and reset the Game
         /// </summary>
         /// <param name="animator"></param>
         /// <param name="animation"></param>
