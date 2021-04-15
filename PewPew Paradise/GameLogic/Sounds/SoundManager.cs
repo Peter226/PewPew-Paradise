@@ -106,7 +106,6 @@ namespace PewPew_Paradise.GameLogic.Sounds
         }
         public static void PlaySoundEffect(string soundEffectName)
         {
-            /*Console.WriteLine("Hover detected");*/
             mixer.AddEffectSample(new CachedSoundSampleProvider(cachedSounds[soundEffectName]));
             if (masterMixerOut.PlaybackState == PlaybackState.Stopped)
             {
