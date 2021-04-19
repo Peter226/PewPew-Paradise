@@ -32,6 +32,7 @@ namespace PewPew_Paradise
             //Characters
             SpriteManager.LoadImage("Images/Sprites/Characters/Unicorn.png", "unicorn");
             SpriteManager.LoadImage("Images/Sprites/Characters/MrPlaceholder.png", "MrPlaceholder");
+            SpriteManager.LoadImage("Images/Sprites/Characters/rat.png", "rat");
             SpriteManager.LoadImage("Images/Sprites/Characters/ork.png", "ork");
             SpriteManager.LoadImage("Images/Sprites/Characters/cactus.png", "cactus");
             SpriteManager.LoadImage("Images/Sprites/Characters/monkey.png", "monkey");
@@ -46,6 +47,7 @@ namespace PewPew_Paradise
             //Projectiles
             SpriteManager.LoadImage("Images/Sprites/Projectiles/unicorn_projectile.png", "unicorn_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/OrkP.png", "ork_projectile");
+            SpriteManager.LoadImage("Images/Sprites/Projectiles/rat_projectile.png", "rat_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/MrPlaceholder_projectile.png", "MrPlaceholder_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/cactus_projectile.png", "cactus_projectile");
             SpriteManager.LoadImage("Images/Sprites/Projectiles/monkey_projectile.png", "monkey_projectile");
@@ -61,7 +63,7 @@ namespace PewPew_Paradise
             chars1.Add(unicorn1);
             PlayerSprite ork1 = new PlayerSprite("ork", 1, "ork_projectile", select_pos1, select_size, false);
             chars1.Add(ork1);
-            PlayerSprite MrPlaceholder11 = new PlayerSprite("MrPlaceholder", 1, "MrPlaceholder_projectile", select_pos1, select_size, false);
+            PlayerSprite MrPlaceholder11 = new PlayerSprite("rat", 1, "rat_projectile", select_pos1, select_size, false);
             chars1.Add(MrPlaceholder11);
             PlayerSprite MrPlaceholder1 = new PlayerSprite("MrPlaceholder", 1, "MrPlaceholder_projectile", select_pos1, select_size, false);
             chars1.Add(MrPlaceholder1);
@@ -91,7 +93,7 @@ namespace PewPew_Paradise
             chars2.Add(unicorn2);
             PlayerSprite ork2 = new PlayerSprite("ork", 2, "ork_projectile", select_pos2, select_size, false);
             chars2.Add(ork2);
-            PlayerSprite MrPlaceholder22 = new PlayerSprite("MrPlaceholder", 2, "MrPlaceholder_projectile", select_pos2, select_size, false);
+            PlayerSprite MrPlaceholder22 = new PlayerSprite("rat", 2, "rat_projectile", select_pos2, select_size, false);
             chars2.Add(MrPlaceholder22);
             PlayerSprite MrPlaceholder2 = new PlayerSprite("MrPlaceholder", 2, "MrPlaceholder_projectile", select_pos2, select_size, false);
             chars2.Add(MrPlaceholder2);
