@@ -9,6 +9,9 @@ using PewPew_Paradise.Maths;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Used for handling collisions for sprites with the map's hitboxes
+    /// </summary>
     public class CollideComponent: SpriteComponent
     {
         public bool isOnGround;
@@ -41,8 +44,6 @@ namespace PewPew_Paradise.GameLogic
         public override void PostUpdate()
         {
             isOnGround = false;
-            
-           
             double distance = splast.DistanceTo(sprite.Position);
             int iterations = (int)Math.Ceiling(3 * distance);
             Vector2 phx = sprite.Position;
@@ -50,12 +51,9 @@ namespace PewPew_Paradise.GameLogic
             {
                 Vector2 spbetween = splast + (phx - splast) * (((double)i + 1.0) / (double)iterations);
                 sprite.Position = spbetween;
-                
-
                 bool didhit = false;
-                foreach (Rect platform in MainWindow.Instance.load.CurrentMap().hitboxes)
+                foreach (Rect platform in MainWindow.Instance.mapLoader.CurrentMap().hitboxes)
                 {
-                    //Rect modplat =  new Rect(platform.X + MainWindow.Instance.load.CurrentMap().Position.x - 8, platform.Y + MainWindow.Instance.load.CurrentMap().Position.y - 8, platform.Width,platform.Height);
                     Rect modplat = platform;
                     Rect PlayerHitBox = sprite.GetRect();
                     PlayerHitBox.X += 0.1;

@@ -21,6 +21,9 @@ using PewPew_Paradise.GameLogic.SpriteComponents;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Manages all things sprite related
+    /// </summary>
     public class SpriteManager
     {
         /// <summary>
@@ -157,7 +160,10 @@ namespace PewPew_Paradise.GameLogic
             Sprites.Add(sprite.ID,sprite);
             sprite.Start();
         }
-
+        /// <summary>
+        /// Remove a sprite from the canvas
+        /// </summary>
+        /// <param name="sprite"></param>
         public static void RemoveSprite(Sprite sprite)
         {
             if (sprite.RectangleElement != null)
@@ -169,15 +175,16 @@ namespace PewPew_Paradise.GameLogic
                 }
             }
         }
-
-
+        /// <summary>
+        /// Visualize a rect on the screen
+        /// </summary>
+        /// <param name="rect">rect to be displayed</param>
+        /// <param name="time">lifespan of the visualization</param>
         public static void DebugRect(Rect rect, double time = 1.0)
         {
             DebugSprite sp = new DebugSprite("water_map",time,Vector2.One,Vector2.One);
             sp.StretchToAbsoluteBounds(rect);
         }
-
-
         /// <summary>
         /// Get a unique sprite ID for a new Sprite [Do not use unless necessary]
         /// </summary>

@@ -126,7 +126,7 @@ namespace PewPew_Paradise
             SelectedChar(1).Size = select_size;
             SelectedChar(1).Position = select_pos1;
             chars1[chars_number1].IsActive = true;
-            MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
+            MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number1);
             if (player_number != 1)
             {
 
@@ -134,7 +134,7 @@ namespace PewPew_Paradise
                 SelectedChar(1).Position = select_pos1;
                 SelectedChar(2).Position = select_pos2;
                 chars2[chars_number2].IsActive = true;
-                MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.score.GetCharName(chars_number2);
+                MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number2);
             }
             else
             {
@@ -156,7 +156,7 @@ namespace PewPew_Paradise
                 chars_number1 = chars_number1 % chars1.Count;
                 SelectedChar(1).Size = select_size;
                 chars1[chars_number1].IsActive = true;
-                MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
+                MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number1);
             }
             else
             {
@@ -165,7 +165,7 @@ namespace PewPew_Paradise
                 chars_number2 = chars_number2 % chars2.Count;
                 SelectedChar(2).Size = select_size;
                 chars2[chars_number2].IsActive = true;
-                MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.score.GetCharName(chars_number2);
+                MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number2);
             }
             if (chars2[chars_number2].IsActive)
             {
@@ -192,7 +192,7 @@ namespace PewPew_Paradise
                     chars_number1 = chars_number1 % chars1.Count;
                     SelectedChar(1).Size = select_size;
                     chars1[chars_number1].IsActive = true;
-                    MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
+                    MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number1);
                 }
                 else
                 {
@@ -200,7 +200,7 @@ namespace PewPew_Paradise
                     chars_number1 = chars_number1 % chars1.Count;
                     SelectedChar(1).Size = select_size;
                     chars1[chars_number1].IsActive = true;
-                    MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.score.GetCharName(chars_number1);
+                    MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number1);
                 }
             }
             else
@@ -212,7 +212,7 @@ namespace PewPew_Paradise
                     //chars_number2 = chars_number2 % chars2.Count;
                     SelectedChar(2).Size = select_size;
                     chars2[chars_number2].IsActive = true;
-                    MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.score.GetCharName(chars_number2);
+                    MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number2);
                 }
                 else
                 {
@@ -220,7 +220,7 @@ namespace PewPew_Paradise
                     chars_number2 = chars_number2 % chars2.Count;
                     SelectedChar(2).Size = select_size;
                     chars2[chars_number2].IsActive = true;
-                    MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.score.GetCharName(chars_number2);
+                    MainWindow.Instance.lb_charname2.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number2);
                 }
             }
             if (chars2[chars_number2].IsActive)
@@ -274,7 +274,7 @@ namespace PewPew_Paradise
 
             chosen_char1.Position = load_pos1;
             chosen_char1.Size = load_size;
-            if (MainWindow.Instance.chars.SelectedChar(1).Life != 0)
+            if (MainWindow.Instance.characterSelector.SelectedChar(1).Life != 0)
             chosen_char1.IsActive = true;
             SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = true;
             SelectedChar(1).GetComponent<CollideComponent>().IsActive = true;
@@ -284,7 +284,7 @@ namespace PewPew_Paradise
 
                 chosen_char2.Size = load_size;
                 chosen_char2.Position = load_pos2;
-                if (MainWindow.Instance.chars.SelectedChar(2).Life != 0)
+                if (MainWindow.Instance.characterSelector.SelectedChar(2).Life != 0)
                     chosen_char2.IsActive = true;
                 SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = true;
                 SelectedChar(2).GetComponent<CollideComponent>().IsActive = true;

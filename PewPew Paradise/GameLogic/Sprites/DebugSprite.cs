@@ -8,22 +8,29 @@ using System.Windows.Media;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Debug sprite used for visualizing rects
+    /// </summary>
     public class DebugSprite : Sprite
     {
-        double timer;
+        private double timer;
         private static SolidColorBrush _colliderBrush = new SolidColorBrush(Color.FromArgb(180, 0, 255, 0));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="time">lifetime</param>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        /// <param name="active"></param>
         public DebugSprite(string image, double time, Vector2 position, Vector2 size, bool active = true) : base(image, position, size, active)
         {
             timer = time;
             RectangleElement.Fill = _colliderBrush;
         }
-
-
-        public override void Start()
-        {
-            base.Start();
-        }
-
+        /// <summary>
+        /// Remove from the lifetime of the debug element, and destroy it when it has expired
+        /// </summary>
         public override void Update()
         {
             base.Update();

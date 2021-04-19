@@ -14,17 +14,41 @@ using PewPew_Paradise.GameLogic.Sounds;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Sprite type of maps
+    /// </summary>
     public class MapSprite : Sprite
     {
+        /// <summary>
+        /// background color
+        /// </summary>
         public SolidColorBrush map_color;
+        /// <summary>
+        /// Hitboxes of the map
+        /// </summary>
         public List<Rect> hitboxes = new List<Rect>();
+        /// <summary>
+        /// Animation keyframe positions
+        /// </summary>
         public Vector2 mapplace = new Vector2(8, 8);
         public Vector2 map_up = new Vector2(8, -8);
         Vector2 map_position = new Vector2(8, 24);
+        /// <summary>
+        /// animation timer
+        /// </summary>
         public double timer;
+        /// <summary>
+        /// Animation flags
+        /// </summary>
         public bool just_loaded;
         public bool just_unloaded;
+        /// <summary>
+        /// Enemy type of the map
+        /// </summary>
         public string enemy;
+        /// <summary>
+        /// Song name for the map
+        /// </summary>
         public string song;
 
         //JSON
@@ -52,7 +76,9 @@ namespace PewPew_Paradise.GameLogic
         public static event MapLoadDelegate OnMapLoaded;
         public static event MapLoadDelegate OnMapUnloaded;
 
-        //Saving the map collisions into the project
+        /// <summary>
+        /// Save the map's collsions into the project files
+        /// </summary>
         public void SerializeMap()
         {
             string workingDirectory = Environment.CurrentDirectory;
@@ -66,7 +92,9 @@ namespace PewPew_Paradise.GameLogic
         }
 
 
-        //Loading the map collisions from the project
+        /// <summary>
+        /// Load the map's hitboxes from the assembly resources
+        /// </summary>
         public void DeserializeMap()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -80,7 +108,9 @@ namespace PewPew_Paradise.GameLogic
                 }
             }
         }
-        //Invoke OnMapLoaded event when the map is loaded
+        /// <summary>
+        /// Invoke OnMapLoaded event when the map is loaded
+        /// </summary>
         public void MapLoaded()
         {
             Position = map_position;
@@ -93,7 +123,9 @@ namespace PewPew_Paradise.GameLogic
             }
             SoundManager.PlaySong(song);
         }
-        //Invoke OnMapUnloaded event when the map is unloaded
+        /// <summary>
+        /// Invoke OnMapUnloaded event when the map is unloaded
+        /// </summary>
         public void MapUnloaded()
         {
             timer = 0;
@@ -147,7 +179,7 @@ namespace PewPew_Paradise.GameLogic
                     FruitSprite.fruitList[i].Destroy();
                 }
                 FruitSprite.fruitList.Clear();
-                MainWindow.Instance.load.NextMap(MainWindow.Instance.player_number);
+                MainWindow.Instance.mapLoader.NextMap(MainWindow.Instance.player_number);
             }
             base.Update();
         }

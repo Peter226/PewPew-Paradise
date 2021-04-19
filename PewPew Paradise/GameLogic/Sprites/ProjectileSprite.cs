@@ -9,6 +9,9 @@ using PewPew_Paradise.Maths;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Projectile sprite type
+    /// </summary>
     class ProjectileSprite : Sprite
     {
         /// <summary>

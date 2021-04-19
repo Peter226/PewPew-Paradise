@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Serializeable class for saving game data
+    /// </summary>
     public class GameOptions
     {
         public double musicVolume { get; set; }

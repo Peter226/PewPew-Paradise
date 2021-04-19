@@ -11,15 +11,39 @@ using System.Windows;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Sprite type of the players
+    /// </summary>
     public class PlayerSprite : Sprite
     {
+        /// <summary>
+        /// which player it is (first or secong player)
+        /// </summary>
         public int player_id;
+        /// <summary>
+        /// projectile type
+        /// </summary>
         public string projectile;
-        public List<Key> _keys = new List<Key>();
+        /// <summary>
+        /// Constrols
+        /// </summary>
+        private List<Key> _keys = new List<Key>();
         public double timer = 100000;
+        /// <summary>
+        /// hp of the player
+        /// </summary>
         private int life = 3;
+        /// <summary>
+        /// maximum life of players
+        /// </summary>
         public static int maxLife = 3;
+        /// <summary>
+        /// death animation timer
+        /// </summary>
         public double dietimer;
+        /// <summary>
+        /// Sprites of the hp bar
+        /// </summary>
         List<Sprite> lifeSprites = new List<Sprite>();
 
         /// <summary>
@@ -191,7 +215,7 @@ namespace PewPew_Paradise.GameLogic
             //If PlayingField is active and map is loaded makes the player be able to move with the given keys
             //This makes it to not shoot instantly
             if(MainWindow.Instance.PlayingField.Visibility == Visibility.Visible)
-            if (!MainWindow.Instance.load.CurrentMap().just_loaded && Life > 0)
+            if (!MainWindow.Instance.mapLoader.CurrentMap().just_loaded && Life > 0)
             {
                 if (Keyboard.IsKeyDown(_keys[1]))
                     MoveLeft();
@@ -281,52 +305,52 @@ namespace PewPew_Paradise.GameLogic
             GetComponent<AnimatorComponent>().OnAnimationEnded -= FinishDeath;
             if (MainWindow.Instance.player_number == 1)
             {
-                if (MainWindow.Instance.chars.SelectedChar(1).Life == 0)
+                if (MainWindow.Instance.characterSelector.SelectedChar(1).Life == 0)
                 {
-                    MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                    MainWindow.Instance.characterSelector.SelectedChar(1).IsActive = false;
                     MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
                     MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
 
-                    MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
+                    MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.mapLoader.floor;
                     MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
                     MainWindow.Instance.lb_floortext2.Visibility = Visibility.Collapsed;
                     MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Collapsed;
                     MainWindow.Instance.lb_floor_player2.Visibility = Visibility.Collapsed;
                     MainWindow.Instance.lb_player2score.Visibility = Visibility.Collapsed;
                     MainWindow.Instance.lb_player2name.Visibility = Visibility.Collapsed;
-                    MainWindow.Instance.load.ClearAll();
+                    MainWindow.Instance.mapLoader.ClearAll();
                 }
             }
             else
             {
-                if (MainWindow.Instance.chars.SelectedChar(1).Life == 0)
+                if (MainWindow.Instance.characterSelector.SelectedChar(1).Life == 0)
                 {
-                    MainWindow.Instance.chars.SelectedChar(1).IsActive = false;
+                    MainWindow.Instance.characterSelector.SelectedChar(1).IsActive = false;
                     if ((int)MainWindow.Instance.lb_floor_player1.Content == 0)
                     {
-                        MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.load.floor;
+                        MainWindow.Instance.lb_floor_player1.Content = MainWindow.Instance.mapLoader.floor;
                     }
                     MainWindow.Instance.lb_player1score.Content = MainWindow.Instance.score1;
-                    if (MainWindow.Instance.chars.SelectedChar(2).Life == 0)
+                    if (MainWindow.Instance.characterSelector.SelectedChar(2).Life == 0)
                     {
                         if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
                         {
-                            MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor;
+                            MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.mapLoader.floor;
                         }
                         MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
                         MainWindow.Instance.PlayingField.Visibility = Visibility.Collapsed;
                         MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
                         MainWindow.Instance.lb_floortext2.Visibility = Visibility.Visible;
                         MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Visible;
-                        MainWindow.Instance.load.ClearAll();
+                        MainWindow.Instance.mapLoader.ClearAll();
                     }
                 }
-                if (MainWindow.Instance.chars.SelectedChar(2).Life == 0)
+                if (MainWindow.Instance.characterSelector.SelectedChar(2).Life == 0)
                 {
-                    MainWindow.Instance.chars.SelectedChar(2).IsActive = false;
+                    MainWindow.Instance.characterSelector.SelectedChar(2).IsActive = false;
                     if ((int)MainWindow.Instance.lb_floor_player2.Content == 0)
                     {
-                        MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.load.floor;
+                        MainWindow.Instance.lb_floor_player2.Content = MainWindow.Instance.mapLoader.floor;
                     }
                     MainWindow.Instance.lb_player2score.Content = MainWindow.Instance.score2;
                 }

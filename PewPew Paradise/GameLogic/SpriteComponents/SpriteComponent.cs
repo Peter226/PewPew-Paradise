@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
+    /// <summary>
+    /// Base class for attachable sprite components with overrideable methods
+    /// </summary>
     public class SpriteComponent
     {
         public Sprite sprite { get; }
@@ -46,7 +49,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
 
         }
-
+        /// <summary>
+        /// Destoy the component and remove from the sprite
+        /// </summary>
         public void Destroy()
         {
             if (sprite.GetComponent(GetType()) != null)
@@ -60,7 +65,10 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 GameManager.OnPreUpdate -= CallPreUpdate;
             }
         }
-
+        /// <summary>
+        /// Called when the sprite the component is on is destroyed
+        /// </summary>
+        /// <param name="parent"></param>
         protected virtual void OnParentDestroyed(object parent)
         {
             Destroy();
@@ -97,7 +105,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
 
         }
-
+        /// <summary>
+        /// Used for calling the update function
+        /// </summary>
         private void CallUpdate()
         {
             if (IsActive && sprite.IsActive)
@@ -105,6 +115,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 Update();
             }
         }
+        /// <summary>
+        /// Used for calling the post update function
+        /// </summary>
         private void CallPostUpdate()
         {
             if (IsActive && sprite.IsActive)
@@ -112,6 +125,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 PostUpdate();
             }
         }
+        /// <summary>
+        /// Used for calling the pre update function
+        /// </summary>
         private void CallPreUpdate()
         {
             if (IsActive && sprite.IsActive)

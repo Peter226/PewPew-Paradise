@@ -8,6 +8,9 @@ using PewPew_Paradise.GameLogic.SpriteComponents;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Sprite type for fruits
+    /// </summary>
     public class FruitSprite : Sprite
     {
         static public List<FruitType> fruitTypes = new List<FruitType>();

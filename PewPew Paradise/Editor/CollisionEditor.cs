@@ -15,25 +15,33 @@ namespace PewPew_Paradise.Editor
 {
     public class CollisionEditor
     {
+        //used to display previews
         private static Grid _collisionEditor;
-
+        //selection
         private static Vector2 _startPoint;
         private static Vector2 _endPoint;
+        //preview
         private static List<Sprite> _previewSprites = new List<Sprite>();
+        //zoom
         private static Sprite _zoomSprite;
         private static Sprite _zoomSpriteBackground;
         private static Sprite _zoomCursorSprite;
-
-        private static bool _isDrawing;
         private static double _zoomAmount = 16;
+        //are we currently drawing a hitbox?
+        private static bool _isDrawing;
+        //mouse positions
         private static Vector2 _mousePos;
         private static Vector2 _mouseNonRoundPos;
-
+        //preview brushes
         private static SolidColorBrush _colliderBrush;
         private static SolidColorBrush _colliderHoverBrush;
         private static SolidColorBrush _cursorBrush;
-
-        public static void StartDrawing(object sender, MouseEventArgs e)
+        /// <summary>
+        /// begin drawing hitbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void StartDrawing(object sender, MouseEventArgs e)
         {
             _startPoint = GetPoint(e);
             Sprite previewSprite = new Sprite("MrPlaceHolder", _startPoint, Vector2.Zero);
@@ -48,7 +56,12 @@ namespace PewPew_Paradise.Editor
             }
             _isDrawing = true;
         }
-        public static void StopDrawing(object sender, MouseEventArgs e)
+        /// <summary>
+        /// stop drawing the hitbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void StopDrawing(object sender, MouseEventArgs e)
         {
             _endPoint = GetPoint(e);
             if (Keyboard.IsKeyDown(Key.LeftCtrl))
@@ -65,10 +78,12 @@ namespace PewPew_Paradise.Editor
             }
             UpdateMapHitboxes();   
         }
-
+        /// <summary>
+        /// write hitboxes to the active map
+        /// </summary>
         private static void UpdateMapHitboxes()
         {
-            List<Rect> hitboxes = MainWindow.Instance.load.CurrentMap().hitboxes;
+            List<Rect> hitboxes = MainWindow.Instance.mapLoader.CurrentMap().hitboxes;
             hitboxes.Clear();
             foreach (Sprite sprite in _previewSprites)
             {
@@ -77,8 +92,12 @@ namespace PewPew_Paradise.Editor
         }
 
 
-
-        public static void Draw(object sender, MouseEventArgs e)
+        /// <summary>
+        /// update the current hitbox that we are drawing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Draw(object sender, MouseEventArgs e)
         {
             _mousePos = GetPoint(e);
 
@@ -111,16 +130,27 @@ namespace PewPew_Paradise.Editor
 
 
         }
-
+        /// <summary>
+        /// get mouse's position in game units
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private static Vector2 GetPoint(MouseEventArgs e)
         {
             return SpriteManager.CanvasToVector(e.GetPosition(_collisionEditor)).RoundToPixels();
         }
+        /// <summary>
+        /// get mouse's position in not rounded game units
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         private static Vector2 GetPointNonRounded(MouseEventArgs e)
         {
             return SpriteManager.CanvasToVector(e.GetPosition(_collisionEditor));
         }
-
+        /// <summary>
+        /// Update zoom
+        /// </summary>
         private static void PositionZoom()
         {
             if (_zoomSprite != null)
@@ -145,8 +175,12 @@ namespace PewPew_Paradise.Editor
             }
         }
 
-
-        private static void BeginZoom(object sender, KeyEventArgs e)
+        /// <summary>
+        /// keyboard events like start zooming, save hitboxes, etc...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void KeyDowns(object sender, KeyEventArgs e)
         {
 
             if (e.Key == Key.Z)
@@ -165,7 +199,7 @@ namespace PewPew_Paradise.Editor
             {
                 if (Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    MainWindow.Instance.load.CurrentMap().SerializeMap();
+                    MainWindow.Instance.mapLoader.CurrentMap().SerializeMap();
                 }
             }
 
@@ -192,15 +226,20 @@ namespace PewPew_Paradise.Editor
             {
                 if (_zoomSprite == null)
                 {
-                    _zoomSpriteBackground = new Sprite(MainWindow.Instance.load.CurrentMap().image, Vector2.Zero, Vector2.One * 5);
-                    _zoomSpriteBackground.RectangleElement.Fill = MainWindow.Instance.load.CurrentMap().map_color;
-                    _zoomSprite = new Sprite(MainWindow.Instance.load.CurrentMap().image, Vector2.Zero, Vector2.One * 5);
-                    _zoomCursorSprite = new Sprite(MainWindow.Instance.load.CurrentMap().image, Vector2.Zero, Vector2.One * 0.5);
+                    _zoomSpriteBackground = new Sprite(MainWindow.Instance.mapLoader.CurrentMap().image, Vector2.Zero, Vector2.One * 5);
+                    _zoomSpriteBackground.RectangleElement.Fill = MainWindow.Instance.mapLoader.CurrentMap().map_color;
+                    _zoomSprite = new Sprite(MainWindow.Instance.mapLoader.CurrentMap().image, Vector2.Zero, Vector2.One * 5);
+                    _zoomCursorSprite = new Sprite(MainWindow.Instance.mapLoader.CurrentMap().image, Vector2.Zero, Vector2.One * 0.5);
                     _zoomCursorSprite.RectangleElement.Fill = _cursorBrush;
                     PositionZoom();
                 }
             }
         }
+        /// <summary>
+        /// end zooming
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void EndZoom(object sender, KeyEventArgs e)
         {
             if (_zoomSprite != null) {
@@ -212,7 +251,11 @@ namespace PewPew_Paradise.Editor
                 _zoomCursorSprite = null;
             }
         }
-
+        /// <summary>
+        /// update zoom
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="e"></param>
         private static void ZoomIn(object state, MouseWheelEventArgs e)
         {
             _zoomAmount += e.Delta * 0.01f;
@@ -254,7 +297,7 @@ namespace PewPew_Paradise.Editor
         public static void Init(Grid uIElement)
         {
             MainWindow.Instance.MouseWheel += ZoomIn;
-            MainWindow.Instance.KeyDown += BeginZoom;
+            MainWindow.Instance.KeyDown += KeyDowns;
             MainWindow.Instance.KeyUp += EndZoom;
             MainWindow.Instance.MouseDown += StartDrawing;
             MainWindow.Instance.MouseUp += StopDrawing;

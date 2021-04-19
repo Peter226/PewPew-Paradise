@@ -19,11 +19,10 @@ using PewPew_Paradise.GameLogic.SpriteComponents;
 namespace PewPew_Paradise.GameLogic
 {
     /// <summary>
-    /// Basic Sprite with an image
+    /// Basic Sprite type with an image
     /// </summary>
     public class Sprite
     {
-
         public string image { get; }
         protected Rectangle _image { get; }
         protected ImageBrush _brush { get; }
@@ -31,13 +30,16 @@ namespace PewPew_Paradise.GameLogic
         private Vector2 _size;
         private bool _active;
         private int _id;
-
         //List of components that have been added to the spirte
         private List<SpriteComponent> _components = new List<SpriteComponent>();
-
         public delegate void OnDestroyDelegate(object state);
+        /// <summary>
+        /// Event fired when the sprite is destroyed
+        /// </summary>
         public event OnDestroyDelegate OnDestroyed;
-
+        /// <summary>
+        /// Layer the sprite is on
+        /// </summary>
         private int canvasLayer;
 
         public int CanvasLayer

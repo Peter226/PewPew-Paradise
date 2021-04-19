@@ -20,16 +20,25 @@ namespace PewPew_Paradise.Maths
             this.x = x;
             this.y = y;
         }
+        /// <summary>
+        /// Get a Vector2 with x=1, y=1
+        /// </summary>
         public static Vector2 One
         {
             get { return new Vector2(1, 1); }
         }
+        /// <summary>
+        /// Get a Vector2 with x=0, y=0
+        /// </summary>
         public static Vector2 Zero
         {
             get { return new Vector2(); }
         }
 
-
+        /// <summary>
+        /// Write Vector2 to string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"({x}; {y})";
@@ -42,7 +51,6 @@ namespace PewPew_Paradise.Maths
         {
             return B * t + A * (1 - t);
         }
-
 
         /// <summary>
         /// Rounded vector
@@ -62,7 +70,6 @@ namespace PewPew_Paradise.Maths
             return new Vector2(Math.Floor(this.x), Math.Floor(this.y));
         }
 
-
         /// <summary>
         /// Ceiled vector
         /// </summary>
@@ -72,7 +79,6 @@ namespace PewPew_Paradise.Maths
             return new Vector2(Math.Ceiling(this.x), Math.Ceiling(this.y));
         }
 
-
         /// <summary>
         /// Rounded vector to the game's pixel art resolution
         /// </summary>
@@ -80,7 +86,6 @@ namespace PewPew_Paradise.Maths
         {
             return ((this * GameManager.GameResolution / GameManager.GameUnitSize).Round() * GameManager.GameUnitSize / GameManager.GameResolution);
         }
-
 
         /// <summary>
         /// Normal of the vector
@@ -112,7 +117,6 @@ namespace PewPew_Paradise.Maths
         {
             return new Vector2(Math.Abs(this.x),Math.Abs(this.y));
         }
-
 
         /// <summary>
         /// Distance to other Vector point

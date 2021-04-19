@@ -8,6 +8,9 @@ using PewPew_Paradise.Maths;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Sprite type of enemies
+    /// </summary>
     public class EnemySprite : Sprite
     {
         double timer = 0;
@@ -71,7 +74,7 @@ namespace PewPew_Paradise.GameLogic
                 Vector2 pos = this.Position;
                 Vector2 size = this.Size;
                 timer += GameManager.DeltaTime * 0.001;
-                if (!MainWindow.Instance.load.CurrentMap().just_loaded)
+                if (!MainWindow.Instance.mapLoader.CurrentMap().just_loaded)
                 {
                     if (timer < 7)
                     {

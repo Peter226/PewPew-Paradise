@@ -59,7 +59,7 @@ namespace PewPew_Paradise
         /// <param name="e"></param>
         private void bt_yes_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.score.ClearDB();
+            MainWindow.Instance.scoreManager.ClearDB();
             Close();
         }
         /// <summary>

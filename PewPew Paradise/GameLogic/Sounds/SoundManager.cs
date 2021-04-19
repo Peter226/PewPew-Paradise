@@ -9,30 +9,46 @@ using System.Threading;
 
 namespace PewPew_Paradise.GameLogic.Sounds
 {
+    /// <summary>
+    /// Sound manager of the game (not instanced, static)
+    /// </summary>
     class SoundManager
     {
+        //main mixer
         public static PewPewSoundMixer mixer;
+        //main mixer output
         static WaveOut masterMixerOut;
+        //sounds loaded on game start
         static Dictionary<string, CachedSound> cachedSounds = new Dictionary<string, CachedSound>();
+        //current songs that are playing
         static Queue<MusicReader> songsPlaying = new Queue<MusicReader>();
+        //latest song that was queued for playing
         private static string _songPlaying;
-        public static Random random = new Random();
+        /// <summary>
+        /// Initialize
+        /// </summary>
         public static void Init()
         {
             Thread thread = new Thread(InitThread);
             thread.Start();
             var executingAssembly = Assembly.GetExecutingAssembly();
             string folderName = string.Format("{0}.Resources.Folder", executingAssembly.GetName().Name);
-            LoadSoundEffect("ButtonClick.mp3");
             GameManager.OnUpdate += Update;
+            //LOAD SOUND EFFECTS HERE
+            LoadSoundEffect("ButtonClick.mp3");
         }
-
+        /// <summary>
+        /// Load a sound effect from Sounds/Effects for playing later
+        /// </summary>
+        /// <param name="soundName"></param>
         public static void LoadSoundEffect(string soundName)
         {
             cachedSounds.Add(soundName, new CachedSound(soundName));
         }
 
-
+        /// <summary>
+        /// Update for smooth transition between songs
+        /// </summary>
         static void Update()
         {
             if (songsPlaying.Count > 0)
@@ -56,8 +72,10 @@ namespace PewPew_Paradise.GameLogic.Sounds
                 }
             }
         }
-
-        public static void InitThread()
+        /// <summary>
+        /// Initialize mixer on a different thread
+        /// </summary>
+        private static void InitThread()
         {
             mixer = new PewPewSoundMixer();
             masterMixerOut = new WaveOut(WaveCallbackInfo.FunctionCallback());
@@ -73,8 +91,11 @@ namespace PewPew_Paradise.GameLogic.Sounds
             Console.WriteLine("mixer stopped");
         }
 
-
-        public static void PlaySongThread(object song)
+        /// <summary>
+        /// Thread for playing a song. Needed because file reading is slow.
+        /// </summary>
+        /// <param name="song"></param>
+        private static void PlaySongThread(object song)
         {
             string songName = (string)song;
             var assembly = Assembly.GetExecutingAssembly();
@@ -94,7 +115,10 @@ namespace PewPew_Paradise.GameLogic.Sounds
             }
         }
 
-
+        /// <summary>
+        /// Start playing a song from Sounds/Music path
+        /// </summary>
+        /// <param name="songName"></param>
         public static void PlaySong(string songName)
         {
             if (_songPlaying != songName)
@@ -104,6 +128,10 @@ namespace PewPew_Paradise.GameLogic.Sounds
                 _songPlaying = songName;
             }
         }
+        /// <summary>
+        /// Play a sound effect from Sounds/Effects path
+        /// </summary>
+        /// <param name="soundEffectName"></param>
         public static void PlaySoundEffect(string soundEffectName)
         {
             mixer.AddEffectSample(new CachedSoundSampleProvider(cachedSounds[soundEffectName]));
@@ -117,14 +145,26 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
     }
 
-
+    /// <summary>
+    /// Custom made sound mixer for the game, that supports different master volumes for music and sounds
+    /// </summary>
     public class PewPewSoundMixer : ISampleProvider
     {
+        //output format
         public WaveFormat WaveFormat { get; }
+        //buffer for mixing sounds
         private float[] _innerBuffer;
+        //current music samples
         private List<ISampleProvider> _musicSamples;
+        //current effect samples
         private List<ISampleProvider> _effectSamples;
+        /// <summary>
+        /// get or set the volume of the music
+        /// </summary>
         public float musicVolume;
+        /// <summary>
+        /// get or set the volume of the sound effects
+        /// </summary>
         public float effectVolume;
 
         public PewPewSoundMixer()
@@ -134,20 +174,31 @@ namespace PewPew_Paradise.GameLogic.Sounds
             _musicSamples = new List<ISampleProvider>();
             _effectSamples = new List<ISampleProvider>();
         }
-
+        /// <summary>
+        /// Add an effect sample for playing
+        /// </summary>
+        /// <param name="effectSample"></param>
         public void AddEffectSample(ISampleProvider effectSample)
         {
             _effectSamples.Add(effectSample);
         }
+        /// <summary>
+        /// Add a music sample for playing
+        /// </summary>
+        /// <param name="musicSample"></param>
         public void AddMusicSample(ISampleProvider musicSample)
         {
             _musicSamples.Add(musicSample);
         }
-
-
+        /// <summary>
+        /// used for reading the stream of the mixer
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public int Read(float[] buffer, int offset, int count)
         {
-            Console.WriteLine("Read From Mixer");
             if (_innerBuffer.Length < count)
             {
                 _innerBuffer = new float[buffer.Length];
@@ -160,7 +211,6 @@ namespace PewPew_Paradise.GameLogic.Sounds
             int effectCount = _effectSamples.Count;
             for (int i = _effectSamples.Count - 1; i >= 0; i--)
             {
-                Console.WriteLine("playing sound effect");
                 if (_effectSamples[i] == null)
                 {
                     _effectSamples.RemoveAt(i);
@@ -185,14 +235,12 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
             for (int i = _musicSamples.Count - 1; i >= 0; i--)
             {
-                Console.WriteLine("Playing music");
                 if (_musicSamples[i] == null)
                 {
                     _musicSamples.RemoveAt(i);
                     continue;
                 }
                 int read = _musicSamples[i].Read(_innerBuffer, offset, count);
-                Console.WriteLine("Ran after music");
                 if (read < 1)
                 {
                     _musicSamples.RemoveAt(i);
@@ -204,22 +252,14 @@ namespace PewPew_Paradise.GameLogic.Sounds
                     buffer[f] += _innerBuffer[f] * musicVolume;
                 }
             }
-
-
-
-
-            for (int i = 0; i < count; i++)
-            {
-                //buffer[i] = (float)SoundManager.random.NextDouble() * 0.01f;
-            }
-
-
             return count;
         }
     }
 
 
-
+    /// <summary>
+    /// Sound provider for cached sounds
+    /// </summary>
     class CachedSoundSampleProvider : ISampleProvider
     {
         private readonly CachedSound cachedSound;
@@ -238,10 +278,11 @@ namespace PewPew_Paradise.GameLogic.Sounds
             Console.WriteLine(samplesToCopy);
             return (int)samplesToCopy;
         }
-
         public WaveFormat WaveFormat { get { return cachedSound.WaveFormat; } }
     }
-
+    /// <summary>
+    /// Music sample provider
+    /// </summary>
     class MusicReader : ISampleProvider
     {
         public readonly WaveChannel32 reader;
@@ -270,11 +311,7 @@ namespace PewPew_Paradise.GameLogic.Sounds
             {
                 _innerBuffer = new byte[buffer.Length * 4];
             }
-
-            Console.WriteLine(count * 4);
-            Console.WriteLine(offset * 4);
             int read = reader.Read(_innerBuffer, offset * 4, count * 4);
-            Console.WriteLine("Read complete");
             int maxRead = read / 4;
             for (int i = 0; i < maxRead; i++)
             {
@@ -295,42 +332,11 @@ namespace PewPew_Paradise.GameLogic.Sounds
             }
             return read / 4;
         }
-
-
         public WaveFormat WaveFormat { get; private set; }
     }
-
-
-    public class VolumedMixer : ISampleProvider
-    {
-        public MixingSampleProvider baseMixer;
-        public float Volume = 1.0f;
-        public WaveFormat WaveFormat
-        {
-            get { return baseMixer.WaveFormat; }
-        }
-
-        public VolumedMixer()
-        {
-            baseMixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 2));
-        }
-
-        public int Read(float[] buffer, int offset, int count)
-        {
-
-            int read = baseMixer.Read(buffer, offset, count);
-            int offcount = offset + count;
-            for (int i = offset; i < offcount; i++)
-            {
-                buffer[i] = buffer[i] * Volume;
-            }
-            return read;
-        }
-    }
-
-
-
-
+    /// <summary>
+    /// Looping stream for music
+    /// </summary>
     public class LoopStream : WaveStream
     {
         WaveStream sourceStream;
@@ -375,12 +381,6 @@ namespace PewPew_Paradise.GameLogic.Sounds
             get { return sourceStream.Position; }
             set { sourceStream.Position = value; }
         }
-
-
-
-
-
-
         public override int Read(byte[] buffer, int offset, int count)
         {
             int totalBytesRead = 0;
@@ -403,17 +403,15 @@ namespace PewPew_Paradise.GameLogic.Sounds
             return totalBytesRead;
         }
     }
-
-
-
+    /// <summary>
+    /// Cached sound that we only load once and re-use
+    /// </summary>
     class CachedSound
     {
         public float[] AudioData { get; set; }
         public WaveFormat WaveFormat { get; private set; }
         public unsafe CachedSound(string soundFileName)
         {
-
-
             string songName = (string)soundFileName;
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"PewPew_Paradise.Sounds.Effects." + songName;
@@ -436,21 +434,12 @@ namespace PewPew_Paradise.GameLogic.Sounds
                     break;
                 }
             }
-
-
             AudioData = new float[newlen];
             Array.Copy(buffer, AudioData, newlen);
-
-
             for (int j = 0; j < AudioData.Length; j++)
             {
-                Console.WriteLine(AudioData[j]);
-            }
-            for (int j = 0; j < AudioData.Length; j++)
-            {
+                //COMMENT THIS LINE OUT IF WE MAKE PROPER SOUND EFFECT FILES (procedural sound generation code)
                 AudioData[j] = (float)Math.Sin(j * 0.04) * (float)Math.Sin((float)j / (float)AudioData.Length * 6.28 * 100.5f) * 0.1f * (float)Math.Sin((float)j / (float)AudioData.Length * 6.28 * 1.5f);
-                //AudioData[j] = (float)Math.Min(Math.Max(Math.Tan(Math.Sin(j * 0.01f) * 0.78539816f), -1.0f), 1.0f) * 0.1f;
-                //AudioData[j] = (float)Math.Min(Math.Max(Math.Tan((j * 0.01f) % (0.078539816f)), -1.0f), 1.0f) * 10.0f * (float)Math.Min(Math.Max(Math.Tan((j * 0.005f) % (0.078539816f)), -1.0f), 1.0f);
                 AudioData[j] *= Math.Min(1, Math.Min(j * 0.1f, (AudioData.Length - j) * 0.00003f));
             }
         }

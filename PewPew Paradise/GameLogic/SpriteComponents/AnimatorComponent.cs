@@ -9,20 +9,24 @@ using System.Windows.Media;
 
 namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
+    /// <summary>
+    /// Component for animating sprites (only animates their textures)
+    /// </summary>
     public class AnimatorComponent : SpriteComponent
     {
-
-
+        //Collection of animations used to animate the sprite
         private AnimationCollection _animationCollection;
-
         private int _currentAnimation = 0;
         private int _currentKeyFrame = 0;
         private int _lastAnimation = 0;
         private double _animationTime = 0;
         private ImageBrush _brush;
         public delegate void AnimationEndedEvent(AnimatorComponent component, int animationID);
+        /// <summary>
+        /// Event that is fired when the currently playing animation ends.
+        /// </summary>
         public event AnimationEndedEvent OnAnimationEnded;
-        bool fallBack;
+        private bool _fallBack;
 
         public AnimatorComponent(Sprite parent) : base(parent)
         {
@@ -30,7 +34,10 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             _brush.ViewboxUnits = BrushMappingMode.RelativeToBoundingBox;
             _brush.Stretch = Stretch.Fill;
         }
-
+        /// <summary>
+        /// Set the animation collection of the component
+        /// </summary>
+        /// <param name="animationCollection">reference string of the collection</param>
         public virtual void SetAnimation(string animationCollection)
         {
             _animationCollection = SpriteManager.GetAnimationCollection(animationCollection);
@@ -39,7 +46,10 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             _currentAnimation = _animationCollection.fallbackAnimation;
             _lastAnimation = _currentAnimation;
         }
-
+        /// <summary>
+        /// Play animation ignoring priority
+        /// </summary>
+        /// <param name="animation">animation id/index</param>
         public void ForcePlayAnimation(int animation)
         {
             _currentAnimation = animation;
@@ -51,7 +61,10 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 Animate();
             }
         }
-
+        /// <summary>
+        /// Play animation
+        /// </summary>
+        /// <param name="animation">animation id/index</param>
         public void PlayAnimation(int animation)
         {
             if (_animationCollection.animations[animation].priority >= _animationCollection.animations[_currentAnimation].priority)
@@ -66,14 +79,11 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                 }
             }
         }
-
-
-
         public override void PreUpdate()
         {
             base.PreUpdate();
-            if (fallBack) {
-                fallBack = false;
+            if (_fallBack) {
+                _fallBack = false;
                 _currentAnimation = _animationCollection.fallbackAnimation;
                 _lastAnimation = _currentAnimation;
             }
@@ -82,13 +92,11 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
         {
             base.Update();
         }
-
         public override void PostUpdate()
         {
             base.Update();
             Animate();
         }
-
         private Vector2 GetAtlasDisplacement()
         {
             Vector2 src = SpriteManager.CanvasToVector(Vector2.One);
@@ -96,7 +104,9 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
             Vector2 dsp = scl / _animationCollection.atlasDimensions;
             return dsp;
         }
-
+        /// <summary>
+        /// Animate the sprite
+        /// </summary>
         private void Animate()
         {
             if (_animationCollection.animations.Count > 0)
@@ -109,7 +119,7 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                     {
                         if (!_animationCollection.animations[_currentAnimation].loop)
                         {
-                            fallBack = true;
+                            _fallBack = true;
                             _lastAnimation = _currentAnimation;
                             _animationTime = 0;
                             if (OnAnimationEnded != null)
@@ -120,7 +130,6 @@ namespace PewPew_Paradise.GameLogic.SpriteComponents
                         _currentKeyFrame = 0;
                     }
                 }
-                
                 Vector2 keyframe = _animationCollection.animations[_currentAnimation].keyFrames[_currentKeyFrame];
                 Vector2 disp = GetAtlasDisplacement() * 2;
                 _brush.Viewbox = new Rect((keyframe + disp) / _animationCollection.atlasDimensions, (Size)(((Vector2.One - disp * 2) / _animationCollection.atlasDimensions)));

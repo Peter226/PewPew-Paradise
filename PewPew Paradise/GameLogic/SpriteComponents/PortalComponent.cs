@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
+    /// <summary>
+    /// Portal component for teleporting sprites back to the top of the map if they fall out
+    /// </summary>
     public class PortalComponent : SpriteComponent
     {
         public PortalComponent(Sprite parent) : base(parent)

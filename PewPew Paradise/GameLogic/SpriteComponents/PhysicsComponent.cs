@@ -8,9 +8,17 @@ using PewPew_Paradise.Maths;
 
 namespace PewPew_Paradise.GameLogic.SpriteComponents
 {
+    /// <summary>
+    /// Used to apply physics like gravity to sprites
+    /// </summary>
     public class PhysicsComponent : SpriteComponent
     {
+
+        //gravity constant
         const double gravityspeed = 9.81;
+        /// <summary>
+        /// current speed/velocity of the sprite
+        /// </summary>
         public Vector2 speed;
         public PhysicsComponent(Sprite parent) : base(parent)
         { 

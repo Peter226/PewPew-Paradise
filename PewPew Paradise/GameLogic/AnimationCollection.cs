@@ -7,14 +7,31 @@ using PewPew_Paradise.Maths;
 
 namespace PewPew_Paradise.GameLogic
 {
+    /// <summary>
+    /// Collection of animations for sprite components
+    /// </summary>
     public class AnimationCollection
     {
+        /// <summary>
+        /// Dimensions of the atlas (tiling of the animations, eg. 4x4)
+        /// </summary>
         public Vector2 atlasDimensions;
+        /// <summary>
+        /// Reference name of the collection
+        /// </summary>
         public string collectionName;
+        /// <summary>
+        /// Animation played when no other animations are playing
+        /// </summary>
         public int fallbackAnimation;
 
         public List<SpriteAnimation> animations { get; } = new List<SpriteAnimation>();
-
+        /// <summary>
+        /// Create a new animation collection and add it to a reference dictionary
+        /// </summary>
+        /// <param name="collectionName">name of the collection used for reference</param>
+        /// <param name="atlasDimensions">tiling of sprites in the atlas</param>
+        /// <param name="fallbackAnimation">animation that plays if no other animation is active</param>
         public AnimationCollection(string collectionName, Vector2 atlasDimensions, int fallbackAnimation = 0)
         {
             this.collectionName = collectionName;
@@ -23,7 +40,9 @@ namespace PewPew_Paradise.GameLogic
             SpriteManager.AddAnimationCollection(this, collectionName);
         }
 
-
+        /// <summary>
+        /// We load all of our animations here used in the game
+        /// </summary>
         public static void LoadAll()
         {
             //PLAYER ANIMATIONS
@@ -63,10 +82,7 @@ namespace PewPew_Paradise.GameLogic
 
             SpriteManager.AddAnimationCollection(playerAnimations, "Player");
 
-
-
-
-
+            //ENEMY ANIMATIONS
             AnimationCollection enemyAnimations = new AnimationCollection("Enemy", new Vector2(4,3), 0);
             SpriteAnimation e_walkAnimation = new SpriteAnimation(150, true);
             enemyAnimations.animations.Add(e_walkAnimation);
@@ -94,9 +110,5 @@ namespace PewPew_Paradise.GameLogic
 
             SpriteManager.AddAnimationCollection(enemyAnimations, "Enemy");
         }
-
-
-
-
     }
 }

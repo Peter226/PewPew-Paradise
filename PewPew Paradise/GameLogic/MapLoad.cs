@@ -33,8 +33,6 @@ namespace PewPew_Paradise
         /// </summary>
         public MapLoad ()
         {
-           
-            
             //Maps
             SpriteManager.LoadImage("Images/Sprites/forest_map.png", "forest_map");
             SpriteManager.LoadImage("Images/Sprites/sky2.png", "sky_map");
@@ -80,19 +78,19 @@ namespace PewPew_Paradise
             MainWindow.playingFieldBrush.Color = maps[level_number].map_color.Color;
             if (player_number == 1)
             {
-                MainWindow.Instance.chars.CharacterLoad(1);
+                MainWindow.Instance.characterSelector.CharacterLoad(1);
                 
             }
             else 
             {
-                MainWindow.Instance.chars.CharacterLoad(1);
-                MainWindow.Instance.chars.CharacterLoad(2);
-                dangerzone2 = MainWindow.Instance.chars.SelectedChar(2).GetRect();
+                MainWindow.Instance.characterSelector.CharacterLoad(1);
+                MainWindow.Instance.characterSelector.CharacterLoad(2);
+                dangerzone2 = MainWindow.Instance.characterSelector.SelectedChar(2).GetRect();
                 dangerzone2 = Dangerzone(dangerzone2);
             }
             maps[level_number].MapLoaded();
             //Adding dangerzones
-            dangerzone1 = MainWindow.Instance.chars.SelectedChar(1).GetRect();
+            dangerzone1 = MainWindow.Instance.characterSelector.SelectedChar(1).GetRect();
             dangerzone1 = Dangerzone(dangerzone1);
             dangerzone3 = new Rect(4.5, 15.5, 0, 1);
             dangerzone3 = PortalDanger(dangerzone3);
@@ -109,11 +107,11 @@ namespace PewPew_Paradise
                        ((enemy_pos.x < dangerzone3.TopLeft.X || enemy_pos.x > dangerzone3.TopRight.X) || enemy_pos.y < dangerzone3.TopLeft.Y) &&
                        ((enemy_pos.x < dangerzone4.TopLeft.X || enemy_pos.x > dangerzone4.TopRight.X) || enemy_pos.y < dangerzone4.TopLeft.Y)));
 
-            EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
+            EnemySprite new_enemy = MainWindow.Instance.enemyManager.AddEnemy(maps[level_number].enemy, enemy_pos);
             
             current.Add(new_enemy);
             new_enemy.IsActive = true;
-            MainWindow.Instance.enemy.EnemyLoad(new_enemy);
+            MainWindow.Instance.enemyManager.EnemyLoad(new_enemy);
 
         }
         /// <summary>
@@ -130,17 +128,17 @@ namespace PewPew_Paradise
                 current[i].Destroy();
             }
             current.Clear();
-            MainWindow.Instance.chars.UnLoadCharacter(1);
-            MainWindow.Instance.chars.UnLoadCharacter(2);
+            MainWindow.Instance.characterSelector.UnLoadCharacter(1);
+            MainWindow.Instance.characterSelector.UnLoadCharacter(2);
             level_number++;
             //To restart mapspawning
             level_number = level_number % maps.Count;
             floor++;
             maps[level_number].IsActive = true;
             MainWindow.Instance.lb_floor_counter.Content = Floornumbers();
-            MainWindow.Instance.chars.CharacterLoad(1);
+            MainWindow.Instance.characterSelector.CharacterLoad(1);
             //Dangerzones
-            dangerzone1 = MainWindow.Instance.chars.SelectedChar(1).GetRect();
+            dangerzone1 = MainWindow.Instance.characterSelector.SelectedChar(1).GetRect();
             dangerzone1=Dangerzone(dangerzone1);
             dangerzone3 = new Rect(4.5,15.5,0,1);
             dangerzone3 = PortalDanger(dangerzone3);
@@ -148,8 +146,8 @@ namespace PewPew_Paradise
             dangerzone4 = PortalDanger(dangerzone4);
             if (player_number != 1)
             {
-                MainWindow.Instance.chars.CharacterLoad(2);
-                dangerzone2 = MainWindow.Instance.chars.SelectedChar(2).GetRect();
+                MainWindow.Instance.characterSelector.CharacterLoad(2);
+                dangerzone2 = MainWindow.Instance.characterSelector.SelectedChar(2).GetRect();
                 dangerzone2 = Dangerzone(dangerzone2);
             }
             //Number of enemys
@@ -169,10 +167,10 @@ namespace PewPew_Paradise
                        ((enemy_pos.x < dangerzone3.TopLeft.X || enemy_pos.x > dangerzone3.TopRight.X) || enemy_pos.y < dangerzone3.TopLeft.Y) &&
                        ((enemy_pos.x < dangerzone4.TopLeft.X || enemy_pos.x > dangerzone4.TopRight.X) || enemy_pos.y < dangerzone4.TopLeft.Y)));
 
-                EnemySprite new_enemy = MainWindow.Instance.enemy.AddEnemy(maps[level_number].enemy, enemy_pos);
+                EnemySprite new_enemy = MainWindow.Instance.enemyManager.AddEnemy(maps[level_number].enemy, enemy_pos);
                 current.Add(new_enemy);
                 new_enemy.IsActive = true;
-                MainWindow.Instance.enemy.EnemyLoad(new_enemy);
+                MainWindow.Instance.enemyManager.EnemyLoad(new_enemy);
             }
 
 
@@ -289,19 +287,19 @@ namespace PewPew_Paradise
             {
                 Enemy.enemyList[0].Destroy(); 
             }
-            MainWindow.Instance.chars.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
-            MainWindow.Instance.chars.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
-            MainWindow.Instance.chars.SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
-            MainWindow.Instance.chars.SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
-            MainWindow.Instance.load.CurrentMap().IsActive = false;
-            MainWindow.Instance.chars.UnLoadChar(1);
-            MainWindow.Instance.chars.UnLoadChar(2);
+            MainWindow.Instance.characterSelector.SelectedChar(1).GetComponent<CollideComponent>().IsActive = false;
+            MainWindow.Instance.characterSelector.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
+            MainWindow.Instance.characterSelector.SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
+            MainWindow.Instance.characterSelector.SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
+            MainWindow.Instance.mapLoader.CurrentMap().IsActive = false;
+            MainWindow.Instance.characterSelector.UnLoadChar(1);
+            MainWindow.Instance.characterSelector.UnLoadChar(2);
             MainWindow.Instance.score1 = 0;
             MainWindow.Instance.score2 = 0;
             MainWindow.Instance.lb_player2_name.Visibility = Visibility.Collapsed;
             MainWindow.Instance.lb_player2_score.Visibility = Visibility.Collapsed;
-            MainWindow.Instance.chars.SelectedChar(1).Life = PlayerSprite.maxLife;
-            MainWindow.Instance.chars.SelectedChar(2).Life = PlayerSprite.maxLife;
+            MainWindow.Instance.characterSelector.SelectedChar(1).Life = PlayerSprite.maxLife;
+            MainWindow.Instance.characterSelector.SelectedChar(2).Life = PlayerSprite.maxLife;
 
         }
     }
