@@ -18,7 +18,7 @@ namespace PewPew_Paradise.GameLogic
         public int point;
         /// <summary>
         /// Adding physics, collision and portal components to collectibles
-        /// Storing each of them in a fruitTypes list
+        /// Storing each of them in a fruitList list
         /// </summary>
         /// <param name="image"></param>
         /// <param name="position"></param>
