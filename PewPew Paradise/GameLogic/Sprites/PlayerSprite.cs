@@ -342,6 +342,9 @@ namespace PewPew_Paradise.GameLogic
                         MainWindow.Instance.EndGame.Visibility = Visibility.Visible;
                         MainWindow.Instance.lb_floortext2.Visibility = Visibility.Visible;
                         MainWindow.Instance.lb_scoretext2.Visibility = Visibility.Visible;
+                        MainWindow.Instance.lb_player2score.Visibility = Visibility.Visible;
+                        MainWindow.Instance.lb_floor_player2.Visibility = Visibility.Visible;
+                        MainWindow.Instance.lb_player2name.Visibility = Visibility.Visible;
                         MainWindow.Instance.mapLoader.ClearAll();
                     }
                 }

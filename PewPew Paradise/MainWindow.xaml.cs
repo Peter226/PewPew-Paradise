@@ -433,8 +433,8 @@ namespace PewPew_Paradise
         {
             MainMenu.Visibility = Visibility.Collapsed;
             Options.Visibility = Visibility.Visible;
-            
-            
+
+
         }
         private void bt_singleplay_Click(object sender, RoutedEventArgs e)
         {
@@ -526,8 +526,8 @@ namespace PewPew_Paradise
             InGameOptions.Visibility = Visibility.Collapsed;
             PlayingField.Visibility = Visibility.Collapsed;
             MainMenu.Visibility = Visibility.Visible;
-            SoundManager.PlaySong("MainMenu.mp3");
             mapLoader.ClearAll();
+            SoundManager.PlaySong("MainMenu.mp3");
             GameManager.Begin();
         }
         private void bt_resume_Click(object sender, RoutedEventArgs e)

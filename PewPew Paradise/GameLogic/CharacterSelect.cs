@@ -129,7 +129,6 @@ namespace PewPew_Paradise
             MainWindow.Instance.lb_charname1.Content = MainWindow.Instance.scoreManager.GetCharName(chars_number1);
             if (player_number != 1)
             {
-
                 SelectedChar(2).Size = select_size;
                 SelectedChar(1).Position = select_pos1;
                 SelectedChar(2).Position = select_pos2;

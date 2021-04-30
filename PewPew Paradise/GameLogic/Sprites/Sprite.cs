@@ -167,7 +167,6 @@ namespace PewPew_Paradise.GameLogic
                 if (_active != value) {
                     if (value)
                     {
-                        Console.WriteLine("Activated");
                         OnEnabled();
                     }
                     else

@@ -275,7 +275,6 @@ namespace PewPew_Paradise
         /// </summary>
         public void ClearAll() 
         {
-            
             int fruitcount = FruitSprite.fruitList.Count;
             for (int i = 0; i < fruitcount; i++)
             {
@@ -291,7 +290,10 @@ namespace PewPew_Paradise
             MainWindow.Instance.characterSelector.SelectedChar(2).GetComponent<CollideComponent>().IsActive = false;
             MainWindow.Instance.characterSelector.SelectedChar(1).GetComponent<PhysicsComponent>().IsActive = false;
             MainWindow.Instance.characterSelector.SelectedChar(2).GetComponent<PhysicsComponent>().IsActive = false;
-            MainWindow.Instance.mapLoader.CurrentMap().IsActive = false;
+            foreach (MapSprite map in MainWindow.Instance.mapLoader.maps)
+            {
+                map.IsActive = false;
+            }
             MainWindow.Instance.characterSelector.UnLoadChar(1);
             MainWindow.Instance.characterSelector.UnLoadChar(2);
             MainWindow.Instance.score1 = 0;

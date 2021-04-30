@@ -81,14 +81,11 @@ namespace PewPew_Paradise.GameLogic.Sounds
             masterMixerOut = new WaveOut(WaveCallbackInfo.FunctionCallback());
             masterMixerOut.Init(mixer);
             masterMixerOut.Volume = 1.0f;
-            Console.WriteLine("finito sound init");
             while (MainWindow.Instance != null && MainWindow.Instance.isWindowOpen)
             {
                 Thread.Sleep(100);
             }
-            Console.WriteLine("thread ended");
             masterMixerOut.Stop();
-            Console.WriteLine("mixer stopped");
         }
 
         /// <summary>
@@ -275,7 +272,6 @@ namespace PewPew_Paradise.GameLogic.Sounds
             var samplesToCopy = Math.Min(availableSamples, count);
             Array.Copy(cachedSound.AudioData, position, buffer, offset, samplesToCopy);
             position += samplesToCopy;
-            Console.WriteLine(samplesToCopy);
             return (int)samplesToCopy;
         }
         public WaveFormat WaveFormat { get { return cachedSound.WaveFormat; } }
@@ -303,7 +299,6 @@ namespace PewPew_Paradise.GameLogic.Sounds
 
         public unsafe int Read(float[] buffer, int offset, int count)
         {
-            Console.WriteLine("Read From Music");
             if (isDisposed)
                 return 0;
 
