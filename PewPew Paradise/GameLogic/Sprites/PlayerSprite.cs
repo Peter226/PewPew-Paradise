@@ -290,8 +290,6 @@ namespace PewPew_Paradise.GameLogic
             {
                 GetComponent<AnimatorComponent>().PlayAnimation(3);
             }
-
-
         }
         /// <summary>
         /// Checks which player is dead
