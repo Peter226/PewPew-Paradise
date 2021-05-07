@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PewPew_Paradise.GameLogic.SpriteManager" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAgAACAAAQAAAACBoRACAACAEAAYAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\SpriteManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.SpriteAnimation" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAUACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\SpriteAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.MapLoad" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAMAAAAEAAAAABAAAAIAAEAgAAgAAAAAAERiAACRQI=</HashCode>
+      <FileName>GameLogic\MapLoad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.GameOptions" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAABgAAAAAAAAAAAACAACAAAAA=</HashCode>
+      <FileName>GameLogic\GameOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.GameManager" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAIAQAAAAAAAABAAABACgEAAAAFAAAICACAAEAAwA=</HashCode>
+      <FileName>GameLogic\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Enemy" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.CharacterSelect" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAQIAQIQkIAAAAAAAABAAAwAAAAAAEACAAAAAAAE=</HashCode>
+      <FileName>GameLogic\CharacterSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.AnimationCollection" Collapsed="true">
+    <Position X="2.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAEM=</HashCode>
+      <FileName>GameLogic\AnimationCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sprite" Collapsed="true">
+    <Position X="4.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACYBIAAAACAIpAAgEABABIAwEAJAQAAGAAAQiAIAiAA=</HashCode>
+      <FileName>GameLogic\Sprites\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.ProjectileSprite" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <InheritanceLine Type="PewPew_Paradise.GameLogic.Sprite" FixedFromPoint="true">
+      <Path>
+        <Point X="5.5" Y="2.812" />
+        <Point X="5.5" Y="3.625" />
+        <Point X="1.25" Y="3.625" />
+        <Point X="1.25" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sprites\ProjectileSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.PlayerSprite" Collapsed="true">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUwAAAAAiAABBAAAAAQAAgAAAAAAAAIQAAAQAABGAA=</HashCode>
+      <FileName>GameLogic\Sprites\PlayerSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.MapSprite" Collapsed="true">
+    <Position X="7.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jAQAAEgAACwAAAAAAAAAAAAAAAAIAAAAECCAAAIYAAI=</HashCode>
+      <FileName>GameLogic\Sprites\MapSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.FruitSprite" Collapsed="true">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <InheritanceLine Type="PewPew_Paradise.GameLogic.Sprite" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="2.812" />
+        <Point X="5.5" Y="3.625" />
+        <Point X="6.438" Y="3.625" />
+        <Point X="6.438" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ACAAAAKAAAAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sprites\FruitSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.EnemySprite" Collapsed="true">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQBAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sprites\EnemySprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.DebugSprite" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <InheritanceLine Type="PewPew_Paradise.GameLogic.Sprite" FixedFromPoint="true">
+      <Path>
+        <Point X="5.5" Y="2.812" />
+        <Point X="5.5" Y="3.625" />
+        <Point X="3" Y="3.625" />
+        <Point X="3" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sprites\DebugSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.SpriteComponents.SpriteComponent" Collapsed="true">
+    <Position X="15.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAGAAAIAAEIDAAAAABBBAAAAAAAAACAEAAAA=</HashCode>
+      <FileName>GameLogic\SpriteComponents\SpriteComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.SpriteComponents.SpriteRandomizer" Collapsed="true">
+    <Position X="18.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>GameLogic\SpriteComponents\SpriteRandomizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.SpriteComponents.PortalComponent" Collapsed="true">
+    <Position X="17" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GameLogic\SpriteComponents\PortalComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.SpriteComponents.PhysicsComponent" Collapsed="true">
+    <Position X="15.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAACAAAAAAAAAAQAAAAABAAAAAAA=</HashCode>
+      <FileName>GameLogic\SpriteComponents\PhysicsComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.CollideComponent" Collapsed="true">
+    <Position X="13.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAACAAAKAAAABAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>GameLogic\SpriteComponents\CollideComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.SpriteComponents.AnimatorComponent" Collapsed="true">
+    <Position X="11.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADQAAAABAAAAAAQAAABAAASgAgAgEAAKAAAAAAEgAAA=</HashCode>
+      <FileName>GameLogic\SpriteComponents\AnimatorComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sounds.SoundManager" Collapsed="true">
+    <Position X="4" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAggAAAAAAABAIAAAAAAABACAAAEAAAACAAAADAA=</HashCode>
+      <FileName>GameLogic\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sounds.PewPewSoundMixer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAACAAACwEAAAAAAAAgEAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>GameLogic\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sounds.CachedSoundSampleProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAIAAAIAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sounds.MusicReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAACCAAAAAAEAAAAAAgAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>GameLogic\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sounds.LoopStream" Collapsed="true">
+    <Position X="7.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAQAAAAAAAAgBAAAAABgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.GameLogic.Sounds.CachedSound" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.Editor.CollisionEditor" Collapsed="true">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAIFIAAAAIogFAGAQAAAAAICADIFQRAAACAAAAgAA=</HashCode>
+      <FileName>Editor\CollisionEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.Highscore.AccessData" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAQAAAACAAEAAAAQBAAAAAAABAAAIgAgAAAA=</HashCode>
+      <FileName>Highscore\AccessData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.Highscore.Character" Collapsed="true">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Highscore\CharacterTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.Highscore.Connection" Collapsed="true">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Highscore\Connection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.Highscore.Hscore" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAgAQAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Highscore\Highscore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PewPew_Paradise.MainWindow" Collapsed="true">
+    <Position X="14.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAEAgsABBkIABARgYQE4ARYLC8SSVwCQUBBWkQEA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PewPew_Paradise.Confirm" Collapsed="true">
+    <Position X="17" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAACAAAABAAQAEAIAAAACAAAAAAI=</HashCode>
+      <FileName>Confirm.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="PewPew_Paradise.Maths.Vector2" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAiE8AVAAABAAQBQAgBAgABgCAIgAIA=</HashCode>
+      <FileName>Maths\Vector2.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PewPew_Paradise.GameLogic.FruitType" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\FruitType.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
